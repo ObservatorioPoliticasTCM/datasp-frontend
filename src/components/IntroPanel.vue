@@ -74,7 +74,8 @@ const iconAlt = computed(() => title.value ? `ÃÍcone da seÃ§Ã£o ${title.
 const panelClasses = computed(() => ({
   'intro-panel': true,
   'intro-panel--static': !fullHeight.value,
-  'intro-panel--snap': snap.value
+  'intro-panel--snap': snap.value,
+  'snap-section': true
 }))
 
 const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchorLink({
@@ -94,8 +95,10 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchor
 
 .intro-panel--snap {
   min-height: 96vh;
-  width: calc(100vw - 4vh);
-  padding: 2vh;
+  width: 100vw;
+  padding: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .intro-panel--static {
@@ -104,18 +107,20 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchor
 }
 
 .intro-panel--static.intro-panel--snap {
-  padding: clamp(1.5rem, 3vw, 3rem) clamp(1.5rem, 4vw, 3rem);
+  padding: 2vh 0;
+  min-height: 96vh;
 }
 
 .surface {
   flex: 1;
   border-radius: 1.25rem;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(12, 106, 255, 0.06));
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: stretch;
   justify-content: center;
   padding: clamp(1.5rem, 3vw, 3rem);
-  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.25);
+  margin: 0 2vh;
 }
 
 .surface-head {
@@ -177,14 +182,18 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchor
 }
 
 .extra {
-  font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+  font-size: clamp(0.5rem, 2.3vh, 1rem);
   line-height: 1.65;
   width: 100%;
   column-count: 2;
   column-gap: clamp(2rem, 4vw, 4.5rem);
   column-fill: balance;
   text-align: justify;
-  hyphens: auto;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .extra ::v-deep(p) {

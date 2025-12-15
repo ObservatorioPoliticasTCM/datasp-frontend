@@ -22,9 +22,7 @@
         <ul>
             <li><router-link to="/glossario">Glossário</router-link></li>
             <li>
-              <a href="/infos/metadados-datasp.xlsx" 
-              target="_blank" 
-              rel="noopener noreferrer">
+              <a href="/infos/metadados-datasp.xlsx" target="_blank" rel="noopener noreferrer">
                 Metadados
               </a>
             </li>

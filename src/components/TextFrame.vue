@@ -1,5 +1,5 @@
 <template>
-  <div class="text-frame" ref="rootEl">
+  <div class="text-frame snap-section" ref="rootEl">
     <div v-if="title" class="frame-header">
       <h1 v-if="title"> 
         <span class="title-anchor-wrapper">
@@ -27,20 +27,24 @@
 import { toRefs } from 'vue'
 import { useAnchorLink } from '@/composables/useAnchorLink'
 
+type SnapStrategy = 'full' | 'start'
+
 interface TextFrameProps {
   title?: string
   subtitle?: string
+  snapStrategy?: SnapStrategy
 }
 
 const props = withDefaults(defineProps<TextFrameProps>(), {
   title: '',
-  subtitle: ''
+  subtitle: '',
+  snapStrategy: 'full' as SnapStrategy
 })
 const emit = defineEmits<{ (e: 'fully-visible', anchorId: string): void }>()
 
 const { title, subtitle } = toRefs(props)
 
-const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchorLink({
+const { anchorId, displayTitle, showCopied, copyAnchorLink } = useAnchorLink({
   title,
   emitFullyVisible: (id) => emit('fully-visible', id)
 })
@@ -56,6 +60,8 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchor
   padding: 2vh;
   position: relative;
   z-index: 20;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 .frame-header {
   font-size: 0.6em;
