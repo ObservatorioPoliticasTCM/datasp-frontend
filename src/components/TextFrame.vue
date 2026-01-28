@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { toRefs } from 'vue'
-import { useAnchorLink } from '@/composables/useAnchorLink'
+import { anchorLink } from '@/composables/anchorLink'
 
 type SnapStrategy = 'full' | 'start'
 
@@ -45,7 +45,7 @@ const emit = defineEmits<{ (e: 'fully-visible', anchorId: string): void }>()
 const { title, subtitle } = toRefs(props)
 
 // rootEl parece não estar sendo usado diretamente, mas é utilizado como ref no template e usado para calcular a visibilidade
-const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchorLink({
+const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = anchorLink({
   title,
   emitFullyVisible: (id) => emit('fully-visible', id)
 })

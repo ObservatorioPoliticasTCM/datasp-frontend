@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import { computed, toRefs } from 'vue'
-import { useAnchorLink } from '@/composables/useAnchorLink'
+import { anchorLink } from '@/composables/anchorLink'
 
 interface IntroPanelProps {
   title?: string
@@ -79,7 +79,7 @@ const panelClasses = computed(() => ({
 }))
 
 // rootEl parece não estar sendo usado diretamente, mas é utilizado como ref no template e usado para calcular a visibilidade
-const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchorLink({
+const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = anchorLink({
   title,
   emitFullyVisible: (id) => emit('fully-visible', id)
 })

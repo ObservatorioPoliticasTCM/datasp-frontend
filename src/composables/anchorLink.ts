@@ -2,7 +2,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, type Ref } from 'v
 
 export const FULLY_VISIBLE_EVENT = 'fully-visible'
 
-interface UseAnchorLinkOptions {
+interface AnchorLinkOptions {
   title: Ref<string>
   emitFullyVisible?: (anchorId: string) => void
   scrollRootSelector?: string
@@ -22,13 +22,13 @@ const slugify = (value: string): string => value
   .trim()
   .replace(/\s+/g, '-')
 
-export function useAnchorLink ({
+export function anchorLink ({
   title,
   emitFullyVisible,
   scrollRootSelector = DEFAULT_SCROLL_SELECTOR,
   copyToastDuration = DEFAULT_TOAST_DURATION,
   enableVisibilityDetection = true
-}: UseAnchorLinkOptions) {
+}: AnchorLinkOptions) {
   const anchorId = computed(() => slugify(title.value))
   const displayTitle = computed(() => title.value.replace(/\n/g, '\n'))
   const rootEl = ref<HTMLElement | null>(null)
