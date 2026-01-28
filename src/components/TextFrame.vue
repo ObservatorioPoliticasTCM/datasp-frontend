@@ -44,7 +44,8 @@ const emit = defineEmits<{ (e: 'fully-visible', anchorId: string): void }>()
 
 const { title, subtitle } = toRefs(props)
 
-const { anchorId, displayTitle, showCopied, copyAnchorLink } = useAnchorLink({
+// rootEl parece não estar sendo usado diretamente, mas é utilizado como ref no template e usado para calcular a visibilidade
+const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchorLink({
   title,
   emitFullyVisible: (id) => emit('fully-visible', id)
 })

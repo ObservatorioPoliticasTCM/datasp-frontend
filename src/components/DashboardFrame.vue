@@ -64,6 +64,7 @@ const iframeSrc = computed(() => {
   return url
 })
 
+// rootEl parece não estar sendo usado diretamente, mas é utilizado como ref no template e usado para calcular a visibilidade
 const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = useAnchorLink({
   title,
   emitFullyVisible: (id) => emit('fully-visible', id)
