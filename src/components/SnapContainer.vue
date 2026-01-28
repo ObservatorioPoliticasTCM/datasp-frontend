@@ -132,7 +132,7 @@ const extractDashboardLabel = (element: HTMLElement, index: number) => {
 const dashboardLabel = (index: number) => dashboardLabels.value[index] ?? fallbackLabel(index)
 
 const updateDashboardRefs = (children: HTMLElement[]) => {
-  dashboardEls.value = children.filter(child => child.classList.contains('dashboard-frame'))
+  dashboardEls.value = children.filter(child => child.classList.contains('snap-section'))
   dashboardLabels.value = dashboardEls.value.map((el, idx) => extractDashboardLabel(el, idx))
   if (!dashboardEls.value.length) {
     activeDashboard.value = 0
