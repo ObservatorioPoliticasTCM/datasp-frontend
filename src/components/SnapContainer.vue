@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
     <div
-      v-if="dashboardEls.length && showNavigation"
+      v-if="dashboardEls.length && showNavigation && showDots"
       class="snap-dots"
       aria-label="Navegacao entre secoes"
       role="tablist"
@@ -61,7 +61,7 @@
       </button>
     </div>
     <div
-      v-if="dashboardEls.length && showNavigation"
+      v-if="dashboardEls.length && showNavigation && showArrows"
       class="snap-arrows"
       aria-hidden="false"
     >
@@ -88,10 +88,14 @@ import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed } from 'vu
 
 interface Props {
   showNavigation?: boolean
+  showDots?: boolean
+  showArrows?: boolean
 }
 
 withDefaults(defineProps<Props>(), {
-  showNavigation: true
+  showNavigation: true,
+  showDots: true,
+  showArrows: true
 })
 
 const topVisible = ref(false)
@@ -205,10 +209,6 @@ const scrollToDashboard = (index: number) => {
 }
 
 const goPrev = () => {
-  if (bottomVisible.value && totalDashboards.value) {
-    scrollToDashboard(totalDashboards.value - 1)
-    return
-  }
   if (activeDashboard.value > 0) {
     scrollToDashboard(activeDashboard.value - 1)
     return
@@ -217,10 +217,6 @@ const goPrev = () => {
 }
 
 const goNext = () => {
-  if (topVisible.value && totalDashboards.value) {
-    scrollToDashboard(0)
-    return
-  }
   if (activeDashboard.value < totalDashboards.value - 1) {
     scrollToDashboard(activeDashboard.value + 1)
     return
