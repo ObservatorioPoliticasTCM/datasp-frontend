@@ -7,6 +7,7 @@ interface UseAnchorLinkOptions {
   emitFullyVisible?: (anchorId: string) => void
   scrollRootSelector?: string
   copyToastDuration?: number
+  enableVisibilityDetection?: boolean
 }
 
 const DEFAULT_SCROLL_SELECTOR = '.snap-container'
@@ -25,7 +26,8 @@ export function useAnchorLink ({
   title,
   emitFullyVisible,
   scrollRootSelector = DEFAULT_SCROLL_SELECTOR,
-  copyToastDuration = DEFAULT_TOAST_DURATION
+  copyToastDuration = DEFAULT_TOAST_DURATION,
+  enableVisibilityDetection = true
 }: UseAnchorLinkOptions) {
   const anchorId = computed(() => slugify(title.value))
   const displayTitle = computed(() => title.value.replace(/\n/g, '\n'))
@@ -123,10 +125,12 @@ export function useAnchorLink ({
   }
 
   onMounted(() => {
-    scrollRoot = document.querySelector(scrollRootSelector) as HTMLElement | null
-    attachScrollListener()
-    if (fullyVisible()) {
-      emitVisibility()
+    if (enableVisibilityDetection) {
+      scrollRoot = document.querySelector(scrollRootSelector) as HTMLElement | null
+      attachScrollListener()
+      if (fullyVisible()) {
+        emitVisibility()
+      }
     }
   })
 
