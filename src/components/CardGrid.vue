@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div class="grid">
       <!-- Célula de informação -->
       <div class="info-cell">

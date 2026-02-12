@@ -1,121 +1,48 @@
 <template>
   <SnapPage>
-    <!-- Dashboard contínuo com todos os iframes -->
-    <section class="dashboard-section">
-      <!-- iFrame superior com filtro -->
-      <div class="top-iframe-container">
-        <iframe 
-          class="top-iframe" 
-          src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=KWNtww&theme=card&opt=ctxmenu,currsel" 
-          title="Filtro"
-          loading="lazy"
-        ></iframe>
-      </div>
+    <MobileDashboardSection
+      title="Alunos estrangeiros na rede municipal (2024)"
+      filter-src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=KWNtww&theme=card&opt=ctxmenu,currsel"
+      :chart-srcs="[
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=rwAyU&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=FdEZjMW&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=yqjQC&theme=card&opt=ctxmenu'
+      ]"
+      methodology-link="/infos/notas/educacao/7_notas_metodologicas_alunos_estrangeiros_ok.pdf"
+      download-link="/dados/educacao/educandos-estrangeiros.csv"
+    />
 
-      <!-- Grid com 3 iFrames -->
-      <div class="grid-container">
-        <div class="grid-item">
-          <iframe 
-            src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=rwAyU&theme=card&opt=ctxmenu" 
-            title="Frame 1"
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="grid-item">
-          <iframe 
-            src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=FdEZjMW&theme=card&opt=ctxmenu" 
-            title="Frame 2"
-            loading="lazy"
-          ></iframe>
-        </div>
-        <div class="grid-item">
-          <iframe 
-            src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=yqjQC&theme=card&opt=ctxmenu" 
-            title="Frame 3"
-            loading="lazy"
-          ></iframe>
-        </div>
-      </div>
-    </section>
+    <MobileDashboardSection
+      title="Perfil dos alunos da rede municipal (2024)"
+      identity="educacao-mobile-perfil-alunos"
+      filter-src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=nNpyj&theme=card&opt=ctxmenu,currsel"
+      :chart-srcs="[
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=nNpyj&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=jRpJk&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=PqxZb&theme=card&opt=ctxmenu'
+      ]"
+      methodology-link="/infos/notas/educacao/5_notas_metodologicas_alunos_ok.pdf"
+      download-link="/dados/educacao/perfil-dos-educandos.csv"
+    />
+
+    <MobileDashboardSection
+      title="Numero de escolas da rede municipal (2024)"
+      identity="educacao-mobile-numero-escolas"
+      filter-src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=8a9478a1-23b6-4165-a526-12f9d736aaa0&theme=card&opt=ctxmenu,currsel"
+      :chart-srcs="[
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=8a9478a1-23b6-4165-a526-12f9d736aaa0&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=nvgxg&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=mSNDU&theme=card&opt=ctxmenu'
+      ]"
+      methodology-link="/infos/notas/educacao/3_notas_metodologicas_escolas_ok.pdf"
+      download-link="/dados/educacao/escolas-municipais.csv"
+    />
   </SnapPage>
 </template>
 
 <script setup lang="ts">
-import SnapPage from '../components/SnapPage.vue';
+import MobileDashboardSection from '@/components/MobileDashboardSection.vue'
+import SnapPage from '@/components/SnapPage.vue'
 </script>
 
-<style scoped>
-/* Seção principal do dashboard - comportamento similar ao DashboardFrame */
-.dashboard-section {
-  display: flex;
-  flex-direction: column;
-  height: 96vh;
-  width: calc(100vw - 4vh);
-  padding: 2vh;
-  position: relative;
-  z-index: 20;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  gap: 1rem;
-}
-
-.top-iframe-container {
-  width: 100%;
-  height: 5vh;
-  border: 1px solid #ccc;
-  overflow: hidden;
-}
-
-.top-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  width: 100%;
-  flex: 1;
-}
-
-.grid-item {
-  border: 1px solid #ccc;
-  overflow: hidden;
-}
-
-.grid-item iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* Responsivo: em telas menores, 1 coluna */
-@media (max-width: 768px) {
-  .dashboard-section {
-    height: 300vh;
-    gap: 1rem;
-  }
-
-  .top-iframe-container {
-    height: 30vh;
-  }
-
-  .grid-container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .grid-item {
-    height: 100vh;
-  }
-}
-
-/* Responsivo: tablets */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-</style>
+<style scoped></style>

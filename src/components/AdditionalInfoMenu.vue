@@ -1,15 +1,28 @@
 <template>
-  <div class="info-menu" ref="menuRoot">
-    <button class="info-button" @click="toggle">
-      Informações Adicionais
+  <div
+    v-show="!floating || active"
+    class="info-menu"
+    :class="{ floating }"
+    ref="menuRoot"
+  >
+    <button
+      class="info-button"
+      :class="{ floating }"
+      type="button"
+      aria-label="Informações adicionais"
+      @click="toggle"
+    >
+      <img src="@/assets/info.svg" alt="" aria-hidden="true" class="info-icon" />
+      <span v-if="!floating" class="info-button-label">Informações adicionais</span>
     </button>
-    <div v-if="open" class="menu-popover">
+
+    <div v-if="open" class="menu-popover" :class="{ floating }">
       <div class="menu-list">
-        <router-link class="menu-item" to="/glossario" @click="closeMenu" target="_blank" >
+        <router-link class="menu-item" to="/glossario" @click="closeMenu" target="_blank">
           <span class="menu-label">Glossário</span>
           <img src="@/assets/external-link-black.svg" alt="Abrir em nova aba" class="ext-icon" />
         </router-link>
-        
+
         <a
           v-if="resolvedMethodologyLink"
           class="menu-item"
@@ -22,7 +35,7 @@
           <img src="@/assets/external-link-black.svg" alt="Abrir em nova aba" class="ext-icon" />
         </a>
         <button v-else class="menu-item disabled" disabled>Nota metodológica</button>
-        
+
         <a
           class="menu-item"
           :href="resolvedMetadataLink"
@@ -33,7 +46,7 @@
           <span class="menu-label">Metadados</span>
           <img src="@/assets/download-icon.svg" alt="Abrir em nova aba" class="ext-icon" />
         </a>
-        
+
         <a
           v-if="downloadLink"
           class="menu-item"
@@ -52,16 +65,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, toRefs, computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, toRefs, watch } from 'vue'
 
 interface AdditionalInfoMenuProps {
   metadataLink?: string
   methodologyLink?: string
   downloadLink?: string
+  floating?: boolean
+  active?: boolean
 }
 
-const props = defineProps<AdditionalInfoMenuProps>()
-const { metadataLink, methodologyLink, downloadLink } = toRefs(props)
+const props = withDefaults(defineProps<AdditionalInfoMenuProps>(), {
+  floating: false,
+  active: true
+})
+const { metadataLink, methodologyLink, downloadLink, floating, active } = toRefs(props)
 
 const resolvedMetadataLink = computed(() => {
   const provided = metadataLink.value?.trim()
@@ -80,6 +98,10 @@ const onDocClick = (ev: MouseEvent) => {
   if (!menuRoot.value.contains(ev.target as Node)) open.value = false
 }
 
+watch(active, (isActive) => {
+  if (!isActive) closeMenu()
+})
+
 onMounted(() => document.addEventListener('click', onDocClick))
 onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
 </script>
@@ -91,6 +113,15 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   padding: 0 0 0.35em 0;
 }
 
+.info-menu.floating {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 340;
+  margin: 0;
+  padding: 0;
+}
+
 .info-button {
   background-color: #213547;
   color: #fff;
@@ -99,6 +130,30 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   border-radius: 0.5rem;
   cursor: pointer;
   font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.info-button.floating {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  padding: 0;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 0.55rem 1.4rem rgba(0, 0, 0, 0.25);
+}
+
+.info-icon {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+
+.info-button.floating .info-icon {
+  width: 1rem;
+  height: 1rem;
 }
 
 .menu-popover {
@@ -107,11 +162,17 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   top: calc(100% + 0.4rem);
   background: #ffffff;
   color: #213547;
-  border: 0.0625rem solid rgba(0,0,0,0.1);
+  border: 0.0625rem solid rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
   min-width: 16rem;
   z-index: 1000;
+}
+
+.menu-popover.floating {
+  top: auto;
+  right: 0;
+  bottom: calc(100% + 0.55rem);
 }
 
 .menu-list {
@@ -141,7 +202,7 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
 }
 
 .menu-item:hover {
-  background: rgba(0,0,0,0.04);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .menu-item.disabled {
@@ -162,4 +223,15 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   flex-shrink: 0;
 }
 
+@media (max-width: 48rem) {
+  .info-menu.floating {
+    right: 0.85rem;
+    bottom: 0.85rem;
+  }
+
+  .menu-popover.floating {
+    max-width: min(88vw, 18rem);
+    min-width: min(88vw, 16rem);
+  }
+}
 </style>
