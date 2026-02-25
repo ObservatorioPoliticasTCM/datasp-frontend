@@ -1,6 +1,6 @@
 <template>
   <div class="snap-shell">
-    <div class="snap-container" ref="container">
+    <div class="snap-container" :class="{ 'no-snap': disableSnap }" ref="container">
       <slot></slot>
     </div>
     <div
@@ -84,10 +84,12 @@ import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed } from 'vu
 
 interface Props {
   showNavigation?: boolean
+  disableSnap?: boolean
 }
 
 withDefaults(defineProps<Props>(), {
-  showNavigation: true
+  showNavigation: true,
+  disableSnap: false
 })
 
 const topVisible = ref(false)
@@ -249,6 +251,9 @@ onBeforeUnmount(() => {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
 }
+.snap-container.no-snap {
+  scroll-snap-type: none;
+}
 .snap-container::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -256,6 +261,10 @@ onBeforeUnmount(() => {
 .snap-container > :slotted(*) {
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+.snap-container.no-snap > :slotted(*) {
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
 }
 .snap-dots,
 .snap-arrows {
