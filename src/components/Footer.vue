@@ -43,27 +43,32 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.footer-left,
-.footer-right {
-  flex: 1;
+  gap: 1rem;
 }
 .footer-center {
-  flex: 2;
+  flex: 1 1 auto;
+  min-width: 0;
   text-align: left;
   font-size: 1.4em;
 }
-.footer-left img,
-.footer-right img {
-  margin: 0 1rem;
-  width: 11.2rem;
-  object-fit: contain;
+.footer-license {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  font-size: 0.9em;
 }
 
-.footer-license {
-  display: flex;
-  align-items: center;
-  font-size: 0.9em;
+.footer-license p {
+  margin: 0;
+  max-width: 100%;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.footer-license a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .ext-icon {
@@ -83,8 +88,47 @@ footer {
 }
 
 .footer-left {
-  flex: 1;
-  display: flex; /* force images side by side */
-  gap: 0.5rem; /* optional: add spacing between images */
+  flex: 0 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-wrap: nowrap;
+}
+
+.footer-left a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-left img {
+  margin: 0;
+  width: clamp(8.8rem, 13.5vw, 9.6rem);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap:0.6rem;
+  }
+
+  .footer-left {
+    width: 100%;
+  }
+
+  .footer-center {
+    width: 100%;
+    text-align: center;
+    font-size: 1.15em;
+  }
+
+  .footer-license {
+    font-size: 0.85em;
+  }
 }
 </style>
