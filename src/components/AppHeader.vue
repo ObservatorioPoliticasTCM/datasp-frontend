@@ -1,5 +1,66 @@
 <template>
-  <header class="header" :class="{ mobile: isMobileView, desktop: !isMobileView }">
+  <header v-if="isEducacaoMobileRoute" class="route-mobile-header">
+    <div class="route-mobile-backdrop" aria-hidden="true"></div>
+
+    <router-link
+      to="/"
+      class="route-mobile-logo-link"
+      title="Voltar para o início"
+      @click="closeMenu"
+    >
+      <img src="@/assets/logo-white-datasp.svg" alt="Logo DataSP" class="route-mobile-logo" />
+    </router-link>
+
+    <div class="route-mobile-menu-container" ref="menuRoot">
+      <button
+        type="button"
+        class="menu-button route-mobile-menu-button"
+        :aria-expanded="menuOpen ? 'true' : 'false'"
+        aria-controls="main-menu"
+        aria-label="Abrir menu principal"
+        @click="toggleMenu"
+      >
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="menu-label">Menu</span>
+      </button>
+
+      <transition name="menu-fade">
+        <nav
+          v-if="menuOpen"
+          id="main-menu"
+          class="menu-panel route-mobile-menu-panel"
+          aria-label="Menu principal"
+        >
+          <template v-for="item in menuItems" :key="item.label">
+            <router-link
+              v-if="item.route"
+              :to="item.route"
+              class="menu-item"
+              @click="closeMenu"
+            >
+              {{ item.label }}
+            </router-link>
+            <a
+              v-else-if="item.href"
+              :href="item.href"
+              class="menu-item"
+              target="_blank"
+              rel="noopener noreferrer"
+              @click="closeMenu"
+            >
+              {{ item.label }}
+            </a>
+          </template>
+        </nav>
+      </transition>
+    </div>
+  </header>
+
+  <header v-else class="header" :class="{ mobile: isMobileView, desktop: !isMobileView }">
     <template v-if="isMobileView">
       <div class="scroll-backdrop" :class="{ active: !isAtStart }" aria-hidden="true"></div>
 
@@ -7,7 +68,7 @@
         to="/"
         class="datasp-logo-link"
         :class="{ compact: !isAtStart }"
-        title="Voltar para o in�cio"
+        title="Voltar para o início"
         @click="closeMenu"
       >
         <span class="datasp-logo-stack">
@@ -80,14 +141,14 @@
       <div class="gradient-overlay"></div>
       <div class="header-inner">
         <div class="logo-container">
-          <router-link to="/" title="Voltar para o in�cio">
+          <router-link to="/" title="Voltar para o início">
             <img src="@/assets/logo.svg" alt="Logo DataSP" class="logo logo-left" />
           </router-link>
           <a
             href="https://observatorio.tcm.sp.gov.br/"
             target="_blank"
             rel="noopener noreferrer"
-            title="Acessar o portal do Observat�rio de Pol�ticas P�blicas"
+            title="Acessar o portal do Observatório de Políticas Públicas"
           >
             <img src="@/assets/logo-opp.svg" alt="Logo OPP" class="logo logo-right" />
           </a>
@@ -117,9 +178,15 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 const MOBILE_BREAKPOINT = 1024
+
+const route = useRoute()
+const isEducacaoMobileRoute = computed(
+  () => route.name === 'educacao-mobile' || route.path === '/educacao-mobile'
+)
 
 const menuItems = [
   { label: 'Apresentação', route: '/apresentacao' },
@@ -153,6 +220,11 @@ const readScrollTop = (): number => {
 }
 
 const syncHeaderState = () => {
+  if (isEducacaoMobileRoute.value) {
+    isAtStart.value = true
+    return
+  }
+
   if (!isMobileView.value) {
     isAtStart.value = true
     closeMenu()
@@ -169,6 +241,12 @@ const onScroll = () => {
 }
 
 const evaluateViewport = () => {
+  if (isEducacaoMobileRoute.value) {
+    isMobileView.value = false
+    isAtStart.value = true
+    return
+  }
+
   isMobileView.value = window.innerWidth < MOBILE_BREAKPOINT
   syncHeaderState()
 }
@@ -178,13 +256,21 @@ const onResize = () => {
 }
 
 const onDocumentClick = (event: MouseEvent) => {
-  if (!isMobileView.value || !menuOpen.value || !menuRoot.value) return
   const target = event.target as Node | null
+
+  if (isEducacaoMobileRoute.value) {
+    if (!menuOpen.value || !menuRoot.value) return
+    if (target && !menuRoot.value.contains(target)) closeMenu()
+    return
+  }
+
+  if (!isMobileView.value || !menuOpen.value || !menuRoot.value) return
   if (target && !menuRoot.value.contains(target)) closeMenu()
 }
 
 const onDocumentKeydown = (event: KeyboardEvent) => {
-  if (isMobileView.value && event.key === 'Escape') closeMenu()
+  if (event.key !== 'Escape') return
+  if (isEducacaoMobileRoute.value || isMobileView.value) closeMenu()
 }
 
 onMounted(() => {
@@ -197,6 +283,14 @@ onMounted(() => {
   evaluateViewport()
 })
 
+watch(
+  () => route.fullPath,
+  () => {
+    closeMenu()
+    evaluateViewport()
+  }
+)
+
 onBeforeUnmount(() => {
   const scrollTarget = scrollRoot || window
   scrollTarget.removeEventListener('scroll', onScroll)
@@ -207,6 +301,55 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.route-mobile-header {
+  position: relative;
+  width: 100%;
+  z-index: 260;
+  height: clamp(4rem, 10vh, 5.5rem);
+  user-select: none;
+  pointer-events: none;
+}
+
+.route-mobile-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 261;
+  background: rgba(15, 23, 42, 0.75);
+}
+
+.route-mobile-logo-link {
+  position: absolute;
+  top: 40%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  z-index: 262;
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.route-mobile-logo {
+  display: block;
+  height: clamp(4.2rem, 9.2vh, 5rem);
+  width: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.route-mobile-menu-container {
+  position: absolute;
+  top: 50%;
+  right: 1.25rem;
+  transform: translateY(-50%);
+  z-index: 263;
+  pointer-events: auto;
+}
+
+.route-mobile-menu-panel {
+  top: calc(100% + 0.6rem);
+}
+
 .header {
   position: relative;
   z-index: 20;
@@ -378,8 +521,8 @@ onBeforeUnmount(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 999px;
+  /* border: 1px solid rgba(255, 255, 255, 0.28); */
+  border-radius: 10px;
   padding: 0.52rem 0.86rem;
   background: rgba(15, 23, 42, 0.88);
   color: #ffffff;
