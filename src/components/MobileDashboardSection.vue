@@ -326,7 +326,7 @@ onBeforeUnmount(() => {
   }
 
   .grid-item {
-    height: 100vh;
+    height: 80vh;
   }
 
   .title-anchor {
