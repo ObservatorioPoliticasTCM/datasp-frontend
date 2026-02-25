@@ -277,14 +277,15 @@ onBeforeUnmount(() => {
 
 .top-iframe-container {
   width: 100%;
-  height: 5vh;
+  height: auto;
+  min-height: 5vh;
   border: 1px solid #cccccc;
-  overflow: hidden;
 }
 
 .top-iframe {
   width: 100%;
-  height: 100%;
+  height: 5vh;
+  display: block;
   border: none;
 }
 
@@ -309,10 +310,14 @@ onBeforeUnmount(() => {
 
 @media (max-width: 768px) {
   .mobile-dashboard-section {
-    height: 300vh;
+    height: auto;
   }
 
   .top-iframe-container {
+    min-height: 30vh;
+  }
+
+  .top-iframe {
     height: 30vh;
   }
 
