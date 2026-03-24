@@ -1,5 +1,5 @@
 <template>
-  <header v-if="isEducacaoMobileRoute" class="route-mobile-header">
+  <header v-if="showRouteMobileHeader" class="route-mobile-header">
     <div class="route-mobile-backdrop" aria-hidden="true"></div>
 
     <router-link
@@ -60,8 +60,8 @@
     </div>
   </header>
 
-  <header v-else class="header" :class="{ mobile: isMobileView, desktop: !isMobileView }">
-    <template v-if="isMobileView">
+  <header v-else class="header" :class="{ compact: isCompactView, desktop: !isCompactView }">
+    <div class="header-compact">
       <div class="scroll-backdrop" :class="{ active: !isAtStart }" aria-hidden="true"></div>
 
       <router-link
@@ -135,9 +135,9 @@
           </nav>
         </transition>
       </div>
-    </template>
+    </div>
 
-    <template v-else>
+    <div class="header-full">
       <div class="gradient-overlay"></div>
       <div class="header-inner">
         <div class="logo-container">
@@ -173,7 +173,7 @@
           </div>
         </nav>
       </div>
-    </template>
+    </div>
   </header>
 </template>
 
@@ -186,6 +186,12 @@ const MOBILE_BREAKPOINT = 1024
 const route = useRoute()
 const isEducacaoMobileRoute = computed(
   () => route.name === 'educacao-mobile' || route.path === '/educacao-mobile'
+)
+
+const isPortrait = ref(false)
+const isCompactView = ref(false)
+const showRouteMobileHeader = computed(
+  () => isEducacaoMobileRoute.value && isCompactView.value
 )
 
 const menuItems = [
@@ -220,12 +226,12 @@ const readScrollTop = (): number => {
 }
 
 const syncHeaderState = () => {
-  if (isEducacaoMobileRoute.value) {
+  if (isEducacaoMobileRoute.value && isCompactView.value) {
     isAtStart.value = true
     return
   }
 
-  if (!isMobileView.value) {
+  if (!isCompactView.value) {
     isAtStart.value = true
     closeMenu()
     return
@@ -241,13 +247,18 @@ const onScroll = () => {
 }
 
 const evaluateViewport = () => {
-  if (isEducacaoMobileRoute.value) {
-    isMobileView.value = false
+  const width = window.innerWidth
+  const height = window.innerHeight
+
+  isPortrait.value = height > width
+  isMobileView.value = width < MOBILE_BREAKPOINT
+  isCompactView.value = isPortrait.value || isMobileView.value
+
+  if (isEducacaoMobileRoute.value && isCompactView.value) {
     isAtStart.value = true
     return
   }
 
-  isMobileView.value = window.innerWidth < MOBILE_BREAKPOINT
   syncHeaderState()
 }
 
@@ -258,19 +269,19 @@ const onResize = () => {
 const onDocumentClick = (event: MouseEvent) => {
   const target = event.target as Node | null
 
-  if (isEducacaoMobileRoute.value) {
+  if (isEducacaoMobileRoute.value && isCompactView.value) {
     if (!menuOpen.value || !menuRoot.value) return
     if (target && !menuRoot.value.contains(target)) closeMenu()
     return
   }
 
-  if (!isMobileView.value || !menuOpen.value || !menuRoot.value) return
+  if (!isCompactView.value || !menuOpen.value || !menuRoot.value) return
   if (target && !menuRoot.value.contains(target)) closeMenu()
 }
 
 const onDocumentKeydown = (event: KeyboardEvent) => {
   if (event.key !== 'Escape') return
-  if (isEducacaoMobileRoute.value || isMobileView.value) closeMenu()
+  if (isEducacaoMobileRoute.value || isCompactView.value) closeMenu()
 }
 
 onMounted(() => {
@@ -441,9 +452,33 @@ onBeforeUnmount(() => {
   border-radius: 0.0625rem;
 }
 
-.header.mobile {
+.header .header-compact {
+  display: none;
+}
+
+.header .header-full {
+  display: block;
+}
+
+.header.compact {
   z-index: 260;
   pointer-events: none;
+}
+
+.header.compact .header-compact {
+  display: block;
+}
+
+.header.compact .header-full {
+  display: none;
+}
+
+.header.desktop .header-compact {
+  display: none;
+}
+
+.header.desktop .header-full {
+  display: block;
 }
 
 .scroll-backdrop {
@@ -600,7 +635,7 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 63.9375rem) {
-  .header.mobile {
+  .header.compact {
     height: 12vh;
   }
 
