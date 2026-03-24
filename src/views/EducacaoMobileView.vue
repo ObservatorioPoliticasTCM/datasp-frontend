@@ -1,5 +1,5 @@
 <template>
-  <SnapPage :disable-snap="true">
+  <SnapPage>
     <MobileDashboardSection
       title="Alunos estrangeiros na rede municipal (2024)"
       filter-src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=KWNtww&theme=card&opt=ctxmenu,currsel"
