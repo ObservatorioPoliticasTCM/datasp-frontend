@@ -1,97 +1,22 @@
 <template>
-  <header v-if="showRouteMobileHeader" class="route-mobile-header">
-    <div class="route-mobile-backdrop" aria-hidden="true"></div>
 
-    <router-link
-      to="/"
-      class="route-mobile-logo-link"
-      title="Voltar para o início"
-      @click="closeMenu"
-    >
-      <img src="@/assets/logo-white-datasp.svg" alt="Logo DataSP" class="route-mobile-logo" />
-    </router-link>
-
-    <div class="route-mobile-menu-container" ref="menuRoot">
-      <button
-        type="button"
-        class="menu-button route-mobile-menu-button"
-        :aria-expanded="menuOpen ? 'true' : 'false'"
-        aria-controls="main-menu"
-        aria-label="Abrir menu principal"
-        @click="toggleMenu"
-      >
-        <span class="menu-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-        <span class="menu-label">Menu</span>
-      </button>
-
-      <transition name="menu-fade">
-        <nav
-          v-if="menuOpen"
-          id="main-menu"
-          class="menu-panel route-mobile-menu-panel"
-          aria-label="Menu principal"
-        >
-          <template v-for="item in menuItems" :key="item.label">
-            <router-link
-              v-if="item.route"
-              :to="item.route"
-              class="menu-item"
-              @click="closeMenu"
-            >
-              {{ item.label }}
-            </router-link>
-            <a
-              v-else-if="item.href"
-              :href="item.href"
-              class="menu-item"
-              target="_blank"
-              rel="noopener noreferrer"
-              @click="closeMenu"
-            >
-              {{ item.label }}
-            </a>
-          </template>
-        </nav>
-      </transition>
-    </div>
-  </header>
-
-  <header v-else class="header" :class="{ compact: isCompactView, desktop: !isCompactView }">
-    <div class="header-compact">
-      <div class="scroll-backdrop" :class="{ active: !isAtStart }" aria-hidden="true"></div>
+  <header class="header" :class="{ compact: isCompactView, desktop: !isCompactView }">
+    <header class="header-compact">
+      <div class="route-mobile-backdrop" aria-hidden="true"></div>
 
       <router-link
         to="/"
-        class="datasp-logo-link"
-        :class="{ compact: !isAtStart }"
+        class="route-mobile-logo-link"
         title="Voltar para o início"
         @click="closeMenu"
       >
-        <span class="datasp-logo-stack">
-          <img
-            src="@/assets/logo.svg"
-            alt="Logo DataSP"
-            class="datasp-logo datasp-logo-dark"
-            :class="{ faded: !isAtStart }"
-          />
-          <img
-            src="@/assets/logo-white.svg"
-            alt=""
-            aria-hidden="true"
-            class="datasp-logo datasp-logo-light"
-            :class="{ shown: !isAtStart }"
-          />
-        </span>
+        <img src="@/assets/logo-white-datasp.svg" alt="Logo DataSP" class="route-mobile-logo" />
       </router-link>
 
-      <div class="menu-container" ref="menuRoot">
+      <div class="route-mobile-menu-container" ref="menuRoot">
         <button
           type="button"
-          class="menu-button"
+          class="menu-button route-mobile-menu-button"
           :aria-expanded="menuOpen ? 'true' : 'false'"
           aria-controls="main-menu"
           aria-label="Abrir menu principal"
@@ -109,7 +34,7 @@
           <nav
             v-if="menuOpen"
             id="main-menu"
-            class="menu-panel"
+            class="menu-panel route-mobile-menu-panel"
             aria-label="Menu principal"
           >
             <template v-for="item in menuItems" :key="item.label">
@@ -135,7 +60,7 @@
           </nav>
         </transition>
       </div>
-    </div>
+    </header>
 
     <div class="header-full">
       <div class="gradient-overlay"></div>
@@ -190,9 +115,6 @@ const isEducacaoMobileRoute = computed(
 
 const isPortrait = ref(false)
 const isCompactView = ref(false)
-const showRouteMobileHeader = computed(
-  () => isEducacaoMobileRoute.value && isCompactView.value
-)
 
 const menuItems = [
   { label: 'Apresentação', route: '/apresentacao' },
@@ -312,15 +234,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.route-mobile-header {
-  position: relative;
-  width: 100%;
-  z-index: 260;
-  height: clamp(4rem, 10vh, 5.5rem);
-  user-select: none;
-  pointer-events: none;
-}
-
 .route-mobile-backdrop {
   position: absolute;
   inset: 0;
@@ -481,77 +394,6 @@ onBeforeUnmount(() => {
   display: block;
 }
 
-.scroll-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: clamp(4rem, 10vh, 5.5rem);
-  z-index: 261;
-  background: rgba(15, 23, 42, 0.75);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-
-.scroll-backdrop.active {
-  opacity: 1;
-}
-
-.datasp-logo-link {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 262;
-  transform: none;
-  pointer-events: auto;
-  transition: left 0.25s ease, right 0.25s ease, transform 0.25s ease;
-}
-
-.datasp-logo-link.compact {
-  left: 1rem;
-  right: auto;
-  transform: none;
-}
-
-.datasp-logo {
-  display: block;
-  height: clamp(2.5rem, 7vh, 4.5rem);
-  transition: height 0.25s ease, opacity 0.25s ease;
-}
-
-.datasp-logo-link.compact .datasp-logo {
-  height: clamp(2.1rem, 6.6vh, 3.4rem);
-}
-
-.datasp-logo-stack {
-  position: relative;
-  display: inline-block;
-}
-
-.datasp-logo-light {
-  position: absolute;
-  inset: 0 auto auto 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.datasp-logo-dark.faded {
-  opacity: 0;
-}
-
-.datasp-logo-light.shown {
-  opacity: 1;
-}
-
-.menu-container {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 263;
-  pointer-events: auto;
-}
-
 .menu-button {
   display: inline-flex;
   align-items: center;
@@ -636,7 +478,8 @@ onBeforeUnmount(() => {
 
 @media (max-width: 63.9375rem) {
   .header.compact {
-    height: 12vh;
+  height: clamp(4rem, 10vh, 5.5rem);
+  padding: 0;
   }
 
   .menu-button {
