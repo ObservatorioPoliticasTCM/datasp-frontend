@@ -1,6 +1,6 @@
 <template>
   <div class="snap-shell">
-    <div class="snap-container" :class="{ 'no-snap': shouldDisableSnap }" ref="container">
+    <div class="snap-container" :class="{ 'no-snap': isSnapDisabled }" ref="container">
       <slot></slot>
     </div>
     <div
@@ -87,15 +87,19 @@ interface Props {
   disableSnap?: boolean
 }
 
-const MOBILE_BREAKPOINT = 1024
-const isPortrait = ref(false)
-const isMobileView = ref(false)
-const shouldDisableSnap = computed(() => isPortrait.value || isMobileView.value)
-
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   showNavigation: true,
   disableSnap: false
 })
+
+const MOBILE_BREAKPOINT = 1024
+const isPortrait = ref(false)
+const isMobileView = ref(false)
+
+// Combina a prop com as condições de viewport
+const isSnapDisabled = computed(() => 
+  props.disableSnap || isPortrait.value || isMobileView.value
+)
 
 const topVisible = ref(false)
 const bottomVisible = ref(false)
