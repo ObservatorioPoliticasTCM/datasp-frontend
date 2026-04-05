@@ -203,8 +203,8 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   height: 96vh;
-  width: calc(100vw - 4vh);
-  padding: 2vh;
+  width: calc(100vw - 12vh);
+  padding: 6vh;
   position: relative;
   z-index: 20;
   gap: 1rem;
