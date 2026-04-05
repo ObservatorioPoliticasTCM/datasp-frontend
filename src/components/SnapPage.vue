@@ -1,6 +1,6 @@
 <template>
     <div class="snap-page">
-        <SnapContainer :disable-snap="disableSnap">
+        <SnapContainer >
             <AppHeader />
             <slot />
             <Sitemap />
@@ -27,20 +27,12 @@ import Background from './Background.vue';
 import Sitemap from './Sitemap.vue'
 import AdditionalInfoMenu from './AdditionalInfoMenu.vue'
 
-interface Props {
-  disableSnap?: boolean
-}
-
 interface MobileSectionInfoDetail {
   anchorId?: string
   metadataLink?: string
   methodologyLink?: string
   downloadLink?: string
 }
-
-withDefaults(defineProps<Props>(), {
-  disableSnap: false
-})
 
 const showFloatingInfo = ref(false)
 const floatingMetadataLink = ref('')

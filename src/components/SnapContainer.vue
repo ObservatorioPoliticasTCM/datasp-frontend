@@ -1,6 +1,6 @@
 <template>
   <div class="snap-shell">
-    <div class="snap-container" :class="{ 'no-snap': disableSnap }" ref="container">
+    <div class="snap-container" :class="{ 'no-snap': isSnapDisabled }" ref="container">
       <slot></slot>
     </div>
     <div
@@ -87,10 +87,19 @@ interface Props {
   disableSnap?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   showNavigation: true,
   disableSnap: false
 })
+
+const MOBILE_BREAKPOINT = 1024
+const isPortrait = ref(false)
+const isMobileView = ref(false)
+
+// Combina a prop com as condições de viewport
+const isSnapDisabled = computed(() => 
+  props.disableSnap || isPortrait.value || isMobileView.value
+)
 
 const topVisible = ref(false)
 const bottomVisible = ref(false)
@@ -114,6 +123,17 @@ const sectionVisible = (id: string) => {
   if (topVisible.value || bottomVisible.value) return
   if (location.hash === `#${id}`) return
   history.replaceState(null, '', `#${id}`)
+}
+
+const evaluateViewport = () => {
+  const width = window.innerWidth
+  const height = window.innerHeight
+  isPortrait.value = height > width
+  isMobileView.value = width < MOBILE_BREAKPOINT
+}
+
+const onResize = () => {
+  evaluateViewport()
 }
 
 provide('sectionVisible', sectionVisible)
@@ -215,6 +235,9 @@ const goNext = () => {
 }
 
 onMounted(async () => {
+  evaluateViewport()
+  window.addEventListener('resize', onResize)
+
   if (container.value) {
     container.value.addEventListener('fully-visible', fullyVisibleHandler as EventListener)
     await nextTick()
@@ -227,6 +250,7 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
+  window.removeEventListener('resize', onResize)
   if (container.value) {
     container.value.removeEventListener('fully-visible', fullyVisibleHandler as EventListener)
   }
