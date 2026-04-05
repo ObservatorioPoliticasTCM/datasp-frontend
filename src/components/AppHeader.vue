@@ -1,103 +1,101 @@
 <template>
 
-  <header class="header" :class="{ compact: isCompactView, desktop: !isCompactView }">
-    <header class="header-compact">
-      <div class="route-mobile-backdrop" aria-hidden="true"></div>
+  <header v-if="isCompactView" class="header compact">
+    <div class="route-mobile-backdrop" aria-hidden="true"></div>
 
-      <router-link
-        to="/"
-        class="route-mobile-logo-link"
-        title="Voltar para o início"
-        @click="closeMenu"
+    <router-link
+      to="/"
+      class="route-mobile-logo-link"
+      title="Voltar para o início"
+      @click="closeMenu"
+    >
+      <img src="@/assets/logo-white-datasp.svg" alt="Logo DataSP" class="route-mobile-logo" />
+    </router-link>
+
+    <div class="route-mobile-menu-container" ref="menuRoot">
+      <button
+        type="button"
+        class="menu-button route-mobile-menu-button"
+        :aria-expanded="menuOpen ? 'true' : 'false'"
+        aria-controls="main-menu"
+        aria-label="Abrir menu principal"
+        @click="toggleMenu"
       >
-        <img src="@/assets/logo-white-datasp.svg" alt="Logo DataSP" class="route-mobile-logo" />
-      </router-link>
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="menu-label">Menu</span>
+      </button>
 
-      <div class="route-mobile-menu-container" ref="menuRoot">
-        <button
-          type="button"
-          class="menu-button route-mobile-menu-button"
-          :aria-expanded="menuOpen ? 'true' : 'false'"
-          aria-controls="main-menu"
-          aria-label="Abrir menu principal"
-          @click="toggleMenu"
+      <transition name="menu-fade">
+        <nav
+          v-if="menuOpen"
+          id="main-menu"
+          class="menu-panel route-mobile-menu-panel"
+          aria-label="Menu principal"
         >
-          <span class="menu-icon" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-          <span class="menu-label">Menu</span>
-        </button>
-
-        <transition name="menu-fade">
-          <nav
-            v-if="menuOpen"
-            id="main-menu"
-            class="menu-panel route-mobile-menu-panel"
-            aria-label="Menu principal"
-          >
-            <template v-for="item in menuItems" :key="item.label">
-              <router-link
-                v-if="item.route"
-                :to="item.route"
-                class="menu-item"
-                @click="closeMenu"
-              >
-                {{ item.label }}
-              </router-link>
-              <a
-                v-else-if="item.href"
-                :href="item.href"
-                class="menu-item"
-                target="_blank"
-                rel="noopener noreferrer"
-                @click="closeMenu"
-              >
-                {{ item.label }}
-              </a>
-            </template>
-          </nav>
-        </transition>
-      </div>
-    </header>
-
-    <div class="header-full">
-      <div class="gradient-overlay"></div>
-      <div class="header-inner">
-        <div class="logo-container">
-          <router-link to="/" title="Voltar para o início">
-            <img src="@/assets/logo.svg" alt="Logo DataSP" class="logo logo-left" />
-          </router-link>
-          <a
-            href="https://observatorio.tcm.sp.gov.br/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Acessar o portal do Observatório de Políticas Públicas"
-          >
-            <img src="@/assets/logo-opp.svg" alt="Logo OPP" class="logo logo-right" />
-          </a>
-        </div>
-
-        <nav class="nav" aria-label="Menu principal">
-          <div v-for="(item, index) in menuItems" :key="item.label" class="nav-item">
-            <router-link v-if="item.route" :to="item.route">{{ item.label }}</router-link>
+          <template v-for="item in menuItems" :key="item.label">
+            <router-link
+              v-if="item.route"
+              :to="item.route"
+              class="menu-item"
+              @click="closeMenu"
+            >
+              {{ item.label }}
+            </router-link>
             <a
               v-else-if="item.href"
               :href="item.href"
+              class="menu-item"
               target="_blank"
               rel="noopener noreferrer"
+              @click="closeMenu"
             >
               {{ item.label }}
             </a>
-            <a v-else href="#">{{ item.label }}</a>
-
-            <div v-if="index < menuItems.length - 1" class="separator">
-              <div v-for="n in 10" :key="n" class="dot" />
-            </div>
-          </div>
+          </template>
         </nav>
+      </transition>
+    </div>
+  </header>
+
+  <header v-else class="header">
+    <div class="gradient-overlay"></div>
+    <div class="header-inner">
+      <div class="logo-container">
+        <router-link to="/" title="Voltar para o início">
+          <img src="@/assets/logo.svg" alt="Logo DataSP" class="logo logo-left" />
+        </router-link>
+        <a
+          href="https://observatorio.tcm.sp.gov.br/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Acessar o portal do Observatório de Políticas Públicas"
+        >
+          <img src="@/assets/logo-opp.svg" alt="Logo OPP" class="logo logo-right" />
+        </a>
       </div>
+
+      <nav class="nav" aria-label="Menu principal">
+        <div v-for="(item, index) in menuItems" :key="item.label" class="nav-item">
+          <router-link v-if="item.route" :to="item.route">{{ item.label }}</router-link>
+          <a
+            v-else-if="item.href"
+            :href="item.href"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ item.label }}
+          </a>
+          <a v-else href="#">{{ item.label }}</a>
+
+          <div v-if="index < menuItems.length - 1" class="separator">
+            <div v-for="n in 10" :key="n" class="dot" />
+          </div>
+        </div>
+      </nav>
     </div>
   </header>
 </template>
@@ -365,33 +363,9 @@ onBeforeUnmount(() => {
   border-radius: 0.0625rem;
 }
 
-.header .header-compact {
-  display: none;
-}
-
-.header .header-full {
-  display: block;
-}
-
 .header.compact {
   z-index: 260;
   pointer-events: none;
-}
-
-.header.compact .header-compact {
-  display: block;
-}
-
-.header.compact .header-full {
-  display: none;
-}
-
-.header.desktop .header-compact {
-  display: none;
-}
-
-.header.desktop .header-full {
-  display: block;
 }
 
 .menu-button {
