@@ -3,6 +3,10 @@
   <header v-if="isCompactView" class="header compact">
     <div class="route-mobile-backdrop" aria-hidden="true"></div>
 
+    <transition name="menu-fade">
+      <div v-if="menuOpen" class="menu-overlay" @click="closeMenu" @wheel="closeMenu" @touchmove="closeMenu" />
+    </transition>
+
     <router-link
       to="/"
       class="route-mobile-logo-link"
@@ -12,7 +16,7 @@
       <img src="@/assets/logo-white-datasp.svg" alt="Logo DataSP" class="route-mobile-logo" />
     </router-link>
 
-    <div class="route-mobile-menu-container" ref="menuRoot">
+    <div class="route-mobile-menu-container">
       <button
         type="button"
         class="menu-button route-mobile-menu-button"
@@ -101,17 +105,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const MOBILE_BREAKPOINT = 1024
 
 const route = useRoute()
-const isEducacaoMobileRoute = computed(
-  () => route.name === 'educacao-mobile' || route.path === '/educacao-mobile'
-)
 
-const isPortrait = ref(false)
 const isCompactView = ref(false)
 
 const menuItems = [
@@ -127,9 +127,6 @@ const menuItems = [
 ]
 
 const menuOpen = ref(false)
-const isAtStart = ref(true)
-const isMobileView = ref(false)
-const menuRoot = ref<HTMLElement | null>(null)
 let scrollRoot: HTMLElement | null = null
 
 const closeMenu = () => {
@@ -146,20 +143,12 @@ const readScrollTop = (): number => {
 }
 
 const syncHeaderState = () => {
-  if (isEducacaoMobileRoute.value && isCompactView.value) {
-    isAtStart.value = true
-    return
-  }
-
   if (!isCompactView.value) {
-    isAtStart.value = true
     closeMenu()
     return
   }
 
-  const atStart = readScrollTop() <= 12
-  isAtStart.value = atStart
-  if (!atStart && menuOpen.value) closeMenu()
+  if (readScrollTop() > 12 && menuOpen.value) closeMenu()
 }
 
 const onScroll = () => {
@@ -169,16 +158,7 @@ const onScroll = () => {
 const evaluateViewport = () => {
   const width = window.innerWidth
   const height = window.innerHeight
-
-  isPortrait.value = height > width
-  isMobileView.value = width < MOBILE_BREAKPOINT
-  isCompactView.value = isPortrait.value || isMobileView.value
-
-  if (isEducacaoMobileRoute.value && isCompactView.value) {
-    isAtStart.value = true
-    return
-  }
-
+  isCompactView.value = height > width || width < MOBILE_BREAKPOINT
   syncHeaderState()
 }
 
@@ -186,22 +166,8 @@ const onResize = () => {
   evaluateViewport()
 }
 
-const onDocumentClick = (event: MouseEvent) => {
-  const target = event.target as Node | null
-
-  if (isEducacaoMobileRoute.value && isCompactView.value) {
-    if (!menuOpen.value || !menuRoot.value) return
-    if (target && !menuRoot.value.contains(target)) closeMenu()
-    return
-  }
-
-  if (!isCompactView.value || !menuOpen.value || !menuRoot.value) return
-  if (target && !menuRoot.value.contains(target)) closeMenu()
-}
-
 const onDocumentKeydown = (event: KeyboardEvent) => {
-  if (event.key !== 'Escape') return
-  if (isEducacaoMobileRoute.value || isCompactView.value) closeMenu()
+  if (event.key === 'Escape' && isCompactView.value) closeMenu()
 }
 
 onMounted(() => {
@@ -209,7 +175,6 @@ onMounted(() => {
   const scrollTarget = scrollRoot || window
   scrollTarget.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', onResize)
-  document.addEventListener('click', onDocumentClick)
   document.addEventListener('keydown', onDocumentKeydown)
   evaluateViewport()
 })
@@ -226,7 +191,6 @@ onBeforeUnmount(() => {
   const scrollTarget = scrollRoot || window
   scrollTarget.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', onResize)
-  document.removeEventListener('click', onDocumentClick)
   document.removeEventListener('keydown', onDocumentKeydown)
 })
 </script>
@@ -270,6 +234,14 @@ onBeforeUnmount(() => {
 
 .route-mobile-menu-panel {
   top: calc(100% + 0.6rem);
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 262;
+  background: transparent;
+  pointer-events: auto;
 }
 
 .header {
