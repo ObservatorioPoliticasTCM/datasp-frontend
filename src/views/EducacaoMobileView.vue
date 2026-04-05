@@ -15,11 +15,11 @@
     <MobileDashboardSection
       title="Perfil dos alunos da rede municipal (2024)"
       identity="educacao-mobile-perfil-alunos"
-      filter-src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=nNpyj&theme=card&opt=ctxmenu,currsel"
+      filter-src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=KWNtww&theme=card&opt=ctxmenu,currsel"
       :chart-srcs="[
-        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=nNpyj&theme=card&opt=ctxmenu',
-        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=jRpJk&theme=card&opt=ctxmenu',
-        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=PqxZb&theme=card&opt=ctxmenu'
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=rwAyU&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=FdEZjMW&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=yqjQC&theme=card&opt=ctxmenu'
       ]"
       methodology-link="/infos/notas/educacao/5_notas_metodologicas_alunos_ok.pdf"
       download-link="/dados/educacao/perfil-dos-educandos.csv"
@@ -28,11 +28,11 @@
     <MobileDashboardSection
       title="Numero de escolas da rede municipal (2024)"
       identity="educacao-mobile-numero-escolas"
-      filter-src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=8a9478a1-23b6-4165-a526-12f9d736aaa0&theme=card&opt=ctxmenu,currsel"
+      filter-src="https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=KWNtww&theme=card&opt=ctxmenu,currsel"
       :chart-srcs="[
-        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=8a9478a1-23b6-4165-a526-12f9d736aaa0&theme=card&opt=ctxmenu',
-        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=nvgxg&theme=card&opt=ctxmenu',
-        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=ee3bc48f-da4d-403a-a4fe-4da01cb29ee9&sheet=mSNDU&theme=card&opt=ctxmenu'
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=rwAyU&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=FdEZjMW&theme=card&opt=ctxmenu',
+        'https://qlik.tcm.sp.gov.br/jwt/single/?appid=f4120b83-cc71-4949-93d1-2d6c3aa7afe8&sheet=yqjQC&theme=card&opt=ctxmenu'
       ]"
       methodology-link="/infos/notas/educacao/3_notas_metodologicas_escolas_ok.pdf"
       download-link="/dados/educacao/escolas-municipais.csv"
