@@ -1,6 +1,11 @@
 <template>
-  <header v-if="isEducacaoMobileRoute" class="route-mobile-header">
+
+  <header v-if="isCompactView" class="header compact">
     <div class="route-mobile-backdrop" aria-hidden="true"></div>
+
+    <transition name="menu-fade">
+      <div v-if="menuOpen" class="menu-overlay" @click="closeMenu" @wheel="closeMenu" @touchmove="closeMenu" />
+    </transition>
 
     <router-link
       to="/"
@@ -11,7 +16,7 @@
       <img src="@/assets/logo-white-datasp.svg" alt="Logo DataSP" class="route-mobile-logo" />
     </router-link>
 
-    <div class="route-mobile-menu-container" ref="menuRoot">
+    <div class="route-mobile-menu-container">
       <button
         type="button"
         class="menu-button route-mobile-menu-button"
@@ -60,133 +65,54 @@
     </div>
   </header>
 
-  <header v-else class="header" :class="{ mobile: isMobileView, desktop: !isMobileView }">
-    <template v-if="isMobileView">
-      <div class="scroll-backdrop" :class="{ active: !isAtStart }" aria-hidden="true"></div>
-
-      <router-link
-        to="/"
-        class="datasp-logo-link"
-        :class="{ compact: !isAtStart }"
-        title="Voltar para o início"
-        @click="closeMenu"
-      >
-        <span class="datasp-logo-stack">
-          <img
-            src="@/assets/logo.svg"
-            alt="Logo DataSP"
-            class="datasp-logo datasp-logo-dark"
-            :class="{ faded: !isAtStart }"
-          />
-          <img
-            src="@/assets/logo-white.svg"
-            alt=""
-            aria-hidden="true"
-            class="datasp-logo datasp-logo-light"
-            :class="{ shown: !isAtStart }"
-          />
-        </span>
-      </router-link>
-
-      <div class="menu-container" ref="menuRoot">
-        <button
-          type="button"
-          class="menu-button"
-          :aria-expanded="menuOpen ? 'true' : 'false'"
-          aria-controls="main-menu"
-          aria-label="Abrir menu principal"
-          @click="toggleMenu"
+  <header v-else class="header">
+    <div class="gradient-overlay"></div>
+    <div class="header-inner">
+      <div class="logo-container">
+        <router-link to="/" title="Voltar para o início">
+          <img src="@/assets/logo.svg" alt="Logo DataSP" class="logo logo-left" />
+        </router-link>
+        <a
+          href="https://observatorio.tcm.sp.gov.br/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Acessar o portal do Observatório de Políticas Públicas"
         >
-          <span class="menu-icon" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-          <span class="menu-label">Menu</span>
-        </button>
-
-        <transition name="menu-fade">
-          <nav
-            v-if="menuOpen"
-            id="main-menu"
-            class="menu-panel"
-            aria-label="Menu principal"
-          >
-            <template v-for="item in menuItems" :key="item.label">
-              <router-link
-                v-if="item.route"
-                :to="item.route"
-                class="menu-item"
-                @click="closeMenu"
-              >
-                {{ item.label }}
-              </router-link>
-              <a
-                v-else-if="item.href"
-                :href="item.href"
-                class="menu-item"
-                target="_blank"
-                rel="noopener noreferrer"
-                @click="closeMenu"
-              >
-                {{ item.label }}
-              </a>
-            </template>
-          </nav>
-        </transition>
+          <img src="@/assets/logo-opp.svg" alt="Logo OPP" class="logo logo-right" />
+        </a>
       </div>
-    </template>
 
-    <template v-else>
-      <div class="gradient-overlay"></div>
-      <div class="header-inner">
-        <div class="logo-container">
-          <router-link to="/" title="Voltar para o início">
-            <img src="@/assets/logo.svg" alt="Logo DataSP" class="logo logo-left" />
-          </router-link>
+      <nav class="nav" aria-label="Menu principal">
+        <div v-for="(item, index) in menuItems" :key="item.label" class="nav-item">
+          <router-link v-if="item.route" :to="item.route">{{ item.label }}</router-link>
           <a
-            href="https://observatorio.tcm.sp.gov.br/"
+            v-else-if="item.href"
+            :href="item.href"
             target="_blank"
             rel="noopener noreferrer"
-            title="Acessar o portal do Observatório de Políticas Públicas"
           >
-            <img src="@/assets/logo-opp.svg" alt="Logo OPP" class="logo logo-right" />
+            {{ item.label }}
           </a>
-        </div>
+          <a v-else href="#">{{ item.label }}</a>
 
-        <nav class="nav" aria-label="Menu principal">
-          <div v-for="(item, index) in menuItems" :key="item.label" class="nav-item">
-            <router-link v-if="item.route" :to="item.route">{{ item.label }}</router-link>
-            <a
-              v-else-if="item.href"
-              :href="item.href"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{ item.label }}
-            </a>
-            <a v-else href="#">{{ item.label }}</a>
-
-            <div v-if="index < menuItems.length - 1" class="separator">
-              <div v-for="n in 10" :key="n" class="dot" />
-            </div>
+          <div v-if="index < menuItems.length - 1" class="separator">
+            <div v-for="n in 10" :key="n" class="dot" />
           </div>
-        </nav>
-      </div>
-    </template>
+        </div>
+      </nav>
+    </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const MOBILE_BREAKPOINT = 1024
 
 const route = useRoute()
-const isEducacaoMobileRoute = computed(
-  () => route.name === 'educacao-mobile' || route.path === '/educacao-mobile'
-)
+
+const isCompactView = ref(false)
 
 const menuItems = [
   { label: 'Apresentação', route: '/apresentacao' },
@@ -201,9 +127,6 @@ const menuItems = [
 ]
 
 const menuOpen = ref(false)
-const isAtStart = ref(true)
-const isMobileView = ref(false)
-const menuRoot = ref<HTMLElement | null>(null)
 let scrollRoot: HTMLElement | null = null
 
 const closeMenu = () => {
@@ -220,20 +143,12 @@ const readScrollTop = (): number => {
 }
 
 const syncHeaderState = () => {
-  if (isEducacaoMobileRoute.value) {
-    isAtStart.value = true
-    return
-  }
-
-  if (!isMobileView.value) {
-    isAtStart.value = true
+  if (!isCompactView.value) {
     closeMenu()
     return
   }
 
-  const atStart = readScrollTop() <= 12
-  isAtStart.value = atStart
-  if (!atStart && menuOpen.value) closeMenu()
+  if (readScrollTop() > 12 && menuOpen.value) closeMenu()
 }
 
 const onScroll = () => {
@@ -241,13 +156,9 @@ const onScroll = () => {
 }
 
 const evaluateViewport = () => {
-  if (isEducacaoMobileRoute.value) {
-    isMobileView.value = false
-    isAtStart.value = true
-    return
-  }
-
-  isMobileView.value = window.innerWidth < MOBILE_BREAKPOINT
+  const width = window.innerWidth
+  const height = window.innerHeight
+  isCompactView.value = height > width || width < MOBILE_BREAKPOINT
   syncHeaderState()
 }
 
@@ -255,22 +166,8 @@ const onResize = () => {
   evaluateViewport()
 }
 
-const onDocumentClick = (event: MouseEvent) => {
-  const target = event.target as Node | null
-
-  if (isEducacaoMobileRoute.value) {
-    if (!menuOpen.value || !menuRoot.value) return
-    if (target && !menuRoot.value.contains(target)) closeMenu()
-    return
-  }
-
-  if (!isMobileView.value || !menuOpen.value || !menuRoot.value) return
-  if (target && !menuRoot.value.contains(target)) closeMenu()
-}
-
 const onDocumentKeydown = (event: KeyboardEvent) => {
-  if (event.key !== 'Escape') return
-  if (isEducacaoMobileRoute.value || isMobileView.value) closeMenu()
+  if (event.key === 'Escape' && isCompactView.value) closeMenu()
 }
 
 onMounted(() => {
@@ -278,7 +175,6 @@ onMounted(() => {
   const scrollTarget = scrollRoot || window
   scrollTarget.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', onResize)
-  document.addEventListener('click', onDocumentClick)
   document.addEventListener('keydown', onDocumentKeydown)
   evaluateViewport()
 })
@@ -295,21 +191,11 @@ onBeforeUnmount(() => {
   const scrollTarget = scrollRoot || window
   scrollTarget.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', onResize)
-  document.removeEventListener('click', onDocumentClick)
   document.removeEventListener('keydown', onDocumentKeydown)
 })
 </script>
 
 <style scoped>
-.route-mobile-header {
-  position: relative;
-  width: 100%;
-  z-index: 260;
-  height: clamp(4rem, 10vh, 5.5rem);
-  user-select: none;
-  pointer-events: none;
-}
-
 .route-mobile-backdrop {
   position: absolute;
   inset: 0;
@@ -348,6 +234,14 @@ onBeforeUnmount(() => {
 
 .route-mobile-menu-panel {
   top: calc(100% + 0.6rem);
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 262;
+  background: transparent;
+  pointer-events: auto;
 }
 
 .header {
@@ -441,80 +335,9 @@ onBeforeUnmount(() => {
   border-radius: 0.0625rem;
 }
 
-.header.mobile {
+.header.compact {
   z-index: 260;
   pointer-events: none;
-}
-
-.scroll-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: clamp(4rem, 10vh, 5.5rem);
-  z-index: 261;
-  background: rgba(15, 23, 42, 0.75);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-
-.scroll-backdrop.active {
-  opacity: 1;
-}
-
-.datasp-logo-link {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 262;
-  transform: none;
-  pointer-events: auto;
-  transition: left 0.25s ease, right 0.25s ease, transform 0.25s ease;
-}
-
-.datasp-logo-link.compact {
-  left: 1rem;
-  right: auto;
-  transform: none;
-}
-
-.datasp-logo {
-  display: block;
-  height: clamp(2.5rem, 7vh, 4.5rem);
-  transition: height 0.25s ease, opacity 0.25s ease;
-}
-
-.datasp-logo-link.compact .datasp-logo {
-  height: clamp(2.1rem, 6.6vh, 3.4rem);
-}
-
-.datasp-logo-stack {
-  position: relative;
-  display: inline-block;
-}
-
-.datasp-logo-light {
-  position: absolute;
-  inset: 0 auto auto 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.datasp-logo-dark.faded {
-  opacity: 0;
-}
-
-.datasp-logo-light.shown {
-  opacity: 1;
-}
-
-.menu-container {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 263;
-  pointer-events: auto;
 }
 
 .menu-button {
@@ -600,8 +423,9 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 63.9375rem) {
-  .header.mobile {
-    height: 12vh;
+  .header.compact {
+  height: clamp(4rem, 10vh, 5.5rem);
+  padding: 0;
   }
 
   .menu-button {
