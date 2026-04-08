@@ -1,16 +1,11 @@
 <template>
-  <div
-    class="dashboard-item-frame"
-    :class="[`dashboard-${type}`]"
-    :style="itemStyle"
-  >
     <iframe
       :src="iframeSrc"
       :title="label ?? `Dashboard item – ${sheet}`"
       loading="lazy"
       frameborder="0"
+      class="dashboard-item-frame"
     ></iframe>
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -22,14 +17,12 @@ interface DashboardItemFrameProps {
   sheet: string
   identity?: string
   select?: string
-  type?: 'chart' | 'filter'
   label?: string
   colSpan?: number
   rowSpan?: number
 }
 
 const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
-  type: 'chart',
   colSpan: 1,
   rowSpan: 1
 })
@@ -47,31 +40,14 @@ const iframeSrc = computed(() => {
   if (select.value) url += `&secret=${encodeURIComponent(select.value)}`
   return url
 })
-
-const itemStyle = computed(() => ({
-  gridColumn: props.colSpan > 1 ? `span ${props.colSpan}` : undefined,
-  gridRow: props.rowSpan > 1 ? `span ${props.rowSpan}` : undefined
-}))
 </script>
 
 <style scoped>
 .dashboard-item-frame {
-  flex-grow: 1;
-  flex-shrink: 1;
-  /* flex-basis and min-width/height are set via inline style */
-  overflow: hidden;
-}
-
-.dashboard-item-frame iframe {
   width: 100%;
   height: 100%;
   border: none;
-  display: block;
+  grid-column: span v-bind(colSpan);
+  grid-row: span v-bind(rowSpan);
 }
-
-.dashboard-filter {
-  min-height: 8vh;
-  min-width: 100%;
-}
-
 </style>
