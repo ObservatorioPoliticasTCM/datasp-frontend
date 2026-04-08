@@ -1,6 +1,5 @@
 <template>
   <div
-    v-show="!floating || active"
     class="info-menu"
     :class="{ floating }"
     ref="menuRoot"
@@ -13,7 +12,7 @@
       @click="toggle"
     >
       <img src="@/assets/info.svg" alt="" aria-hidden="true" class="info-icon" />
-      <span v-if="!floating" class="info-button-label">Informações adicionais</span>
+      <span class="info-button-label">Informações adicionais</span>
     </button>
 
     <div v-if="open" class="menu-popover" :class="{ floating }">
@@ -65,21 +64,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, toRefs, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, toRefs } from 'vue'
 
 interface AdditionalInfoMenuProps {
   metadataLink?: string
   methodologyLink?: string
   downloadLink?: string
   floating?: boolean
-  active?: boolean
 }
 
 const props = withDefaults(defineProps<AdditionalInfoMenuProps>(), {
-  floating: false,
-  active: true
+  floating: false
 })
-const { metadataLink, methodologyLink, downloadLink, floating, active } = toRefs(props)
+const { metadataLink, methodologyLink, downloadLink, floating } = toRefs(props)
 
 const resolvedMetadataLink = computed(() => {
   const provided = metadataLink.value?.trim()
@@ -97,10 +94,6 @@ const onDocClick = (ev: MouseEvent) => {
   if (!menuRoot.value) return
   if (!menuRoot.value.contains(ev.target as Node)) open.value = false
 }
-
-watch(active, (isActive) => {
-  if (!isActive) closeMenu()
-})
 
 onMounted(() => document.addEventListener('click', onDocClick))
 onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
@@ -148,7 +141,6 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
 .info-icon {
   width: 1rem;
   height: 1rem;
-  display: block;
 }
 
 .info-button.floating .info-icon {
@@ -223,15 +215,28 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   flex-shrink: 0;
 }
 
-@media (max-width: 48rem) {
-  .info-menu.floating {
-    right: 0.85rem;
-    bottom: 0.85rem;
+@media (max-width: 768px), (orientation: portrait) {
+  .info-button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    padding: 0;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    box-shadow: 0 0.55rem 1.4rem rgba(0, 0, 0, 0.25);
   }
 
-  .menu-popover.floating {
+  .info-button-label {
+    display: none;
+  }
+
+  .menu-popover {
     max-width: min(88vw, 18rem);
     min-width: min(88vw, 16rem);
+    top: auto;
+    right: 0;
+    font-size: 1.6em;
+    bottom: calc(100% + 0.55rem);
   }
 }
 </style>
