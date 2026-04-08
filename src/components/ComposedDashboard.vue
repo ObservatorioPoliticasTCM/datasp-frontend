@@ -282,6 +282,15 @@ onBeforeUnmount(() => {
         text-align: center;
     }
 
+    .frame-actions {
+        position: fixed;
+        right: 1rem;
+        bottom: 5rem;
+        z-index: 340;
+        margin: 0;
+        padding: 0;
+    } 
+
     .filter-section {
         height: 40vh;
     }
