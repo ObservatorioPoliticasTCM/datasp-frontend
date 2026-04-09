@@ -80,7 +80,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } from 'vue'
 
 interface Props {
   showNavigation?: boolean
@@ -112,6 +112,7 @@ const lastEl = ref<HTMLElement | null>(null)
 const container = ref<HTMLElement | null>(null)
 const dashboardEls = ref<HTMLElement[]>([])
 const activeDashboard = ref(0)
+const activeDashboardAnchor = ref('')
 
 const totalDashboards = computed(() => dashboardEls.value.length)
 
@@ -155,7 +156,7 @@ const fullyVisibleHandler = (e: Event) => {
     const index = dashboardEls.value.indexOf(target)
     if (index !== -1) activeDashboard.value = index
   }
-  if (detail?.anchorId) sectionVisible(detail.anchorId)
+  if (detail?.anchorId) activeDashboardAnchor.value = detail.anchorId
 }
 
 const disconnectIOs = () => {
@@ -185,6 +186,10 @@ const setupObservers = () => {
   if (firstEl.value) topObserver.observe(firstEl.value)
   if (lastEl.value && lastEl.value !== firstEl.value) bottomObserver.observe(lastEl.value)
 }
+
+watch([topVisible, bottomVisible, activeDashboard, activeDashboardAnchor], ([top, bottom, active, anchor]) => {
+  sectionVisible(anchor)
+})
 
 const scrollToElement = (element: HTMLElement | null) => {
   if (!element) return
