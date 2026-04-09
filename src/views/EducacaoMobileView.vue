@@ -8,7 +8,7 @@
       :grid-rows="1"
     >
       <template #filter>
-        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="KWNtww" />
+        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="KWNtww" :show-selections="true" />
       </template>
       <template #charts>
         <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="rwAyU" />
@@ -65,7 +65,7 @@
       :grid-rows="1"
     >
       <template #filter>
-        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="KWNtww" />
+        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="KWNtww" :show-selections="true" />
       </template>
       <template #charts>
         <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="rwAyU" />
@@ -83,7 +83,7 @@
       :grid-rows="1"
     >
       <template #filter>
-        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="KWNtww" />
+        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="KWNtww" :show-selections="true" />
       </template>
       <template #charts>
         <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="rwAyU" />
