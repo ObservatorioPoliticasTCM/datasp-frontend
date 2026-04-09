@@ -107,14 +107,89 @@ let topObserver: IntersectionObserver | null = null
 let bottomObserver: IntersectionObserver | null = null
 let mutationObserver: MutationObserver | null = null
 
+interface SectionState {
+  onTop: boolean
+  onUpperCenter: boolean
+  onLowerCenter: boolean
+  onBottom: boolean
+}
+const sectionStateMap = new Map<HTMLElement, SectionState>()
+const sectionObserversMap = new Map<HTMLElement, IntersectionObserver[]>()
+const activeElement = ref<HTMLElement | null>(null)
+
 const firstEl = ref<HTMLElement | null>(null)
 const lastEl = ref<HTMLElement | null>(null)
 const container = ref<HTMLElement | null>(null)
 const dashboardEls = ref<HTMLElement[]>([])
-const activeDashboard = ref(0)
-const activeDashboardAnchor = ref('')
+const activeDashboard = computed(() => activeElement.value ? dashboardEls.value.indexOf(activeElement.value) : -1)
+const activeDashboardAnchor = computed(() => activeElement.value?.dataset.anchorId ?? '')
 
 const totalDashboards = computed(() => dashboardEls.value.length)
+
+const checkSectionActive = (el: HTMLElement) => {
+  const state = sectionStateMap.get(el)
+  if (!state) return
+  const count = [state.onTop, state.onUpperCenter, state.onLowerCenter, state.onBottom].filter(v => v).length
+  if (count >= 3) {
+    if (activeElement.value && activeElement.value !== el) delete activeElement.value.dataset.active
+    activeElement.value = el
+    el.dataset.active = 'true'
+  } else if (activeElement.value === el) {
+    delete el.dataset.active
+    activeElement.value = null
+  }
+}
+
+const setupSectionObservers = (el: HTMLElement) => {
+  const state: SectionState = { onTop: false, onUpperCenter: false, onLowerCenter: false, onBottom: false }
+  sectionStateMap.set(el, state)
+
+  const topObs = new IntersectionObserver(([entry]) => {
+    state.onTop = entry.isIntersecting
+    checkSectionActive(el)
+  }, { rootMargin: '0px 0px -99% 0px' })
+
+  const upperCenterObs = new IntersectionObserver(([entry]) => {
+    state.onUpperCenter = entry.isIntersecting
+    checkSectionActive(el)
+  }, { rootMargin: '-25% 0px -50% 0px' })
+
+  const lowerCenterObs = new IntersectionObserver(([entry]) => {
+    state.onLowerCenter = entry.isIntersecting
+    checkSectionActive(el)
+  }, { rootMargin: '-50% 0px -25% 0px' })
+
+  const bottomObs = new IntersectionObserver(([entry]) => {
+    state.onBottom = entry.isIntersecting
+    checkSectionActive(el)
+  }, { rootMargin: '-99% 0px 0px 0px' })
+
+  topObs.observe(el)
+  upperCenterObs.observe(el)
+  lowerCenterObs.observe(el)
+  bottomObs.observe(el)
+
+  sectionObserversMap.set(el, [topObs, upperCenterObs, lowerCenterObs, bottomObs])
+}
+
+const teardownSectionObservers = (el: HTMLElement) => {
+  const observers = sectionObserversMap.get(el)
+  if (observers) {
+    observers.forEach(obs => obs.disconnect())
+    sectionObserversMap.delete(el)
+  }
+  sectionStateMap.delete(el)
+  if (activeElement.value === el) {
+    delete el.dataset.active
+    activeElement.value = null
+  }
+}
+
+const teardownAllSectionObservers = () => {
+  for (const el of [...sectionObserversMap.keys()]) {
+    teardownSectionObservers(el)
+  }
+}
 
 const clearHash = () => {
   history.replaceState(null, '', window.location.pathname + window.location.search)
@@ -141,22 +216,6 @@ provide('sectionVisible', sectionVisible)
 
 const updateDashboardRefs = (children: HTMLElement[]) => {
   dashboardEls.value = children.filter(child => child.classList.contains('snap-section'))
-  if (!dashboardEls.value.length) {
-    activeDashboard.value = 0
-    return
-  }
-  const clamped = Math.min(activeDashboard.value, dashboardEls.value.length - 1)
-  activeDashboard.value = clamped < 0 ? 0 : clamped
-}
-
-const fullyVisibleHandler = (e: Event) => {
-  const detail = (e as CustomEvent).detail
-  const target = e.target as HTMLElement | null
-  if (target) {
-    const index = dashboardEls.value.indexOf(target)
-    if (index !== -1) activeDashboard.value = index
-  }
-  if (detail?.anchorId) activeDashboardAnchor.value = detail.anchorId
 }
 
 const disconnectIOs = () => {
@@ -185,9 +244,13 @@ const setupObservers = () => {
   }, { threshold: 0.4 })
   if (firstEl.value) topObserver.observe(firstEl.value)
   if (lastEl.value && lastEl.value !== firstEl.value) bottomObserver.observe(lastEl.value)
+
+  // Tear down and recreate per-section observers
+  teardownAllSectionObservers()
+  children.filter(child => child.classList.contains('snap-section')).forEach(el => setupSectionObservers(el))
 }
 
-watch([topVisible, bottomVisible, activeDashboard, activeDashboardAnchor], ([top, bottom, active, anchor]) => {
+watch([topVisible, bottomVisible, activeDashboardAnchor], ([, , anchor]) => {
   sectionVisible(anchor)
 })
 
@@ -197,13 +260,11 @@ const scrollToElement = (element: HTMLElement | null) => {
 }
 
 const scrollToHome = () => {
-  if (dashboardEls.value.length) activeDashboard.value = 0
   scrollToElement(firstEl.value)
 }
 
 const scrollToFooter = () => {
   if (!lastEl.value || lastEl.value === firstEl.value) return
-  if (dashboardEls.value.length) activeDashboard.value = totalDashboards.value - 1
   scrollToElement(lastEl.value)
 }
 
@@ -211,7 +272,6 @@ const scrollToDashboard = (index: number) => {
   if (!container.value) return
   const target = dashboardEls.value[index]
   if (!target) return
-  activeDashboard.value = index
   scrollToElement(target)
 }
 
@@ -244,7 +304,6 @@ onMounted(async () => {
   window.addEventListener('resize', onResize)
 
   if (container.value) {
-    container.value.addEventListener('fully-visible', fullyVisibleHandler as EventListener)
     await nextTick()
     setupObservers()
     mutationObserver = new MutationObserver(() => {
@@ -256,10 +315,8 @@ onMounted(async () => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', onResize)
-  if (container.value) {
-    container.value.removeEventListener('fully-visible', fullyVisibleHandler as EventListener)
-  }
   disconnectIOs()
+  teardownAllSectionObservers()
   mutationObserver?.disconnect()
 })
 </script>
