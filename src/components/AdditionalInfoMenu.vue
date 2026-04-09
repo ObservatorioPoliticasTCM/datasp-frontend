@@ -190,7 +190,7 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   flex-shrink: 0;
 }
 
-@media (max-width: 768px), (orientation: portrait) {
+@media (max-width: 1024px), (orientation: portrait) {
   .info-button {
     width: 2rem;
     height: 2rem;

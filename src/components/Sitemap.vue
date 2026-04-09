@@ -104,7 +104,7 @@ import { RouterLink } from 'vue-router'
   font-weight: 400;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .sitemap {
     width: 100%;
     padding: 1.5rem 1rem;

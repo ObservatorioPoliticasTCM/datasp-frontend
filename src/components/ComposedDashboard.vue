@@ -266,7 +266,7 @@ onBeforeUnmount(() => {
 }
 
 .filter-section {
-    height: 8vh;
+    height: 4vh;
     width: 100%;
 }
 
@@ -278,7 +278,13 @@ onBeforeUnmount(() => {
     grid-template-rows: repeat(v-bind(gridRows), 1fr);
 }
 
-@media (max-width: 768px),
+@media (max-width: 1366px) {
+    .filter-section {
+        height: 3vw;
+    }
+}
+
+@media (max-width: 1024px),
 (orientation: portrait) {
     .composed-dashboard {
         height: auto;
