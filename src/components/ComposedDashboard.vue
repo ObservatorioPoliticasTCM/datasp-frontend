@@ -293,8 +293,8 @@ onBeforeUnmount(() => {
 
     .frame-actions {
         position: fixed;
-        right: 1rem;
-        bottom: 5rem;
+        right: 0.2rem;
+        bottom: 2rem;
         z-index: 340;
         margin: 0;
         padding: 0;
