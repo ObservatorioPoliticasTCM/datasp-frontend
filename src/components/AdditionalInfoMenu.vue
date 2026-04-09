@@ -106,15 +106,6 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   padding: 0 0 0.35em 0;
 }
 
-.info-menu.floating {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 340;
-  margin: 0;
-  padding: 0;
-}
-
 .info-button {
   background-color: #213547;
   color: #fff;
@@ -126,16 +117,6 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-}
-
-.info-button.floating {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 999px;
-  padding: 0;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  box-shadow: 0 0.55rem 1.4rem rgba(0, 0, 0, 0.25);
 }
 
 .info-icon {
@@ -159,12 +140,6 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
   min-width: 16rem;
   z-index: 1000;
-}
-
-.menu-popover.floating {
-  top: auto;
-  right: 0;
-  bottom: calc(100% + 0.55rem);
 }
 
 .menu-list {
