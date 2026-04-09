@@ -308,7 +308,7 @@ onBeforeUnmount(() => {
   border: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-dashboard-section {
     height: auto;
   }
