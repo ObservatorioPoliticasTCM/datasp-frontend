@@ -14,7 +14,7 @@
                 </span>
             </h1>
             <div class="frame-actions">
-                <AdditionalInfoMenu :metadata-link="metadataLink" :methodology-link="methodologyLink"
+                <AdditionalInfoMenu v-show="active" :metadata-link="metadataLink" :methodology-link="methodologyLink"
                     :download-link="downloadLink" />
             </div>
         </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onBeforeUnmount, ref, toRefs, nextTick, provide } from 'vue'
+import { computed, onMounted, onBeforeUnmount, ref, watch, toRefs, nextTick, provide } from 'vue'
 import AdditionalInfoMenu from './AdditionalInfoMenu.vue'
 
 const fullyVisibleEvent = 'fully-visible'
@@ -61,6 +61,7 @@ const emit = defineEmits<{ (e: 'fully-visible', anchorId: string): void }>()
 const { identity, title, subtitle } = toRefs(props)
 const { metadataLink, methodologyLink, downloadLink } = toRefs(props)
 const { gridCols, gridRows } = toRefs(props)
+const active = ref(false)
 
 provide('composedIdentity', identity)
 
@@ -77,38 +78,13 @@ const anchorId = computed(() => title.value
 )
 
 const rootEl = ref<HTMLElement | null>(null)
-let scrollRoot: HTMLElement | null = null
-let scrollListenerAttached = false
-let ticking = false
 const showCopied = ref(false)
 let copyToastTimeout: number | null = null
 
-const fullyVisible = (): boolean => {
-    if (!rootEl.value) return false
-    const elRect = rootEl.value.getBoundingClientRect()
-    const rootRect = (scrollRoot
-        ? scrollRoot.getBoundingClientRect()
-        : { top: 0, bottom: window.innerHeight }) as DOMRect | { top: number; bottom: number }
-    const elTop = Math.round(elRect.top)
-    const elBottom = Math.round(elRect.bottom)
-    const rootTop = Math.round(rootRect.top)
-    const rootBottom = Math.round(rootRect.bottom)
-    return elTop >= rootTop && elBottom <= rootBottom && (elBottom - elTop) > 0
-}
-
-const onScroll = () => {
-    if (ticking) return
-    ticking = true
-    requestAnimationFrame(() => {
-        if (fullyVisible()) {
-            emit(fullyVisibleEvent, anchorId.value)
-            if (rootEl.value) {
-                rootEl.value.dispatchEvent(new CustomEvent(fullyVisibleEvent, { bubbles: true, detail: { anchorId: anchorId.value } }))
-            }
-        }
-        ticking = false
-    })
-}
+const dashboardOnTop = ref(false)
+const dashboardOnUpperCenter = ref(false)
+const dashboardOnLowerCenter = ref(false)
+const dashboardOnBottom = ref(false)
 
 const copyDashboardLink = () => {
     const fullUrl = `${window.location.origin}${window.location.pathname}#${anchorId.value}`
@@ -136,29 +112,61 @@ const copyDashboardLink = () => {
     tryClipboard()
 }
 
-onMounted(() => {
-    scrollRoot = document.querySelector('.snap-container') as HTMLElement | null
-    const targetScrollEl = scrollRoot || window
-    if (!scrollListenerAttached) {
-        targetScrollEl.addEventListener('scroll', onScroll, { passive: true })
-        scrollListenerAttached = true
+const topObserver = new IntersectionObserver(([entry]) => {
+    if (entry.target === rootEl.value) {
+        dashboardOnTop.value = entry.isIntersecting
     }
-    if (fullyVisible()) {
+}, { scrollMargin: '0px 0px -99% 0px' })
+
+const upperCenterObserver = new IntersectionObserver(([entry]) => {
+    if (entry.target === rootEl.value) {
+        dashboardOnUpperCenter.value = entry.isIntersecting
+    }
+}, { scrollMargin: '-25% 0px -50% 0px' })
+
+const lowerCenterObserver = new IntersectionObserver(([entry]) => {
+    if (entry.target === rootEl.value) {
+        dashboardOnLowerCenter.value = entry.isIntersecting
+    }
+}, { scrollMargin: '-50% 0px -25% 0px' })
+
+const bottomObserver = new IntersectionObserver(([entry]) => {
+    if (entry.target === rootEl.value) {
+        dashboardOnBottom.value = entry.isIntersecting
+    }
+}, { scrollMargin: '-99% 0px 0px 0px' })
+
+watch([dashboardOnTop, dashboardOnUpperCenter, dashboardOnLowerCenter, dashboardOnBottom], ([onTop, onUpperCenter, onLowerCenter, onBottom]) => {
+    if ([onTop, onUpperCenter, onLowerCenter, onBottom].filter((v) => v===true).length >= 3) {
+        active.value = true
         emit(fullyVisibleEvent, anchorId.value)
         if (rootEl.value) {
             rootEl.value.dispatchEvent(new CustomEvent(fullyVisibleEvent, { bubbles: true, detail: { anchorId: anchorId.value } }))
         }
+    } else {
+        active.value = false
+    }
+})
+
+onMounted(() => {
+    if (rootEl.value) {
+        topObserver.observe(rootEl.value)
+        upperCenterObserver.observe(rootEl.value)
+        lowerCenterObserver.observe(rootEl.value)
+        bottomObserver.observe(rootEl.value)
     }
 })
 
 onBeforeUnmount(() => {
-    const targetScrollEl = scrollRoot || window
-    if (scrollListenerAttached) {
-        targetScrollEl.removeEventListener('scroll', onScroll)
-        scrollListenerAttached = false
-    }
     if (copyToastTimeout) clearTimeout(copyToastTimeout)
+    if (rootEl.value) {
+        topObserver.unobserve(rootEl.value)
+        upperCenterObserver.unobserve(rootEl.value)
+        lowerCenterObserver.unobserve(rootEl.value)
+        bottomObserver.unobserve(rootEl.value)
+    }
 })
+
 </script>
 
 <style scoped>
@@ -189,6 +197,7 @@ onBeforeUnmount(() => {
     text-align: left;
     font-weight: normal;
     white-space: pre-line;
+    margin-bottom: 1rem;
 }
 
 .copy-icon {
