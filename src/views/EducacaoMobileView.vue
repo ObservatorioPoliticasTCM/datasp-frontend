@@ -2,6 +2,22 @@
   <SnapPage>
     <ComposedDashboard
       title="Alunos estrangeiros na rede municipal (2024)"
+      methodology-link="/infos/notas/educacao/7_notas_metodologicas_alunos_estrangeiros_ok.pdf"
+      download-link="/dados/educacao/educandos-estrangeiros.csv"
+      :grid-cols="3"
+      :grid-rows="1"
+    >
+      <template #filter>
+        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="KWNtww" />
+      </template>
+      <template #charts>
+        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="rwAyU" />
+        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="FdEZjMW" />
+        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="yqjQC" />
+      </template>
+    </ComposedDashboard>
+    <ComposedDashboard
+      title="Alunos estrangeiros na rede municipal (2024)"
       identity="alunos-estrangeiros"
       methodology-link="/infos/notas/educacao/7_notas_metodologicas_alunos_estrangeiros_ok.pdf"
       download-link="/dados/educacao/educandos-estrangeiros.csv"
@@ -12,7 +28,7 @@
         <DashboardItemFrame
           appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8"
           sheet="KWNtww"
-          type="filter"
+          :show-selections="true"
         />
       </template>
       <template #charts>
@@ -37,22 +53,6 @@
           appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8"
           sheet="yqjQC"
         />
-      </template>
-    </ComposedDashboard>
-    <ComposedDashboard
-      title="Alunos estrangeiros na rede municipal (2024)"
-      methodology-link="/infos/notas/educacao/7_notas_metodologicas_alunos_estrangeiros_ok.pdf"
-      download-link="/dados/educacao/educandos-estrangeiros.csv"
-      :grid-cols="3"
-      :grid-rows="1"
-    >
-      <template #filter>
-        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="KWNtww" />
-      </template>
-      <template #charts>
-        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="rwAyU" />
-        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="FdEZjMW" />
-        <DashboardItemFrame appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8" sheet="yqjQC" />
       </template>
     </ComposedDashboard>
 
