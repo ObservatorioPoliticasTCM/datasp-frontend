@@ -6,14 +6,6 @@
             <Sitemap />
             <Footer />
         </SnapContainer>
-        <AdditionalInfoMenu
-          v-if="showFloatingInfo"
-          :floating="true"
-          :active="true"
-          :metadata-link="floatingMetadataLink"
-          :methodology-link="floatingMethodologyLink"
-          :download-link="floatingDownloadLink"
-        />
         <Background />
     </div>
 </template>
@@ -25,7 +17,6 @@ import AppHeader from './AppHeader.vue';
 import Footer from './Footer.vue';
 import Background from './Background.vue';
 import Sitemap from './Sitemap.vue'
-import AdditionalInfoMenu from './AdditionalInfoMenu.vue'
 
 interface MobileSectionInfoDetail {
   anchorId?: string
