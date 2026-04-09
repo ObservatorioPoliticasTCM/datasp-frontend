@@ -17,6 +17,7 @@ interface DashboardItemFrameProps {
   sheet: string
   identity?: string
   select?: string
+  showSelections?: boolean
   label?: string
   colSpan?: number
   rowSpan?: number
@@ -24,10 +25,11 @@ interface DashboardItemFrameProps {
 
 const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
   colSpan: 1,
-  rowSpan: 1
+  rowSpan: 1,
+  showSelections: false
 })
 
-const { appid, sheet, select } = toRefs(props)
+const { appid, sheet, select, showSelections } = toRefs(props)
 
 // Resolved identity: own prop wins; falls back to parent ComposedDashboard's provided identity
 const injectedIdentity = inject<Ref<string | undefined> | string | undefined>('composedIdentity', undefined)
@@ -35,7 +37,8 @@ const resolvedIdentity = computed(() => props.identity?.trim() || (unref(injecte
 
 const baseUrl = 'https://qlik.tcm.sp.gov.br/jwt/single/'
 const iframeSrc = computed(() => {
-  let url = `${baseUrl}?appid=${appid.value}&sheet=${sheet.value}&theme=card&opt=ctxmenu,currsel`
+  let url = `${baseUrl}?appid=${appid.value}&sheet=${sheet.value}&theme=card&opt=ctxmenu`
+  if (showSelections.value) url += `,currsel`
   if (resolvedIdentity.value) url += `&identity=${encodeURIComponent(resolvedIdentity.value)}`
   if (select.value) url += `&secret=${encodeURIComponent(select.value)}`
   return url
