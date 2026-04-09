@@ -116,25 +116,25 @@ const topObserver = new IntersectionObserver(([entry]) => {
     if (entry.target === rootEl.value) {
         dashboardOnTop.value = entry.isIntersecting
     }
-}, { scrollMargin: '0px 0px -99% 0px' })
+}, { rootMargin: '0px 0px -99% 0px' })
 
 const upperCenterObserver = new IntersectionObserver(([entry]) => {
     if (entry.target === rootEl.value) {
         dashboardOnUpperCenter.value = entry.isIntersecting
     }
-}, { scrollMargin: '-25% 0px -50% 0px' })
+}, { rootMargin: '-25% 0px -50% 0px' })
 
 const lowerCenterObserver = new IntersectionObserver(([entry]) => {
     if (entry.target === rootEl.value) {
         dashboardOnLowerCenter.value = entry.isIntersecting
     }
-}, { scrollMargin: '-50% 0px -25% 0px' })
+}, { rootMargin: '-50% 0px -25% 0px' })
 
 const bottomObserver = new IntersectionObserver(([entry]) => {
     if (entry.target === rootEl.value) {
         dashboardOnBottom.value = entry.isIntersecting
     }
-}, { scrollMargin: '-99% 0px 0px 0px' })
+}, { rootMargin: '-99% 0px 0px 0px' })
 
 watch([dashboardOnTop, dashboardOnUpperCenter, dashboardOnLowerCenter, dashboardOnBottom], ([onTop, onUpperCenter, onLowerCenter, onBottom]) => {
     if ([onTop, onUpperCenter, onLowerCenter, onBottom].filter((v) => v===true).length >= 3) {
