@@ -223,8 +223,8 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    height: 100%;
-    width: 100%;
+    flex: 1;
+    min-height: 0;
 }
 
 .filter-section {
@@ -236,6 +236,7 @@ onBeforeUnmount(() => {
     display: grid;
     flex: 1;
     gap: 1rem;
+    min-height: 0;
     grid-template-columns: repeat(v-bind(gridCols), 1fr);
     grid-template-rows: repeat(v-bind(gridRows), 1fr);
 }
