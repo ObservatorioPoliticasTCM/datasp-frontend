@@ -22,36 +22,40 @@
       methodology-link="/infos/notas/educacao/7_notas_metodologicas_alunos_estrangeiros_ok.pdf"
       download-link="/dados/educacao/educandos-estrangeiros.csv"
       :grid-cols="3"
-      :grid-rows="2"
+      :grid-rows="4"
       >
       <template #filter>
         <DashboardItemFrame
-          appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8"
+          appid="ee3bc48f-da4d-403a-a4fe-4da01cb29ee9"
           sheet="KWNtww"
           :show-selections="true"
         />
       </template>
       <template #charts>
         <DashboardItemFrame
-          appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8"
+          appid="ee3bc48f-da4d-403a-a4fe-4da01cb29ee9"
           sheet="rwAyU"
+          :row-span="4"
+        />
+        <DashboardItemFrame
+          appid="ee3bc48f-da4d-403a-a4fe-4da01cb29ee9"
+          sheet="3ec67207-65c9-4d3d-a8ab-b725497d19e6"
           :row-span="2"
         />
         <DashboardItemFrame
-          appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8"
-          sheet="FdEZjMW"
+          appid="ee3bc48f-da4d-403a-a4fe-4da01cb29ee9"
+          sheet="71ec6681-a441-452a-8c6d-412656c7fda0"
+          :row-span="1"
         />
         <DashboardItemFrame
-          appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8"
-          sheet="yqjQC"
+          appid="ee3bc48f-da4d-403a-a4fe-4da01cb29ee9"
+          sheet="95a9620b-be85-4472-96f0-022ea700c2f2"
+          :row-span="3"
         />
         <DashboardItemFrame
-          appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8"
-          sheet="FdEZjMW"
-        />
-        <DashboardItemFrame
-          appid="f4120b83-cc71-4949-93d1-2d6c3aa7afe8"
-          sheet="yqjQC"
+          appid="ee3bc48f-da4d-403a-a4fe-4da01cb29ee9"
+          sheet="388980d7-91ce-4038-90a0-9ebaa4564821"
+          :row-span="2"
         />
       </template>
     </ComposedDashboard>

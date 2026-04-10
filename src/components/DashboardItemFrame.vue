@@ -5,11 +5,12 @@
       loading="lazy"
       frameborder="0"
       class="dashboard-item-frame"
+      ref="iframe"
     ></iframe>
 </template>
 
 <script setup lang="ts">
-import { computed, inject, toRefs, unref } from 'vue'
+import { computed, inject, toRefs, unref, onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
 
 interface DashboardItemFrameProps {
@@ -30,6 +31,8 @@ const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
 })
 
 const { appid, sheet, select, showSelections } = toRefs(props)
+const iframe = ref<HTMLIFrameElement | null>(null)
+const loadIframe = ref(false)
 
 // Resolved identity: own prop wins; falls back to parent ComposedDashboard's provided identity
 const injectedIdentity = inject<Ref<string | undefined> | string | undefined>('composedIdentity', undefined)
@@ -41,7 +44,18 @@ const iframeSrc = computed(() => {
   if (showSelections.value) url += `,currsel`
   if (resolvedIdentity.value) url += `&identity=${encodeURIComponent(resolvedIdentity.value)}`
   if (select.value) url += `&secret=${encodeURIComponent(select.value)}`
-  return url
+  return loadIframe.value ? url : ''
+})
+
+const obs = new IntersectionObserver(([entry]) => {
+  if (entry.isIntersecting) {
+    loadIframe.value = true
+    obs.disconnect()
+  }
+}, { rootMargin: '0px 0px 20% 0px' })
+
+onMounted(() => {
+  if (iframe.value) obs.observe(iframe.value)
 })
 </script>
 

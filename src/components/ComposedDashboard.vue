@@ -1,5 +1,5 @@
 <template>
-    <div class="composed-dashboard snap-section" ref="rootEl">
+    <div class="composed-dashboard snap-section" ref="rootEl" :data-anchor-id="anchorId">
         <div v-if="title" class="frame-header">
             <h1 v-if="title">
                 <span class="title-anchor-wrapper">
@@ -61,7 +61,12 @@ const emit = defineEmits<{ (e: 'fully-visible', anchorId: string): void }>()
 const { identity, title, subtitle } = toRefs(props)
 const { metadataLink, methodologyLink, downloadLink } = toRefs(props)
 const { gridCols, gridRows } = toRefs(props)
+
+const rootEl = ref<HTMLElement | null>(null)
+const showCopied = ref(false)
+let copyToastTimeout: number | null = null
 const active = ref(false)
+let attrObserver: MutationObserver | null = null
 
 provide('composedIdentity', identity)
 
@@ -77,14 +82,11 @@ const anchorId = computed(() => title.value
     .replace(/\s+/g, '-')
 )
 
-const rootEl = ref<HTMLElement | null>(null)
-const showCopied = ref(false)
-let copyToastTimeout: number | null = null
-
-const dashboardOnTop = ref(false)
-const dashboardOnUpperCenter = ref(false)
-const dashboardOnLowerCenter = ref(false)
-const dashboardOnBottom = ref(false)
+watch(active, (isActive, wasActive) => {
+    if (isActive && !wasActive) {
+        emit(fullyVisibleEvent, anchorId.value)
+    }
+})
 
 const copyDashboardLink = () => {
     const fullUrl = `${window.location.origin}${window.location.pathname}#${anchorId.value}`
@@ -112,59 +114,19 @@ const copyDashboardLink = () => {
     tryClipboard()
 }
 
-const topObserver = new IntersectionObserver(([entry]) => {
-    if (entry.target === rootEl.value) {
-        dashboardOnTop.value = entry.isIntersecting
-    }
-}, { rootMargin: '0px 0px -99% 0px' })
-
-const upperCenterObserver = new IntersectionObserver(([entry]) => {
-    if (entry.target === rootEl.value) {
-        dashboardOnUpperCenter.value = entry.isIntersecting
-    }
-}, { rootMargin: '-25% 0px -50% 0px' })
-
-const lowerCenterObserver = new IntersectionObserver(([entry]) => {
-    if (entry.target === rootEl.value) {
-        dashboardOnLowerCenter.value = entry.isIntersecting
-    }
-}, { rootMargin: '-50% 0px -25% 0px' })
-
-const bottomObserver = new IntersectionObserver(([entry]) => {
-    if (entry.target === rootEl.value) {
-        dashboardOnBottom.value = entry.isIntersecting
-    }
-}, { rootMargin: '-99% 0px 0px 0px' })
-
-watch([dashboardOnTop, dashboardOnUpperCenter, dashboardOnLowerCenter, dashboardOnBottom], ([onTop, onUpperCenter, onLowerCenter, onBottom]) => {
-    if ([onTop, onUpperCenter, onLowerCenter, onBottom].filter((v) => v===true).length >= 3) {
-        active.value = true
-        emit(fullyVisibleEvent, anchorId.value)
-        if (rootEl.value) {
-            rootEl.value.dispatchEvent(new CustomEvent(fullyVisibleEvent, { bubbles: true, detail: { anchorId: anchorId.value } }))
-        }
-    } else {
-        active.value = false
-    }
-})
-
 onMounted(() => {
     if (rootEl.value) {
-        topObserver.observe(rootEl.value)
-        upperCenterObserver.observe(rootEl.value)
-        lowerCenterObserver.observe(rootEl.value)
-        bottomObserver.observe(rootEl.value)
+        active.value = rootEl.value.dataset.active === 'true'
+        attrObserver = new MutationObserver(() => {
+            active.value = rootEl.value?.dataset.active === 'true'
+        })
+        attrObserver.observe(rootEl.value, { attributes: true, attributeFilter: ['data-active'] })
     }
 })
 
 onBeforeUnmount(() => {
+    attrObserver?.disconnect()
     if (copyToastTimeout) clearTimeout(copyToastTimeout)
-    if (rootEl.value) {
-        topObserver.unobserve(rootEl.value)
-        upperCenterObserver.unobserve(rootEl.value)
-        lowerCenterObserver.unobserve(rootEl.value)
-        bottomObserver.unobserve(rootEl.value)
-    }
 })
 
 </script>
