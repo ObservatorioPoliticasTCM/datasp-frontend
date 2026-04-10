@@ -1,12 +1,6 @@
 <template>
-    <iframe
-      :src="iframeSrc"
-      :title="label ?? `Dashboard item – ${sheet}`"
-      loading="lazy"
-      frameborder="0"
-      class="dashboard-item-frame"
-      ref="iframe"
-    ></iframe>
+  <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
+    class="dashboard-item-frame" ref="iframe"></iframe>
 </template>
 
 <script setup lang="ts">
@@ -66,5 +60,15 @@ onMounted(() => {
   border: none;
   grid-column: span v-bind(colSpan);
   grid-row: span v-bind(rowSpan);
+}
+
+@media (max-width: 1024px),
+(orientation: portrait) {
+
+  .dashboard-item-frame {
+    grid-column: span 1;
+    grid-row: span 1;
+    height: 80vh;
+  }
 }
 </style>
