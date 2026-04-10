@@ -133,11 +133,14 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .composed-dashboard {
+    --padding-x: 2vh;
+    --padding-y: 2vh;
+    
     display: flex;
     flex-direction: column;
-    height: 96vh;
-    width: calc(100vw - 4vh);
-    padding: 2vh;
+    padding: var(--padding-y) var(--padding-x);
+    height: calc(100vh - 2 * var(--padding-y));
+    width: calc(100vw - 2 * var(--padding-x));
     position: relative;
     z-index: 20;
     scroll-snap-align: start;
@@ -250,9 +253,11 @@ onBeforeUnmount(() => {
 @media (max-width: 1024px),
 (orientation: portrait) {
     .composed-dashboard {
+        --padding-x: 6vh;
+
         height: auto;
-        width: calc(100vw - 12vh);
-        padding: 2vh 6vh;
+        width: calc(100vw - 2 * var(--padding-x));
+        padding: var(--padding-y) var(--padding-x);
     }
 
     .frame-header h1 {
