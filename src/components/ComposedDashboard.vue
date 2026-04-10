@@ -266,7 +266,7 @@ onBeforeUnmount(() => {
         z-index: 340;
         margin: 0;
         padding: 0;
-    } 
+    }
 
     .filter-section {
         height: 40vh;
@@ -275,12 +275,6 @@ onBeforeUnmount(() => {
     .charts-section {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
-    }
-
-    .charts-section > :deep(.dashboard-item-frame) {
-        grid-column: span 1;
-        grid-row: span 1;
-        height: 80vh;
     }
 }
 </style>
