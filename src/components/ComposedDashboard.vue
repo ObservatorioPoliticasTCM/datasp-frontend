@@ -275,7 +275,7 @@ onBeforeUnmount(() => {
     }
 
     .filter-section {
-        height: 40vh;
+        height: auto;
     }
 
     .charts-section {
