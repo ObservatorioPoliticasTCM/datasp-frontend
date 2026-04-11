@@ -1,12 +1,6 @@
 <template>
-    <iframe
-      :src="iframeSrc"
-      :title="label ?? `Dashboard item – ${sheet}`"
-      loading="lazy"
-      frameborder="0"
-      class="dashboard-item-frame"
-      ref="iframe"
-    ></iframe>
+  <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
+    class="dashboard-item-frame" ref="iframe"></iframe>
 </template>
 
 <script setup lang="ts">
@@ -22,15 +16,19 @@ interface DashboardItemFrameProps {
   label?: string
   colSpan?: number
   rowSpan?: number
+  mobileOrder?: number
+  mobileHeight?: number
 }
 
 const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
   colSpan: 1,
   rowSpan: 1,
-  showSelections: false
+  showSelections: false,
+  mobileOrder: 0,
+  mobileHeight: 4
 })
 
-const { appid, sheet, select, showSelections } = toRefs(props)
+const { appid, sheet, select, showSelections, mobileOrder, mobileHeight } = toRefs(props)
 const iframe = ref<HTMLIFrameElement | null>(null)
 const loadIframe = ref(false)
 
@@ -61,10 +59,22 @@ onMounted(() => {
 
 <style scoped>
 .dashboard-item-frame {
+  min-height: 0;
   width: 100%;
   height: 100%;
   border: none;
   grid-column: span v-bind(colSpan);
   grid-row: span v-bind(rowSpan);
+}
+
+@media (max-width: 1024px),
+(orientation: portrait) {
+
+  .dashboard-item-frame {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    order: v-bind(mobileOrder);
+    height: calc(v-bind(mobileHeight) * 23vh);
+  }
 }
 </style>

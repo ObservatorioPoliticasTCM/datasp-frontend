@@ -133,11 +133,14 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .composed-dashboard {
+    --padding-x: 2vh;
+    --padding-y: 2vh;
+    
     display: flex;
     flex-direction: column;
-    height: 96vh;
-    width: calc(100vw - 4vh);
-    padding: 2vh;
+    padding: var(--padding-y) var(--padding-x);
+    height: calc(100vh - 2 * var(--padding-y));
+    width: calc(100vw - 2 * var(--padding-x));
     position: relative;
     z-index: 20;
     scroll-snap-align: start;
@@ -223,8 +226,8 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    height: 100%;
-    width: 100%;
+    flex: 1;
+    min-height: 0;
 }
 
 .filter-section {
@@ -236,6 +239,7 @@ onBeforeUnmount(() => {
     display: grid;
     flex: 1;
     gap: 1rem;
+    min-height: 0;
     grid-template-columns: repeat(v-bind(gridCols), 1fr);
     grid-template-rows: repeat(v-bind(gridRows), 1fr);
 }
@@ -249,9 +253,11 @@ onBeforeUnmount(() => {
 @media (max-width: 1024px),
 (orientation: portrait) {
     .composed-dashboard {
+        --padding-x: 6vh;
+
         height: auto;
-        width: calc(100vw - 12vh);
-        padding: 2vh 6vh;
+        width: calc(100vw - 2 * var(--padding-x));
+        padding: var(--padding-y) var(--padding-x);
     }
 
     .frame-header h1 {
@@ -266,21 +272,15 @@ onBeforeUnmount(() => {
         z-index: 340;
         margin: 0;
         padding: 0;
-    } 
+    }
 
     .filter-section {
-        height: 40vh;
+        height: auto;
     }
 
     .charts-section {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
-    }
-
-    .charts-section > :deep(.dashboard-item-frame) {
-        grid-column: span 1;
-        grid-row: span 1;
-        height: 80vh;
     }
 }
 </style>
