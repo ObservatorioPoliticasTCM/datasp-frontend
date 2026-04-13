@@ -265,6 +265,11 @@ onBeforeUnmount(() => {
         text-align: center;
     }
 
+    .frame-subtitle {
+        font-size: 1em;
+        text-align: center;
+    }
+
     .frame-actions {
         position: fixed;
         right: 0.2rem;
