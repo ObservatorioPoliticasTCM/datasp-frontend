@@ -467,7 +467,7 @@ onBeforeUnmount(() => {
   height: 100%;
 }
 
-@media (max-width: 60em), (orientation: portrait) {
+@media (max-width: 1366px), (orientation: portrait) {
   .snap-dots {
     left: 1rem;
   }

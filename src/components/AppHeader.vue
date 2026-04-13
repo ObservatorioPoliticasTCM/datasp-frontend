@@ -422,7 +422,7 @@ onBeforeUnmount(() => {
   transform: translateY(-0.25rem);
 }
 
-@media (max-width: 63.9375rem) {
+@media (max-width: 1024px) {
   .header.compact {
   height: clamp(4rem, 10vh, 5.5rem);
   padding: 0;

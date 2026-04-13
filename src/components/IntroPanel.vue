@@ -331,7 +331,7 @@ onBeforeUnmount(() => {
   opacity: 0;
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 1366px) {
   .intro-panel {
     --padding-x: 6vh;
   }
@@ -362,7 +362,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: 38rem) {
+@media (max-width: 1024px) {
   .head-text h1 {
     font-size: 1.6rem;
   }

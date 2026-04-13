@@ -82,7 +82,7 @@ function thumbUrl(id: string) {
   border-radius: 0.5rem;
 }
 
-@media (max-width: 60em) {
+@media (max-width: 1366px) {
   .thumb {
     flex: 1 1 20rem;
     max-width: 26rem;
@@ -94,7 +94,7 @@ function thumbUrl(id: string) {
   }
 }
 
-@media (max-width: 45em) {
+@media (max-width: 1024px) {
   .thumb-label {
     font-size: 0.88rem;
   }
