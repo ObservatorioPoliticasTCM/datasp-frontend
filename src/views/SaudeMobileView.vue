@@ -250,7 +250,7 @@ const dashboards: DashboardConfig[] = [
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'fe47beea-a668-46bd-8fde-37e341f5379b',
         colSpan: 1,
-        rowSpan: 3
+        rowSpan: 4
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
@@ -262,19 +262,19 @@ const dashboards: DashboardConfig[] = [
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '9ef2adf8-328f-4020-80d4-e7ea0d3155e4',
         colSpan: 1,
-        rowSpan: 3
+        rowSpan: 4
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '657488d4-7aca-4c4f-8d82-0299686b7e21',
         colSpan: 1,
-        rowSpan: 15
+        rowSpan: 14
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'b17519e1-5931-4d69-a7be-0c6a9b4e3767',
         colSpan: 1,
-        rowSpan: 18
+        rowSpan: 17
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
