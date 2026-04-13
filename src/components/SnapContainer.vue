@@ -325,7 +325,8 @@ onBeforeUnmount(() => {
 .snap-shell {
   position: relative;
   height: 100vh;
-  width: 101vw;
+  width: 100vw;
+  overflow-x: hidden;
 }
 .snap-container {
   height: 100%;
@@ -466,7 +467,7 @@ onBeforeUnmount(() => {
   height: 100%;
 }
 
-@media (max-width: 60em) {
+@media (max-width: 60em), (orientation: portrait) {
   .snap-dots {
     left: 1rem;
   }
