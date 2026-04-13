@@ -48,7 +48,7 @@
           appid="ee3bc48f-da4d-403a-a4fe-4da01cb29ee9"
           sheet="71ec6681-a441-452a-8c6d-412656c7fda0"
           :row-span="5"
-          :mobile-height="0.5"
+          :mobile-height="1"
           :mobile-order="3"
         />
         <DashboardItemFrame
