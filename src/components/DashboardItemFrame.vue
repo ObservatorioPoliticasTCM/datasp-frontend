@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
   rowSpan: 1,
   showSelections: false,
   mobileOrder: 0,
-  mobileHeight: 4
+  mobileHeight: 8
 })
 
 const { appid, sheet, select, showSelections, mobileOrder, mobileHeight } = toRefs(props)
@@ -74,7 +74,7 @@ onMounted(() => {
     grid-column: 1 / -1;
     grid-row: auto;
     order: v-bind(mobileOrder);
-    height: calc(v-bind(mobileHeight) * 23vh);
+    height: calc(v-bind(mobileHeight) * 12vh);
   }
 }
 </style>

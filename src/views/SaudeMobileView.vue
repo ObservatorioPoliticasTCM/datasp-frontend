@@ -26,6 +26,7 @@
                 sheet="3bacdabc-915f-4f33-ab7f-92e10addfe6a"
                 :col-span="12"
                 :row-span="4"
+                :mobileHeight="1"
                 :mobile-order="1"
             />
             <DashboardItemFrame
@@ -33,6 +34,7 @@
                 sheet="3b487c3e-46bb-49bb-b6d1-f07bc78bc34c"
                 :col-span="16"
                 :row-span="12"
+                :mobileHeight="4"
                 :mobile-order="4"
             />
             <DashboardItemFrame
@@ -40,6 +42,7 @@
                 sheet="76b4690d-f536-4788-b99e-b89eae1c540e"
                 :col-span="12"
                 :row-span="8"
+                :mobileHeight="4"
                 :mobile-order="2"
             />
             <DashboardItemFrame
@@ -54,6 +57,7 @@
                 sheet="06e488a7-e8f7-43e4-9d4c-90bddc114dd3"
                 :col-span="28"
                 :row-span="3"
+                :mobileHeight="1"
                 :mobile-order="5"
             />
         </template>
