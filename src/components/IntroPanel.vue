@@ -182,7 +182,6 @@ onBeforeUnmount(() => {
   z-index: 20;
   --padding-x: 2vh;
   --padding-y: 2vh;
-  width: calc(100vw - 2 * var(--padding-x));
   padding: var(--padding-y) var(--padding-x);
 }
 
