@@ -53,4 +53,11 @@ onBeforeUnmount(() => {
     min-height: 100vh;
     overflow: hidden;
 }
+
+@media (max-width: 1024px),
+(orientation: portrait) {
+    .snap-page {
+        min-height: auto;
+    }
+}
 </style>
