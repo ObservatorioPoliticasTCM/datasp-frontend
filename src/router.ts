@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import EducacaoView from '@/views/EducacaoView.vue'
 import EducacaoMobileView from '@/views/EducacaoMobileView.vue'
+import SaudeMobileView from '@/views/SaudeMobileView.vue'
 import GeneroView from '@/views/GeneroView.vue'
 import SaudeView from '@/views/SaudeView.vue'
 import UrbanismoView from '@/views/UrbanismoView.vue'
@@ -45,6 +46,12 @@ const router = createRouter({
       name: 'educacao-mobile',
       component: EducacaoMobileView,
       meta: { title: 'Educação Mobile – DataSP' }
+    },
+    {
+      path: '/saude-mobile',
+      name: 'saude-mobile',
+      component: SaudeMobileView,
+      meta: { title: 'Saúde Mobile – DataSP' }
     },
     {
       path: '/genero',
