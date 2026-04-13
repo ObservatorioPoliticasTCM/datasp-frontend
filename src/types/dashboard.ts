@@ -20,6 +20,7 @@ export interface DashboardConfig {
   methodologyLink?: string
   gridCols: number
   gridRows: number
+  identity?: string
   filter: DashboardFilter
   charts: ChartItem[]
 }

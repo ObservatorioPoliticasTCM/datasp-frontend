@@ -48,6 +48,7 @@
         :subtitle="dashboard.subtitle"
         :download-link="dashboard.downloadLink"
         :methodology-link="dashboard.methodologyLink"
+        :identity="dashboard.identity"
         :grid-cols="dashboard.gridCols"
         :grid-rows="dashboard.gridRows"
       >
@@ -89,6 +90,7 @@ const dashboards: DashboardConfig[] = [
     subtitle: 'Inclui as unidades municipais, estaduais e federais',
     downloadLink: '/dados/saude/consultas.zip',
     methodologyLink: '',
+    identity: '1',
     gridCols: 42,
     gridRows: 21,
     filter: {
@@ -149,6 +151,7 @@ const dashboards: DashboardConfig[] = [
     title: 'Leitos (2024)',
     subtitle: 'Inclui leitos das unidades municipais, estaduais e federais',
     downloadLink: '/dados/saude/leitos-internacao-complementares.zip',
+    identity: '2',
     gridCols: 42,
     gridRows: 21,
     filter: {
@@ -201,6 +204,7 @@ const dashboards: DashboardConfig[] = [
     subtitle: 'Inclui óbitos de residentes do município de São Paulo',
     downloadLink: '/dados/saude/mortalidade.zip',
     methodologyLink: '/infos/notas/saude/taxa-de-mortalidade-2024.pdf',
+    identity: '3',
     gridCols: 42,
     gridRows: 21,
     filter: {
@@ -252,6 +256,7 @@ const dashboards: DashboardConfig[] = [
     title: 'Despesas em atenção Básica e especializada (2024)',
     subtitle: 'Inclui apenas despesas municipais',
     downloadLink: '/dados/saude/despesas.zip',
+    identity: '4',
     gridCols: 3,
     gridRows: 21,
     filter: {
