@@ -363,10 +363,17 @@ onBeforeUnmount(() => {
 
 @media (max-width: 1024px) {
   .head-text h1 {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 
   .lead {
+    column-count: 1;
+    text-align: left;
+  }
+
+  .extra {
+    font-size: clamp(0.5rem, 2.3vh, 0.8rem);
+    line-height: 1;
     column-count: 1;
     text-align: left;
   }
