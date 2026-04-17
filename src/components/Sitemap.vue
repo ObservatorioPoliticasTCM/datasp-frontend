@@ -74,7 +74,7 @@ import { RouterLink } from 'vue-router'
 .sitemap-title {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
   margin-bottom: 1rem;
 }
 
@@ -97,5 +97,29 @@ import { RouterLink } from 'vue-router'
   color: black;
   text-decoration: none;
   font-weight: 400;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+@media (max-width: 1024px), (orientation: portrait) {
+  .sitemap {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    padding: 1.5rem 0;
+  }
+
+  .sitemap-column {
+    flex: none;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .sitemap-title {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    margin-bottom: 0;
+  }
+
+  .sitemap-column a {
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
+  }
 }
 </style>
