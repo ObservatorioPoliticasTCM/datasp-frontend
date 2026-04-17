@@ -3,10 +3,10 @@
     <div class="footer-container">
       <div class="footer-left">
         <a href="https://portal.tcm.sp.gov.br/" target="_blank" rel="noopener noreferrer" title="Acessar o portal do Tribunal de Contas do Município de São Paulo">
-          <img src="@/assets/logo-tcm.png" alt="Logo TCM" />
+          <img src="@/assets/logo-tcm.png" alt="Logo TCM" class="logo-tcm" />
         </a>
         <a href="https://escoladecontas.tcm.sp.gov.br/" target="_blank" rel="noopener noreferrer" title="Acessar o portal da Escola Superior de Gestão e Contas Públicas">
-          <img src="@/assets/logo-egc.svg" alt="Logo EGC" />
+          <img src="@/assets/logo-egc.svg" alt="Logo EGC" class="logo-egc" />
         </a>
       </div>
       <div class="footer-center">
@@ -43,32 +43,35 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+}
+.footer-left,
+.footer-right {
+  flex: 1;
 }
 .footer-center {
-  flex: 1 1 auto;
-  min-width: 0;
+  flex: 2;
   text-align: left;
   font-size: 1.4em;
 }
+
+.footer-left a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.footer-left img,
+.footer-right img {
+  margin: 0 1rem;
+  width: 11.2rem;
+  object-fit: contain;
+}
+
 .footer-license {
-  display: block;
-  width: 100%;
-  min-width: 0;
+  display: flex;
+  align-items: center;
   font-size: 0.9em;
-}
-
-.footer-license p {
-  margin: 0;
-  max-width: 100%;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-.footer-license a {
-  overflow-wrap: anywhere;
-  word-break: break-word;
 }
 
 .ext-icon {
@@ -88,47 +91,47 @@ footer {
 }
 
 .footer-left {
-  flex: 0 1 auto;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  flex-wrap: nowrap;
+  flex: 1;
+  display: flex; /* force images side by side */
+  gap: 0.5rem; /* optional: add spacing between images */
 }
 
-.footer-left a {
-  display: inline-flex;
-  align-items: center;
-}
-
-.footer-left img {
-  margin: 0;
-  width: clamp(8.8rem, 13.5vw, 9.6rem);
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-@media (max-width: 900px) {
+/* Tablet / large portrait: logos side by side on top, license + version stacked below */
+@media (max-width: 1024px), (orientation: portrait) {
   .footer-container {
     flex-direction: column;
     align-items: center;
-    gap:0.6rem;
+    gap: 1rem;
+    padding: 1rem;
   }
 
   .footer-left {
+    justify-content: space-between;
     width: 100%;
+  }
+
+  .logo-tcm {
+    margin-left: -0.9rem !important;
+  }
+
+  .logo-egc {
+    margin-right: 0 !important;
   }
 
   .footer-center {
-    width: 100%;
-    text-align: center;
-    font-size: 1.15em;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
   }
 
   .footer-license {
-    font-size: 0.85em;
+    justify-content: center;
+  }
+}
+
+/* Phone portrait: all four items stacked */
+@media (max-width: 480px) {
+  .footer-left img,
+  .footer-right img {
+    width: 9.5rem;
   }
 }
 </style>
