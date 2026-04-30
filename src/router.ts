@@ -7,6 +7,7 @@ import GeneroView from '@/views/GeneroView.vue'
 import SaudeView from '@/views/SaudeView.vue'
 import UrbanismoView from '@/views/UrbanismoView.vue'
 import OrcamentoView from '@/views/OrcamentoView.vue'
+import OrcamentoMobileView from '@/views/OrcamentoMobileView.vue'
 import GlossaryView from '@/views/GlossaryView.vue'
 import NotFound from './views/NotFoundView.vue'
 import ImprintPage from '@/views/ImprintPageView.vue'
@@ -76,6 +77,12 @@ const router = createRouter({
       name: 'orcamento',
       component: OrcamentoView,
       meta: { title: 'Orçamento – DataSP' }
+    },
+    {
+      path: '/orcamento-mobile',
+      name: 'orcamento-mobile',
+      component: OrcamentoMobileView,
+      meta: { title: 'Orçamento Mobile – DataSP' }
     },
     {
       path: '/glossario',
