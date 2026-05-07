@@ -74,6 +74,7 @@ function select(id: string) {
   letter-spacing: 0.04em;
   font-weight: 600;
   text-align: center;
+  font-size: 3.7vw;
 }
 
 .media-layout {
@@ -123,31 +124,11 @@ function select(id: string) {
   box-sizing: border-box;
 }
 
-@media (max-width: 1366px) {
-  .media-layout {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
-  }
-
-  .thumb-grid {
-    flex: none;
-    max-width: 100%;
-    padding-top: 0;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    max-height: none;
-    overflow: visible;
-    padding-right: 0;
-  }
-}
-
 @media (max-width: 1024px) {
   .guide {
     --feature-max: 27.5rem;
     gap: 1rem;
+    height: auto;
   }
 
 
