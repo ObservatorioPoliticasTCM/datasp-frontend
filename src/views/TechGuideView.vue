@@ -1,24 +1,25 @@
 ﻿<template>
   <SnapPage>
     <div class="guide">
-      <h1 class="title">Guia técnico &mdash; {{ featured?.title }}</h1>
+      <h1 class="title" v-if="!isMobile">Guia técnico &mdash; {{ featured?.title }}</h1>
       <div class="media-layout">
         <div class="feature-video" v-if="!isMobile">
           <VideoFrame :video-id="selectedId" :autoplay="autoplay" :muted="muted" :closed-captions="closedCaptions" />
         </div>
 
         <div class="thumb-grid">
-          <VideoThumbnail
-            v-for="video in videos"
-            :key="video.id"
-            :video="video"
-            :is-active="video.id === selectedId"
-            @select="select"
-          >
-            <template #default v-if="isMobile && video.id === selectedId">
-              <VideoFrame :video-id="video.id" :autoplay="autoplay" :muted="muted" :closed-captions="closedCaptions" />
-            </template>
-          </VideoThumbnail>
+          <template v-for="video in videos" :key="video.id">
+            <h1 class="title mobile-title" v-if="isMobile && video.id === selectedId">Guia técnico <br> {{ featured?.title }}</h1>
+            <VideoThumbnail
+              :video="video"
+              :is-active="video.id === selectedId"
+              @select="select"
+            >
+              <template #default v-if="isMobile && video.id === selectedId">
+                <VideoFrame :video-id="video.id" :autoplay="autoplay" :muted="muted" :closed-captions="closedCaptions" />
+              </template>
+            </VideoThumbnail>
+          </template>
         </div>
       </div>
     </div>
@@ -166,6 +167,12 @@ function select(id: string) {
     gap: 1rem;
     max-height: none;
     overflow: visible;
+  }
+
+  .mobile-title {
+    font-size: 6vw;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .thumb-grid :deep(.thumb-slot-wrapper) {
