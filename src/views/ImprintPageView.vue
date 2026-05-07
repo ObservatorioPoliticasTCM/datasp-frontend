@@ -62,4 +62,25 @@ import Contributors from '@/components/Contributors.vue'
 .imprint-panel {
     margin-bottom: 0;
 }
+
+@media (max-width: 1366px) {
+    .imprint-container {
+        flex-wrap: wrap;
+    }
+    
+    .imprint-column {
+        flex: 1 1 calc(50% - 1em); 
+    }
+
+    .specialists-column {
+        flex: 1 1 100%; 
+    }
+}
+
+@media (max-width: 1024px) {
+    .imprint-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
 </style>
