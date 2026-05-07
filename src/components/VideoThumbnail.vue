@@ -1,5 +1,11 @@
 <template>
+  <template v-if="!!$slots.default">
+    <div class="thumb-slot-wrapper" :data-active="isActive">
+      <slot></slot>
+    </div>
+  </template>
   <button
+    v-else
     class="thumb"
     type="button"
     :data-active="isActive"
@@ -88,12 +94,13 @@ function thumbUrl(id: string) {
   }
 
   .thumb {
-    padding: 0.4rem 0.5rem;
-    grid-template-columns: minmax(7.5rem, 60%) minmax(0, 1fr);
+    padding: 0;
+    display: block;
   }
 
   .thumb img {
     aspect-ratio: 16 / 9;
+    display: block;
   }
 }
 </style>
