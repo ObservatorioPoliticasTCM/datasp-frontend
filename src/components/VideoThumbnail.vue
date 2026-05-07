@@ -82,25 +82,12 @@ function thumbUrl(id: string) {
   border-radius: 0.5rem;
 }
 
-@media (max-width: 1366px) {
-  .thumb {
-    flex: 1 1 20rem;
-    max-width: 26rem;
-    grid-template-columns: minmax(8.5rem, 52%) minmax(0, 1fr);
-  }
-
-  .thumb img {
-    aspect-ratio: 16 / 9;
-  }
-}
-
 @media (max-width: 1024px) {
   .thumb-label {
     font-size: 0.88rem;
   }
 
   .thumb {
-    max-width: 22rem;
     padding: 0.4rem 0.5rem;
     grid-template-columns: minmax(7.5rem, 60%) minmax(0, 1fr);
   }

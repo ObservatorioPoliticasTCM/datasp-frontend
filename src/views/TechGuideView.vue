@@ -130,7 +130,24 @@ function select(id: string) {
     gap: 1rem;
     height: auto;
   }
+  
+  .media-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
 
-
+  .thumb-grid {
+    flex: none;
+    max-width: 100%;
+    padding-top: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
 }
 </style>
