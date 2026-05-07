@@ -62,4 +62,11 @@ import Contributors from '@/components/Contributors.vue'
 .imprint-panel {
     margin-bottom: 0;
 }
+
+@media (max-width: 1024px) {
+    .imprint-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
 </style>
