@@ -3,6 +3,7 @@
     <label for="search-input">Índice</label>
     <input
       type="text"
+      id="search-input"
       :value="searchValue"
       placeholder="Digite para destacar abaixo"
       @input="onInput"
@@ -51,5 +52,11 @@ const onInput = (event: Event) => {
 ::-ms-input-placeholder {
   font-style: italic;
   color: #ababab;
+}
+
+@media (max-width: 1024px) {
+  .search-bar input {
+    width: 78vw;
+  }
 }
 </style>
