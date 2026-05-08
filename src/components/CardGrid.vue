@@ -3,7 +3,7 @@
       <!-- Célula de informação -->
       <div class="info-cell">
         <h2>Dados</h2>
-        <p>Você pode consultar nos cards os indicadores específicos de cada tema...</p>
+        <p>Você pode consultar nos cards os indicadores específicos de cada tema</p>
       </div>
   
       <!-- Cards com efeito 3D -->
@@ -100,5 +100,19 @@
     border: 0.0625rem solid #ccc;
     border-radius: 0.5rem;
     resize: vertical;
+  }
+
+  @media (max-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr); /* Duas colunas para telas menores */
+      height: auto; /* Permite que a altura se ajuste ao conteúdo */;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .grid {
+      grid-template-columns: 1fr; /* Uma coluna para telas menores */
+      height: auto; /* Permite que a altura se ajuste ao conteúdo */;
+    }
   }
   </style>
