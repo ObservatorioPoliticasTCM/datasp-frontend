@@ -106,11 +106,11 @@ import ScrollablePage from '@/components/ScrollablePage.vue';
 
 @media (max-width: 1024px) {
   .presentation-content {
-    padding: 1em 5vw;
+    padding: 1em 0;
   }
 
   .presentation-title {
-    font-size: 2.5rem;
+    font-size: 12vw;
   }
 }
 </style>
