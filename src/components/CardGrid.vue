@@ -107,12 +107,24 @@
       grid-template-columns: repeat(2, 1fr); /* Duas colunas para telas menores */
       height: auto; /* Permite que a altura se ajuste ao conteúdo */;
     }
+
+    .info-cell {
+      font-size: 3.4vw;
+    }
+
+    .info-cell h2 {
+      font-size: 2.5em;
+    }
   }
 
   @media (max-width: 640px) {
     .grid {
       grid-template-columns: 1fr; /* Uma coluna para telas menores */
       height: auto; /* Permite que a altura se ajuste ao conteúdo */;
+    }
+
+    .info-cell {
+      font-size: 5vw;
     }
   }
   </style>
