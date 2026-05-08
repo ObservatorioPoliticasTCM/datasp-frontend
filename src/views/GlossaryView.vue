@@ -188,5 +188,8 @@ const rows = computed(() => {
   .glossary-row {
     grid-template-columns: 1fr;
   }
+  .glossary-title {
+    font-size: 16vw;
+  }
 }
 </style>
