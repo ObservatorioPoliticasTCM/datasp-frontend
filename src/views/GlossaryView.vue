@@ -177,4 +177,10 @@ const rows = computed(() => {
   gap: 2em;
   margin-bottom: 2em;
 }
+
+@media (max-width: 1024px) {
+  .glossary-row {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
