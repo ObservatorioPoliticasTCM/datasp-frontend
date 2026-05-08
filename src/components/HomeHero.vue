@@ -39,4 +39,16 @@ import logoUrl from '@/assets/logo.svg';
   height: 77vh;
   margin: 0 auto;
 }
+
+@media (max-width: 1366px) {
+  .hero-section {
+    height: auto;
+    max-height: 80vh;
+  }
+  .hero-logo {
+    height: auto;
+    max-width: 100%;
+    max-height: 77vh;
+  }
+}
 </style>
