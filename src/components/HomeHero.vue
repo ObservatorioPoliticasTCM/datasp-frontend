@@ -26,7 +26,6 @@ import logoUrl from '@/assets/logo.svg';
 }
 
 .hero-content {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -38,5 +37,13 @@ import logoUrl from '@/assets/logo.svg';
   width: auto;
   height: 77vh;
   margin: 0 auto;
+}
+
+@media (max-width: 1366px) {
+  .hero-logo {
+    height: auto;
+    max-width: 100%;
+    max-height: 77vh;
+  }
 }
 </style>

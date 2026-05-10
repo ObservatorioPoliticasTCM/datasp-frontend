@@ -155,4 +155,13 @@ onBeforeUnmount(() => {
   border: none;
   display: block;
 }
+
+@media (max-width: 1024px) {
+  .snap-section {
+    height: auto;
+    width: 100vw;
+    padding: 1vh;
+    aspect-ratio: 16 / 10;
+  }
+}
 </style>

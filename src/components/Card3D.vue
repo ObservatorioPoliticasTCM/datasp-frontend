@@ -62,10 +62,6 @@ const iconSrc = computed(() => new URL(`../assets/${props.icon}`, import.meta.ur
   transition: transform 0.8s ease;
 }
 
-.card-container:hover .card {
-  transform: rotateY(180deg);
-}
-
 .card-face {
   position: absolute;
   top: 0; /* adicionado para alinhar horizontalmente */
@@ -126,8 +122,8 @@ const iconSrc = computed(() => new URL(`../assets/${props.icon}`, import.meta.ur
   transform: translateY(0.6rem) translateX(0rem) scale(1.1)
     translateZ(0.1px);
   filter: invert(100%) saturate(0) blur(0.22rem) opacity(0.5);
-  max-width: 130%;
-  max-height: 130%;
+  max-width: 110%;
+  max-height: 110%;
 }
 
 .icon {
@@ -135,8 +131,8 @@ const iconSrc = computed(() => new URL(`../assets/${props.icon}`, import.meta.ur
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   transform: translateZ(3.75rem);
-  max-width: 130%;
-  max-height: 130%;
+  max-width: 110%;
+  max-height: 110%;
 }
 
 .title {
@@ -154,5 +150,23 @@ const iconSrc = computed(() => new URL(`../assets/${props.icon}`, import.meta.ur
   width: 100%;
   padding: 0 1.5rem;
   box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .card-container:hover .card {
+    transform: rotateY(180deg);
+  }
+}
+
+@media (max-width: 640px) {
+  @keyframes flip {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(180deg); }
+  }
+  .card {
+    animation: flip linear both;
+    animation-timeline: view();
+    animation-range: contain 40% contain 90%;
+  }
 }
 </style>
