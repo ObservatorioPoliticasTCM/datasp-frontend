@@ -1,6 +1,6 @@
 <template>
   <div class="frame-wrapper">
-    <DashboardItemSkeleton :type="skeletonType" class="skeleton-overlay"  />
+    <DashboardItemSkeleton :type="skeletonType" class="skeleton-overlay" :class="{ 'skeleton--inactive': loadIframe }" />
     <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
       class="dashboard-item-frame" ref="iframe"></iframe>
   </div>
