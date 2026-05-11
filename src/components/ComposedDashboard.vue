@@ -23,7 +23,19 @@
         </div>
         <div class="dashboard-wrapper">
             <div class="filter-section">
-                <slot name="filter" />
+                <button
+                    class="filter-toggle"
+                    :class="{ 'filter-toggle--open': filterOpen }"
+                    type="button"
+                    :aria-expanded="filterOpen"
+                    @click="filterOpen = !filterOpen"
+                >
+                    <img src="@/assets/info.svg" alt="" aria-hidden="true" class="filter-toggle-icon" />
+                    <span>Filtros</span>
+                </button>
+                <div class="filter-iframe-wrapper" :class="{ 'filter-iframe-wrapper--open': filterOpen }">
+                    <slot name="filter" />
+                </div>
             </div>
             <div class="charts-section">
                 <slot name="charts" />
@@ -66,6 +78,7 @@ const rootEl = ref<HTMLElement | null>(null)
 const showCopied = ref(false)
 let copyToastTimeout: number | null = null
 const active = ref(false)
+const filterOpen = ref(false)
 let attrObserver: MutationObserver | null = null
 
 provide('composedIdentity', identity)
@@ -235,6 +248,15 @@ onBeforeUnmount(() => {
     width: 100%;
 }
 
+.filter-toggle {
+    display: none;
+}
+
+.filter-iframe-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
 .charts-section {
     display: grid;
     flex: 1;
@@ -281,6 +303,43 @@ onBeforeUnmount(() => {
 
     .filter-section {
         height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .filter-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        align-self: flex-start;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        color: #ffffff;
+        padding: 0.5rem 0.85rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .filter-toggle--open {
+        background: #213547;
+        border-color: transparent;
+    }
+
+    .filter-toggle-icon {
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+    }
+
+    .filter-iframe-wrapper {
+        display: none;
+    }
+
+    .filter-iframe-wrapper--open {
+        display: block;
     }
 
     .charts-section {
