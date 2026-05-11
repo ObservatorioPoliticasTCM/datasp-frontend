@@ -23,7 +23,24 @@
         </div>
         <div class="dashboard-wrapper">
             <div class="filter-section">
-                <slot name="filter" />
+                <button
+                    class="filter-toggle"
+                    :class="{ 'filter-toggle--open': filterOpen }"
+                    type="button"
+                    :aria-expanded="filterOpen"
+                    @click="filterOpen = !filterOpen"
+                >
+                    <span
+                        class="filter-arrow"
+                        :class="{ expanded: filterOpen }"
+                    >&#9660;</span>
+                    <span>Filtros</span>
+                    <img src="@/assets/filter-icon.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="!filterOpen" />
+                    <img src="@/assets/filter-icon-white.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="filterOpen" />
+                </button>
+                <div class="filter-iframe-wrapper" :class="{ 'filter-iframe-wrapper--open': filterOpen }">
+                    <slot name="filter" />
+                </div>
             </div>
             <div class="charts-section">
                 <slot name="charts" />
@@ -66,6 +83,7 @@ const rootEl = ref<HTMLElement | null>(null)
 const showCopied = ref(false)
 let copyToastTimeout: number | null = null
 const active = ref(false)
+const filterOpen = ref(false)
 let attrObserver: MutationObserver | null = null
 
 provide('composedIdentity', identity)
@@ -235,6 +253,15 @@ onBeforeUnmount(() => {
     width: 100%;
 }
 
+.filter-toggle {
+    display: none;
+}
+
+.filter-iframe-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
 .charts-section {
     display: grid;
     flex: 1;
@@ -281,6 +308,56 @@ onBeforeUnmount(() => {
 
     .filter-section {
         height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        align-self: flex-start;
+        background: #fafafa;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        color: #404040;
+        padding: 0.5rem 0.85rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.2s ease, border-color 0.2s ease;
+        width: 100%;
+    }
+
+    .filter-arrow {
+        display: inline-block;
+        transition: transform 1.2s;
+    }
+
+    .filter-arrow.expanded {
+        transform: rotate(-180deg);
+        color: #fff;
+    }
+
+    .filter-toggle--open {
+        background: #213547;
+        color: #fff;
+        border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .filter-toggle-icon {
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+    }
+
+    .filter-iframe-wrapper {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 1s ease-in-out;
+    }
+
+    .filter-iframe-wrapper--open {
+        max-height: 400vh;
     }
 
     .charts-section {
