@@ -44,13 +44,13 @@
         :grid-rows="dashboard.gridRows">
         <template #filter>
           <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
-            :show-selections="dashboard.filter.showSelections" />
+            :show-selections="dashboard.filter.showSelections" skeleton-type="filter" />
         </template>
 
         <template #charts>
           <DashboardItemFrame v-for="chart in dashboard.charts" :key="chart.sheet" :appid="chart.appid"
             :sheet="chart.sheet" :col-span="chart.colSpan" :row-span="chart.rowSpan" :mobile-height="chart.mobileHeight"
-            :mobile-order="chart.mobileOrder" />
+            :mobile-order="chart.mobileOrder" :skeleton-type="chart.skeletonType" />
         </template>
       </ComposedDashboard>
     </template>
@@ -84,7 +84,8 @@ const dashboards: DashboardConfig[] = [
         sheet: '57b6bce0-3c86-49d7-87c0-2e2690420f8a',
         colSpan: 14,
         rowSpan: 21,
-        mobileOrder: 0
+        mobileOrder: 0,
+        skeletonType: 'map'
       },
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
@@ -92,7 +93,8 @@ const dashboards: DashboardConfig[] = [
         colSpan: 12,
         rowSpan: 4,
         mobileHeight: 1,
-        mobileOrder: 1
+        mobileOrder: 1,
+        skeletonType: 'kpi'
       },
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
@@ -100,7 +102,8 @@ const dashboards: DashboardConfig[] = [
         colSpan: 16,
         rowSpan: 12,
         mobileHeight: 4,
-        mobileOrder: 4
+        mobileOrder: 4,
+        skeletonType: 'pie'
       },
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
@@ -108,14 +111,16 @@ const dashboards: DashboardConfig[] = [
         colSpan: 12,
         rowSpan: 8,
         mobileHeight: 4,
-        mobileOrder: 2
+        mobileOrder: 2,
+        skeletonType: 'bar'
       },
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
         sheet: '60c5c2ae-6a1e-4986-bee9-6afa7f02e128',
         colSpan: 28,
         rowSpan: 6,
-        mobileOrder: 3
+        mobileOrder: 3,
+        skeletonType: 'treemap'
       },
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
@@ -123,7 +128,8 @@ const dashboards: DashboardConfig[] = [
         colSpan: 28,
         rowSpan: 3,
         mobileHeight: 1,
-        mobileOrder: 5
+        mobileOrder: 5,
+        skeletonType: 'text'
       }
     ]
   },
