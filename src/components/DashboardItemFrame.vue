@@ -1,11 +1,15 @@
 <template>
-  <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
-    class="dashboard-item-frame" ref="iframe"></iframe>
+  <div class="frame-wrapper">
+    <DashboardItemSkeleton :type="skeletonType" class="skeleton-overlay" :class="{ 'skeleton--inactive': loadIframe }" />
+    <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
+      class="dashboard-item-frame" ref="iframe"></iframe>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed, inject, toRefs, unref, onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
+import DashboardItemSkeleton, { type SkeletonType } from './DashboardItemSkeleton.vue'
 
 interface DashboardItemFrameProps {
   appid: string
@@ -18,6 +22,7 @@ interface DashboardItemFrameProps {
   rowSpan?: number
   mobileOrder?: number
   mobileHeight?: number
+  skeletonType?: SkeletonType
 }
 
 const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
@@ -25,7 +30,8 @@ const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
   rowSpan: 1,
   showSelections: false,
   mobileOrder: 0,
-  mobileHeight: 8
+  mobileHeight: 8,
+  skeletonType: 'column'
 })
 
 const { appid, sheet, select, showSelections, mobileOrder, mobileHeight } = toRefs(props)
@@ -58,19 +64,35 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.dashboard-item-frame {
+.frame-wrapper {
+  position: relative;
   min-height: 0;
+  grid-column: span v-bind(colSpan);
+  grid-row: span v-bind(rowSpan);
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-item-frame {
   width: 100%;
   height: 100%;
   border: none;
-  grid-column: span v-bind(colSpan);
-  grid-row: span v-bind(rowSpan);
+}
+
+.skeleton-overlay {
+  transition: opacity 5s linear;
+}
+
+.skeleton--inactive {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 5s, opacity 5s linear;
 }
 
 @media (max-width: 1024px),
 (orientation: portrait) {
 
-  .dashboard-item-frame {
+  .frame-wrapper {
     grid-column: 1 / -1;
     grid-row: auto;
     order: v-bind(mobileOrder);

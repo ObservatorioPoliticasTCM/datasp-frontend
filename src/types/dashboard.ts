@@ -1,3 +1,5 @@
+import type { SkeletonType } from "@/components/DashboardItemSkeleton.vue"
+
 export interface DashboardFilter {
   appid: string
   sheet: string
@@ -11,6 +13,7 @@ export interface ChartItem {
   rowSpan?: number
   mobileHeight?: number
   mobileOrder?: number
+  skeletonType?: SkeletonType
 }
 
 export interface DashboardConfig {
