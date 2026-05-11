@@ -330,7 +330,7 @@ onBeforeUnmount(() => {
 
     .filter-arrow {
         display: inline-block;
-        transition: transform 0.2s;
+        transition: transform 1.2s;
     }
 
     .filter-arrow.expanded {
