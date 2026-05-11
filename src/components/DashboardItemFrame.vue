@@ -1,6 +1,6 @@
 <template>
   <div class="frame-wrapper">
-    <div class="skeleton" :class="{ 'skeleton--inactive': loadIframe }" />
+    <DashboardItemSkeleton :type="skeletonType" class="skeleton-overlay"  />
     <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
       class="dashboard-item-frame" ref="iframe"></iframe>
   </div>
@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import { computed, inject, toRefs, unref, onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
+import DashboardItemSkeleton, { type SkeletonType } from './DashboardItemSkeleton.vue'
 
 interface DashboardItemFrameProps {
   appid: string
@@ -21,6 +22,7 @@ interface DashboardItemFrameProps {
   rowSpan?: number
   mobileOrder?: number
   mobileHeight?: number
+  skeletonType?: SkeletonType
 }
 
 const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
@@ -28,7 +30,8 @@ const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
   rowSpan: 1,
   showSelections: false,
   mobileOrder: 0,
-  mobileHeight: 8
+  mobileHeight: 8,
+  skeletonType: 'column'
 })
 
 const { appid, sheet, select, showSelections, mobileOrder, mobileHeight } = toRefs(props)
@@ -76,10 +79,7 @@ onMounted(() => {
   border: none;
 }
 
-.skeleton {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+.skeleton-overlay {
   transition: opacity 5s linear;
 }
 
