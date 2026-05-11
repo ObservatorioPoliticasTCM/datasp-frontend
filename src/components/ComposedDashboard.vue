@@ -327,6 +327,11 @@ onBeforeUnmount(() => {
         width: 100%;
     }
 
+    .filter-arrow {
+        display: inline-block;
+        transition: transform 0.2s;
+    }
+
     .filter-arrow.expanded {
         transform: rotate(-180deg);
         color: #fff;
@@ -345,11 +350,13 @@ onBeforeUnmount(() => {
     }
 
     .filter-iframe-wrapper {
-        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 1s ease-in-out;
     }
 
     .filter-iframe-wrapper--open {
-        display: block;
+        max-height: 400vh;
     }
 
     .charts-section {
