@@ -295,14 +295,14 @@ onBeforeUnmount(() => {
   position: relative;
   display: flex;
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2vw;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   overflow-x: auto;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.4vw;
 }
 
 .nav-item {
@@ -324,7 +324,7 @@ onBeforeUnmount(() => {
 .separator {
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
+  margin: 0 1.2vw;
 }
 
 .dot {
