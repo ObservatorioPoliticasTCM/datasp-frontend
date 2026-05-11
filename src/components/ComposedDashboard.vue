@@ -30,8 +30,12 @@
                     :aria-expanded="filterOpen"
                     @click="filterOpen = !filterOpen"
                 >
-                    <img src="@/assets/info.svg" alt="" aria-hidden="true" class="filter-toggle-icon" />
+                    <span
+                        class="filter-arrow"
+                        :class="{ expanded: filterOpen }"
+                    >&#9660;</span>
                     <span>Filtros</span>
+                    <img src="@/assets/info.svg" alt="" aria-hidden="true" class="filter-toggle-icon" />
                 </button>
                 <div class="filter-iframe-wrapper" :class="{ 'filter-iframe-wrapper--open': filterOpen }">
                     <slot name="filter" />
@@ -305,7 +309,6 @@ onBeforeUnmount(() => {
         height: auto;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
     }
 
     .filter-toggle {
@@ -313,19 +316,26 @@ onBeforeUnmount(() => {
         align-items: center;
         gap: 0.45rem;
         align-self: flex-start;
-        background: rgba(255, 255, 255, 0.12);
+        background: #fafafa;
         border: 1px solid rgba(255, 255, 255, 0.28);
-        color: #ffffff;
+        color: #404040;
         padding: 0.5rem 0.85rem;
         border-radius: 0.5rem;
         cursor: pointer;
         font-size: 1rem;
         transition: background 0.2s ease, border-color 0.2s ease;
+        width: 100%;
+    }
+
+    .filter-arrow.expanded {
+        transform: rotate(-180deg);
+        color: #fff;
     }
 
     .filter-toggle--open {
         background: #213547;
-        border-color: transparent;
+        color: #fff;
+        border-radius: 0.5rem 0.5rem 0 0;
     }
 
     .filter-toggle-icon {
