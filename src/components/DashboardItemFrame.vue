@@ -1,6 +1,9 @@
 <template>
-  <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
-    class="dashboard-item-frame" ref="iframe"></iframe>
+  <div class="frame-wrapper">
+    <div class="skeleton" :class="{ 'skeleton--inactive': loadIframe }" />
+    <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
+      class="dashboard-item-frame" ref="iframe"></iframe>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -58,19 +61,36 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.dashboard-item-frame {
+.frame-wrapper {
+  position: relative;
   min-height: 0;
+  grid-column: span v-bind(colSpan);
+  grid-row: span v-bind(rowSpan);
+}
+
+.dashboard-item-frame {
   width: 100%;
   height: 100%;
   border: none;
-  grid-column: span v-bind(colSpan);
-  grid-row: span v-bind(rowSpan);
+}
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  transition: opacity 2s linear;
+}
+
+.skeleton--inactive {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 3s, opacity 3s linear;
 }
 
 @media (max-width: 1024px),
 (orientation: portrait) {
 
-  .dashboard-item-frame {
+  .frame-wrapper {
     grid-column: 1 / -1;
     grid-row: auto;
     order: v-bind(mobileOrder);
