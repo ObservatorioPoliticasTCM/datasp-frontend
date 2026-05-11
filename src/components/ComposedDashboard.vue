@@ -35,7 +35,8 @@
                         :class="{ expanded: filterOpen }"
                     >&#9660;</span>
                     <span>Filtros</span>
-                    <img src="@/assets/info.svg" alt="" aria-hidden="true" class="filter-toggle-icon" />
+                    <img src="@/assets/filter-icon.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="!filterOpen" />
+                    <img src="@/assets/filter-icon-white.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="filterOpen" />
                 </button>
                 <div class="filter-iframe-wrapper" :class="{ 'filter-iframe-wrapper--open': filterOpen }">
                     <slot name="filter" />
