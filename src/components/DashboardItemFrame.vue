@@ -66,6 +66,8 @@ onMounted(() => {
   min-height: 0;
   grid-column: span v-bind(colSpan);
   grid-row: span v-bind(rowSpan);
+  width: 100%;
+  height: 100%;
 }
 
 .dashboard-item-frame {
@@ -78,13 +80,13 @@ onMounted(() => {
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
-  transition: opacity 2s linear;
+  transition: opacity 5s linear;
 }
 
 .skeleton--inactive {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 3s, opacity 3s linear;
+  transition: visibility 0s 5s, opacity 5s linear;
 }
 
 @media (max-width: 1024px),
