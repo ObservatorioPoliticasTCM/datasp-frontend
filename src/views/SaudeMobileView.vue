@@ -152,28 +152,32 @@ const dashboards: DashboardConfig[] = [
         colSpan: 13,
         rowSpan: 4,
         mobileHeight: 1,
-        mobileOrder: 1
+        mobileOrder: 1,
+        skeletonType: 'kpi'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '3242a1b7-9c08-4a9b-a01b-a7132565ab85',
         colSpan: 16,
         rowSpan: 18,
-        mobileOrder: 2
+        mobileOrder: 2,
+        skeletonType: 'map'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '6e8a22bd-a038-4279-9775-900ca13c62eb',
         colSpan: 13,
         rowSpan: 21,
-        mobileOrder: 4
+        mobileOrder: 4,
+        skeletonType: 'bar'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '327239ee-6dca-4256-813a-cf18b1cf85cf',
         colSpan: 13,
         rowSpan: 17,
-        mobileOrder: 3
+        mobileOrder: 3,
+        skeletonType: 'pie'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
@@ -181,7 +185,8 @@ const dashboards: DashboardConfig[] = [
         colSpan: 16,
         rowSpan: 3,
         mobileOrder: 5,
-        mobileHeight: 1
+        mobileHeight: 1,
+        skeletonType: 'text'
       }
     ]
   },
@@ -205,28 +210,32 @@ const dashboards: DashboardConfig[] = [
         colSpan: 13,
         rowSpan: 4,
         mobileHeight: 1,
-        mobileOrder: 1
+        mobileOrder: 1,
+        skeletonType: 'kpi'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '1b9f6b3c-27a7-4d23-bd8e-edb7c0f617b2',
         colSpan: 16,
         rowSpan: 18,
-        mobileOrder: 2
+        mobileOrder: 2,
+        skeletonType: 'map'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '00cc9341-af08-4997-a3a8-ca48f5038396',
         colSpan: 13,
         rowSpan: 21,
-        mobileOrder: 4
+        mobileOrder: 4,
+        skeletonType: 'bar'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'd90e1549-26d2-4907-a1e9-e899bc99cc9d',
         colSpan: 13,
         rowSpan: 17,
-        mobileOrder: 3
+        mobileOrder: 3,
+        skeletonType: 'pie'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
@@ -234,7 +243,8 @@ const dashboards: DashboardConfig[] = [
         colSpan: 16,
         rowSpan: 3,
         mobileOrder: 5,
-        mobileHeight: 1
+        mobileHeight: 1,
+        skeletonType: 'text'
       }
     ]
   },
@@ -257,7 +267,8 @@ const dashboards: DashboardConfig[] = [
         colSpan: 1,
         rowSpan: 4,
         mobileHeight: 1,
-        mobileOrder: 1
+        mobileOrder: 1,
+        skeletonType: 'kpi'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
@@ -265,7 +276,8 @@ const dashboards: DashboardConfig[] = [
         colSpan: 1,
         rowSpan: 5,
         mobileHeight: 2,
-        mobileOrder: 4
+        mobileOrder: 4,
+        skeletonType: 'treemap'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
@@ -273,28 +285,32 @@ const dashboards: DashboardConfig[] = [
         colSpan: 1,
         rowSpan: 4,
         mobileHeight: 1,
-        mobileOrder: 2
+        mobileOrder: 2,
+        skeletonType: 'kpi'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '657488d4-7aca-4c4f-8d82-0299686b7e21',
         colSpan: 1,
         rowSpan: 14,
-        mobileOrder: 5
+        mobileOrder: 5,
+        skeletonType: 'treemap'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'b17519e1-5931-4d69-a7be-0c6a9b4e3767',
         colSpan: 1,
         rowSpan: 17,
-        mobileOrder: 3
+        mobileOrder: 3,
+        skeletonType: 'treemap'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'ca956e69-7077-4cad-b097-7dd94bbf085e',
         colSpan: 1,
         rowSpan: 13,
-        mobileOrder: 6
+        mobileOrder: 6,
+        skeletonType: 'map'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
@@ -302,7 +318,8 @@ const dashboards: DashboardConfig[] = [
         colSpan: 2,
         rowSpan: 3,
         mobileOrder: 7,
-        mobileHeight: 1
+        mobileHeight: 1,
+        skeletonType: 'text'
       }
     ]
   }
