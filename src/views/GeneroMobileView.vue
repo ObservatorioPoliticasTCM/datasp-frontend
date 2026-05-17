@@ -470,6 +470,502 @@ const dashboards: DashboardConfig[] = [
         skeletonType: 'bar'
       }
     ]
+  },
+  {
+    title: 'Plano Municipal de Políticas para as Mulheres - Educação',
+    subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
+    identity: '4',
+    methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
+    downloadLink: '/dados/genero/orçamento-pmpm-educação.csv',
+    gridCols: 66,
+    gridRows: 40,
+    filter: {
+      appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+      sheet: '087c2178-5f3a-4187-a922-26d87c96568d',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '158d1f06-9d2a-439a-8827-126290e908c9',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 4,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '506445fc-0b1d-47d1-bba8-600b03264d16',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 5,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '547ff5c4-6ba6-4d98-829f-e549fe6a200b',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 6,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'c495d57a-83da-4bd9-9bbc-72973c80e2ea',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 7,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '8909a083-b9ed-4015-924b-53eddd7cf528',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 8,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'e730b854-d53d-461f-8962-98a08dea3b87',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 9,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'd57bc78d-4562-4339-b39c-624c2b7e5447',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 0,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'c0ec8211-4df1-42c9-8e22-1ca6ab20728e',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 1,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '3ef67df4-2de6-45ea-a4f5-b3434f81ea9d',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 2,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '51af6ded-fb44-48ca-834c-768a7a2d2ffc',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 3,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'f2dd5640-50fc-4a84-84ff-79c90b21c7fd',
+        colSpan: 22,
+        rowSpan: 34,
+        mobileHeight: 4,
+        mobileOrder: 10,
+        skeletonType: 'line'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'c72b9992-2192-471d-bca3-b53d5fc7b0c0',
+        colSpan: 44,
+        rowSpan: 34,
+        mobileHeight: 6,
+        mobileOrder: 11,
+        skeletonType: 'bar'
+      }
+    ]
+  },
+  {
+    title: 'Plano Municipal de Políticas para as Mulheres - Assistencia Social',
+    subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
+    identity: '5',
+    methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
+    downloadLink: '/dados/genero/orçamento-pmpm-assistência-social.csv',
+    gridCols: 66,
+    gridRows: 40,
+    filter: {
+      appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+      sheet: 'e1d6796b-9dc5-4bbf-9e82-d41867258d13',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '7abe496a-c18c-451e-b2d3-79977e6aea6b',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 4,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'c7a86a7c-a275-49f1-937d-e38df07873c9',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 5,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'e9cb31d3-749a-4795-8093-37c221d014f1',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 6,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'c38b39bd-609d-43ce-b164-2f76e6a59ac0',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 7,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '943d7771-74b9-43ba-84a6-4ebc799fffd6',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 8,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'e90876bd-14c4-445a-96ab-f89167a1ef44',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 9,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '214af26a-f271-4f79-8ecf-166116527ecc',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 0,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '0b3cf4d7-ab41-48a3-a325-995e6a4edc8d',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 1,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '2215b017-7a5f-43b7-8df6-33c4260f457c',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 2,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'e6c2ce99-7c4c-4398-86b5-0b0f75ff5d96',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 3,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'b0bab8c0-9808-4e8a-b67f-861bbd6d285f',
+        colSpan: 22,
+        rowSpan: 34,
+        mobileHeight: 4,
+        mobileOrder: 10,
+        skeletonType: 'line'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'bfae5073-158c-4aea-a0d3-8993db44c16f',
+        colSpan: 44,
+        rowSpan: 34,
+        mobileHeight: 6,
+        mobileOrder: 11,
+        skeletonType: 'bar'
+      }
+    ]
+  },
+  {
+    title: 'Plano Municipal de Políticas para as Mulheres - Direitos Humanos',
+    subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
+    identity: '6',
+    methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
+    downloadLink: '/dados/genero/orçamento-pmpm-direitos-humanos.csv',
+    gridCols: 66,
+    gridRows: 40,
+    filter: {
+      appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+      sheet: '388cfce4-6095-49a5-a0ef-282d4eaad783',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '69d34ab2-4367-40e9-b152-da71d2a8ffa3',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 4,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '6d8c6153-c787-4067-b26c-0d5eeb925b2c',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 5,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '507bd87d-06db-4351-9322-f33f0c98a39c',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 6,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '91184b99-afdc-465b-95d5-ef6a46728c45',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 7,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'b368d4a2-d262-4703-8efe-2d1cf60cc719',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 8,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '6501d19a-3892-4d58-a07b-d46ce7fb143b',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 9,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '4be4c689-944e-4888-98e1-2014a36e266e',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 0,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'b582b021-45c1-47a7-9f19-d3bc641c4d27',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 1,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '427011c8-1175-49df-b2e8-eead799b0ac1',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 2,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'd6650337-5365-4a5f-a59e-e0d1803dd017',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 3,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '6ec3fce4-c2d1-426f-bef1-18d97528d103',
+        colSpan: 22,
+        rowSpan: 34,
+        mobileHeight: 4,
+        mobileOrder: 10,
+        skeletonType: 'line'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '1f5834e6-2f23-4b96-9b47-a962f9f54e11',
+        colSpan: 44,
+        rowSpan: 34,
+        mobileHeight: 6,
+        mobileOrder: 11,
+        skeletonType: 'bar'
+      }
+    ]
+  },
+  {
+    title: 'Plano Municipal de Políticas para as Mulheres - Trabalho',
+    subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
+    identity: '7',
+    methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
+    downloadLink: '/dados/genero/orçamento-pmpm-trabalho.csv',
+    gridCols: 66,
+    gridRows: 40,
+    filter: {
+      appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+      sheet: '101fc4d0-7413-4cc8-aa99-52d349c635c0',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'a692b646-5c91-444a-a0ba-e41485b2d0da',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 4,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '7c4c2d09-ae5c-4f78-9fa1-3b719a17fee0',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 5,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '328daf53-1a29-4d7c-a70c-85f807cd72e9',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 6,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'a8a58e2f-d734-4370-bcba-26407eb0660e',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 7,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'f29ea5e9-fb8d-48a1-8381-ade8b203e7af',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 8,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '851a26ea-2ed1-452a-8607-9b71e507bed1',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 9,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'fbb0ed27-32d0-4ac8-941e-bb68d92f8991',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 0,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'e8abfcea-14fe-4696-94c4-a6f586a07ee2',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 1,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'a54f7ce5-40f8-4ff1-a04c-a6866d7c3870',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 2,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'b0a93c2d-5862-4aab-8f99-9475a08eab4d',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 3,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '757b5e7a-3401-4590-b018-36c5f0c04051',
+        colSpan: 22,
+        rowSpan: 34,
+        mobileHeight: 4,
+        mobileOrder: 10,
+        skeletonType: 'line'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'd6d5273e-f011-42de-96c6-085ceb9e71cd',
+        colSpan: 44,
+        rowSpan: 34,
+        mobileHeight: 6,
+        mobileOrder: 11,
+        skeletonType: 'bar'
+      }
+    ]
   }
 ]
 </script>
