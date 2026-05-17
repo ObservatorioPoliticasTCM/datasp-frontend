@@ -346,6 +346,130 @@ const dashboards: DashboardConfig[] = [
         skeletonType: 'bar'
       }
     ]
+  },
+  {
+    title: 'Plano Municipal de Políticas para as Mulheres - Habitação',
+    subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
+    identity: '3',
+    methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
+    downloadLink: '/dados/genero/orçamento-pmpm-habitação.csv',
+    gridCols: 66,
+    gridRows: 40,
+    filter: {
+      appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+      sheet: '81d5cd8a-2d94-4918-a4aa-5bfa25b588e2',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'a55b9d4b-a8d1-4a05-8cad-99b3da998f34',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 4,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'ad794e1d-26a2-42fd-8ccc-570577359ff9',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 5,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'f0b51038-338e-4c72-951e-feac926ff698',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 6,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '122bf985-6880-474a-9c15-dadf23ce6cfc',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 7,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '4ce42e44-ae1f-4d60-83bf-52a265221d1e',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 8,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'aee9c464-562d-4bd1-b958-1e4e83dbbe8b',
+        colSpan: 7,
+        rowSpan: 6,
+        mobileHeight: 2,
+        mobileOrder: 9,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '378f2704-4d0d-4480-9c44-0a3df0e50786',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 0,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '612fc99e-02d8-42fc-9544-68aca472bbf3',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 1,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'ad3a0ed8-1396-4daf-a15e-30b1190404a2',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 2,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: 'a2da803f-3a6a-42a6-880e-742d1deb2dfb',
+        colSpan: 6,
+        rowSpan: 6,
+        mobileHeight: 1,
+        mobileOrder: 3,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '4ed5621f-928b-4980-be86-2416c16e3b58',
+        colSpan: 22,
+        rowSpan: 34,
+        mobileHeight: 4,
+        mobileOrder: 10,
+        skeletonType: 'line'
+      },
+      {
+        appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+        sheet: '8d1011ab-b50c-47f6-896f-2d690de924a3',
+        colSpan: 44,
+        rowSpan: 34,
+        mobileHeight: 6,
+        mobileOrder: 11,
+        skeletonType: 'bar'
+      }
+    ]
   }
 ]
 </script>
