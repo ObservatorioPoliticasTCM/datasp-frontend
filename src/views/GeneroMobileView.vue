@@ -102,7 +102,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 11,
         rowSpan: 9,
         mobileHeight: 2,
-        mobileOrder: 0,
+        mobileOrder: 4,
         skeletonType: 'kpi'
       },
       {
@@ -111,7 +111,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 11,
         rowSpan: 9,
         mobileHeight: 2,
-        mobileOrder: 1,
+        mobileOrder: 5,
         skeletonType: 'kpi'
       },
       {
@@ -120,7 +120,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 11,
         rowSpan: 9,
         mobileHeight: 2,
-        mobileOrder: 2,
+        mobileOrder: 6,
         skeletonType: 'kpi'
       },
       {
@@ -129,7 +129,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 11,
         rowSpan: 9,
         mobileHeight: 2,
-        mobileOrder: 3,
+        mobileOrder: 7,
         skeletonType: 'kpi'
       },
       {
@@ -138,7 +138,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 11,
         rowSpan: 9,
         mobileHeight: 2,
-        mobileOrder: 4,
+        mobileOrder: 8,
         skeletonType: 'kpi'
       },
       {
@@ -147,7 +147,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 7,
         rowSpan: 3,
         mobileHeight: 1,
-        mobileOrder: 5,
+        mobileOrder: 0,
         skeletonType: 'text'
       },
       {
@@ -156,7 +156,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 7,
         rowSpan: 3,
         mobileHeight: 1,
-        mobileOrder: 6,
+        mobileOrder: 1,
         skeletonType: 'text'
       },
       {
@@ -165,7 +165,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 7,
         rowSpan: 3,
         mobileHeight: 1,
-        mobileOrder: 7,
+        mobileOrder: 2,
         skeletonType: 'text'
       },
       {
@@ -174,7 +174,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 7,
         rowSpan: 3,
         mobileHeight: 1,
-        mobileOrder: 8,
+        mobileOrder: 3,
         skeletonType: 'text'
       },
       {
