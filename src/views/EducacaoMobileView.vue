@@ -119,6 +119,59 @@ const dashboards: DashboardConfig[] = [
         mobileOrder: 9
       }
     ]
+  },
+  {
+    title: 'Despesas liquidadas na Função Educação (2024)',
+    methodologyLink: '/infos/notas/educacao/2_notas_metodologicas_despesas_ok.pdf',
+    downloadLink: '/dados/educacao/orcamento.csv',
+    identity: '3',
+    gridCols: 16,
+    gridRows: 6,
+    filter: {
+      appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+      sheet: '5cc4f2b6-43cb-4f95-a70f-7ce92844470b',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'fb8c916d-ff10-4f21-8386-d56dabd1de3c',
+        colSpan: 6,
+        rowSpan: 1,
+        mobileHeight: 1,
+        mobileOrder: 1
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '3bc3697a-cb3b-4573-a56a-c59176b8f60e',
+        colSpan: 4,
+        rowSpan: 1,
+        mobileHeight: 1,
+        mobileOrder: 0
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '960875a9-c6ae-4e01-9404-e163f90e8396',
+        colSpan: 6,
+        rowSpan: 1,
+        mobileHeight: 1,
+        mobileOrder: 2
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'a767c711-958f-4275-85ba-4c74fe34c417',
+        colSpan: 8,
+        rowSpan: 5,
+        mobileOrder: 3
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '47504b90-774f-45f9-9c85-8d115bc47052',
+        colSpan: 8,
+        rowSpan: 5,
+        mobileOrder: 4
+      }
+    ]
   }
 ]
 </script>
