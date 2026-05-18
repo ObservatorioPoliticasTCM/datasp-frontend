@@ -15,11 +15,11 @@ const checkViewport = () => {
   
   // Exibe aviso se:
   // 1. Largura menor que altura (orientação retrato)
-  // 2. Largura menor que 1024px (dispositivos móveis típicos)
+  // 2. Largura menor que 900px (dispositivos móveis típicos)
   // Exceto se a URL contiver a palavra "mobile"
   isMobileOrPortrait.value = false
   if (!window.location.href.toLowerCase().includes('mobile')) {
-    isMobileOrPortrait.value = width < height || width < 1024
+    isMobileOrPortrait.value = width < height || width < 900
   }
 }
 

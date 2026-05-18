@@ -50,7 +50,7 @@ const featured = computed(() => videos.find(video => video.id === selectedId.val
 const isMobile = ref(false)
 
 function checkMobile() {
-  isMobile.value = window.innerWidth < 1024 || window.innerHeight > window.innerWidth
+  isMobile.value = window.innerWidth < 900 || window.innerHeight > window.innerWidth
 }
 
 onMounted(() => {
