@@ -77,7 +77,7 @@ import Contributors from '@/components/Contributors.vue'
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
     .imprint-container {
         flex-direction: column;
         align-items: stretch;

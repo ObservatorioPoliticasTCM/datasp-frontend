@@ -144,7 +144,7 @@ function select(id: string) {
   box-sizing: border-box;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .guide {
     --feature-max: 27.5rem;
     gap: 1rem;

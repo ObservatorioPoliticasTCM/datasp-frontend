@@ -102,7 +102,7 @@
     resize: vertical;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 900px) {
     .grid {
       grid-template-columns: repeat(2, 1fr); /* Duas colunas para telas menores */
       height: auto; /* Permite que a altura se ajuste ao conteúdo */;

@@ -89,7 +89,7 @@ onMounted(() => {
   transition: visibility 0s 5s, opacity 5s linear;
 }
 
-@media (max-width: 1024px),
+@media (max-width: 900px),
 (orientation: portrait) {
 
   .frame-wrapper {
