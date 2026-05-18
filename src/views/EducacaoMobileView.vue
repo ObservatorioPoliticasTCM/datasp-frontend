@@ -298,6 +298,64 @@ const dashboards: DashboardConfig[] = [
         mobileOrder: 8
       }
     ]
+  },
+  {
+    title: 'Perfil dos alunos da rede municipal (2024)',
+    methodologyLink: '/infos/notas/educacao/5_notas_metodologicas_alunos_ok.pdf',
+    downloadLink: '/dados/educacao/perfil-dos-educandos.csv',
+    identity: '5',
+    gridCols: 21,
+    gridRows: 21,
+    filter: {
+      appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+      sheet: '0bdaa3a1-d526-4f59-b613-8649fbef4bc1',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '92f201f1-321d-4329-be76-3406481975e2',
+        colSpan: 7,
+        rowSpan: 11,
+        mobileOrder: 2
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'b441a4df-dc71-4bf2-b61e-41f01d78baa3',
+        colSpan: 6,
+        rowSpan: 11,
+        mobileOrder: 3
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'df30379a-ab8d-479e-8c8c-a7a38f666aa0',
+        colSpan: 8,
+        rowSpan: 4,
+        mobileHeight: 1,
+        mobileOrder: 0
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '5469c3cb-0cee-4a6f-bc90-04c5f2157a36',
+        colSpan: 8,
+        rowSpan: 17,
+        mobileOrder: 1
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '5828ad54-e4d2-4560-a4bd-48efe9babe7b',
+        colSpan: 5,
+        rowSpan: 10,
+        mobileOrder: 4
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'c64bef4e-2a40-4e38-a7db-fa42daec36c6',
+        colSpan: 8,
+        rowSpan: 10,
+        mobileOrder: 5
+      }
+    ]
   }
 ]
 </script>
