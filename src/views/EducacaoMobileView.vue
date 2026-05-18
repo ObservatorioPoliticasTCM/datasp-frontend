@@ -216,6 +216,88 @@ const dashboards: DashboardConfig[] = [
         mobileOrder: 3
       }
     ]
+  },
+  {
+    title: 'Perfil dos professores da rede pública municipal (2024)',
+    methodologyLink: '/infos/notas/educacao/4_notas_metodologicas_educ_professores_ok.pdf',
+    downloadLink: '/dados/educacao/servidores-perfil.csv',
+    identity: '4',
+    gridCols: 6,
+    gridRows: 7,
+    filter: {
+      appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+      sheet: 'b43475d3-3e19-4c51-8660-d31333f3cb10',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'c6088c5f-bfcd-45c0-8b23-eb3abbb897ae',
+        colSpan: 2,
+        rowSpan: 1,
+        mobileHeight: 1,
+        mobileOrder: 0
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'd0a87990-4cff-4dbe-a7ee-837239022871',
+        colSpan: 2,
+        rowSpan: 1,
+        mobileHeight: 1,
+        mobileOrder: 1
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '7cfe1840-7c1f-46b9-b375-50d13df1bdcb',
+        colSpan: 2,
+        rowSpan: 1,
+        mobileHeight: 1,
+        mobileOrder: 2
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '774e627b-f2cb-4efa-b595-c0003d8c21ac',
+        colSpan: 2,
+        rowSpan: 6,
+        mobileOrder: 3
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '92e85a98-e8c3-453a-9f38-58c01cf5d8b5',
+        colSpan: 1,
+        rowSpan: 3,
+        mobileOrder: 4
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'ba3e47f6-fe4f-4639-9b9c-d642a265d7df',
+        colSpan: 1,
+        rowSpan: 3,
+        mobileOrder: 5
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'f6787d09-a776-40cb-8f81-ba9116fcfb4e',
+        colSpan: 2,
+        rowSpan: 3,
+        mobileOrder: 6
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '7145d227-270f-491a-a543-9d4e37221c0b',
+        colSpan: 2,
+        rowSpan: 3,
+        mobileOrder: 7
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'bbb97967-0fd3-4c9a-ad0d-713d6e4c9563',
+        colSpan: 2,
+        rowSpan: 3,
+        mobileHeight: 5,
+        mobileOrder: 8
+      }
+    ]
   }
 ]
 </script>
