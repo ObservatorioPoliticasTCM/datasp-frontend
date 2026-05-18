@@ -172,6 +172,50 @@ const dashboards: DashboardConfig[] = [
         mobileOrder: 4
       }
     ]
+  },
+  {
+    title: 'Número de escolas da rede municipal (2024)',
+    methodologyLink: '/infos/notas/educacao/3_notas_metodologicas_escolas_ok.pdf',
+    downloadLink: '/dados/educacao/escolas-municipais.csv',
+    identity: '3',
+    gridCols: 11,
+    gridRows: 7,
+    filter: {
+      appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+      sheet: '3bd8e666-605b-45ce-a210-9f1a3fb7b3e8',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '967f4267-7fd9-4ce7-98bc-d9fb2fbbcb00',
+        colSpan: 4,
+        rowSpan: 1,
+        mobileHeight: 1,
+        mobileOrder: 0
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '5ae292aa-bd37-4b66-9e8d-77dd6de7bb1e',
+        colSpan: 7,
+        rowSpan: 7,
+        mobileOrder: 1
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'c786c115-ff4a-46f0-bd6e-86b21d41948b',
+        colSpan: 4,
+        rowSpan: 3,
+        mobileOrder: 2
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '95ca38a2-ab45-417b-b23f-3f7b7d1aef17',
+        colSpan: 4,
+        rowSpan: 3,
+        mobileOrder: 3
+      }
+    ]
   }
 ]
 </script>
