@@ -416,6 +416,57 @@ const dashboards: DashboardConfig[] = [
         mobileOrder: 4
       }
     ]
+  },
+  {
+    title: 'Alunos estrangeiros na rede municipal (2024)',
+    methodologyLink: '/infos/notas/educacao/7_notas_metodologicas_alunos_estrangeiros_ok.pdf',
+    downloadLink: '/dados/educacao/educandos-estrangeiros.csv',
+    identity: '7',
+    gridCols: 3,
+    gridRows: 14,
+    filter: {
+      appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+      sheet: '179f5abd-495c-4d56-82cc-49662f7a5cd7',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '340230df-e45e-4700-b3c6-7883dfd2bcd8',
+        colSpan: 1,
+        rowSpan: 14,
+        mobileOrder: 1
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '8593cfe5-864e-4756-89a9-49f59d718638',
+        colSpan: 1,
+        rowSpan: 7,
+        mobileOrder: 3
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '39e1d1dc-def1-43f8-9db2-22e1531c2088',
+        colSpan: 1,
+        rowSpan: 2,
+        mobileHeight: 1,
+        mobileOrder: 0
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '4507a7b8-384e-4232-8a6e-a473734c2bbd',
+        colSpan: 1,
+        rowSpan: 12,
+        mobileOrder: 4
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '81907fe7-a7c6-4eb4-86f7-74104bdc0369',
+        colSpan: 1,
+        rowSpan: 7,
+        mobileOrder: 2
+      }
+    ]
   }
 ]
 </script>
