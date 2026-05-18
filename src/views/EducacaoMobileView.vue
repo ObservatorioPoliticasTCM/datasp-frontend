@@ -356,6 +356,66 @@ const dashboards: DashboardConfig[] = [
         mobileOrder: 5
       }
     ]
+  },
+  {
+    title: 'Alunos da rede municipal beneficiários do Bolsa Família (2024)',
+    methodologyLink: '/infos/notas/educacao/6_notas_metodologicas_bolsa_familia_ok.pdf',
+    downloadLink: '/dados/educacao/beneficiarios-pbf.csv',
+    identity: '6',
+    gridCols: 6,
+    gridRows: 14,
+    filter: {
+      appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+      sheet: 'd667d239-2e2f-4d31-8009-15863259a513',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '1216993d-41bc-463f-b4e6-08dbb476b7f5',
+        colSpan: 2,
+        rowSpan: 14,
+        mobileOrder: 2
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'd2377d1e-793d-4688-b686-f2ac358fa130',
+        colSpan: 2,
+        rowSpan: 7,
+        mobileOrder: 3
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '04aad9f6-c885-44f6-8eaf-bd7dcdfd8757',
+        colSpan: 1,
+        rowSpan: 2,
+        mobileHeight: 1,
+        mobileOrder: 0
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: 'fbeb92af-8aeb-495c-890d-cc1f5fccbc42',
+        colSpan: 1,
+        rowSpan: 2,
+        mobileHeight: 1,
+        mobileOrder: 1
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '33bf64be-fa88-483a-bca1-f7b6324a779a',
+        colSpan: 2,
+        rowSpan: 12,
+        mobileOrder: 5
+      },
+      {
+        appid: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+        sheet: '9106493c-b034-4032-afb2-651db097823d',
+        colSpan: 2,
+        rowSpan: 7,
+        mobileHeight: 5,
+        mobileOrder: 4
+      }
+    ]
   }
 ]
 </script>
