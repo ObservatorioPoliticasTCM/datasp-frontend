@@ -97,7 +97,7 @@ footer {
 }
 
 /* Tablet / large portrait: logos side by side on top, license + version stacked below */
-@media (max-width: 1024px), (orientation: portrait) {
+@media (max-width: 900px), (orientation: portrait) {
   .footer-container {
     flex-direction: column;
     align-items: center;

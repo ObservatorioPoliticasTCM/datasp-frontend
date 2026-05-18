@@ -92,7 +92,7 @@ const props = withDefaults(defineProps<Props>(), {
   disableSnap: false
 })
 
-const MOBILE_BREAKPOINT = 1024
+const MOBILE_BREAKPOINT = 900
 const isPortrait = ref(false)
 const isMobileView = ref(false)
 

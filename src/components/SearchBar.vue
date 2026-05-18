@@ -54,7 +54,7 @@ const onInput = (event: Event) => {
   color: #ababab;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .search-bar input {
     width: 78vw;
   }

@@ -50,7 +50,7 @@ const featured = computed(() => videos.find(video => video.id === selectedId.val
 const isMobile = ref(false)
 
 function checkMobile() {
-  isMobile.value = window.innerWidth < 1024 || window.innerHeight > window.innerWidth
+  isMobile.value = window.innerWidth < 900 || window.innerHeight > window.innerWidth
 }
 
 onMounted(() => {
@@ -144,7 +144,7 @@ function select(id: string) {
   box-sizing: border-box;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .guide {
     --feature-max: 27.5rem;
     gap: 1rem;

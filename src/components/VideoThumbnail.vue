@@ -88,7 +88,7 @@ function thumbUrl(id: string) {
   border-radius: 0.5rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .thumb-label {
     font-size: 0.88rem;
   }

@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
     overflow: hidden;
 }
 
-@media (max-width: 1024px),
+@media (max-width: 900px),
 (orientation: portrait) {
     .snap-page {
         min-height: auto;

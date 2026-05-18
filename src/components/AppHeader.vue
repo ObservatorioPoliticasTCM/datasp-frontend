@@ -108,7 +108,7 @@
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-const MOBILE_BREAKPOINT = 1024
+const MOBILE_BREAKPOINT = 900
 
 const route = useRoute()
 

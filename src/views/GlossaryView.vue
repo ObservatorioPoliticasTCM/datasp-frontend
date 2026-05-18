@@ -184,7 +184,7 @@ const rows = computed(() => {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .glossary-row {
     grid-template-columns: 1fr;
   }

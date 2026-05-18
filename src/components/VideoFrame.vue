@@ -156,7 +156,7 @@ onBeforeUnmount(() => {
   display: block;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .snap-section {
     height: auto;
     width: 100vw;
