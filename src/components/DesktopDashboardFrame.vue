@@ -1,5 +1,6 @@
 <template>
   <div class="desktop-frame-wrapper" ref="wrapperEl">
+    <DashboardItemSkeleton :type="skeletonType" class="skeleton-overlay" :class="{ 'skeleton--inactive': loaded }" />
     <iframe
       :src="iframeSrc"
       :title="`Dashboard – ${sheet}`"
@@ -12,14 +13,18 @@
 <script setup lang="ts">
 import { computed, inject, onBeforeUnmount, onMounted, ref, unref } from 'vue'
 import type { Ref } from 'vue'
+import DashboardItemSkeleton, { type SkeletonType } from './DashboardItemSkeleton.vue'
 import { buildQlikUrl } from '@/utils/qlik'
 
 interface DesktopDashboardFrameProps {
   appid: string
   sheet: string
+  skeletonType?: SkeletonType
 }
 
-const props = defineProps<DesktopDashboardFrameProps>()
+const props = withDefaults(defineProps<DesktopDashboardFrameProps>(), {
+  skeletonType: 'column'
+})
 
 const wrapperEl = ref<HTMLElement | null>(null)
 const loaded = ref(false)
@@ -53,6 +58,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .desktop-frame-wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
   flex: 1;
@@ -63,5 +69,16 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 100%;
   border: none;
+  background: linear-gradient(90deg, #d4d4d4 25%, #ebebeb 50%, #d4d4d4 75%);
+}
+
+.skeleton-overlay {
+  transition: opacity 3s linear;
+}
+
+.skeleton--inactive {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 3s, opacity 3s linear;
 }
 </style>
