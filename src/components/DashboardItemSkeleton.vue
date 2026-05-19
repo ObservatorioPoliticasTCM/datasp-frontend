@@ -151,6 +151,47 @@
         <rect x="5"  y="12"  width="92" height="34" rx="1" :fill="`url(#${gradId})`" />
         <rect x="5"  y="60" width="74" height="26" rx="1" :fill="`url(#${gradId})`" />
       </template>
+
+      <!-- Dashboard (bar left | line top-right / column bottom-right) -->
+      <template v-else-if="type === 'dashboard'">
+        <!-- Left: horizontal bar chart -->
+        <rect x="1"  y="2"  width="0.8" height="96" :fill="`url(#${gradId})`" />
+        <rect x="1"  y="97" width="45"  height="0.8" :fill="`url(#${gradId})`" />
+        <rect x="2"  y="6"  width="30"  height="11" :fill="`url(#${gradId})`" />
+        <rect x="2"  y="21" width="18"  height="11" :fill="`url(#${gradId})`" />
+        <rect x="2"  y="36" width="38"  height="11" :fill="`url(#${gradId})`" />
+        <rect x="2"  y="51" width="24"  height="11" :fill="`url(#${gradId})`" />
+        <rect x="2"  y="66" width="12"  height="11" :fill="`url(#${gradId})`" />
+        <rect x="2"  y="81" width="28"  height="11" :fill="`url(#${gradId})`" />
+        <!-- Top right: line chart -->
+        <rect x="50.5" y="2"    width="0.8" height="45"  :fill="`url(#${gradId})`" />
+        <rect x="50"   y="46.5" width="49"  height="0.8" :fill="`url(#${gradId})`" />
+        <rect x="50"   y="16"   width="49"  height="0.5" :fill="`url(#${gradId})`" opacity="0.5" />
+        <rect x="50"   y="31"   width="49"  height="0.5" :fill="`url(#${gradId})`" opacity="0.5" />
+        <polyline
+          points="53,42 61,27 69,35 77,15 85,24 93,9 99,20"
+          fill="none"
+          :stroke="`url(#${gradId})`"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <circle cx="53" cy="42" r="1.5" :fill="`url(#${gradId})`" />
+        <circle cx="61" cy="27" r="1.5" :fill="`url(#${gradId})`" />
+        <circle cx="69" cy="35" r="1.5" :fill="`url(#${gradId})`" />
+        <circle cx="77" cy="15" r="1.5" :fill="`url(#${gradId})`" />
+        <circle cx="85" cy="24" r="1.5" :fill="`url(#${gradId})`" />
+        <circle cx="93" cy="9"  r="1.5" :fill="`url(#${gradId})`" />
+        <circle cx="99" cy="20" r="1.5" :fill="`url(#${gradId})`" />
+        <!-- Bottom right: column chart -->
+        <rect x="50.5" y="52"   width="0.8" height="46"  :fill="`url(#${gradId})`" />
+        <rect x="50"   y="97.5" width="49"  height="0.8" :fill="`url(#${gradId})`" />
+        <rect x="53"   y="71"   width="7"   height="26.5" :fill="`url(#${gradId})`" />
+        <rect x="63"   y="61"   width="7"   height="36.5" :fill="`url(#${gradId})`" />
+        <rect x="73"   y="78"   width="7"   height="19.5" :fill="`url(#${gradId})`" />
+        <rect x="83"   y="56"   width="7"   height="41.5" :fill="`url(#${gradId})`" />
+        <rect x="93"   y="67"   width="6"   height="30.5" :fill="`url(#${gradId})`" />
+      </template>
     </svg>
   </div>
 </template>
@@ -158,7 +199,7 @@
 <script setup lang="ts">
 import { getCurrentInstance } from 'vue'
 
-export type SkeletonType = 'filter' | 'map' | 'column' | 'line' | 'pie' | 'treemap' | 'bar' | 'kpi' | 'text'
+export type SkeletonType = 'filter' | 'map' | 'column' | 'line' | 'pie' | 'treemap' | 'bar' | 'kpi' | 'text' | 'dashboard'
 
 defineProps<{ type: SkeletonType }>()
 

@@ -23,7 +23,7 @@ interface DesktopDashboardFrameProps {
 }
 
 const props = withDefaults(defineProps<DesktopDashboardFrameProps>(), {
-  skeletonType: 'column'
+  skeletonType: 'dashboard'
 })
 
 const wrapperEl = ref<HTMLElement | null>(null)
