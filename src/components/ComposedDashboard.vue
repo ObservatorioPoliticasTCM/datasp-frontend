@@ -13,8 +13,8 @@
                     </transition>
                 </span>
             </h1>
-            <div class="frame-actions">
-                <AdditionalInfoMenu v-show="active" :metadata-link="metadataLink" :methodology-link="methodologyLink"
+            <div class="frame-actions" :class="{ 'frame-actions--inactive': !active }">
+                <AdditionalInfoMenu :metadata-link="metadataLink" :methodology-link="methodologyLink"
                     :download-link="downloadLink" />
             </div>
         </div>
@@ -93,8 +93,8 @@ const active = ref(false)
 const filterOpen = ref(false)
 let attrObserver: MutationObserver | null = null
 
-const isDesktop = ref(false)
-let desktopMql: MediaQueryList | null = null
+const desktopMql = window.matchMedia('(min-width: 901px) and (orientation: landscape)')
+const isDesktop = ref(desktopMql.matches)
 const onMqlChange = (e: MediaQueryListEvent) => { isDesktop.value = e.matches }
 
 provide('composedIdentity', identity)
@@ -144,8 +144,6 @@ const copyDashboardLink = () => {
 }
 
 onMounted(() => {
-    desktopMql = window.matchMedia('(min-width: 901px) and (orientation: landscape)')
-    isDesktop.value = desktopMql.matches
     desktopMql.addEventListener('change', onMqlChange)
 
     if (rootEl.value) {
@@ -158,7 +156,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-    desktopMql?.removeEventListener('change', onMqlChange)
+    desktopMql.removeEventListener('change', onMqlChange)
     attrObserver?.disconnect()
     if (copyToastTimeout) clearTimeout(copyToastTimeout)
 })
@@ -224,6 +222,11 @@ onBeforeUnmount(() => {
 .frame-actions {
     display: flex;
     gap: 1rem;
+}
+
+.frame-actions--inactive {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .title-anchor-wrapper {
