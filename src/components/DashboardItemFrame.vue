@@ -1,6 +1,6 @@
 <template>
   <div class="frame-wrapper">
-    <DashboardItemSkeleton :type="skeletonType" class="skeleton-overlay" :class="{ 'skeleton--inactive': loadIframe }" />
+    <DashboardItemSkeleton :type="skeletonType" :active="!loadIframe" :transition-duration="5" />
     <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
       class="dashboard-item-frame" ref="iframe"></iframe>
   </div>
@@ -10,6 +10,7 @@
 import { computed, inject, toRefs, unref, onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
 import DashboardItemSkeleton, { type SkeletonType } from './DashboardItemSkeleton.vue'
+import { buildQlikUrl } from '@/utils/qlik'
 
 interface DashboardItemFrameProps {
   appid: string
@@ -42,13 +43,13 @@ const loadIframe = ref(false)
 const injectedIdentity = inject<Ref<string | undefined> | string | undefined>('composedIdentity', undefined)
 const resolvedIdentity = computed(() => props.identity?.trim() || (unref(injectedIdentity)?.trim() ?? ''))
 
-const baseUrl = 'https://qlik.tcm.sp.gov.br/jwt/single/'
 const iframeSrc = computed(() => {
-  let url = `${baseUrl}?appid=${appid.value}&sheet=${sheet.value}&theme=card&opt=ctxmenu`
-  if (showSelections.value) url += `,currsel`
-  if (resolvedIdentity.value) url += `&identity=${encodeURIComponent(resolvedIdentity.value)}`
-  if (select.value) url += `&secret=${encodeURIComponent(select.value)}`
-  return loadIframe.value ? url : ''
+  if (!loadIframe.value) return ''
+  return buildQlikUrl(appid.value, sheet.value, {
+    identity: resolvedIdentity.value || undefined,
+    showSelections: showSelections.value,
+    select: select.value,
+  })
 })
 
 const obs = new IntersectionObserver(([entry]) => {
@@ -77,16 +78,6 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   border: none;
-}
-
-.skeleton-overlay {
-  transition: opacity 5s linear;
-}
-
-.skeleton--inactive {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 5s, opacity 5s linear;
 }
 
 @media (max-width: 900px),

@@ -24,6 +24,8 @@ export interface DashboardConfig {
   gridCols: number
   gridRows: number
   identity?: string
+  desktopAppId?: string
+  desktopSheetId?: string
   filter: DashboardFilter
   charts: ChartItem[]
 }

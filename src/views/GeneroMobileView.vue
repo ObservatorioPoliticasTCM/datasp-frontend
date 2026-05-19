@@ -3,7 +3,7 @@
     <template v-for="dashboard in dashboards" :key="dashboard.title">
       <ComposedDashboard :title="dashboard.title" :subtitle="dashboard.subtitle" :download-link="dashboard.downloadLink"
         :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity" :grid-cols="dashboard.gridCols"
-        :grid-rows="dashboard.gridRows">
+        :grid-rows="dashboard.gridRows" :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId">
         <template #filter>
           <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
             :show-selections="dashboard.filter.showSelections" skeleton-type="filter" />
@@ -29,6 +29,8 @@ const dashboards: DashboardConfig[] = [
   {
     title: 'Visão geral de Gênero',
     identity: '0',
+    desktopAppId: 'd73227fb-7244-4216-980d-8e2b08f23f05',
+    desktopSheetId: 'XUzXjdp',
     gridCols: 4,
     gridRows: 12,
     filter: {
@@ -86,6 +88,8 @@ const dashboards: DashboardConfig[] = [
   {
     title: 'Despesas municipais sensíveis a gênero em projetos/atividades com foco exclusivo em políticas para as mulheres',
     identity: '1',
+    desktopAppId: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+    desktopSheetId: 'c609507f-709a-434f-8430-5f1f74121740',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS EM AÇÕES VOLTADAS EXCLUSIVAMENTE A POLÍTICAS DE PROMOÇÃO AOS DIREITOS DAS MULHERES 1.pdf',
     downloadLink: '/dados/genero/orçamento-exclusivo.csv',
     gridCols: 83,
@@ -236,6 +240,8 @@ const dashboards: DashboardConfig[] = [
   {
     title: 'Despesas municipais sensíveis a gênero em projetos/atividades sem foco exclusivo em políticas para mulheres (2023)',
     identity: '2',
+    desktopAppId: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+    desktopSheetId: 'b5eaabe4-7475-4e0f-ab78-92f912214961',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS EM AÇÕES PARCIALMENTE FOCALIZADAS POR INICIATIVA DISCRICIONÁRIA DA GESTÃO MUNICIPAL (2023).pdf',
     downloadLink: '/dados/genero/orçamento-não-exclusivo-2023.csv',
     gridCols: 82,
@@ -351,6 +357,8 @@ const dashboards: DashboardConfig[] = [
     title: 'Plano Municipal de Políticas para as Mulheres - Habitação',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '3',
+    desktopAppId: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+    desktopSheetId: '3d5ba550-f947-4ba8-a12e-31ee20c05521',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
     downloadLink: '/dados/genero/orçamento-pmpm-habitação.csv',
     gridCols: 66,
@@ -475,6 +483,8 @@ const dashboards: DashboardConfig[] = [
     title: 'Plano Municipal de Políticas para as Mulheres - Educação',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '4',
+    desktopAppId: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+    desktopSheetId: '62d5961d-3b5a-4872-adb5-0c79b489f70c',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
     downloadLink: '/dados/genero/orçamento-pmpm-educação.csv',
     gridCols: 66,
@@ -599,6 +609,8 @@ const dashboards: DashboardConfig[] = [
     title: 'Plano Municipal de Políticas para as Mulheres - Assistencia Social',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '5',
+    desktopAppId: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+    desktopSheetId: 'fde5eb98-c713-45ad-b134-fc6d58a188e5',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
     downloadLink: '/dados/genero/orçamento-pmpm-assistência-social.csv',
     gridCols: 66,
@@ -723,6 +735,8 @@ const dashboards: DashboardConfig[] = [
     title: 'Plano Municipal de Políticas para as Mulheres - Direitos Humanos',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '6',
+    desktopAppId: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+    desktopSheetId: '7931a494-f4b5-4f34-a3e2-c57f08b8d53a',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
     downloadLink: '/dados/genero/orçamento-pmpm-direitos-humanos.csv',
     gridCols: 66,
@@ -847,6 +861,8 @@ const dashboards: DashboardConfig[] = [
     title: 'Plano Municipal de Políticas para as Mulheres - Trabalho',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '7',
+    desktopAppId: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
+    desktopSheetId: '49e484ce-2ad7-41a1-b727-0680f3a9036b',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
     downloadLink: '/dados/genero/orçamento-pmpm-trabalho.csv',
     gridCols: 66,

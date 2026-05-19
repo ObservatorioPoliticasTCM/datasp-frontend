@@ -3,7 +3,7 @@
     <template v-for="dashboard in dashboards" :key="dashboard.title">
       <ComposedDashboard :title="dashboard.title" :subtitle="dashboard.subtitle" :download-link="dashboard.downloadLink"
         :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity" :grid-cols="dashboard.gridCols"
-        :grid-rows="dashboard.gridRows">
+        :grid-rows="dashboard.gridRows" :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId">
         <template #filter>
           <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
             :show-selections="dashboard.filter.showSelections" />
@@ -30,6 +30,8 @@ const dashboards: DashboardConfig[] = [
     title: 'Visão geral da educação (2024)',
     methodologyLink: '/infos/notas/educacao/1_notas_metodologicas_visao_geral_ok.pdf',
     identity: '1',
+    desktopAppId: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+    desktopSheetId: 'dRrpWnj',
     gridCols: 6, // TODO: set grid columns
     gridRows: 6, // TODO: set grid rows
     filter: {
@@ -125,6 +127,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/educacao/2_notas_metodologicas_despesas_ok.pdf',
     downloadLink: '/dados/educacao/orcamento.csv',
     identity: '3',
+    desktopAppId: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+    desktopSheetId: 'mSNDU',
     gridCols: 16,
     gridRows: 6,
     filter: {
@@ -178,6 +182,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/educacao/3_notas_metodologicas_escolas_ok.pdf',
     downloadLink: '/dados/educacao/escolas-municipais.csv',
     identity: '3',
+    desktopAppId: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+    desktopSheetId: '8a9478a1-23b6-4165-a526-12f9d736aaa0',
     gridCols: 11,
     gridRows: 7,
     filter: {
@@ -222,6 +228,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/educacao/4_notas_metodologicas_educ_professores_ok.pdf',
     downloadLink: '/dados/educacao/servidores-perfil.csv',
     identity: '4',
+    desktopAppId: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+    desktopSheetId: 'nvgxg',
     gridCols: 6,
     gridRows: 7,
     filter: {
@@ -304,6 +312,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/educacao/5_notas_metodologicas_alunos_ok.pdf',
     downloadLink: '/dados/educacao/perfil-dos-educandos.csv',
     identity: '5',
+    desktopAppId: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+    desktopSheetId: 'nNpyj',
     gridCols: 21,
     gridRows: 21,
     filter: {
@@ -362,6 +372,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/educacao/6_notas_metodologicas_bolsa_familia_ok.pdf',
     downloadLink: '/dados/educacao/beneficiarios-pbf.csv',
     identity: '6',
+    desktopAppId: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+    desktopSheetId: 'jRpJk',
     gridCols: 6,
     gridRows: 14,
     filter: {
@@ -422,6 +434,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/educacao/7_notas_metodologicas_alunos_estrangeiros_ok.pdf',
     downloadLink: '/dados/educacao/educandos-estrangeiros.csv',
     identity: '7',
+    desktopAppId: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
+    desktopSheetId: 'PqxZb',
     gridCols: 3,
     gridRows: 14,
     filter: {
