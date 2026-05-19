@@ -41,7 +41,7 @@
     <template v-for="dashboard in dashboards" :key="dashboard.title">
       <ComposedDashboard :title="dashboard.title" :subtitle="dashboard.subtitle" :download-link="dashboard.downloadLink"
         :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity" :grid-cols="dashboard.gridCols"
-        :grid-rows="dashboard.gridRows">
+        :grid-rows="dashboard.gridRows" :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId">
         <template #filter>
           <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
             :show-selections="dashboard.filter.showSelections" skeleton-type="filter" />
@@ -71,6 +71,8 @@ const dashboards: DashboardConfig[] = [
     downloadLink: '/dados/saude/consultas.zip',
     methodologyLink: '',
     identity: '1',
+    desktopAppId: '585f0398-5876-4e29-98db-a53e3e013dc4',
+    desktopSheetId: 'EnGpsY',
     gridCols: 42,
     gridRows: 21,
     filter: {
@@ -138,6 +140,8 @@ const dashboards: DashboardConfig[] = [
     subtitle: 'Inclui leitos das unidades municipais, estaduais e federais',
     downloadLink: '/dados/saude/leitos-internacao-complementares.zip',
     identity: '2',
+    desktopAppId: '585f0398-5876-4e29-98db-a53e3e013dc4',
+    desktopSheetId: 'kPfKtR',
     gridCols: 42,
     gridRows: 21,
     filter: {
@@ -196,6 +200,8 @@ const dashboards: DashboardConfig[] = [
     downloadLink: '/dados/saude/mortalidade.zip',
     methodologyLink: '/infos/notas/saude/taxa-de-mortalidade-2024.pdf',
     identity: '3',
+    desktopAppId: '585f0398-5876-4e29-98db-a53e3e013dc4',
+    desktopSheetId: 'hSjCf',
     gridCols: 42,
     gridRows: 21,
     filter: {
@@ -253,6 +259,8 @@ const dashboards: DashboardConfig[] = [
     subtitle: 'Inclui apenas despesas municipais',
     downloadLink: '/dados/saude/despesas.zip',
     identity: '4',
+    desktopAppId: '585f0398-5876-4e29-98db-a53e3e013dc4',
+    desktopSheetId: 'XFZvFPN',
     gridCols: 3,
     gridRows: 21,
     filter: {
