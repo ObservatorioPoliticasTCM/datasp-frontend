@@ -10,6 +10,7 @@
 import { computed, inject, toRefs, unref, onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
 import DashboardItemSkeleton, { type SkeletonType } from './DashboardItemSkeleton.vue'
+import { buildQlikUrl } from '@/utils/qlik'
 
 interface DashboardItemFrameProps {
   appid: string
@@ -42,13 +43,13 @@ const loadIframe = ref(false)
 const injectedIdentity = inject<Ref<string | undefined> | string | undefined>('composedIdentity', undefined)
 const resolvedIdentity = computed(() => props.identity?.trim() || (unref(injectedIdentity)?.trim() ?? ''))
 
-const baseUrl = 'https://qlik.tcm.sp.gov.br/jwt/single/'
 const iframeSrc = computed(() => {
-  let url = `${baseUrl}?appid=${appid.value}&sheet=${sheet.value}&theme=card&opt=ctxmenu`
-  if (showSelections.value) url += `,currsel`
-  if (resolvedIdentity.value) url += `&identity=${encodeURIComponent(resolvedIdentity.value)}`
-  if (select.value) url += `&secret=${encodeURIComponent(select.value)}`
-  return loadIframe.value ? url : ''
+  if (!loadIframe.value) return ''
+  return buildQlikUrl(appid.value, sheet.value, {
+    identity: resolvedIdentity.value || undefined,
+    showSelections: showSelections.value,
+    select: select.value,
+  })
 })
 
 const obs = new IntersectionObserver(([entry]) => {
