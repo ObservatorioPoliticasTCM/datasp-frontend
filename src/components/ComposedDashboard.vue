@@ -22,29 +22,32 @@
             <small v-if="subtitle">{{ subtitle }}</small>
         </div>
         <div class="dashboard-wrapper">
-            <div class="filter-section">
-                <button
-                    class="filter-toggle"
-                    :class="{ 'filter-toggle--open': filterOpen }"
-                    type="button"
-                    :aria-expanded="filterOpen"
-                    @click="filterOpen = !filterOpen"
-                >
-                    <span
-                        class="filter-arrow"
-                        :class="{ expanded: filterOpen }"
-                    >&#9660;</span>
-                    <span>Filtros</span>
-                    <img src="@/assets/filter-icon.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="!filterOpen" />
-                    <img src="@/assets/filter-icon-white.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="filterOpen" />
-                </button>
-                <div class="filter-iframe-wrapper" :class="{ 'filter-iframe-wrapper--open': filterOpen }">
-                    <slot name="filter" />
+            <DesktopDashboardFrame v-if="desktopAppId && desktopSheetId && isDesktop" :appid="desktopAppId" :sheet="desktopSheetId" />
+            <template v-else>
+                <div class="filter-section">
+                    <button
+                        class="filter-toggle"
+                        :class="{ 'filter-toggle--open': filterOpen }"
+                        type="button"
+                        :aria-expanded="filterOpen"
+                        @click="filterOpen = !filterOpen"
+                    >
+                        <span
+                            class="filter-arrow"
+                            :class="{ expanded: filterOpen }"
+                        >&#9660;</span>
+                        <span>Filtros</span>
+                        <img src="@/assets/filter-icon.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="!filterOpen" />
+                        <img src="@/assets/filter-icon-white.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="filterOpen" />
+                    </button>
+                    <div class="filter-iframe-wrapper" :class="{ 'filter-iframe-wrapper--open': filterOpen }">
+                        <slot name="filter" />
+                    </div>
                 </div>
-            </div>
-            <div class="charts-section">
-                <slot name="charts" />
-            </div>
+                <div class="charts-section">
+                    <slot name="charts" />
+                </div>
+            </template>
         </div>
     </div>
 
@@ -53,6 +56,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onBeforeUnmount, ref, watch, toRefs, nextTick, provide } from 'vue'
 import AdditionalInfoMenu from './AdditionalInfoMenu.vue'
+import DesktopDashboardFrame from './DesktopDashboardFrame.vue'
 
 const fullyVisibleEvent = 'fully-visible'
 
@@ -65,6 +69,8 @@ interface DashboardFrameProps {
     downloadLink?: string
     gridCols?: number
     gridRows?: number
+    desktopAppId?: string
+    desktopSheetId?: string
 }
 
 const props = withDefaults(defineProps<DashboardFrameProps>(), {
@@ -78,6 +84,7 @@ const emit = defineEmits<{ (e: 'fully-visible', anchorId: string): void }>()
 const { identity, title, subtitle } = toRefs(props)
 const { metadataLink, methodologyLink, downloadLink } = toRefs(props)
 const { gridCols, gridRows } = toRefs(props)
+const { desktopAppId, desktopSheetId } = toRefs(props)
 
 const rootEl = ref<HTMLElement | null>(null)
 const showCopied = ref(false)
@@ -85,6 +92,10 @@ let copyToastTimeout: number | null = null
 const active = ref(false)
 const filterOpen = ref(false)
 let attrObserver: MutationObserver | null = null
+
+const isDesktop = ref(false)
+let desktopMql: MediaQueryList | null = null
+const onMqlChange = (e: MediaQueryListEvent) => { isDesktop.value = e.matches }
 
 provide('composedIdentity', identity)
 
@@ -133,6 +144,10 @@ const copyDashboardLink = () => {
 }
 
 onMounted(() => {
+    desktopMql = window.matchMedia('(min-width: 901px) and (orientation: landscape)')
+    isDesktop.value = desktopMql.matches
+    desktopMql.addEventListener('change', onMqlChange)
+
     if (rootEl.value) {
         active.value = rootEl.value.dataset.active === 'true'
         attrObserver = new MutationObserver(() => {
@@ -143,6 +158,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+    desktopMql?.removeEventListener('change', onMqlChange)
     attrObserver?.disconnect()
     if (copyToastTimeout) clearTimeout(copyToastTimeout)
 })
