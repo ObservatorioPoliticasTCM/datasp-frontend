@@ -195,6 +195,8 @@ onBeforeUnmount(() => {
     font-weight: normal;
     white-space: pre-line;
     margin-bottom: 1rem;
+    flex: 1;
+    min-width: 0;
 }
 
 .copy-icon {
@@ -222,6 +224,7 @@ onBeforeUnmount(() => {
 .frame-actions {
     display: flex;
     gap: 1rem;
+    flex-shrink: 0;
 }
 
 .frame-actions--inactive {
