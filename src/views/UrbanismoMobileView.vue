@@ -37,7 +37,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 21,
     filter: {
       appid: 'ae6af572-20d7-4971-87ca-c472c0bde58a',
-      sheet: '',
+      sheet: '3855132f-c221-41c0-ae97-6e2fca20f942',
       showSelections: true
     },
     charts: [
@@ -134,7 +134,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 21,
     filter: {
       appid: '14f47000-5a08-4b2a-b198-d7ae6b6d55b2',
-      sheet: '',
+      sheet: '5bfcbcc2-e2fb-4021-8096-07cf82b7750b',
       showSelections: true
     },
     charts: [
@@ -222,7 +222,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 14,
     filter: {
       appid: 'b4ec6f8c-40e8-473f-b130-359e44df750e',
-      sheet: '',
+      sheet: '9cde9237-bc1a-4eec-aabb-94a65716a38f',
       showSelections: true
     },
     charts: [
@@ -266,7 +266,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 14,
     filter: {
       appid: '22a261d9-7064-4232-956f-232f78547e51',
-      sheet: '',
+      sheet: '3ed03c68-c5fa-4e0a-ac5e-86424d0e5c90',
       showSelections: true
     },
     charts: [
@@ -327,7 +327,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 21,
     filter: {
       appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
-      sheet: '',
+      sheet: '24de766d-67e4-4531-90c2-6b978a9b60a2',
       showSelections: true
     },
     charts: [
@@ -406,7 +406,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 21,
     filter: {
       appid: '97daaa3e-d91e-4eaf-aa6b-1cb4772239bb',
-      sheet: '',
+      sheet: 'de9ebe1d-41b6-4e01-8c66-9abb42256c71',
       showSelections: true
     },
     charts: [
@@ -503,7 +503,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 21,
     filter: {
       appid: '2be0f077-d541-4b52-a2bf-7b05c1b72400',
-      sheet: '',
+      sheet: '9954c2ea-72ef-4000-ac9f-3d009eaae3a6',
       showSelections: true
     },
     charts: [
@@ -582,7 +582,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 21,
     filter: {
       appid: '58f8b63f-5302-4e4b-9260-dc74b69c57f9',
-      sheet: '',
+      sheet: '5b53226b-17c1-4ad7-bec0-c4a1b9ca3eed',
       showSelections: true
     },
     charts: [
@@ -670,7 +670,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 12,
     filter: {
       appid: 'f571d56a-108d-4a83-b865-45255c72b23d',
-      sheet: '',
+      sheet: 'f8b237a3-22bd-4b04-9d55-32c708bea204',
       showSelections: true
     },
     charts: [
@@ -713,7 +713,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 14,
     filter: {
       appid: '18956ab0-d917-475f-8c94-aba437c955fc',
-      sheet: '',
+      sheet: '15447374-7e2c-48ba-98fd-27afec521d18',
       showSelections: true
     },
     charts: [
@@ -761,6 +761,15 @@ const dashboards: DashboardConfig[] = [
         mobileOrder: 4,
         mobileHeight: 1,
         skeletonType: 'kpi'
+      },
+      {
+        appid: '18956ab0-d917-475f-8c94-aba437c955fc',
+        sheet: 'd71713bc-5640-4333-82d8-30185dbf31bf',
+        colSpan: 3,
+        rowSpan: 8,
+        mobileOrder: 5,
+        mobileHeight: 5,
+        skeletonType: 'map'
       }
     ]
   }
