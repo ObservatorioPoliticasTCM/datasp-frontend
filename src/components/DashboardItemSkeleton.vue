@@ -1,5 +1,5 @@
 <template>
-  <div class="skeleton-root">
+  <div class="skeleton-root" :class="{ 'skeleton-root--active': active }">
     <div v-if="type === 'filter'" class="filter-skeleton">
       <div class="filter-icon-pill shimmer-bg">
         <svg viewBox="0 0 64 64" class="icon-svg" aria-hidden="true" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none">
@@ -201,7 +201,10 @@ import { getCurrentInstance } from 'vue'
 
 export type SkeletonType = 'filter' | 'map' | 'column' | 'line' | 'pie' | 'treemap' | 'bar' | 'kpi' | 'text' | 'dashboard'
 
-defineProps<{ type: SkeletonType }>()
+const props = withDefaults(defineProps<{ type: SkeletonType; active?: boolean; transitionDuration?: number }>(), {
+  active: true,
+  transitionDuration: 5,
+})
 
 const uid = getCurrentInstance()?.uid ?? Math.random().toString(36).slice(2)
 const gradId = `skeleton-shimmer-${uid}`
@@ -213,6 +216,15 @@ const gradId = `skeleton-shimmer-${uid}`
   inset: 0;
   overflow: hidden;
   background-color: #f0f0f0;
+  transition: opacity v-bind('`${props.transitionDuration}s`') linear;
+}
+
+.skeleton-root:not(.skeleton-root--active) {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0s v-bind('`${props.transitionDuration}s`'),
+    opacity v-bind('`${props.transitionDuration}s`') linear;
 }
 
 .chart-svg {

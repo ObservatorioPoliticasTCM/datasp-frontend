@@ -1,6 +1,6 @@
 <template>
   <div class="frame-wrapper">
-    <DashboardItemSkeleton :type="skeletonType" class="skeleton-overlay" :class="{ 'skeleton--inactive': loadIframe }" />
+    <DashboardItemSkeleton :type="skeletonType" :active="!loadIframe" :transition-duration="5" />
     <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
       class="dashboard-item-frame" ref="iframe"></iframe>
   </div>
@@ -78,16 +78,6 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   border: none;
-}
-
-.skeleton-overlay {
-  transition: opacity 5s linear;
-}
-
-.skeleton--inactive {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 5s, opacity 5s linear;
 }
 
 @media (max-width: 900px),

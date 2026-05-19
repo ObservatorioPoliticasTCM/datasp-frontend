@@ -1,6 +1,6 @@
 <template>
   <div class="desktop-frame-wrapper" ref="wrapperEl">
-    <DashboardItemSkeleton :type="skeletonType" class="skeleton-overlay" :class="{ 'skeleton--inactive': loaded }" />
+    <DashboardItemSkeleton :type="skeletonType" :active="!loaded" :transition-duration="3" />
     <iframe
       :src="iframeSrc"
       :title="`Dashboard – ${sheet}`"
@@ -70,15 +70,5 @@ onBeforeUnmount(() => {
   height: 100%;
   border: none;
   background: linear-gradient(90deg, #d4d4d4 25%, #ebebeb 50%, #d4d4d4 75%);
-}
-
-.skeleton-overlay {
-  transition: opacity 3s linear;
-}
-
-.skeleton--inactive {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 3s, opacity 3s linear;
 }
 </style>
