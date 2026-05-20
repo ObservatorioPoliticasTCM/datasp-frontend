@@ -6,7 +6,7 @@
         :grid-rows="dashboard.gridRows">
         <template #filter>
           <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
-            :show-selections="dashboard.filter.showSelections" :mobile-height="0.45" />
+            :show-selections="dashboard.filter.showSelections" skeleton-type="filter" />
         </template>
 
         <template #charts>
@@ -35,7 +35,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 6,
     filter: {
       appid: '01ec34f7-4862-43f5-bd71-0413d71dbe97',
-      sheet: 'UMJqywF',
+      sheet: '8f1f009a-ae21-4ec5-bf87-92d762221a63',
       showSelections: true
     },
     charts: [
@@ -103,7 +103,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 7,
     filter: {
       appid: '6c0cd072-faf6-4bc4-9251-7ef5479ff6af',
-      sheet: '525af6c4-46d9-40a2-86e7-5dc87c26aa62',
+      sheet: '2195998b-a1dd-48fd-af56-7d3c20a80e4d',
       showSelections: true
     },
     charts: [
@@ -179,7 +179,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 7,
     filter: {
       appid: 'daf572a6-2fda-44c6-b100-77dd018de06f',
-      sheet: 'f8912068-43ca-44f9-866c-302baa830c87',
+      sheet: '38a81cf9-832a-4a7f-a231-8c8b2941ce1f',
       showSelections: true
     },
     charts: [
@@ -255,7 +255,7 @@ const dashboards: DashboardConfig[] = [
     gridRows: 7,
     filter: {
       appid: 'db89e6fd-00c8-4542-ba80-787563d26598',
-      sheet: 'b01f8cae-257a-4361-b56d-4657ba7a27c6',
+      sheet: '8f9aff06-0450-4f98-8921-03fd5287dc3e',
       showSelections: true
     },
     charts: [
