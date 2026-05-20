@@ -4,6 +4,7 @@ import EducacaoView from '@/views/EducacaoView.vue'
 import EducacaoMobileView from '@/views/EducacaoMobileView.vue'
 import SaudeMobileView from '@/views/SaudeMobileView.vue'
 import GeneroView from '@/views/GeneroView.vue'
+import GeneroMobileView from '@/views/GeneroMobileView.vue'
 import SaudeView from '@/views/SaudeView.vue'
 import UrbanismoView from '@/views/UrbanismoView.vue'
 import OrcamentoView from '@/views/OrcamentoView.vue'
@@ -59,6 +60,12 @@ const router = createRouter({
       name: 'genero',
       component: GeneroView,
       meta: { title: 'Gênero – DataSP' }
+    },
+    {
+      path: '/genero-mobile',
+      name: 'genero-mobile',
+      component: GeneroMobileView,
+      meta: { title: 'Gênero Mobile – DataSP' }
     },
     {
       path: '/saude',

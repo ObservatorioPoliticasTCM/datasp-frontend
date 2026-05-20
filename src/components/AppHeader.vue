@@ -108,7 +108,7 @@
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-const MOBILE_BREAKPOINT = 1024
+const MOBILE_BREAKPOINT = 900
 
 const route = useRoute()
 
@@ -295,14 +295,14 @@ onBeforeUnmount(() => {
   position: relative;
   display: flex;
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2vw;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   overflow-x: auto;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.4vw;
 }
 
 .nav-item {
@@ -324,7 +324,7 @@ onBeforeUnmount(() => {
 .separator {
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
+  margin: 0 1.2vw;
 }
 
 .dot {
@@ -422,7 +422,7 @@ onBeforeUnmount(() => {
   transform: translateY(-0.25rem);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
   .header.compact {
   height: clamp(4rem, 10vh, 5.5rem);
   padding: 0;

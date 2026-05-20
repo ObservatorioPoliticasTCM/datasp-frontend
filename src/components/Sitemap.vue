@@ -100,7 +100,7 @@ import { RouterLink } from 'vue-router'
   font-size: clamp(0.85rem, 2vw, 1rem);
 }
 
-@media (max-width: 1024px), (orientation: portrait) {
+@media (max-width: 900px), (orientation: portrait) {
   .sitemap {
     flex-wrap: wrap;
     flex-direction: row;

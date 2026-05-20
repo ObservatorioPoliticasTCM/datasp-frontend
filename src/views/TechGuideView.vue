@@ -1,20 +1,25 @@
 ﻿<template>
   <SnapPage>
     <div class="guide">
-      <h1 class="title">Guia técnico &mdash; {{ featured?.title }}</h1>
+      <h1 class="title" v-if="!isMobile">Guia técnico &mdash; {{ featured?.title }}</h1>
       <div class="media-layout">
-        <div class="feature-video">
+        <div class="feature-video" v-if="!isMobile">
           <VideoFrame :video-id="selectedId" :autoplay="autoplay" :muted="muted" :closed-captions="closedCaptions" />
         </div>
 
         <div class="thumb-grid">
-          <VideoThumbnail
-            v-for="video in videos"
-            :key="video.id"
-            :video="video"
-            :is-active="video.id === selectedId"
-            @select="select"
-          />
+          <template v-for="video in videos" :key="video.id">
+            <h1 class="title mobile-title" v-if="isMobile && video.id === selectedId">Guia técnico <br> {{ featured?.title }}</h1>
+            <VideoThumbnail
+              :video="video"
+              :is-active="video.id === selectedId"
+              @select="select"
+            >
+              <template #default v-if="isMobile && video.id === selectedId">
+                <VideoFrame :video-id="video.id" :autoplay="autoplay" :muted="muted" :closed-captions="closedCaptions" />
+              </template>
+            </VideoThumbnail>
+          </template>
         </div>
       </div>
     </div>
@@ -22,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, onMounted, onUnmounted } from 'vue'
 import SnapPage from '@/components/SnapPage.vue'
 import VideoFrame from '@/components/VideoFrame.vue'
 import VideoThumbnail from '@/components/VideoThumbnail.vue'
@@ -41,6 +46,21 @@ const autoplay = ref(false)
 const muted = ref(true)
 const closedCaptions = ref(true)
 const featured = computed(() => videos.find(video => video.id === selectedId.value) ?? videos[0])
+
+const isMobile = ref(false)
+
+function checkMobile() {
+  isMobile.value = window.innerWidth < 900 || window.innerHeight > window.innerWidth
+}
+
+onMounted(() => {
+  checkMobile()
+  window.addEventListener('resize', checkMobile, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkMobile)
+})
 
 function select(id: string) {
   selectedId.value = id
@@ -74,6 +94,7 @@ function select(id: string) {
   letter-spacing: 0.04em;
   font-weight: 600;
   text-align: center;
+  font-size: 3.7vw;
 }
 
 .media-layout {
@@ -123,33 +144,67 @@ function select(id: string) {
   box-sizing: border-box;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 900px) {
+  .guide {
+    --feature-max: 27.5rem;
+    gap: 1rem;
+    height: auto;
+  }
+  
   .media-layout {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 1.25rem;
   }
 
   .thumb-grid {
     flex: none;
+    width: 100%;
     max-width: 100%;
-    padding-top: 0;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
+    padding: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
     max-height: none;
     overflow: visible;
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 1024px) {
-  .guide {
-    --feature-max: 27.5rem;
-    gap: 1rem;
   }
 
+  .mobile-title {
+    font-size: 6vw;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
 
+  .thumb-grid :deep(.thumb-slot-wrapper) {
+    width: 100%;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.625rem 1.75rem rgba(0, 0, 0, 0.32);
+    background: #000;
+  }
+  
+  .thumb-grid :deep(.snap-section) {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+  }
+
+  .thumb-grid :deep(.iframe-wrapper) {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .thumb-grid :deep(.iframe-wrapper iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

@@ -177,4 +177,19 @@ const rows = computed(() => {
   gap: 2em;
   margin-bottom: 2em;
 }
+
+@media (max-width: 1366px) {
+  .glossary-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .glossary-row {
+    grid-template-columns: 1fr;
+  }
+  .glossary-title {
+    font-size: 16vw;
+  }
+}
 </style>

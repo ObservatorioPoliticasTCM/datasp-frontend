@@ -92,7 +92,7 @@ const props = withDefaults(defineProps<Props>(), {
   disableSnap: false
 })
 
-const MOBILE_BREAKPOINT = 1024
+const MOBILE_BREAKPOINT = 900
 const isPortrait = ref(false)
 const isMobileView = ref(false)
 
@@ -192,13 +192,13 @@ const teardownAllSectionObservers = () => {
 }
 
 const clearHash = () => {
-  history.replaceState(null, '', window.location.pathname + window.location.search)
+  history.replaceState(history.state, '', window.location.pathname + window.location.search)
 }
 
 const sectionVisible = (id: string) => {
   if (topVisible.value || bottomVisible.value) return
   if (location.hash === `#${id}`) return
-  history.replaceState(null, '', `#${id}`)
+  history.replaceState(history.state, '', `#${id}`)
 }
 
 const evaluateViewport = () => {
