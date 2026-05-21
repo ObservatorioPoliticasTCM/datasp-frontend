@@ -6,7 +6,7 @@
         </div>
         <div class="sitemap-column">
         <ul>
-            <li><router-link to="/apresentacao">Apresentação</router-link></li>
+            <li class="sitemap-apresentacao"><router-link to="/apresentacao">Apresentação</router-link></li>
         </ul>
         </div>
         <div class="sitemap-column">
@@ -74,7 +74,7 @@ import { RouterLink } from 'vue-router'
 .sitemap-title {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
   margin-bottom: 1rem;
 }
 
@@ -97,5 +97,48 @@ import { RouterLink } from 'vue-router'
   color: black;
   text-decoration: none;
   font-weight: 400;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+@media (max-width: 900px), (orientation: portrait) {
+  .sitemap {
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    gap: 0;
+    padding: 1.5rem 0;
+  }
+
+  .sitemap-column {
+    flex: 0 0 50%;
+    box-sizing: border-box;
+    padding: 0.75rem 1.5rem;
+    justify-content: flex-end;
+  }
+
+  .sitemap-apresentacao {
+    margin-bottom: 0 !important;
+  }
+
+  .sitemap-title {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    margin-bottom: 0;
+  }
+
+  .sitemap-column a {
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
+  }
+}
+
+/* Phone portrait: single stacked column */
+@media (max-width: 480px) {
+  .sitemap {
+    flex-direction: column;
+  }
+
+  .sitemap-column {
+    flex: none;
+    width: 100%;
+  }
 }
 </style>

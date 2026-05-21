@@ -92,12 +92,13 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = anchorLin
   flex-direction: column;
   position: relative;
   z-index: 20;
+  --padding-x: 2vh;
+  --padding-y: 2vh;
+  padding: var(--padding-y) var(--padding-x);
 }
 
 .intro-panel--snap {
   min-height: 96vh;
-  width: 100vw;
-  padding: 0;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -105,11 +106,6 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = anchorLin
 .intro-panel--static {
   min-height: auto;
   height: auto;
-}
-
-.intro-panel--static.intro-panel--snap {
-  padding: 2vh 0;
-  min-height: 96vh;
 }
 
 .surface {
@@ -121,7 +117,7 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = anchorLin
   align-items: stretch;
   justify-content: center;
   padding: clamp(1.5rem, 3vw, 3rem);
-  margin: 0 2vh;
+  margin: 0;
 }
 
 .surface-head {
@@ -246,7 +242,11 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = anchorLin
   opacity: 0;
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 1366px) {
+  .intro-panel {
+    --padding-x: 6vh;
+  }
+
   .surface-head {
     flex-direction: column;
     text-align: center;
@@ -255,6 +255,13 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = anchorLin
 
   .head-text h1 {
     letter-spacing: 0.06em;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+  }
+
+  .subtitle,
+  .lead,
+  .extra {
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
   }
 
   .extra {
@@ -266,8 +273,19 @@ const { anchorId, displayTitle, rootEl, showCopied, copyAnchorLink } = anchorLin
   }
 }
 
-@media (max-width: 38rem) {
+@media (max-width: 900px) {
+  .head-text h1 {
+    font-size: 1.2rem;
+  }
+
   .lead {
+    column-count: 1;
+    text-align: left;
+  }
+
+  .extra {
+    font-size: clamp(0.5rem, 2.6vh, 4vw);
+    line-height: 1;
     column-count: 1;
     text-align: left;
   }

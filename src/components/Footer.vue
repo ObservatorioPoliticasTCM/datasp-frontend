@@ -3,10 +3,10 @@
     <div class="footer-container">
       <div class="footer-left">
         <a href="https://portal.tcm.sp.gov.br/" target="_blank" rel="noopener noreferrer" title="Acessar o portal do Tribunal de Contas do Município de São Paulo">
-          <img src="@/assets/logo-tcm.png" alt="Logo TCM" />
+          <img src="@/assets/logo-tcm.png" alt="Logo TCM" class="logo-tcm" />
         </a>
         <a href="https://escoladecontas.tcm.sp.gov.br/" target="_blank" rel="noopener noreferrer" title="Acessar o portal da Escola Superior de Gestão e Contas Públicas">
-          <img src="@/assets/logo-egc.svg" alt="Logo EGC" />
+          <img src="@/assets/logo-egc.svg" alt="Logo EGC" class="logo-egc" />
         </a>
       </div>
       <div class="footer-center">
@@ -44,8 +44,7 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
-.footer-left,
-.footer-right {
+.footer-left{
   flex: 1;
 }
 .footer-center {
@@ -53,8 +52,15 @@ footer {
   text-align: left;
   font-size: 1.4em;
 }
-.footer-left img,
-.footer-right img {
+
+.footer-left a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.footer-left img {
   margin: 0 1rem;
   width: 11.2rem;
   object-fit: contain;
@@ -87,4 +93,39 @@ footer {
   display: flex; /* force images side by side */
   gap: 0.5rem; /* optional: add spacing between images */
 }
+
+/* Tablet / large portrait: logos side by side on top, license + version stacked below */
+@media (max-width: 900px), (orientation: portrait) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .footer-left {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .footer-left img {
+    width: 42vw;
+  }
+
+  .logo-tcm {
+    margin-left: -0.9rem !important;
+  }
+
+  .logo-egc {
+    margin-right: 0 !important;
+  }
+
+  .footer-center {
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+  }
+
+  .footer-license {
+    justify-content: center;
+  }
+ }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="snap-shell">
-    <div class="snap-container" ref="container">
+    <div class="snap-container" :class="{ 'no-snap': isSnapDisabled }" ref="container">
       <slot></slot>
     </div>
     <div
@@ -84,19 +84,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } from 'vue'
 
 interface Props {
   showNavigation?: boolean
   showDots?: boolean
   showArrows?: boolean
+  disableSnap?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   showNavigation: true,
   showDots: true,
-  showArrows: true
+  showArrows: true,
+  disableSnap: false
 })
+
+const MOBILE_BREAKPOINT = 900
+const isPortrait = ref(false)
+const isMobileView = ref(false)
+
+// Combina a prop com as condições de viewport
+const isSnapDisabled = computed(() => 
+  props.disableSnap || isPortrait.value || isMobileView.value
+)
 
 const topVisible = ref(false)
 const bottomVisible = ref(false)
@@ -104,23 +115,110 @@ let topObserver: IntersectionObserver | null = null
 let bottomObserver: IntersectionObserver | null = null
 let mutationObserver: MutationObserver | null = null
 
+interface SectionState {
+  onTop: boolean
+  onUpperCenter: boolean
+  onLowerCenter: boolean
+  onBottom: boolean
+}
+const sectionStateMap = new Map<HTMLElement, SectionState>()
+const sectionObserversMap = new Map<HTMLElement, IntersectionObserver[]>()
+const activeElement = ref<HTMLElement | null>(null)
+
 const firstEl = ref<HTMLElement | null>(null)
 const lastEl = ref<HTMLElement | null>(null)
 const container = ref<HTMLElement | null>(null)
 const dashboardEls = ref<HTMLElement[]>([])
 const dashboardLabels = ref<string[]>([])
-const activeDashboard = ref(0)
+const activeDashboard = computed(() => activeElement.value ? dashboardEls.value.indexOf(activeElement.value) : -1)
+const activeDashboardAnchor = computed(() => activeElement.value?.dataset.anchorId ?? '')
 
 const totalDashboards = computed(() => dashboardEls.value.length)
 
+const checkSectionActive = (el: HTMLElement) => {
+  const state = sectionStateMap.get(el)
+  if (!state) return
+  const count = [state.onTop, state.onUpperCenter, state.onLowerCenter, state.onBottom].filter(v => v).length
+  if (count >= 3) {
+    if (activeElement.value && activeElement.value !== el) delete activeElement.value.dataset.active
+    activeElement.value = el
+    el.dataset.active = 'true'
+  } else if (activeElement.value === el) {
+    delete el.dataset.active
+    activeElement.value = null
+  }
+}
+
+const setupSectionObservers = (el: HTMLElement) => {
+  const state: SectionState = { onTop: false, onUpperCenter: false, onLowerCenter: false, onBottom: false }
+  sectionStateMap.set(el, state)
+
+  const topObs = new IntersectionObserver(([entry]) => {
+    state.onTop = entry.isIntersecting
+    checkSectionActive(el)
+  }, { rootMargin: '0px 0px -99% 0px' })
+
+  const upperCenterObs = new IntersectionObserver(([entry]) => {
+    state.onUpperCenter = entry.isIntersecting
+    checkSectionActive(el)
+  }, { rootMargin: '-25% 0px -50% 0px' })
+
+  const lowerCenterObs = new IntersectionObserver(([entry]) => {
+    state.onLowerCenter = entry.isIntersecting
+    checkSectionActive(el)
+  }, { rootMargin: '-50% 0px -25% 0px' })
+
+  const bottomObs = new IntersectionObserver(([entry]) => {
+    state.onBottom = entry.isIntersecting
+    checkSectionActive(el)
+  }, { rootMargin: '-99% 0px 0px 0px' })
+
+  topObs.observe(el)
+  upperCenterObs.observe(el)
+  lowerCenterObs.observe(el)
+  bottomObs.observe(el)
+
+  sectionObserversMap.set(el, [topObs, upperCenterObs, lowerCenterObs, bottomObs])
+}
+
+const teardownSectionObservers = (el: HTMLElement) => {
+  const observers = sectionObserversMap.get(el)
+  if (observers) {
+    observers.forEach(obs => obs.disconnect())
+    sectionObserversMap.delete(el)
+  }
+  sectionStateMap.delete(el)
+  if (activeElement.value === el) {
+    delete el.dataset.active
+    activeElement.value = null
+  }
+}
+
+const teardownAllSectionObservers = () => {
+  for (const el of [...sectionObserversMap.keys()]) {
+    teardownSectionObservers(el)
+  }
+}
+
 const clearHash = () => {
-  history.replaceState(null, '', window.location.pathname + window.location.search)
+  history.replaceState(history.state, '', window.location.pathname + window.location.search)
 }
 
 const sectionVisible = (id: string) => {
   if (topVisible.value || bottomVisible.value) return
   if (location.hash === `#${id}`) return
-  history.replaceState(null, '', `#${id}`)
+  history.replaceState(history.state, '', `#${id}`)
+}
+
+const evaluateViewport = () => {
+  const width = window.innerWidth
+  const height = window.innerHeight
+  isPortrait.value = height > width
+  isMobileView.value = width < MOBILE_BREAKPOINT
+}
+
+const onResize = () => {
+  evaluateViewport()
 }
 
 provide('sectionVisible', sectionVisible)
@@ -138,22 +236,6 @@ const dashboardLabel = (index: number) => dashboardLabels.value[index] ?? fallba
 const updateDashboardRefs = (children: HTMLElement[]) => {
   dashboardEls.value = children.filter(child => child.classList.contains('snap-section'))
   dashboardLabels.value = dashboardEls.value.map((el, idx) => extractDashboardLabel(el, idx))
-  if (!dashboardEls.value.length) {
-    activeDashboard.value = 0
-    return
-  }
-  const clamped = Math.min(activeDashboard.value, dashboardEls.value.length - 1)
-  activeDashboard.value = clamped < 0 ? 0 : clamped
-}
-
-const fullyVisibleHandler = (e: Event) => {
-  const detail = (e as CustomEvent).detail
-  const target = e.target as HTMLElement | null
-  if (target) {
-    const index = dashboardEls.value.indexOf(target)
-    if (index !== -1) activeDashboard.value = index
-  }
-  if (detail?.anchorId) sectionVisible(detail.anchorId)
 }
 
 const disconnectIOs = () => {
@@ -182,7 +264,15 @@ const setupObservers = () => {
   }, { threshold: 0.4 })
   if (firstEl.value) topObserver.observe(firstEl.value)
   if (lastEl.value && lastEl.value !== firstEl.value) bottomObserver.observe(lastEl.value)
+
+  // Tear down and recreate per-section observers
+  teardownAllSectionObservers()
+  children.filter(child => child.classList.contains('snap-section')).forEach(el => setupSectionObservers(el))
 }
+
+watch([topVisible, bottomVisible, activeDashboardAnchor], ([, , anchor]) => {
+  sectionVisible(anchor)
+})
 
 const scrollToElement = (element: HTMLElement | null) => {
   if (!element) return
@@ -190,13 +280,11 @@ const scrollToElement = (element: HTMLElement | null) => {
 }
 
 const scrollToHome = () => {
-  if (dashboardEls.value.length) activeDashboard.value = 0
   scrollToElement(firstEl.value)
 }
 
 const scrollToFooter = () => {
   if (!lastEl.value || lastEl.value === firstEl.value) return
-  if (dashboardEls.value.length) activeDashboard.value = totalDashboards.value - 1
   scrollToElement(lastEl.value)
 }
 
@@ -204,11 +292,14 @@ const scrollToDashboard = (index: number) => {
   if (!container.value) return
   const target = dashboardEls.value[index]
   if (!target) return
-  activeDashboard.value = index
   scrollToElement(target)
 }
 
 const goPrev = () => {
+  if (bottomVisible.value && totalDashboards.value) {
+    scrollToDashboard(totalDashboards.value - 1)
+    return
+  }
   if (activeDashboard.value > 0) {
     scrollToDashboard(activeDashboard.value - 1)
     return
@@ -217,6 +308,10 @@ const goPrev = () => {
 }
 
 const goNext = () => {
+  if (topVisible.value && totalDashboards.value) {
+    scrollToDashboard(0)
+    return
+  }
   if (activeDashboard.value < totalDashboards.value - 1) {
     scrollToDashboard(activeDashboard.value + 1)
     return
@@ -225,8 +320,10 @@ const goNext = () => {
 }
 
 onMounted(async () => {
+  evaluateViewport()
+  window.addEventListener('resize', onResize)
+
   if (container.value) {
-    container.value.addEventListener('fully-visible', fullyVisibleHandler as EventListener)
     await nextTick()
     setupObservers()
     mutationObserver = new MutationObserver(() => {
@@ -237,10 +334,9 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
-  if (container.value) {
-    container.value.removeEventListener('fully-visible', fullyVisibleHandler as EventListener)
-  }
+  window.removeEventListener('resize', onResize)
   disconnectIOs()
+  teardownAllSectionObservers()
   mutationObserver?.disconnect()
 })
 </script>
@@ -249,7 +345,8 @@ onBeforeUnmount(() => {
 .snap-shell {
   position: relative;
   height: 100vh;
-  width: 101vw;
+  width: 100vw;
+  overflow-x: hidden;
 }
 .snap-container {
   height: 100%;
@@ -261,6 +358,9 @@ onBeforeUnmount(() => {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
 }
+.snap-container.no-snap {
+  scroll-snap-type: none;
+}
 .snap-container::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -268,6 +368,10 @@ onBeforeUnmount(() => {
 .snap-container > :slotted(*) {
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+.snap-container.no-snap > :slotted(*) {
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
 }
 .snap-dots,
 .snap-arrows {
@@ -406,7 +510,7 @@ onBeforeUnmount(() => {
   transform: translate(0.35rem, -50%);
 }
 
-@media (max-width: 60em) {
+@media (max-width: 1366px), (orientation: portrait) {
   .snap-dots {
     left: 1rem;
   }

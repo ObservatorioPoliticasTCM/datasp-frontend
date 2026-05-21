@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import EducacaoMobileView from '@/views/EducacaoMobileView.vue'
+import SaudeMobileView from '@/views/SaudeMobileView.vue'
+import GeneroMobileView from '@/views/GeneroMobileView.vue'
+import UrbanismoMobileView from '@/views/UrbanismoMobileView.vue'
+import OrcamentoMobileView from '@/views/OrcamentoMobileView.vue'
 import EducacaoView from '@/views/EducacaoView.vue'
 import GeneroView from '@/views/GeneroView.vue'
 import SaudeView from '@/views/SaudeView.vue'
@@ -36,31 +41,31 @@ const router = createRouter({
     {
       path: '/educacao',
       name: 'educacao',
-      component: EducacaoView,
+      component: EducacaoMobileView,
       meta: { title: 'Educação – DataSP' }
     },
     {
       path: '/genero',
       name: 'genero',
-      component: GeneroView,
+      component: GeneroMobileView,
       meta: { title: 'Gênero – DataSP' }
     },
     {
       path: '/saude',
       name: 'saude',
-      component: SaudeView,
+      component: SaudeMobileView,
       meta: { title: 'Saúde – DataSP' }
     },
     {
       path: '/urbanismo',
       name: 'urbanismo',
-      component: UrbanismoView,
+      component: UrbanismoMobileView,
       meta: { title: 'Urbanismo – DataSP' }
     },
     {
       path: '/orcamento',
       name: 'orcamento',
-      component: OrcamentoView,
+      component: OrcamentoMobileView,
       meta: { title: 'Orçamento – DataSP' }
     },
     {
@@ -74,6 +79,36 @@ const router = createRouter({
       name: 'ficha-tecnica',
       component: ImprintPage,
       meta: { title: 'Ficha Técnica – DataSP' }
+    },
+    {
+      path: '/educacao-legacy',
+      name: 'educacao-legacy',
+      component: EducacaoView,
+      meta: { title: 'Educação – DataSP' }
+    },
+    {
+      path: '/genero-legacy',
+      name: 'genero-legacy',
+      component: GeneroView,
+      meta: { title: 'Gênero – DataSP' }
+    },
+    {
+      path: '/saude-legacy',
+      name: 'saude-legacy',
+      component: SaudeView,
+      meta: { title: 'Saúde – DataSP' }
+    },
+    {
+      path: '/urbanismo-legacy',
+      name: 'urbanismo-legacy',
+      component: UrbanismoView,
+      meta: { title: 'Urbanismo – DataSP' }
+    },
+    {
+      path: '/orcamento-legacy',
+      name: 'orcamento-legacy',
+      component: OrcamentoView,
+      meta: { title: 'Orçamento – DataSP' }
     },
     {
       path: '/:pathMatch(.*)*',

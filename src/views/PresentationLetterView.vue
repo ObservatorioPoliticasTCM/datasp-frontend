@@ -85,7 +85,7 @@ import ScrollablePage from '@/components/ScrollablePage.vue';
 }
 
 .presentation-title {
-  font-size: 4rem;
+  font-size: 4.6vw;
   margin-bottom: 2.3rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -104,13 +104,13 @@ import ScrollablePage from '@/components/ScrollablePage.vue';
   font-size: 0.95em;
 }
 
-@media (max-width: 48rem) {
+@media (max-width: 900px) {
   .presentation-content {
-    padding: 1em 5vw;
+    padding: 1em 0;
   }
 
   .presentation-title {
-    font-size: 2.5rem;
+    font-size: 7vw;
   }
 }
 </style>

@@ -10,13 +10,32 @@ import MobileWarning from './components/MobileWarning.vue'
 const isMobileOrPortrait = ref(false)
 
 const checkViewport = () => {
+  // Modo de acesso antecipado
+
+  if (new URLSearchParams(window.location.search).get('mobile_preview') === 'true') {
+    localStorage.setItem('mobilePreview', 'true')
+  }
+
+  const mobilePreview = localStorage.getItem('mobilePreview') === 'true'
+
+  isMobileOrPortrait.value = false
+
+  if (mobilePreview) {
+    return
+  }
+  
   const width = window.innerWidth
   const height = window.innerHeight
   
   // Exibe aviso se:
   // 1. Largura menor que altura (orientação retrato)
-  // 2. Largura menor que 1024px (dispositivos móveis típicos)
-  isMobileOrPortrait.value = width < height || width < 1024
+  // 2. Largura menor que 900px (dispositivos móveis típicos)
+  // Exceto se a data for posterior ao lançamento (após 2026-06-18)
+  const currentDate = new Date()
+  const launchDate = new Date('2026-06-18')
+  if (currentDate < launchDate) {
+    isMobileOrPortrait.value = width < height || width < 900
+  }
 }
 
 onMounted(() => {

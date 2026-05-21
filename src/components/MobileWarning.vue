@@ -281,7 +281,7 @@ import Footer from './Footer.vue'
   }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 900px) {
   .datasp-logo {
     max-width: 50%;
   }
