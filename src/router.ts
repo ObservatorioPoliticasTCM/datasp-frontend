@@ -7,6 +7,7 @@ import GeneroView from '@/views/GeneroView.vue'
 import GeneroMobileView from '@/views/GeneroMobileView.vue'
 import SaudeView from '@/views/SaudeView.vue'
 import UrbanismoView from '@/views/UrbanismoView.vue'
+import UrbanismoMobileView from '@/views/UrbanismoMobileView.vue'
 import OrcamentoView from '@/views/OrcamentoView.vue'
 import OrcamentoMobileView from '@/views/OrcamentoMobileView.vue'
 import GlossaryView from '@/views/GlossaryView.vue'
@@ -78,6 +79,12 @@ const router = createRouter({
       name: 'urbanismo',
       component: UrbanismoView,
       meta: { title: 'Urbanismo – DataSP' }
+    },
+    {
+      path: '/urbanismo-mobile',
+      name: 'urbanismo-mobile',
+      component: UrbanismoMobileView,
+      meta: { title: 'Urbanismo Mobile – DataSP' }
     },
     {
       path: '/orcamento',
