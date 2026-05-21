@@ -1,12 +1,12 @@
 <template>
   <main class="home-view">
     <Background />
-    <SnapContainer :show-navigation="false">
-      <FrontCover />
-      <VideoFrame video-id="atEtU4-OKSg" :muted="true" :closed-captions="true" />
-      <CardGrid />
-      <Sitemap />
-      <Footer />
+    <SnapContainer :show-navigation="true" :show-dots="false">
+      <FrontCover class="snap-section" />
+      <VideoFrame class="snap-section" video-id="atEtU4-OKSg" :muted="true" :closed-captions="true" />
+      <CardGrid class="snap-section" />
+      <Sitemap class="snap-section" />
+      <Footer class="snap-section" />
     </SnapContainer>
   </main>
 </template>
