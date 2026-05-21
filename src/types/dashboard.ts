@@ -9,8 +9,6 @@ export interface DashboardFilter {
 export interface ChartItem {
   appid: string
   sheet: string
-  colSpan?: number
-  rowSpan?: number
   mobileHeight?: number
   mobileOrder?: number
   skeletonType?: SkeletonType
@@ -21,8 +19,6 @@ export interface DashboardConfig {
   subtitle?: string
   downloadLink?: string
   methodologyLink?: string
-  gridCols: number
-  gridRows: number
   identity?: string
   desktopAppId?: string
   desktopSheetId?: string

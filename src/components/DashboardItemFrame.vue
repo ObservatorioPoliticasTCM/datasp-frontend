@@ -19,16 +19,12 @@ interface DashboardItemFrameProps {
   select?: string
   showSelections?: boolean
   label?: string
-  colSpan?: number
-  rowSpan?: number
   mobileOrder?: number
   mobileHeight?: number
   skeletonType?: SkeletonType
 }
 
 const props = withDefaults(defineProps<DashboardItemFrameProps>(), {
-  colSpan: 1,
-  rowSpan: 1,
   showSelections: false,
   mobileOrder: 0,
   mobileHeight: 8,
@@ -68,8 +64,6 @@ onMounted(() => {
 .frame-wrapper {
   position: relative;
   min-height: 0;
-  grid-column: span v-bind(colSpan);
-  grid-row: span v-bind(rowSpan);
   width: 100%;
   height: 100%;
 }
@@ -84,8 +78,6 @@ onMounted(() => {
 (orientation: portrait) {
 
   .frame-wrapper {
-    grid-column: 1 / -1;
-    grid-row: auto;
     order: v-bind(mobileOrder);
     height: calc(v-bind(mobileHeight) * 12vh);
   }

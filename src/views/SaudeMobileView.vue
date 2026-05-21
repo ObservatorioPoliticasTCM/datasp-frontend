@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <ThemePage :dashboards="dashboards">
     <IntroPanel title="Visão geral dos dashboards de Saúde" subtitle="" :full-height="false" :use-placeholder="false"
       :snap="true">
@@ -55,8 +55,6 @@ const dashboards: DashboardConfig[] = [
     identity: '1',
     desktopAppId: '585f0398-5876-4e29-98db-a53e3e013dc4',
     desktopSheetId: 'EnGpsY',
-    gridCols: 42,
-    gridRows: 21,
     filter: {
       appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
       sheet: 'CmsPL',
@@ -66,16 +64,12 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
         sheet: '57b6bce0-3c86-49d7-87c0-2e2690420f8a',
-        colSpan: 14,
-        rowSpan: 21,
         mobileOrder: 0,
         skeletonType: 'map'
       },
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
         sheet: '3bacdabc-915f-4f33-ab7f-92e10addfe6a',
-        colSpan: 12,
-        rowSpan: 4,
         mobileHeight: 1,
         mobileOrder: 1,
         skeletonType: 'kpi'
@@ -83,8 +77,6 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
         sheet: '3b487c3e-46bb-49bb-b6d1-f07bc78bc34c',
-        colSpan: 16,
-        rowSpan: 12,
         mobileHeight: 4,
         mobileOrder: 4,
         skeletonType: 'pie'
@@ -92,8 +84,6 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
         sheet: '76b4690d-f536-4788-b99e-b89eae1c540e',
-        colSpan: 12,
-        rowSpan: 8,
         mobileHeight: 4,
         mobileOrder: 2,
         skeletonType: 'bar'
@@ -101,16 +91,12 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
         sheet: '60c5c2ae-6a1e-4986-bee9-6afa7f02e128',
-        colSpan: 28,
-        rowSpan: 6,
         mobileOrder: 3,
         skeletonType: 'treemap'
       },
       {
         appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
         sheet: '06e488a7-e8f7-43e4-9d4c-90bddc114dd3',
-        colSpan: 28,
-        rowSpan: 3,
         mobileHeight: 1,
         mobileOrder: 5,
         skeletonType: 'text'
@@ -124,8 +110,6 @@ const dashboards: DashboardConfig[] = [
     identity: '2',
     desktopAppId: '585f0398-5876-4e29-98db-a53e3e013dc4',
     desktopSheetId: 'kPfKtR',
-    gridCols: 42,
-    gridRows: 21,
     filter: {
       appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
       sheet: 'b61ed3a1-544e-4be2-8c23-fe9063c63085',
@@ -135,8 +119,6 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '1bde1b53-2caa-425f-a3dc-da5ff27a1195',
-        colSpan: 13,
-        rowSpan: 4,
         mobileHeight: 1,
         mobileOrder: 1,
         skeletonType: 'kpi'
@@ -144,32 +126,24 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '3242a1b7-9c08-4a9b-a01b-a7132565ab85',
-        colSpan: 16,
-        rowSpan: 18,
         mobileOrder: 2,
         skeletonType: 'map'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '6e8a22bd-a038-4279-9775-900ca13c62eb',
-        colSpan: 13,
-        rowSpan: 21,
         mobileOrder: 4,
         skeletonType: 'bar'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '327239ee-6dca-4256-813a-cf18b1cf85cf',
-        colSpan: 13,
-        rowSpan: 17,
         mobileOrder: 3,
         skeletonType: 'pie'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'dcb974b6-95e1-4bc5-991d-d14951cd993c',
-        colSpan: 16,
-        rowSpan: 3,
         mobileOrder: 5,
         mobileHeight: 1,
         skeletonType: 'text'
@@ -184,8 +158,6 @@ const dashboards: DashboardConfig[] = [
     identity: '3',
     desktopAppId: '585f0398-5876-4e29-98db-a53e3e013dc4',
     desktopSheetId: 'hSjCf',
-    gridCols: 42,
-    gridRows: 21,
     filter: {
       appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
       sheet: 'a4e288ed-0cc5-4f45-bae5-0f5afeee2113',
@@ -195,8 +167,6 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '9f22cdfc-2dfe-46fe-8aec-b94a7973211a',
-        colSpan: 13,
-        rowSpan: 4,
         mobileHeight: 1,
         mobileOrder: 1,
         skeletonType: 'kpi'
@@ -204,32 +174,24 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '1b9f6b3c-27a7-4d23-bd8e-edb7c0f617b2',
-        colSpan: 16,
-        rowSpan: 18,
         mobileOrder: 2,
         skeletonType: 'map'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '00cc9341-af08-4997-a3a8-ca48f5038396',
-        colSpan: 13,
-        rowSpan: 21,
         mobileOrder: 4,
         skeletonType: 'bar'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'd90e1549-26d2-4907-a1e9-e899bc99cc9d',
-        colSpan: 13,
-        rowSpan: 17,
         mobileOrder: 3,
         skeletonType: 'pie'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '1fbb3d8e-ee73-49e6-92e6-f36b5a3308c4',
-        colSpan: 16,
-        rowSpan: 3,
         mobileOrder: 5,
         mobileHeight: 1,
         skeletonType: 'text'
@@ -243,8 +205,6 @@ const dashboards: DashboardConfig[] = [
     identity: '4',
     desktopAppId: '585f0398-5876-4e29-98db-a53e3e013dc4',
     desktopSheetId: 'XFZvFPN',
-    gridCols: 3,
-    gridRows: 21,
     filter: {
       appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
       sheet: 'a602802b-16f9-40e1-a864-df8be8567e30',
@@ -254,8 +214,6 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'fe47beea-a668-46bd-8fde-37e341f5379b',
-        colSpan: 1,
-        rowSpan: 4,
         mobileHeight: 1,
         mobileOrder: 1,
         skeletonType: 'kpi'
@@ -263,8 +221,6 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'c31c537c-dc17-47bd-98c2-ed49b4ae9af6',
-        colSpan: 1,
-        rowSpan: 5,
         mobileHeight: 2,
         mobileOrder: 4,
         skeletonType: 'treemap'
@@ -272,8 +228,6 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '9ef2adf8-328f-4020-80d4-e7ea0d3155e4',
-        colSpan: 1,
-        rowSpan: 4,
         mobileHeight: 1,
         mobileOrder: 2,
         skeletonType: 'kpi'
@@ -281,32 +235,24 @@ const dashboards: DashboardConfig[] = [
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '657488d4-7aca-4c4f-8d82-0299686b7e21',
-        colSpan: 1,
-        rowSpan: 14,
         mobileOrder: 5,
         skeletonType: 'treemap'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'b17519e1-5931-4d69-a7be-0c6a9b4e3767',
-        colSpan: 1,
-        rowSpan: 17,
         mobileOrder: 3,
         skeletonType: 'treemap'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: 'ca956e69-7077-4cad-b097-7dd94bbf085e',
-        colSpan: 1,
-        rowSpan: 13,
         mobileOrder: 6,
         skeletonType: 'map'
       },
       {
         appid: '585f0398-5876-4e29-98db-a53e3e013dc4',
         sheet: '26f1e2b4-2359-4857-afd1-f83f34a0957a',
-        colSpan: 2,
-        rowSpan: 3,
         mobileOrder: 7,
         mobileHeight: 1,
         skeletonType: 'text'

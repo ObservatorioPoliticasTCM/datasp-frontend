@@ -3,8 +3,8 @@
     <slot />
     <template v-for="dashboard in dashboards" :key="dashboard.title">
       <ComposedDashboard :title="dashboard.title" :subtitle="dashboard.subtitle" :download-link="dashboard.downloadLink"
-        :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity" :grid-cols="dashboard.gridCols"
-        :grid-rows="dashboard.gridRows" :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId"
+        :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity"
+        :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId"
         :filter-open="dashboard.filterOpen">
         <template #filter>
           <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
@@ -13,7 +13,7 @@
 
         <template #charts>
           <DashboardItemFrame v-for="chart in dashboard.charts" :key="chart.sheet" :appid="chart.appid"
-            :sheet="chart.sheet" :col-span="chart.colSpan" :row-span="chart.rowSpan" :mobile-height="chart.mobileHeight"
+            :sheet="chart.sheet" :mobile-height="chart.mobileHeight"
             :mobile-order="chart.mobileOrder" :skeleton-type="chart.skeletonType" />
         </template>
       </ComposedDashboard>
