@@ -3,7 +3,7 @@
     <template v-for="dashboard in dashboards" :key="dashboard.title">
       <ComposedDashboard :title="dashboard.title" :subtitle="dashboard.subtitle" :download-link="dashboard.downloadLink"
         :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity" :grid-cols="dashboard.gridCols"
-        :grid-rows="dashboard.gridRows">
+        :grid-rows="dashboard.gridRows" :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId">
         <template #filter>
           <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
             :show-selections="dashboard.filter.showSelections" skeleton-type="filter" />
@@ -31,6 +31,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/orcamento/notas_metodologicas_orcamento.pdf',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '1',
+    desktopAppId: '01ec34f7-4862-43f5-bd71-0413d71dbe97',
+    desktopSheetId: 'UMJqywF',
     gridCols: 12,
     gridRows: 6,
     filter: {
@@ -106,6 +108,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/orcamento/notas_metodologicas_orcamento.pdf',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '2',
+    desktopAppId: '6c0cd072-faf6-4bc4-9251-7ef5479ff6af',
+    desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
     gridCols: 16,
     gridRows: 7,
     filter: {
@@ -190,6 +194,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/orcamento/notas_metodologicas_orcamento.pdf',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '3',
+    desktopAppId: 'daf572a6-2fda-44c6-b100-77dd018de06f',
+    desktopSheetId: '826cc7f9-9f5d-498f-aba1-af1bd4aca5ba',
     gridCols: 16,
     gridRows: 7,
     filter: {
@@ -274,6 +280,8 @@ const dashboards: DashboardConfig[] = [
     methodologyLink: '/infos/notas/orcamento/notas_metodologicas_orcamento.pdf',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '4',
+    desktopAppId: 'db89e6fd-00c8-4542-ba80-787563d26598',
+    desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
     gridCols: 16,
     gridRows: 7,
     filter: {
