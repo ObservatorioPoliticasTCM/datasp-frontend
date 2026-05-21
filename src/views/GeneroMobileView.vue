@@ -284,7 +284,7 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'a55b9d4b-a8d1-4a05-8cad-99b3da998f34',
         mobileHeight: 2,
-        mobileOrder: 4,
+        mobileOrder: 0,
         skeletonType: 'text'
       },
       {
@@ -326,21 +326,21 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '378f2704-4d0d-4480-9c44-0a3df0e50786',
         mobileHeight: 1,
-        mobileOrder: 0,
+        mobileOrder: 1,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '612fc99e-02d8-42fc-9544-68aca472bbf3',
         mobileHeight: 1,
-        mobileOrder: 1,
+        mobileOrder: 2,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'ad3a0ed8-1396-4daf-a15e-30b1190404a2',
         mobileHeight: 1,
-        mobileOrder: 2,
+        mobileOrder: 3,
         skeletonType: 'text'
       },
       {
@@ -384,7 +384,7 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '158d1f06-9d2a-439a-8827-126290e908c9',
         mobileHeight: 2,
-        mobileOrder: 4,
+        mobileOrder: 0,
         skeletonType: 'text'
       },
       {
@@ -426,28 +426,28 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'd57bc78d-4562-4339-b39c-624c2b7e5447',
         mobileHeight: 1,
-        mobileOrder: 0,
+        mobileOrder: 1,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'c0ec8211-4df1-42c9-8e22-1ca6ab20728e',
         mobileHeight: 1,
-        mobileOrder: 1,
+        mobileOrder: 2,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '3ef67df4-2de6-45ea-a4f5-b3434f81ea9d',
         mobileHeight: 1,
-        mobileOrder: 2,
+        mobileOrder: 3,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '51af6ded-fb44-48ca-834c-768a7a2d2ffc',
         mobileHeight: 1,
-        mobileOrder: 3,
+        mobileOrder: 4,
         skeletonType: 'text'
       },
       {
@@ -484,7 +484,7 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '7abe496a-c18c-451e-b2d3-79977e6aea6b',
         mobileHeight: 2,
-        mobileOrder: 4,
+        mobileOrder: 0,
         skeletonType: 'text'
       },
       {
@@ -526,28 +526,28 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '214af26a-f271-4f79-8ecf-166116527ecc',
         mobileHeight: 1,
-        mobileOrder: 0,
+        mobileOrder: 1,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '0b3cf4d7-ab41-48a3-a325-995e6a4edc8d',
         mobileHeight: 1,
-        mobileOrder: 1,
+        mobileOrder: 2,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '2215b017-7a5f-43b7-8df6-33c4260f457c',
         mobileHeight: 1,
-        mobileOrder: 2,
+        mobileOrder: 3,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'e6c2ce99-7c4c-4398-86b5-0b0f75ff5d96',
         mobileHeight: 1,
-        mobileOrder: 3,
+        mobileOrder: 4,
         skeletonType: 'text'
       },
       {
@@ -584,7 +584,7 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '69d34ab2-4367-40e9-b152-da71d2a8ffa3',
         mobileHeight: 2,
-        mobileOrder: 4,
+        mobileOrder: 0,
         skeletonType: 'text'
       },
       {
@@ -626,28 +626,28 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '4be4c689-944e-4888-98e1-2014a36e266e',
         mobileHeight: 1,
-        mobileOrder: 0,
+        mobileOrder: 1,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'b582b021-45c1-47a7-9f19-d3bc641c4d27',
         mobileHeight: 1,
-        mobileOrder: 1,
+        mobileOrder: 2,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '427011c8-1175-49df-b2e8-eead799b0ac1',
         mobileHeight: 1,
-        mobileOrder: 2,
+        mobileOrder: 3,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'd6650337-5365-4a5f-a59e-e0d1803dd017',
         mobileHeight: 1,
-        mobileOrder: 3,
+        mobileOrder: 4,
         skeletonType: 'text'
       },
       {
@@ -684,7 +684,7 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'a692b646-5c91-444a-a0ba-e41485b2d0da',
         mobileHeight: 2,
-        mobileOrder: 4,
+        mobileOrder: 0,
         skeletonType: 'text'
       },
       {
@@ -726,28 +726,28 @@ const dashboards: DashboardConfig[] = [
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'fbb0ed27-32d0-4ac8-941e-bb68d92f8991',
         mobileHeight: 1,
-        mobileOrder: 0,
+        mobileOrder: 1,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'e8abfcea-14fe-4696-94c4-a6f586a07ee2',
         mobileHeight: 1,
-        mobileOrder: 1,
+        mobileOrder: 2,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'a54f7ce5-40f8-4ff1-a04c-a6866d7c3870',
         mobileHeight: 1,
-        mobileOrder: 2,
+        mobileOrder: 3,
         skeletonType: 'text'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'b0a93c2d-5862-4aab-8f99-9475a08eab4d',
         mobileHeight: 1,
-        mobileOrder: 3,
+        mobileOrder: 4,
         skeletonType: 'text'
       },
       {
