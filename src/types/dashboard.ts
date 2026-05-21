@@ -26,6 +26,7 @@ export interface DashboardConfig {
   identity?: string
   desktopAppId?: string
   desktopSheetId?: string
+  filterOpen?: boolean
   filter: DashboardFilter
   charts: ChartItem[]
 }

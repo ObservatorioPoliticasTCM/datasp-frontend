@@ -71,13 +71,15 @@ interface DashboardFrameProps {
     gridRows?: number
     desktopAppId?: string
     desktopSheetId?: string
+    filterOpen?: boolean
 }
 
 const props = withDefaults(defineProps<DashboardFrameProps>(), {
     title: '',
     subtitle: '',
     gridCols: 12,
-    gridRows: 9
+    gridRows: 9,
+    filterOpen: false
 })
 const emit = defineEmits<{ (e: 'fully-visible', anchorId: string): void }>()
 
@@ -90,7 +92,7 @@ const rootEl = ref<HTMLElement | null>(null)
 const showCopied = ref(false)
 let copyToastTimeout: number | null = null
 const active = ref(false)
-const filterOpen = ref(false)
+const filterOpen = ref(props.filterOpen)
 let attrObserver: MutationObserver | null = null
 
 const desktopMql = window.matchMedia('(min-width: 901px) and (orientation: landscape)')

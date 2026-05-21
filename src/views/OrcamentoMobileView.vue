@@ -3,7 +3,8 @@
     <template v-for="dashboard in dashboards" :key="dashboard.title">
       <ComposedDashboard :title="dashboard.title" :subtitle="dashboard.subtitle" :download-link="dashboard.downloadLink"
         :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity" :grid-cols="dashboard.gridCols"
-        :grid-rows="dashboard.gridRows" :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId">
+        :grid-rows="dashboard.gridRows" :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId"
+        :filter-open="dashboard.filterOpen">
         <template #filter>
           <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
             :show-selections="dashboard.filter.showSelections" skeleton-type="filter" />
@@ -112,6 +113,7 @@ const dashboards: DashboardConfig[] = [
     desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
     gridCols: 16,
     gridRows: 7,
+    filterOpen: true,
     filter: {
       appid: '6c0cd072-faf6-4bc4-9251-7ef5479ff6af',
       sheet: '2195998b-a1dd-48fd-af56-7d3c20a80e4d',
@@ -189,6 +191,7 @@ const dashboards: DashboardConfig[] = [
     desktopSheetId: '826cc7f9-9f5d-498f-aba1-af1bd4aca5ba',
     gridCols: 16,
     gridRows: 7,
+    filterOpen: true,
     filter: {
       appid: 'daf572a6-2fda-44c6-b100-77dd018de06f',
       sheet: '38a81cf9-832a-4a7f-a231-8c8b2941ce1f',
@@ -266,6 +269,7 @@ const dashboards: DashboardConfig[] = [
     desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
     gridCols: 16,
     gridRows: 7,
+    filterOpen: true,
     filter: {
       appid: 'db89e6fd-00c8-4542-ba80-787563d26598',
       sheet: '8f9aff06-0450-4f98-8921-03fd5287dc3e',
