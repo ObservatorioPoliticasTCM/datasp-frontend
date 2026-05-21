@@ -10,6 +10,20 @@ import MobileWarning from './components/MobileWarning.vue'
 const isMobileOrPortrait = ref(false)
 
 const checkViewport = () => {
+  // Modo de acesso antecipado
+
+  if (new URLSearchParams(window.location.search).get('mobile_preview') === 'true') {
+    localStorage.setItem('mobilePreview', 'true')
+  }
+
+  const mobilePreview = localStorage.getItem('mobilePreview') === 'true'
+
+  isMobileOrPortrait.value = false
+
+  if (mobilePreview) {
+    return
+  }
+  
   const width = window.innerWidth
   const height = window.innerHeight
   
