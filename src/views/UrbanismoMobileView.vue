@@ -530,21 +530,21 @@ const dashboards: DashboardConfig[] = [
         sheet: 'c151eb71-687b-4040-823b-1a144ad882b6',
         mobileOrder: 0,
         mobileHeight: 4,
-        skeletonType: 'bar'
+        skeletonType: 'treemap'
       },
       {
         appid: 'f571d56a-108d-4a83-b865-45255c72b23d',
         sheet: 'f4622841-478e-4e4f-8d89-a72254a7d5bd',
         mobileOrder: 1,
         mobileHeight: 4,
-        skeletonType: 'bar'
+        skeletonType: 'column'
       },
       {
         appid: 'f571d56a-108d-4a83-b865-45255c72b23d',
         sheet: '782940b6-6938-46c1-8460-1c6b75ad15c0',
         mobileOrder: 2,
         mobileHeight: 4,
-        skeletonType: 'bar'
+        skeletonType: 'column'
       }
     ]
   },
