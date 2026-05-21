@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import EducacaoView from '@/views/EducacaoView.vue'
 import EducacaoMobileView from '@/views/EducacaoMobileView.vue'
 import SaudeMobileView from '@/views/SaudeMobileView.vue'
-import GeneroView from '@/views/GeneroView.vue'
 import GeneroMobileView from '@/views/GeneroMobileView.vue'
+import UrbanismoMobileView from '@/views/UrbanismoMobileView.vue'
+import OrcamentoMobileView from '@/views/OrcamentoMobileView.vue'
+import EducacaoView from '@/views/EducacaoView.vue'
+import GeneroView from '@/views/GeneroView.vue'
 import SaudeView from '@/views/SaudeView.vue'
 import UrbanismoView from '@/views/UrbanismoView.vue'
-import UrbanismoMobileView from '@/views/UrbanismoMobileView.vue'
 import OrcamentoView from '@/views/OrcamentoView.vue'
-import OrcamentoMobileView from '@/views/OrcamentoMobileView.vue'
 import GlossaryView from '@/views/GlossaryView.vue'
 import NotFound from './views/NotFoundView.vue'
 import ImprintPage from '@/views/ImprintPageView.vue'
@@ -41,62 +41,32 @@ const router = createRouter({
     {
       path: '/educacao',
       name: 'educacao',
-      component: EducacaoView,
-      meta: { title: 'Educação – DataSP' }
-    },
-    {
-      path: '/educacao-mobile',
-      name: 'educacao-mobile',
       component: EducacaoMobileView,
-      meta: { title: 'Educação Mobile – DataSP' }
-    },
-    {
-      path: '/saude-mobile',
-      name: 'saude-mobile',
-      component: SaudeMobileView,
-      meta: { title: 'Saúde Mobile – DataSP' }
+      meta: { title: 'Educação – DataSP' }
     },
     {
       path: '/genero',
       name: 'genero',
-      component: GeneroView,
-      meta: { title: 'Gênero – DataSP' }
-    },
-    {
-      path: '/genero-mobile',
-      name: 'genero-mobile',
       component: GeneroMobileView,
-      meta: { title: 'Gênero Mobile – DataSP' }
+      meta: { title: 'Gênero – DataSP' }
     },
     {
       path: '/saude',
       name: 'saude',
-      component: SaudeView,
+      component: SaudeMobileView,
       meta: { title: 'Saúde – DataSP' }
     },
     {
       path: '/urbanismo',
       name: 'urbanismo',
-      component: UrbanismoView,
-      meta: { title: 'Urbanismo – DataSP' }
-    },
-    {
-      path: '/urbanismo-mobile',
-      name: 'urbanismo-mobile',
       component: UrbanismoMobileView,
-      meta: { title: 'Urbanismo Mobile – DataSP' }
+      meta: { title: 'Urbanismo – DataSP' }
     },
     {
       path: '/orcamento',
       name: 'orcamento',
-      component: OrcamentoView,
-      meta: { title: 'Orçamento – DataSP' }
-    },
-    {
-      path: '/orcamento-mobile',
-      name: 'orcamento-mobile',
       component: OrcamentoMobileView,
-      meta: { title: 'Orçamento Mobile – DataSP' }
+      meta: { title: 'Orçamento – DataSP' }
     },
     {
       path: '/glossario',
@@ -109,6 +79,36 @@ const router = createRouter({
       name: 'ficha-tecnica',
       component: ImprintPage,
       meta: { title: 'Ficha Técnica – DataSP' }
+    },
+    {
+      path: '/educacao-legacy',
+      name: 'educacao-legacy',
+      component: EducacaoView,
+      meta: { title: 'Educação – DataSP' }
+    },
+    {
+      path: '/genero-legacy',
+      name: 'genero-legacy',
+      component: GeneroView,
+      meta: { title: 'Gênero – DataSP' }
+    },
+    {
+      path: '/saude-legacy',
+      name: 'saude-legacy',
+      component: SaudeView,
+      meta: { title: 'Saúde – DataSP' }
+    },
+    {
+      path: '/urbanismo-legacy',
+      name: 'urbanismo-legacy',
+      component: UrbanismoView,
+      meta: { title: 'Urbanismo – DataSP' }
+    },
+    {
+      path: '/orcamento-legacy',
+      name: 'orcamento-legacy',
+      component: OrcamentoView,
+      meta: { title: 'Orçamento – DataSP' }
     },
     {
       path: '/:pathMatch(.*)*',
