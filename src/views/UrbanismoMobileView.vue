@@ -46,8 +46,8 @@ const dashboards: DashboardConfig[] = [
         sheet: 'c1d9281c-f2d2-43ff-9d07-5ce8efa2da13',
         colSpan: 21,
         rowSpan: 21,
-        mobileOrder: 0,
-        mobileHeight: 5,
+        mobileOrder: 4,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -55,7 +55,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '024c766c-1e13-4ab4-8df7-a2c3ee462cb3',
         colSpan: 7,
         rowSpan: 4,
-        mobileOrder: 1,
+        mobileOrder: 6,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -64,7 +64,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'ecfbb01a-7c5c-46e6-9003-fc491aa9aeeb',
         colSpan: 7,
         rowSpan: 4,
-        mobileOrder: 2,
+        mobileOrder: 7,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -73,7 +73,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'cd579bcd-5dab-47c6-b592-541ecfa130e6',
         colSpan: 7,
         rowSpan: 4,
-        mobileOrder: 3,
+        mobileOrder: 8,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -82,7 +82,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '91605da7-54dd-4439-a6d6-e3b69f7b8f8c',
         colSpan: 7,
         rowSpan: 3,
-        mobileOrder: 4,
+        mobileOrder: 0,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -91,7 +91,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'dd3e7d20-56e1-464d-8844-103f8878c5ad',
         colSpan: 7,
         rowSpan: 3,
-        mobileOrder: 5,
+        mobileOrder: 1,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -100,7 +100,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'd9d03446-91da-4eb3-8f22-8a559d422a04',
         colSpan: 7,
         rowSpan: 3,
-        mobileOrder: 6,
+        mobileOrder: 2,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -109,7 +109,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '388c874c-612f-447a-88a4-16a6499c1ed8',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 7,
+        mobileOrder: 5,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -118,7 +118,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'c3580a7a-eb1c-4774-90d0-f9fd7aaf2206',
         colSpan: 21,
         rowSpan: 7,
-        mobileOrder: 8,
+        mobileOrder: 3,
         mobileHeight: 4,
         skeletonType: 'treemap'
       }
@@ -143,8 +143,8 @@ const dashboards: DashboardConfig[] = [
         sheet: '130c652e-c860-42a5-8256-7404dd46b968',
         colSpan: 21,
         rowSpan: 14,
-        mobileOrder: 0,
-        mobileHeight: 5,
+        mobileOrder: 6,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -152,7 +152,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'e4001e27-b505-480e-ba46-bebcb8b5199e',
         colSpan: 21,
         rowSpan: 4,
-        mobileOrder: 1,
+        mobileOrder: 4,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -161,7 +161,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '1e31ddd1-7a0d-4138-b5c5-607c64d92b47',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 2,
+        mobileOrder: 0,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -170,7 +170,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '35dbb813-68fd-4460-94f9-2e353516f830',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 3,
+        mobileOrder: 1,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -179,7 +179,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '6f1be004-1dfb-480c-9434-29d893efd464',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 4,
+        mobileOrder: 2,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -188,7 +188,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'c4e8244f-cc90-4553-bb8e-1a0dc5e2a05f',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 5,
+        mobileOrder: 3,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -197,17 +197,17 @@ const dashboards: DashboardConfig[] = [
         sheet: '54f8821f-6237-4309-91ba-4d062eadd639',
         colSpan: 42,
         rowSpan: 12,
-        mobileOrder: 6,
+        mobileOrder: 7,
         mobileHeight: 4,
-        skeletonType: 'bar'
+        skeletonType: 'column'
       },
       {
         appid: '14f47000-5a08-4b2a-b198-d7ae6b6d55b2',
         sheet: 'af996f0f-a146-40b3-9489-7b80135f7142',
         colSpan: 21,
         rowSpan: 8,
-        mobileOrder: 7,
-        mobileHeight: 3,
+        mobileOrder: 5,
+        mobileHeight: 1,
         skeletonType: 'kpi'
       }
     ]
@@ -231,8 +231,8 @@ const dashboards: DashboardConfig[] = [
         sheet: '2eade903-d962-4b44-ab0e-f5833b139aa6',
         colSpan: 1,
         rowSpan: 8,
-        mobileOrder: 0,
-        mobileHeight: 5,
+        mobileOrder: 1,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -240,7 +240,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'c3bb122d-aecf-4c71-8b47-ab47418eca9e',
         colSpan: 2,
         rowSpan: 4,
-        mobileOrder: 1,
+        mobileOrder: 0,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -276,7 +276,7 @@ const dashboards: DashboardConfig[] = [
         colSpan: 2,
         rowSpan: 8,
         mobileOrder: 0,
-        mobileHeight: 5,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -312,8 +312,8 @@ const dashboards: DashboardConfig[] = [
         colSpan: 3,
         rowSpan: 8,
         mobileOrder: 4,
-        mobileHeight: 4,
-        skeletonType: 'bar'
+        mobileHeight: 6,
+        skeletonType: 'treemap'
       }
     ]
   },
@@ -336,8 +336,8 @@ const dashboards: DashboardConfig[] = [
         sheet: 'b0a3ba13-3983-4c3a-aa81-219d4274e238',
         colSpan: 21,
         rowSpan: 21,
-        mobileOrder: 0,
-        mobileHeight: 5,
+        mobileOrder: 3,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -345,8 +345,8 @@ const dashboards: DashboardConfig[] = [
         sheet: 'f4855b9c-5311-4af2-b12e-6c3d2678f6aa',
         colSpan: 21,
         rowSpan: 8,
-        mobileOrder: 1,
-        mobileHeight: 3,
+        mobileOrder: 0,
+        mobileHeight: 2,
         skeletonType: 'bar'
       },
       {
@@ -363,7 +363,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'e414560e-d86b-4464-aa8a-5a392127bd87',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 3,
+        mobileOrder: 4,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -372,7 +372,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'ce032caf-ade0-4c6c-b925-cd229f298a18',
         colSpan: 21,
         rowSpan: 4,
-        mobileOrder: 4,
+        mobileOrder: 1,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -392,7 +392,7 @@ const dashboards: DashboardConfig[] = [
         rowSpan: 8,
         mobileOrder: 6,
         mobileHeight: 4,
-        skeletonType: 'bar'
+        skeletonType: 'column'
       }
     ]
   },
@@ -415,8 +415,8 @@ const dashboards: DashboardConfig[] = [
         sheet: 'ec5a07b0-6acd-40d1-a604-9203ed680272',
         colSpan: 21,
         rowSpan: 21,
-        mobileOrder: 0,
-        mobileHeight: 5,
+        mobileOrder: 3,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -424,7 +424,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '9ceda391-7cef-429a-aa9a-587350cdae0a',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 1,
+        mobileOrder: 2,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -433,7 +433,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '5a0b82b0-3ecb-4442-904d-870fae9f8fe8',
         colSpan: 10,
         rowSpan: 4,
-        mobileOrder: 2,
+        mobileOrder: 0,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -442,7 +442,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '15529f3f-4b97-4ded-85aa-07f363fd7330',
         colSpan: 11,
         rowSpan: 4,
-        mobileOrder: 3,
+        mobileOrder: 7,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -451,7 +451,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'a2e06756-5010-475e-95bf-67e5bcdcd0ab',
         colSpan: 21,
         rowSpan: 7,
-        mobileOrder: 4,
+        mobileOrder: 1,
         mobileHeight: 3,
         skeletonType: 'bar'
       },
@@ -460,7 +460,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'cf2b2427-37ae-4633-9c24-8e9dd9d694f0',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 5,
+        mobileOrder: 4,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -469,7 +469,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'f2796047-4682-4097-9d08-bee3540af63e',
         colSpan: 10,
         rowSpan: 4,
-        mobileOrder: 6,
+        mobileOrder: 5,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -478,7 +478,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'a58e3f7a-f161-4787-bb92-6a21d3ce8716',
         colSpan: 11,
         rowSpan: 4,
-        mobileOrder: 7,
+        mobileOrder: 8,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -487,7 +487,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'ee624aea-5b51-48b9-a39a-e617beeafc63',
         colSpan: 21,
         rowSpan: 7,
-        mobileOrder: 8,
+        mobileOrder: 6,
         mobileHeight: 3,
         skeletonType: 'bar'
       }
@@ -512,8 +512,8 @@ const dashboards: DashboardConfig[] = [
         sheet: '26e442d6-a859-4721-a8b0-e62a37676016',
         colSpan: 21,
         rowSpan: 21,
-        mobileOrder: 0,
-        mobileHeight: 5,
+        mobileOrder: 3,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -521,7 +521,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'd4232d9d-4d40-41ad-b9ee-f879b1a15ba2',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 1,
+        mobileOrder: 2,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -530,7 +530,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '47f06ef9-a52c-4751-89a6-b79a58be9f1c',
         colSpan: 21,
         rowSpan: 4,
-        mobileOrder: 2,
+        mobileOrder: 0,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -539,7 +539,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'a2e032c7-6723-478f-a742-3208b8b984cb',
         colSpan: 21,
         rowSpan: 9,
-        mobileOrder: 3,
+        mobileOrder: 1,
         mobileHeight: 4,
         skeletonType: 'bar'
       },
@@ -591,8 +591,8 @@ const dashboards: DashboardConfig[] = [
         sheet: 'cd103e90-fe57-40be-9f93-9a640740e584',
         colSpan: 21,
         rowSpan: 21,
-        mobileOrder: 0,
-        mobileHeight: 5,
+        mobileOrder: 3,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -600,7 +600,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '20eb5710-d61c-4519-b33b-a23bd7ac8d22',
         colSpan: 21,
         rowSpan: 3,
-        mobileOrder: 1,
+        mobileOrder: 2,
         mobileHeight: 1,
         skeletonType: 'text'
       },
@@ -609,7 +609,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '8e2fcb96-9223-4c5a-864c-24d5c84463ef',
         colSpan: 21,
         rowSpan: 4,
-        mobileOrder: 2,
+        mobileOrder: 0,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -618,7 +618,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '8ece2afe-72ee-41a6-a310-d5c26ecf6a45',
         colSpan: 21,
         rowSpan: 8,
-        mobileOrder: 3,
+        mobileOrder: 1,
         mobileHeight: 4,
         skeletonType: 'bar'
       },
@@ -731,7 +731,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'ece1412f-2b87-4b44-a8f0-3ebce47c3fee',
         colSpan: 1,
         rowSpan: 8,
-        mobileOrder: 1,
+        mobileOrder: 3,
         mobileHeight: 4,
         skeletonType: 'pie'
       },
@@ -740,7 +740,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '043c135e-8628-4143-b43e-565530fac0fe',
         colSpan: 2,
         rowSpan: 8,
-        mobileOrder: 2,
+        mobileOrder: 4,
         mobileHeight: 4,
         skeletonType: 'treemap'
       },
@@ -749,7 +749,7 @@ const dashboards: DashboardConfig[] = [
         sheet: '1c128047-fd5b-46dd-9f47-0e140a10ee7b',
         colSpan: 2,
         rowSpan: 8,
-        mobileOrder: 3,
+        mobileOrder: 5,
         mobileHeight: 4,
         skeletonType: 'treemap'
       },
@@ -758,7 +758,7 @@ const dashboards: DashboardConfig[] = [
         sheet: 'de563c82-5ee6-4d38-b4d1-daaed1366d99',
         colSpan: 3,
         rowSpan: 4,
-        mobileOrder: 4,
+        mobileOrder: 1,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
@@ -767,8 +767,8 @@ const dashboards: DashboardConfig[] = [
         sheet: 'd71713bc-5640-4333-82d8-30185dbf31bf',
         colSpan: 3,
         rowSpan: 8,
-        mobileOrder: 5,
-        mobileHeight: 5,
+        mobileOrder: 2,
+        mobileHeight: 6,
         skeletonType: 'map'
       }
     ]
