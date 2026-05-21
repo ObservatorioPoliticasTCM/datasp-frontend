@@ -90,12 +90,14 @@ interface Props {
   showNavigation?: boolean
   showDots?: boolean
   showArrows?: boolean
+  disableSnap?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   showNavigation: true,
   showDots: true,
-  showArrows: true
+  showArrows: true,
+  disableSnap: false
 })
 
 const MOBILE_BREAKPOINT = 900
@@ -128,7 +130,8 @@ const lastEl = ref<HTMLElement | null>(null)
 const container = ref<HTMLElement | null>(null)
 const dashboardEls = ref<HTMLElement[]>([])
 const dashboardLabels = ref<string[]>([])
-const activeDashboard = ref(0)
+const activeDashboard = computed(() => activeElement.value ? dashboardEls.value.indexOf(activeElement.value) : -1)
+const activeDashboardAnchor = computed(() => activeElement.value?.dataset.anchorId ?? '')
 
 const totalDashboards = computed(() => dashboardEls.value.length)
 
@@ -233,22 +236,6 @@ const dashboardLabel = (index: number) => dashboardLabels.value[index] ?? fallba
 const updateDashboardRefs = (children: HTMLElement[]) => {
   dashboardEls.value = children.filter(child => child.classList.contains('snap-section'))
   dashboardLabels.value = dashboardEls.value.map((el, idx) => extractDashboardLabel(el, idx))
-  if (!dashboardEls.value.length) {
-    activeDashboard.value = 0
-    return
-  }
-  const clamped = Math.min(activeDashboard.value, dashboardEls.value.length - 1)
-  activeDashboard.value = clamped < 0 ? 0 : clamped
-}
-
-const fullyVisibleHandler = (e: Event) => {
-  const detail = (e as CustomEvent).detail
-  const target = e.target as HTMLElement | null
-  if (target) {
-    const index = dashboardEls.value.indexOf(target)
-    if (index !== -1) activeDashboard.value = index
-  }
-  if (detail?.anchorId) sectionVisible(detail.anchorId)
 }
 
 const disconnectIOs = () => {
@@ -309,6 +296,10 @@ const scrollToDashboard = (index: number) => {
 }
 
 const goPrev = () => {
+  if (bottomVisible.value && totalDashboards.value) {
+    scrollToDashboard(totalDashboards.value - 1)
+    return
+  }
   if (activeDashboard.value > 0) {
     scrollToDashboard(activeDashboard.value - 1)
     return
@@ -317,6 +308,10 @@ const goPrev = () => {
 }
 
 const goNext = () => {
+  if (topVisible.value && totalDashboards.value) {
+    scrollToDashboard(0)
+    return
+  }
   if (activeDashboard.value < totalDashboards.value - 1) {
     scrollToDashboard(activeDashboard.value + 1)
     return
