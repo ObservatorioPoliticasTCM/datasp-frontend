@@ -120,15 +120,6 @@ const dashboards: DashboardConfig[] = [
     charts: [
       {
         appid: '6c0cd072-faf6-4bc4-9251-7ef5479ff6af',
-        sheet: 'd885530f-03b0-4dd9-a18f-768512375fb4',
-        colSpan: 16,
-        rowSpan: 1,
-        mobileHeight: 1,
-        mobileOrder: 0,
-        skeletonType: 'filter'
-      },
-      {
-        appid: '6c0cd072-faf6-4bc4-9251-7ef5479ff6af',
         sheet: 'dd764d5d-b820-443a-a4af-22faae1692d2',
         colSpan: 4,
         rowSpan: 1,
@@ -206,15 +197,6 @@ const dashboards: DashboardConfig[] = [
     charts: [
       {
         appid: 'daf572a6-2fda-44c6-b100-77dd018de06f',
-        sheet: '7df1afe2-c8df-48b5-8a4a-49df4e564592',
-        colSpan: 16,
-        rowSpan: 1,
-        mobileHeight: 1,
-        mobileOrder: 0,
-        skeletonType: 'filter'
-      },
-      {
-        appid: 'daf572a6-2fda-44c6-b100-77dd018de06f',
         sheet: '0110c6b0-be05-4d44-9304-52eb9644d244',
         colSpan: 4,
         rowSpan: 1,
@@ -290,15 +272,6 @@ const dashboards: DashboardConfig[] = [
       showSelections: true
     },
     charts: [
-      {
-        appid: 'db89e6fd-00c8-4542-ba80-787563d26598',
-        sheet: 'f8376c1c-0d13-4eac-a92f-f69120c51c4a',
-        colSpan: 16,
-        rowSpan: 1,
-        mobileHeight: 1,
-        mobileOrder: 0,
-        skeletonType: 'filter'
-      },
       {
         appid: 'db89e6fd-00c8-4542-ba80-787563d26598',
         sheet: 'aca59608-41d2-4de4-bb3b-546a0781fd1c',
