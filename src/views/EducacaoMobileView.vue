@@ -8,7 +8,7 @@ import type { DashboardConfig } from '@/types/dashboard'
 
 const dashboards: DashboardConfig[] = [
   {
-    title: 'VisÃ£o geral da educaÃ§Ã£o (2024)',
+    title: 'Visão geral da educação (2024)',
     methodologyLink: '/infos/notas/educacao/1_notas_metodologicas_visao_geral_ok.pdf',
     identity: '1',
     desktopAppId: 'ee3bc48f-da4d-403a-a4fe-4da01cb29ee9',
@@ -82,7 +82,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
-    title: 'Despesas liquidadas na FunÃ§Ã£o EducaÃ§Ã£o (2024)',
+    title: 'Despesas liquidadas na Função Educação (2024)',
     methodologyLink: '/infos/notas/educacao/2_notas_metodologicas_despesas_ok.pdf',
     downloadLink: '/dados/educacao/orcamento.csv',
     identity: '3',
@@ -125,7 +125,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
-    title: 'NÃºmero de escolas da rede municipal (2024)',
+    title: 'Número de escolas da rede municipal (2024)',
     methodologyLink: '/infos/notas/educacao/3_notas_metodologicas_escolas_ok.pdf',
     downloadLink: '/dados/educacao/escolas-municipais.csv',
     identity: '3',
@@ -161,7 +161,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
-    title: 'Perfil dos professores da rede pÃºblica municipal (2024)',
+    title: 'Perfil dos professores da rede pública municipal (2024)',
     methodologyLink: '/infos/notas/educacao/4_notas_metodologicas_educ_professores_ok.pdf',
     downloadLink: '/dados/educacao/servidores-perfil.csv',
     identity: '4',
@@ -271,7 +271,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
-    title: 'Alunos da rede municipal beneficiÃ¡rios do Bolsa FamÃ­lia (2024)',
+    title: 'Alunos da rede municipal beneficiários do Bolsa Família (2024)',
     methodologyLink: '/infos/notas/educacao/6_notas_metodologicas_bolsa_familia_ok.pdf',
     downloadLink: '/dados/educacao/beneficiarios-pbf.csv',
     identity: '6',
