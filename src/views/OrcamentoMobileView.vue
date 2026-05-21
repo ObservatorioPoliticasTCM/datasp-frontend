@@ -1,29 +1,9 @@
 <template>
-  <SnapPage>
-    <template v-for="dashboard in dashboards" :key="dashboard.title">
-      <ComposedDashboard :title="dashboard.title" :subtitle="dashboard.subtitle" :download-link="dashboard.downloadLink"
-        :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity" :grid-cols="dashboard.gridCols"
-        :grid-rows="dashboard.gridRows" :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId"
-        :filter-open="dashboard.filterOpen">
-        <template #filter>
-          <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
-            :show-selections="dashboard.filter.showSelections" skeleton-type="filter" />
-        </template>
-
-        <template #charts>
-          <DashboardItemFrame v-for="chart in dashboard.charts" :key="chart.sheet" :appid="chart.appid"
-            :sheet="chart.sheet" :col-span="chart.colSpan" :row-span="chart.rowSpan" :mobile-height="chart.mobileHeight"
-            :mobile-order="chart.mobileOrder" :skeleton-type="chart.skeletonType" />
-        </template>
-      </ComposedDashboard>
-    </template>
-  </SnapPage>
+  <ThemePage :dashboards="dashboards" />
 </template>
 
 <script setup lang="ts">
-import ComposedDashboard from '@/components/ComposedDashboard.vue';
-import DashboardItemFrame from '@/components/DashboardItemFrame.vue'
-import SnapPage from '@/components/SnapPage.vue'
+import ThemePage from '@/components/ThemePage.vue'
 import type { DashboardConfig } from '@/types/dashboard'
 
 const dashboards: DashboardConfig[] = [
