@@ -9,7 +9,6 @@ import type { DashboardConfig } from '@/types/dashboard'
 const dashboards: DashboardConfig[] = [
   {
     title: 'Variação do Orçamento por Função de Governo (2024)',
-    methodologyLink: '/infos/notas/orcamento/notas_metodologicas_orcamento.pdf',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '1',
     desktopAppId: '01ec34f7-4862-43f5-bd71-0413d71dbe97',
@@ -70,7 +69,6 @@ const dashboards: DashboardConfig[] = [
   },
   {
     title: 'Variação detalhada do Orçamento por Função de Governo (2024)',
-    methodologyLink: '/infos/notas/orcamento/notas_metodologicas_orcamento.pdf',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '2',
     desktopAppId: '6c0cd072-faf6-4bc4-9251-7ef5479ff6af',
@@ -132,7 +130,6 @@ const dashboards: DashboardConfig[] = [
   },
   {
     title: 'Variação detalhada do Orçamento por Órgão (2024)',
-    methodologyLink: '/infos/notas/orcamento/notas_metodologicas_orcamento.pdf',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '3',
     desktopAppId: 'daf572a6-2fda-44c6-b100-77dd018de06f',
@@ -194,7 +191,6 @@ const dashboards: DashboardConfig[] = [
   },
   {
     title: 'Comparação do Orçamento por Projeto/Atividade (2024)',
-    methodologyLink: '/infos/notas/orcamento/notas_metodologicas_orcamento.pdf',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '4',
     desktopAppId: 'db89e6fd-00c8-4542-ba80-787563d26598',
