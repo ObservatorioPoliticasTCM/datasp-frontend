@@ -67,8 +67,6 @@ interface DashboardFrameProps {
     metadataLink?: string
     methodologyLink?: string
     downloadLink?: string
-    gridCols?: number
-    gridRows?: number
     desktopAppId?: string
     desktopSheetId?: string
     filterOpen?: boolean
@@ -77,15 +75,12 @@ interface DashboardFrameProps {
 const props = withDefaults(defineProps<DashboardFrameProps>(), {
     title: '',
     subtitle: '',
-    gridCols: 12,
-    gridRows: 9,
     filterOpen: false
 })
 const emit = defineEmits<{ (e: 'fully-visible', anchorId: string): void }>()
 
 const { identity, title, subtitle } = toRefs(props)
 const { metadataLink, methodologyLink, downloadLink } = toRefs(props)
-const { gridCols, gridRows } = toRefs(props)
 const { desktopAppId, desktopSheetId } = toRefs(props)
 
 const rootEl = ref<HTMLElement | null>(null)
@@ -291,8 +286,8 @@ onBeforeUnmount(() => {
     flex: 1;
     gap: 1rem;
     min-height: 0;
-    grid-template-columns: repeat(v-bind(gridCols), 1fr);
-    grid-template-rows: repeat(v-bind(gridRows), 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
 }
 
 @media (max-width: 1366px) {
@@ -384,9 +379,5 @@ onBeforeUnmount(() => {
         max-height: 400vh;
     }
 
-    .charts-section {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-    }
 }
 </style>
