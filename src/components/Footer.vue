@@ -44,8 +44,7 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
-.footer-left,
-.footer-right {
+.footer-left{
   flex: 1;
 }
 .footer-center {
@@ -61,8 +60,7 @@ footer {
   flex: 1;
 }
 
-.footer-left img,
-.footer-right img {
+.footer-left img {
   margin: 0 1rem;
   width: 11.2rem;
   object-fit: contain;
@@ -110,6 +108,10 @@ footer {
     width: 100%;
   }
 
+  .footer-left img {
+    width: 42vw;
+  }
+
   .logo-tcm {
     margin-left: -0.9rem !important;
   }
@@ -125,13 +127,5 @@ footer {
   .footer-license {
     justify-content: center;
   }
-}
-
-/* Phone portrait: all four items stacked */
-@media (max-width: 480px) {
-  .footer-left img,
-  .footer-right img {
-    width: 9.5rem;
-  }
-}
+ }
 </style>
