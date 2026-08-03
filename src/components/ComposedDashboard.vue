@@ -1,5 +1,8 @@
 <template>
-    <div class="composed-dashboard snap-section" ref="rootEl" :data-anchor-id="anchorId">
+    <div class="composed-dashboard snap-section"
+        :class="{ 'composed-dashboard--filter-open': active && filterOpen }"
+        ref="rootEl" :data-anchor-id="anchorId"
+        :style="{ '--filter-sidebar-top': `${filterSidebarTop}px` }">
         <div v-if="title" class="frame-header">
             <h1 v-if="title">
                 <span class="title-anchor-wrapper">
@@ -22,26 +25,31 @@
             <small v-if="subtitle">{{ subtitle }}</small>
         </div>
         <div class="dashboard-wrapper">
-            <DesktopDashboardFrame v-if="desktopAppId && desktopSheetId && isDesktop" :appid="desktopAppId" :sheet="desktopSheetId" />
+            <DesktopDashboardFrame v-if="desktopAppId && desktopSheetId && isDesktop" :appid="desktopAppId"
+                :sheet="desktopSheetId" />
             <template v-else>
                 <div class="filter-section">
-                    <button
-                        class="filter-toggle"
-                        :class="{ 'filter-toggle--open': filterOpen }"
-                        type="button"
-                        :aria-expanded="filterOpen"
-                        @click="filterOpen = !filterOpen"
-                    >
-                        <span
-                            class="filter-arrow"
-                            :class="{ expanded: filterOpen }"
-                        >&#9660;</span>
-                        <span>Filtros</span>
-                        <img src="@/assets/filter-icon.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="!filterOpen" />
-                        <img src="@/assets/filter-icon-white.svg" alt="Ícone de filtro" aria-hidden="true" class="filter-toggle-icon" v-show="filterOpen" />
+                    <button v-show="active" class="filter-toggle" :class="{ 'filter-toggle--open': filterOpen }" type="button"
+                        :aria-expanded="filterOpen" @click="filterOpen = !filterOpen">
+                        <img src="@/assets/filter-icon-white.svg" alt="Ícone de filtro" aria-hidden="true"
+                            class="filter-toggle-icon" v-show="!filterOpen" />
+                        <img src="@/assets/filter-icon.svg" alt="Ícone de filtro" aria-hidden="true"
+                            class="filter-toggle-icon" v-show="filterOpen" />
                     </button>
-                    <div class="filter-iframe-wrapper" :class="{ 'filter-iframe-wrapper--open': filterOpen }">
-                        <slot name="filter" />
+                    <div v-show="active && filterOpen" class="filter-backdrop" aria-hidden="true"
+                        @click="closeFilter" />
+                    <div class="filter-iframe-wrapper"
+                        :class="{ 'filter-iframe-wrapper--open': active && filterOpen }">
+                        <div class="filter-sidebar-header">
+                            <span>Filtros</span>
+                            <button type="button" class="filter-close" aria-label="Fechar filtros"
+                                @click="closeFilter">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="filter-scroll-content">
+                            <slot name="filter" />
+                        </div>
                     </div>
                 </div>
                 <div class="charts-section">
@@ -88,7 +96,10 @@ const showCopied = ref(false)
 let copyToastTimeout: number | null = null
 const active = ref(false)
 const filterOpen = ref(props.filterOpen)
+const filterSidebarTop = ref(0)
 let attrObserver: MutationObserver | null = null
+let scrollRoot: HTMLElement | null = null
+let trackingSidebarPosition = false
 
 const desktopMql = window.matchMedia('(min-width: 901px) and (orientation: landscape)')
 const isDesktop = ref(desktopMql.matches)
@@ -97,6 +108,33 @@ const onMqlChange = (e: MediaQueryListEvent) => { isDesktop.value = e.matches }
 provide('composedIdentity', identity)
 
 const displayTitle = computed(() => title.value.replace(/\n/g, '\n'))
+const closeFilter = () => { filterOpen.value = false }
+
+const updateFilterSidebarTop = () => {
+    const header = document.querySelector<HTMLElement>('.header.compact')
+    if (!header) {
+        filterSidebarTop.value = 0
+        return
+    }
+
+    const headerBottom = header.getBoundingClientRect().bottom
+    filterSidebarTop.value = Math.max(0, Math.min(window.innerHeight, headerBottom))
+}
+
+const startTrackingSidebarPosition = () => {
+    if (trackingSidebarPosition) return
+    updateFilterSidebarTop()
+    scrollRoot?.addEventListener('scroll', updateFilterSidebarTop, { passive: true })
+    window.addEventListener('resize', updateFilterSidebarTop)
+    trackingSidebarPosition = true
+}
+
+const stopTrackingSidebarPosition = () => {
+    if (!trackingSidebarPosition) return
+    scrollRoot?.removeEventListener('scroll', updateFilterSidebarTop)
+    window.removeEventListener('resize', updateFilterSidebarTop)
+    trackingSidebarPosition = false
+}
 
 const anchorId = computed(() => title.value
     .toLowerCase()
@@ -111,6 +149,13 @@ const anchorId = computed(() => title.value
 watch(active, (isActive, wasActive) => {
     if (isActive && !wasActive) {
         emit(fullyVisibleEvent, anchorId.value)
+    }
+    if (isActive) {
+        startTrackingSidebarPosition()
+    }
+    if (!isActive) {
+        filterOpen.value = false
+        stopTrackingSidebarPosition()
     }
 })
 
@@ -140,11 +185,18 @@ const copyDashboardLink = () => {
     tryClipboard()
 }
 
+const onKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && filterOpen.value) closeFilter()
+}
+
 onMounted(() => {
     desktopMql.addEventListener('change', onMqlChange)
+    window.addEventListener('keydown', onKeydown)
+    scrollRoot = document.querySelector<HTMLElement>('.snap-container')
 
     if (rootEl.value) {
         active.value = rootEl.value.dataset.active === 'true'
+        if (active.value) startTrackingSidebarPosition()
         attrObserver = new MutationObserver(() => {
             active.value = rootEl.value?.dataset.active === 'true'
         })
@@ -154,6 +206,8 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
     desktopMql.removeEventListener('change', onMqlChange)
+    window.removeEventListener('keydown', onKeydown)
+    stopTrackingSidebarPosition()
     attrObserver?.disconnect()
     if (copyToastTimeout) clearTimeout(copyToastTimeout)
 })
@@ -164,7 +218,7 @@ onBeforeUnmount(() => {
 .composed-dashboard {
     --padding-x: 2vh;
     --padding-y: 2vh;
-    
+
     display: flex;
     flex-direction: column;
     padding: var(--padding-y) var(--padding-x);
@@ -281,6 +335,11 @@ onBeforeUnmount(() => {
     width: 100%;
 }
 
+.filter-backdrop,
+.filter-sidebar-header {
+    display: none;
+}
+
 .charts-section {
     display: grid;
     flex: 1;
@@ -306,9 +365,14 @@ onBeforeUnmount(() => {
         padding: var(--padding-y) var(--padding-x);
     }
 
+    .composed-dashboard--filter-open {
+        z-index: 300;
+    }
+
     .frame-header h1 {
         font-size: 2em;
         text-align: center;
+        margin-bottom: 0;
     }
 
     .frame-subtitle {
@@ -333,23 +397,27 @@ onBeforeUnmount(() => {
 
     .filter-toggle {
         display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        align-self: flex-start;
-        background: #fafafa;
-        border: 1px solid rgba(255, 255, 255, 0.28);
-        color: #404040;
-        padding: 0.5rem 0.85rem;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: background 0.2s ease, border-color 0.2s ease;
-        width: 100%;
-    }
+        position: fixed;
 
-    .filter-arrow {
-        display: inline-block;
-        transition: transform 1.2s;
+        right: 0.3rem;
+        bottom: 4.9rem;
+
+        width: 2rem;
+        height: 2rem;
+
+        align-items: center;
+        justify-content: center;
+
+        border: none;
+        border-radius: 999px;
+        background: #fafafa;
+        cursor: pointer;
+
+        font-size: 0rem;
+        background-color: #213547;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+
+        z-index: 1000;
     }
 
     .filter-arrow.expanded {
@@ -358,9 +426,9 @@ onBeforeUnmount(() => {
     }
 
     .filter-toggle--open {
-        background: #213547;
+        background: #FFFFFF;
         color: #fff;
-        border-radius: 0.5rem 0.5rem 0 0;
+
     }
 
     .filter-toggle-icon {
@@ -368,15 +436,113 @@ onBeforeUnmount(() => {
         height: 1rem;
         flex-shrink: 0;
     }
-
+    
     .filter-iframe-wrapper {
-        max-height: 0;
+        position: fixed;
+        top: var(--filter-sidebar-top);                  
+        right: 0;
+
+        width: min(70vw, 22rem);
+        height: calc(100dvh - var(--filter-sidebar-top));
+
+        box-sizing: border-box;
+
+        background-color: #fff;
+        box-shadow: -0.5rem 0 1.5rem rgba(15, 23, 42, 0.3);
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
-        transition: max-height 1s ease-in-out;
+
+        transform: translateX(100%);
+        transition:
+            transform 0.5s ease-in-out,
+            visibility 0s linear 0.8s;
+
+        visibility: hidden;
+        pointer-events: none;
+
+        z-index: 1002;
     }
 
     .filter-iframe-wrapper--open {
-        max-height: 400vh;
+        transform: translateX(0);
+
+        visibility: visible;
+        pointer-events: auto;
+
+        transition:
+            transform 0.3s ease-out,
+            visibility 0s;
+    }
+
+    .filter-backdrop {
+        display: block;
+        position: fixed;
+        top: var(--filter-sidebar-top);
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(15, 23, 42, 0.45);
+        z-index: 1001;
+    }
+
+    .filter-sidebar-header {
+        min-height: 3.5rem;
+        padding: 0.75rem 1rem;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(33, 53, 71, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+        color: #213547;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .filter-close {
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: #213547;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .filter-close span::before,
+    .filter-close span::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0.9rem;
+        height: 0.12rem;
+        border-radius: 999px;
+        background: #fff;
+    }
+
+    .filter-close span::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .filter-close span::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .filter-scroll-content {
+        width: 100%;
+        flex: 1;
+        min-height: 0;
+
+        box-sizing: border-box;
+        padding-block: 1rem;
+        padding-inline: 0.5rem;
+
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
 }
