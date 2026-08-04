@@ -442,7 +442,7 @@ onBeforeUnmount(() => {
         top: var(--filter-sidebar-top);                  
         right: 0;
 
-        width: min(70vw, 22rem);
+        width: min(90vw, 22rem);
         height: calc(100dvh - var(--filter-sidebar-top));
 
         box-sizing: border-box;
