@@ -133,14 +133,14 @@ const dashboards: DashboardConfig[] = [
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: 'c2e51b8e-41af-4b68-9e8a-a3c13af76f28',
-        mobileHeight: 3,
+        mobileHeight: 1,
         mobileOrder: 9,
         skeletonType: 'kpi'
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
         sheet: '156dd22f-808f-4f56-b0f8-63ab268b6b9e',
-        mobileHeight: 3,
+        mobileHeight: 1,
         mobileOrder: 10,
         skeletonType: 'kpi'
       },
