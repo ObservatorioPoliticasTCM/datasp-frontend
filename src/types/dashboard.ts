@@ -1,5 +1,13 @@
 import type { SkeletonType } from "@/components/DashboardItemSkeleton.vue"
 
+export type LegendIconType = 'line' | 'dot' | 'square' | 'triangle'
+
+export interface DashboardLegendItem {
+  text: string
+  color: string
+  iconType?: LegendIconType
+}
+
 export interface DashboardFilter {
   appid: string
   sheet: string
@@ -9,9 +17,11 @@ export interface DashboardFilter {
 export interface ChartItem {
   appid: string
   sheet: string
+  label?: string
   mobileHeight?: number
   mobileOrder?: number
   skeletonType?: SkeletonType
+  legendItems?: DashboardLegendItem[]
 }
 
 export interface DashboardConfig {
