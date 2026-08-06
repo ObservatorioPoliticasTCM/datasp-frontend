@@ -163,7 +163,17 @@ const dashboards: DashboardConfig[] = [
         sheet: '4951634e-6711-4e8a-8cfd-e5b8d29968ad',
         mobileHeight: 4,
         mobileOrder: 13,
-        skeletonType: 'line'
+        skeletonType: 'line',
+        legendItems: [
+          {
+            text: 'Orçado',
+            color: '#a38c21'
+          },
+          {
+            text: 'Liquidado',
+            color: '#a32088'
+          }
+        ]
       },
       {
         appid: 'e808b4ea-ded0-41c6-b5b0-8845934d8369',
