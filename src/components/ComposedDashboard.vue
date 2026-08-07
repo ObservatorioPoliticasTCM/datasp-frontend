@@ -417,7 +417,7 @@ onBeforeUnmount(() => {
         background-color: #213547;
         border: 1px solid rgba(255, 255, 255, 0.24);
 
-        z-index: 1000;
+        z-index: 330;
     }
 
     .filter-arrow.expanded {
