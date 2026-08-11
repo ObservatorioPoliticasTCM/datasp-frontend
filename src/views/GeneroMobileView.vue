@@ -190,88 +190,88 @@ const dashboards: DashboardConfig[] = [
   {
     title: 'Despesas municipais sensíveis a gênero em projetos/atividades sem foco exclusivo em políticas para mulheres (2023)',
     identity: '2',
-    desktopAppId: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+    desktopAppId: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
     desktopSheetId: 'b5eaabe4-7475-4e0f-ab78-92f912214961',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS EM AÇÕES PARCIALMENTE FOCALIZADAS POR INICIATIVA DISCRICIONÁRIA DA GESTÃO MUNICIPAL (2023).pdf',
     downloadLink: '/dados/genero/orçamento-não-exclusivo-2023.csv',
     filter: {
-      appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+      appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
       sheet: '0e062a58-256e-4071-ad33-09c6e8715431',
       showSelections: true
     },
     charts: [
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: 'cc76268a-5e5a-49f7-94e7-902f6822ced0',
         mobileHeight: 3,
         mobileOrder: 0,
         skeletonType: 'kpi'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: '7cece033-dc07-4647-9c70-15bd4b4e5708',
         mobileHeight: 3,
         mobileOrder: 1,
         skeletonType: 'kpi'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: '5784977d-8725-4a8a-92f0-e16221b5f900',
         mobileHeight: 3,
         mobileOrder: 2,
         skeletonType: 'kpi'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: '3d0561d9-d0f0-4835-b08a-7e056e2fde19',
         mobileHeight: 3,
         mobileOrder: 3,
         skeletonType: 'kpi'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: 'e63a2fba-e98c-4ffe-b8a9-ad673b3073ef',
         mobileHeight: 3,
         mobileOrder: 4,
         skeletonType: 'kpi'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: '56d2ca00-4c09-4874-987e-3952b3c59297',
-        mobileHeight: 3,
+        mobileHeight: 1,
         mobileOrder: 5,
         skeletonType: 'kpi'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: 'fc6a3962-639d-4915-8ed0-bdcc61e00382',
-        mobileHeight: 3,
+        mobileHeight: 1,
         mobileOrder: 6,
         skeletonType: 'kpi'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: '94a42b74-826f-4f32-8320-656b1acd7bb6',
-        mobileHeight: 3,
+        mobileHeight: 5,
         mobileOrder: 7,
         skeletonType: 'treemap'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: 'd09047f5-9a22-432a-8459-1e8bfbfb4e1f',
         mobileHeight: 3,
         mobileOrder: 8,
         skeletonType: 'pie'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: 'aea58da9-47a5-4280-b47e-f854114b796d',
         mobileHeight: 4,
         mobileOrder: 9,
         skeletonType: 'column'
       },
       {
-        appid: 'aa9f4f6c-2007-47d9-ab3a-588c87a4d50e',
+        appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
         sheet: 'a2362dd0-3b99-468a-bd70-d3cebacc594a',
         mobileHeight: 5,
         mobileOrder: 10,
