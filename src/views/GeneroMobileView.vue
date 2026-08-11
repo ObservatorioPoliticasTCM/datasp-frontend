@@ -10,48 +10,72 @@ const dashboards: DashboardConfig[] = [
   {
     title: 'Visão geral de Gênero',
     identity: '0',
-    desktopAppId: 'd73227fb-7244-4216-980d-8e2b08f23f05',
+    desktopAppId: '82f1fad5-c68b-4590-a2dc-a91da192c2d4',
     desktopSheetId: 'XUzXjdp',
     filter: {
-      appid: 'd73227fb-7244-4216-980d-8e2b08f23f05',
+      appid: '82f1fad5-c68b-4590-a2dc-a91da192c2d4',
       sheet: '1b12cc1f-d8e9-4224-b990-4c8ed175bd13',
       showSelections: true
     },
     charts: [
       {
-        appid: 'd73227fb-7244-4216-980d-8e2b08f23f05',
+        appid: '82f1fad5-c68b-4590-a2dc-a91da192c2d4',
         sheet: '0af12cba-9930-410d-87be-b31bc956fa38',
-        mobileHeight: 3,
+        mobileHeight: 4,
         mobileOrder: 0,
         skeletonType: 'column'
       },
       {
-        appid: 'd73227fb-7244-4216-980d-8e2b08f23f05',
+        appid: '82f1fad5-c68b-4590-a2dc-a91da192c2d4',
         sheet: 'b82d0e4a-b492-42e3-82d6-7064263af7a6',
         mobileHeight: 1,
         mobileOrder: 1,
         skeletonType: 'kpi'
       },
       {
-        appid: 'd73227fb-7244-4216-980d-8e2b08f23f05',
+        appid: '82f1fad5-c68b-4590-a2dc-a91da192c2d4',
         sheet: '5c23ce82-c60c-4fa5-9ea5-f6523836b019',
-        mobileHeight: 3,
+        mobileHeight: 5,
         mobileOrder: 2,
         skeletonType: 'bar'
       },
       {
-        appid: 'd73227fb-7244-4216-980d-8e2b08f23f05',
+        appid: '82f1fad5-c68b-4590-a2dc-a91da192c2d4',
         sheet: '825db2ec-bb8b-4f99-82ac-1a8ecb433cc4',
-        mobileHeight: 3,
+        mobileHeight: 7,
         mobileOrder: 3,
-        skeletonType: 'bar'
+        skeletonType: 'bar',
+        legendItems: [
+          {
+            text: 'Ensino básico completo',
+            color: '#4477aa',
+            iconType: 'square'
+          },
+          {
+            text: 'Ensino básico incompleto',
+            color: '#cc6677',
+            iconType: 'square'
+          }
+        ]
       },
       {
-        appid: 'd73227fb-7244-4216-980d-8e2b08f23f05',
+        appid: '82f1fad5-c68b-4590-a2dc-a91da192c2d4',
         sheet: '4bcc6787-97d4-44fd-b530-8fc775299e6a',
-        mobileHeight: 3,
+        mobileHeight: 7,
         mobileOrder: 4,
-        skeletonType: 'bar'
+        skeletonType: 'bar',
+        legendItems: [
+          {
+            text: 'Informal',
+            color: '#4477aa',
+            iconType: 'square'
+          },
+          {
+            text: 'Formal',
+            color: '#cc6677',
+            iconType: 'square'
+          }
+        ]
       }
     ]  },
   {
