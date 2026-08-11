@@ -438,30 +438,9 @@ const dashboards: DashboardConfig[] = [
       },
       {
         appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: 'd57bc78d-4562-4339-b39c-624c2b7e5447',
-        mobileHeight: 1,
+        sheet: '4317ed57-6cdc-4417-80e3-4d92f9132a5c',
+        mobileHeight: 2,
         mobileOrder: 1,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: 'c0ec8211-4df1-42c9-8e22-1ca6ab20728e',
-        mobileHeight: 1,
-        mobileOrder: 2,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: '3ef67df4-2de6-45ea-a4f5-b3434f81ea9d',
-        mobileHeight: 1,
-        mobileOrder: 3,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: '51af6ded-fb44-48ca-834c-768a7a2d2ffc',
-        mobileHeight: 1,
-        mobileOrder: 4,
         skeletonType: 'text'
       },
       {
@@ -469,14 +448,36 @@ const dashboards: DashboardConfig[] = [
         sheet: 'f2dd5640-50fc-4a84-84ff-79c90b21c7fd',
         mobileHeight: 4,
         mobileOrder: 10,
-        skeletonType: 'line'
+        skeletonType: 'line',
+        legendItems: [
+          {
+            text: 'Orçado',
+            color: '#a38c21'
+          },
+          {
+            text: 'Liquidado',
+            color: '#a32088'
+          }
+        ]
       },
       {
         appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
         sheet: 'c72b9992-2192-471d-bca3-b53d5fc7b0c0',
         mobileHeight: 6,
         mobileOrder: 11,
-        skeletonType: 'column'
+        skeletonType: 'column',
+        legendItems: [
+          {
+            text: 'Total do município',
+            color: '#21a39e',
+            iconType: 'square'
+          },
+          {
+            text: 'Sensível a gênero',
+            color: '#a32088',
+            iconType: 'square'
+          }
+        ]
       }
     ]
   },
@@ -538,30 +539,9 @@ const dashboards: DashboardConfig[] = [
       },
       {
         appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: '214af26a-f271-4f79-8ecf-166116527ecc',
-        mobileHeight: 1,
+        sheet: '4317ed57-6cdc-4417-80e3-4d92f9132a5c',
+        mobileHeight: 2,
         mobileOrder: 1,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: '0b3cf4d7-ab41-48a3-a325-995e6a4edc8d',
-        mobileHeight: 1,
-        mobileOrder: 2,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: '2215b017-7a5f-43b7-8df6-33c4260f457c',
-        mobileHeight: 1,
-        mobileOrder: 3,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: 'e6c2ce99-7c4c-4398-86b5-0b0f75ff5d96',
-        mobileHeight: 1,
-        mobileOrder: 4,
         skeletonType: 'text'
       },
       {
@@ -569,14 +549,36 @@ const dashboards: DashboardConfig[] = [
         sheet: 'b0bab8c0-9808-4e8a-b67f-861bbd6d285f',
         mobileHeight: 4,
         mobileOrder: 10,
-        skeletonType: 'line'
+        skeletonType: 'line',
+        legendItems: [
+          {
+            text: 'Orçado',
+            color: '#a38c21'
+          },
+          {
+            text: 'Liquidado',
+            color: '#a32088'
+          }
+        ]
       },
       {
         appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
         sheet: 'bfae5073-158c-4aea-a0d3-8993db44c16f',
         mobileHeight: 6,
         mobileOrder: 11,
-        skeletonType: 'column'
+        skeletonType: 'column',
+        legendItems: [
+          {
+            text: 'Total do município',
+            color: '#21a39e',
+            iconType: 'square'
+          },
+          {
+            text: 'Sensível a gênero',
+            color: '#a32088',
+            iconType: 'square'
+          }
+        ]
       }
     ]
   },
@@ -638,30 +640,9 @@ const dashboards: DashboardConfig[] = [
       },
       {
         appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: '4be4c689-944e-4888-98e1-2014a36e266e',
-        mobileHeight: 1,
+        sheet: '4317ed57-6cdc-4417-80e3-4d92f9132a5c',
+        mobileHeight: 2,
         mobileOrder: 1,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: 'b582b021-45c1-47a7-9f19-d3bc641c4d27',
-        mobileHeight: 1,
-        mobileOrder: 2,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: '427011c8-1175-49df-b2e8-eead799b0ac1',
-        mobileHeight: 1,
-        mobileOrder: 3,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: 'd6650337-5365-4a5f-a59e-e0d1803dd017',
-        mobileHeight: 1,
-        mobileOrder: 4,
         skeletonType: 'text'
       },
       {
@@ -669,14 +650,36 @@ const dashboards: DashboardConfig[] = [
         sheet: '6ec3fce4-c2d1-426f-bef1-18d97528d103',
         mobileHeight: 4,
         mobileOrder: 10,
-        skeletonType: 'line'
+        skeletonType: 'line',
+        legendItems: [
+          {
+            text: 'Orçado',
+            color: '#a38c21'
+          },
+          {
+            text: 'Liquidado',
+            color: '#a32088'
+          }
+        ]
       },
       {
         appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
         sheet: '1f5834e6-2f23-4b96-9b47-a962f9f54e11',
         mobileHeight: 6,
         mobileOrder: 11,
-        skeletonType: 'column'
+        skeletonType: 'column',
+        legendItems: [
+          {
+            text: 'Total do município',
+            color: '#21a39e',
+            iconType: 'square'
+          },
+          {
+            text: 'Sensível a gênero',
+            color: '#a32088',
+            iconType: 'square'
+          }
+        ]
       }
     ]
   },
@@ -738,30 +741,9 @@ const dashboards: DashboardConfig[] = [
       },
       {
         appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: 'fbb0ed27-32d0-4ac8-941e-bb68d92f8991',
-        mobileHeight: 1,
+        sheet: '4317ed57-6cdc-4417-80e3-4d92f9132a5c',
+        mobileHeight: 2,
         mobileOrder: 1,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: 'e8abfcea-14fe-4696-94c4-a6f586a07ee2',
-        mobileHeight: 1,
-        mobileOrder: 2,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: 'a54f7ce5-40f8-4ff1-a04c-a6866d7c3870',
-        mobileHeight: 1,
-        mobileOrder: 3,
-        skeletonType: 'text'
-      },
-      {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
-        sheet: 'b0a93c2d-5862-4aab-8f99-9475a08eab4d',
-        mobileHeight: 1,
-        mobileOrder: 4,
         skeletonType: 'text'
       },
       {
@@ -769,14 +751,36 @@ const dashboards: DashboardConfig[] = [
         sheet: '757b5e7a-3401-4590-b018-36c5f0c04051',
         mobileHeight: 4,
         mobileOrder: 10,
-        skeletonType: 'line'
+        skeletonType: 'line',
+        legendItems: [
+          {
+            text: 'Orçado',
+            color: '#a38c21'
+          },
+          {
+            text: 'Liquidado',
+            color: '#a32088'
+          }
+        ]
       },
       {
         appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
         sheet: 'd6d5273e-f011-42de-96c6-085ceb9e71cd',
         mobileHeight: 6,
         mobileOrder: 11,
-        skeletonType: 'column'
+        skeletonType: 'column',
+        legendItems: [
+          {
+            text: 'Total do município',
+            color: '#21a39e',
+            iconType: 'square'
+          },
+          {
+            text: 'Sensível a gênero',
+            color: '#a32088',
+            iconType: 'square'
+          }
+        ]
       }
     ]
   }
