@@ -13,8 +13,8 @@
 
         <template #charts>
           <DashboardItemFrame v-for="chart in dashboard.charts" :key="chart.sheet" :appid="chart.appid"
-            :sheet="chart.sheet" :mobile-height="chart.mobileHeight"
-            :mobile-order="chart.mobileOrder" :skeleton-type="chart.skeletonType" />
+            :sheet="chart.sheet" :label="chart.label" :mobile-height="chart.mobileHeight"
+            :mobile-order="chart.mobileOrder" :skeleton-type="chart.skeletonType" :legend-items="chart.legendItems" />
         </template>
       </ComposedDashboard>
     </template>
