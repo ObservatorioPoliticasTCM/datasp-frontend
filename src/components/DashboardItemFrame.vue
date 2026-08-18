@@ -2,7 +2,7 @@
   <div class="frame-wrapper">
     <div class="frame-content">
       <DashboardItemSkeleton :type="skeletonType" :active="!loadIframe" :transition-duration="5" />
-      <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" loading="lazy" frameborder="0"
+      <iframe :src="iframeSrc" :title="label ?? `Dashboard item – ${sheet}`" frameborder="0"
         class="dashboard-item-frame" ref="iframe"></iframe>
     </div>
 
@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, toRefs, unref, onMounted, ref } from 'vue'
+import { computed, inject, toRefs, unref, onBeforeUnmount, onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
 import DashboardItemSkeleton, { type SkeletonType } from './DashboardItemSkeleton.vue'
 import { buildQlikUrl } from '@/utils/qlik'
@@ -68,15 +68,51 @@ const iframeSrc = computed(() => {
   })
 })
 
-const obs = new IntersectionObserver(([entry]) => {
-  if (entry.isIntersecting) {
-    loadIframe.value = true
-    obs.disconnect()
-  }
-}, { rootMargin: '0px 0px 20% 0px' })
+let obs: IntersectionObserver | null = null
 
 onMounted(() => {
-  if (iframe.value) obs.observe(iframe.value)
+  if (!iframe.value) return
+
+  const scrollContainer = iframe.value.closest('.snap-container')
+
+  obs = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      loadIframe.value = true
+    } else {
+      destroyIframe()
+    }
+  }, {
+    root: scrollContainer,
+    rootMargin: '100% 0px  100% 0px'
+  })
+
+  obs.observe(iframe.value)
+})
+
+function destroyIframe() {
+  const iframeElement = iframe.value
+  if (!iframeElement) return
+
+  try {
+    iframeElement.src = 'about:blank'
+
+    // if (iframeElement.contentWindow) {
+    //   iframeElement.contentWindow.document.write('')
+    //   iframeElement.contentWindow.close()
+      
+    // }
+  } catch (error) {
+    console.warn("Não foi possível limpar a memória")
+  }
+
+  loadIframe.value = false
+}
+
+onBeforeUnmount(() => {
+  if(obs != null){
+    obs.disconnect()
+  }
+  destroyIframe()
 })
 </script>
 
