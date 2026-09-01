@@ -485,67 +485,67 @@ const dashboards: DashboardConfig[] = [
     title: 'Plano Municipal de Políticas para as Mulheres - Assistencia Social',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '5',
-    desktopAppId: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+    desktopAppId: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
     desktopSheetId: 'fde5eb98-c713-45ad-b134-fc6d58a188e5',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
     downloadLink: '/dados/genero/orçamento-pmpm-assistência-social.csv',
     filter: {
-      appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+      appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
       sheet: 'e1d6796b-9dc5-4bbf-9e82-d41867258d13',
       showSelections: true
     },
     charts: [
       {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+        appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
         sheet: '7abe496a-c18c-451e-b2d3-79977e6aea6b',
         mobileHeight: 2,
         mobileOrder: 0,
         skeletonType: 'text'
       },
       {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+        appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
         sheet: 'c7a86a7c-a275-49f1-937d-e38df07873c9',
         mobileHeight: 3,
         mobileOrder: 5,
         skeletonType: 'kpi'
       },
       {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+        appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
         sheet: 'e9cb31d3-749a-4795-8093-37c221d014f1',
         mobileHeight: 3,
         mobileOrder: 6,
         skeletonType: 'kpi'
       },
       {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+        appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
         sheet: 'c38b39bd-609d-43ce-b164-2f76e6a59ac0',
         mobileHeight: 3,
         mobileOrder: 7,
         skeletonType: 'kpi'
       },
       {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+        appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
         sheet: '943d7771-74b9-43ba-84a6-4ebc799fffd6',
         mobileHeight: 3,
         mobileOrder: 8,
         skeletonType: 'kpi'
       },
       {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+        appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
         sheet: 'e90876bd-14c4-445a-96ab-f89167a1ef44',
         mobileHeight: 3,
         mobileOrder: 9,
         skeletonType: 'kpi'
       },
       {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+        appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
         sheet: '4317ed57-6cdc-4417-80e3-4d92f9132a5c',
         mobileHeight: 2,
         mobileOrder: 1,
         skeletonType: 'text'
       },
       {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+        appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
         sheet: 'b0bab8c0-9808-4e8a-b67f-861bbd6d285f',
         mobileHeight: 4,
         mobileOrder: 10,
@@ -562,7 +562,7 @@ const dashboards: DashboardConfig[] = [
         ]
       },
       {
-        appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
+        appid: '7dcf1a7c-4f57-4d21-80b7-8fe64fa25315',
         sheet: 'bfae5073-158c-4aea-a0d3-8993db44c16f',
         mobileHeight: 6,
         mobileOrder: 11,
