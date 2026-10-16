@@ -10,6 +10,7 @@ import NotFound from './views/NotFoundView.vue'
 import ImprintPage from '@/views/ImprintPageView.vue'
 import TechGuideView from '@/views/TechGuideView.vue'
 import PresentationLetterView from './views/PresentationLetterView.vue'
+import { usePreview } from './composables/preview'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -96,3 +97,9 @@ router.afterEach((to) => {
 });
 
 export default router
+
+router.beforeEach((to) => {
+  const { applyPreviewParameter } = usePreview()
+
+  applyPreviewParameter(to.query.preview ?? null)
+})
