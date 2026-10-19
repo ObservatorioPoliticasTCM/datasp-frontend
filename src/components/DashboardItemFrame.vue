@@ -82,7 +82,7 @@ onMounted(() => {
       destroyIframe()
     }
   }, {
-    root: scrollContainer,
+    root: props.skeletonType === 'filter' ? null : scrollContainer,
     rootMargin: '100% 0px  100% 0px'
   })
 
