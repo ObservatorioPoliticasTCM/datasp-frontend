@@ -315,19 +315,6 @@ const imprint2026: AnnualImprint = {
   year: 2026,
 }
 
-const workingGroupLinks2026: Record<string, string> = {
-  'GT Educação': 'https://observatorio.tcm.sp.gov.br/Educacao/559290',
-  'GT Gênero': 'https://observatorio.tcm.sp.gov.br/Genero/556919',
-  'GT Saúde': 'https://observatorio.tcm.sp.gov.br/Saude/556928',
-  'GT Urbanismo': 'https://observatorio.tcm.sp.gov.br/Urbanismo/559291',
-  'GT Regionalização do Orçamento': 'https://observatorio.tcm.sp.gov.br/Regionalizacao/559292',
-}
-
-imprint2026.workingGroups = imprint2026.workingGroups.map(group => ({
-  ...group,
-  url: workingGroupLinks2026[group.name] ?? group.url,
-}))
-
 export const annualImprints: AnnualImprint[] = [
   imprint2026,
   imprint2025,
