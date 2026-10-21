@@ -10,46 +10,46 @@ export const saudeCurrent: DashboardConfig[] = [
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
     desktopSheetId: 'EnGpsY',
     filter: {
-      appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
+      appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
       sheet: 'CmsPL',
       showSelections: true
     },
     charts: [
       {
-        appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: '57b6bce0-3c86-49d7-87c0-2e2690420f8a',
         mobileOrder: 0,
         skeletonType: 'map'
       },
       {
-        appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: '3bacdabc-915f-4f33-ab7f-92e10addfe6a',
         mobileHeight: 1,
         mobileOrder: 1,
         skeletonType: 'kpi'
       },
       {
-        appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: '3b487c3e-46bb-49bb-b6d1-f07bc78bc34c',
         mobileHeight: 4,
         mobileOrder: 4,
         skeletonType: 'pie'
       },
       {
-        appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: '76b4690d-f536-4788-b99e-b89eae1c540e',
         mobileHeight: 4,
         mobileOrder: 2,
         skeletonType: 'bar'
       },
       {
-        appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: '60c5c2ae-6a1e-4986-bee9-6afa7f02e128',
         mobileOrder: 3,
         skeletonType: 'treemap'
       },
       {
-        appid: '641d52d4-8c27-49ec-a4c4-46954bc9fe1c',
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: '06e488a7-e8f7-43e4-9d4c-90bddc114dd3',
         mobileHeight: 1,
         mobileOrder: 5,
