@@ -35,4 +35,14 @@ export interface DashboardConfig {
   filterOpen?: boolean
   filter: DashboardFilter
   charts: ChartItem[]
+  notice?: DashboardNoticeConfig
 }
+
+export interface DashboardNoticeConfig{
+  text: string
+  expiresAt: string
+  url?: string
+  linkText?: string
+}
+
+
