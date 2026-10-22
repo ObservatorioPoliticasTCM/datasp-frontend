@@ -40,6 +40,7 @@ export interface DashboardConfig {
 
 export interface DashboardNoticeConfig{
   text: string
+  //Data e hora de vencimento no formato: AAAA-MM-DDTHH:MM:SS-HH:MM. Ex.: 2026-11-30T23:59:59-03:00
   expiresAt: string
   url?: string
   linkText?: string

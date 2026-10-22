@@ -1,5 +1,5 @@
 ﻿<template>
-    <div class="notice-container">
+    <div v-if="isCurrent" class="notice-container">
         <p class="text-notice">{{ text }}</p>
         <a v-if="url" :href="url" class="url-notice">
             {{ linkText }}
@@ -8,12 +8,20 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue';
+
+const props = defineProps<{
     text: string
     expiresAt: string
     url?: string
     linkText?: string
 }>()
+
+const isCurrent = computed(() => {
+    const expiration = Date.parse(props.expiresAt)
+
+    return Number.isFinite(expiration) && Date.now() < expiration
+})
 </script>
 
 <style scoped>
