@@ -2,6 +2,7 @@ import type { DashboardConfig } from "@/types/dashboard";
 
 export const educacaoCurrent: DashboardConfig[] = [
   {
+    id: 'educacao-visao-geral',
     title: "Visão geral da educação ",
     methodologyLink:
       "/infos/notas/educacao/1_notas_metodologicas_visao_geral_ok.pdf",
@@ -86,6 +87,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     ],
   },
 {
+    id: 'educacao-despesas-funcao-educacao',
     title: "Despesas liquidadas na Função Educação ",
     methodologyLink:
       "/infos/notas/educacao/2_notas_metodologicas_despesas_ok.pdf",
@@ -135,6 +137,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     ],
   },
   {
+    id: 'educacao-escolas-rede-municipal',
     title: "Número de escolas da rede municipal ",
     methodologyLink:
       "/infos/notas/educacao/3_notas_metodologicas_escolas_ok.pdf",
@@ -176,6 +179,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     ],
   },
   {
+    id: 'educacao-perfil-professores',
     title: "Perfil dos professores da rede pública municipal ",
     methodologyLink:
       "/infos/notas/educacao/4_notas_metodologicas_educ_professores_ok.pdf",
@@ -250,6 +254,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     ],
   },
   {
+    id: 'educacao-perfil-alunos',
     title: "Perfil dos alunos da rede municipal ",
     methodologyLink:
       "/infos/notas/educacao/5_notas_metodologicas_alunos_ok.pdf",
@@ -303,6 +308,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     ],
   },
   {
+    id: 'educacao-alunos-bolsa-familia',
     title: "Alunos da rede municipal beneficiários do Bolsa Família ",
     methodologyLink:
       "/infos/notas/educacao/6_notas_metodologicas_bolsa_familia_ok.pdf",
@@ -358,6 +364,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     ],
   },
   {
+    id: 'educacao-alunos-migrantes',
     title: "Alunos migrantes na rede municipal ",
     methodologyLink:
       "/infos/notas/educacao/7_notas_metodologicas_alunos_estrangeiros_ok.pdf",

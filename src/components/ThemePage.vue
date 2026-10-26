@@ -1,7 +1,7 @@
 <template>
   <SnapPage>
     <slot />
-    <template v-for="dashboard in dashboards" :key="dashboard.title">
+    <template v-for="dashboard in dashboards" :key="dashboard.id">
       <ComposedDashboard :title="dashboard.title" :subtitle="dashboard.subtitle" :download-link="dashboard.downloadLink"
         :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity"
         :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId"

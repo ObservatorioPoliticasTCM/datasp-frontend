@@ -25,6 +25,7 @@ export interface ChartItem {
 }
 
 export interface DashboardConfig {
+  id: string
   title: string
   subtitle?: string
   downloadLink?: string

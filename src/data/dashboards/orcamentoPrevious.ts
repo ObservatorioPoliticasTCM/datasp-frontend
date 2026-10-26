@@ -2,6 +2,7 @@ import type { DashboardConfig } from '@/types/dashboard'
 
 export const orcamentoPrevious: DashboardConfig[] = [
   {
+    id: 'orcamento-variacao-funcao-governo',
     title: 'Variação do Orçamento por Função de Governo (2024)',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '1',
@@ -62,6 +63,7 @@ export const orcamentoPrevious: DashboardConfig[] = [
     ]
   },
   {
+    id: 'orcamento-variacao-detalhada-funcao-governo',
     title: 'Variação detalhada do Orçamento por Função de Governo (2024)',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '2',
@@ -123,6 +125,7 @@ export const orcamentoPrevious: DashboardConfig[] = [
     ]
   },
   {
+    id: 'orcamento-variacao-detalhada-orgao',
     title: 'Variação detalhada do Orçamento por Órgão (2024)',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '3',
@@ -184,6 +187,7 @@ export const orcamentoPrevious: DashboardConfig[] = [
     ]
   },
   {
+    id: 'orcamento-comparacao-projeto-atividade',
     title: 'Comparação do Orçamento por Projeto/Atividade (2024)',
     downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
     identity: '4',

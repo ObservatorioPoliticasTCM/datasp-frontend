@@ -2,6 +2,7 @@ import type { DashboardConfig } from '@/types/dashboard'
 
 export const saudePrevious: DashboardConfig[] = [
   {
+    id: 'saude-consultas',
     title: 'Número de consultas (2024)',
     subtitle: 'Inclui as unidades municipais, estaduais e federais',
     downloadLink: '/dados/saude/consultas.zip',
@@ -58,6 +59,7 @@ export const saudePrevious: DashboardConfig[] = [
     ]
   },
   {
+    id: 'saude-leitos',
     title: 'Leitos (2024)',
     subtitle: 'Inclui leitos das unidades municipais, estaduais e federais',
     downloadLink: '/dados/saude/leitos-internacao-complementares.zip',
@@ -105,6 +107,7 @@ export const saudePrevious: DashboardConfig[] = [
     ]
   },
   {
+    id: 'saude-mortalidade',
     title: 'Taxa de Mortalidade (2024)',
     subtitle: 'Inclui óbitos de residentes do município de São Paulo',
     downloadLink: '/dados/saude/mortalidade.zip',
@@ -153,6 +156,7 @@ export const saudePrevious: DashboardConfig[] = [
     ]
   },
   {
+    id: 'saude-despesas',
     title: 'Despesas em atenção Básica e especializada (2024)',
     subtitle: 'Inclui apenas despesas municipais',
     downloadLink: '/dados/saude/despesas.zip',

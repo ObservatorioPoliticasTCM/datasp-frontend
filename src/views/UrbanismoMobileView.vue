@@ -8,6 +8,7 @@ import type { DashboardConfig } from '@/types/dashboard'
 
 const dashboards: DashboardConfig[] = [
   {
+    id: 'urbanismo-populacao-risco-geologico-hidrologico',
     title: 'População em risco geológico e hidrológico (ago/2025)',
     identity: '1',
     desktopAppId: 'ae6af572-20d7-4971-87ca-c472c0bde58a',
@@ -86,6 +87,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
+    id: 'urbanismo-despesas-gestao-riscos-desastres',
     title: 'Despesas em Gestão dos Riscos e Promoção da Resiliência a Desastres e Eventos Críticos (2024)',
     identity: '2',
     desktopAppId: '14f47000-5a08-4b2a-b198-d7ae6b6d55b2',
@@ -156,6 +158,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
+    id: 'urbanismo-area-parques',
     title: 'Área de parques municipais e estaduais (2024)',
     identity: '3',
     desktopAppId: 'b4ec6f8c-40e8-473f-b130-359e44df750e',
@@ -191,6 +194,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
+    id: 'urbanismo-parques-novos-requalificados',
     title: 'Parques novos e requalificados, áreas permeáveis e despesas liquidadas com parques (2024)',
     identity: '4',
     desktopAppId: '22a261d9-7064-4232-956f-232f78547e51',
@@ -241,6 +245,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
+    id: 'urbanismo-deficit-habitacional',
     title: 'Déficit habitacional, domicílios não ocupados e domicílios em favelas',
     identity: '5',
     desktopAppId: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
@@ -304,6 +309,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
+    id: 'urbanismo-unidades-habitacionais',
     title: 'Unidades habitacionais entregues ou contratadas (2024)',
     identity: '6',
     desktopAppId: '97daaa3e-d91e-4eaf-aa6b-1cb4772239bb',
@@ -381,6 +387,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
+    id: 'urbanismo-regularizacao-fundiaria-assentamentos',
     title: 'Famílias beneficiadas por regularização fundiária e obras em assentamentos precários (2024)',
     identity: '7',
     desktopAppId: '2be0f077-d541-4b52-a2bf-7b05c1b72400',
@@ -444,6 +451,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
+    id: 'urbanismo-auxilio-aluguel',
     title: 'Famílias beneficiárias do programa de Auxílio Aluguel (dez/2024)',
     identity: '8',
     desktopAppId: '58f8b63f-5302-4e4b-9260-dc74b69c57f9',
@@ -514,6 +522,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
+    id: 'urbanismo-realizacao-financeira-acesso-moradia',
     title: 'Realização Financeira em políticas de Acesso à Moradia Adequada \u2014 Plano Plurianual 2022-2025',
     identity: '10',
     desktopAppId: 'f571d56a-108d-4a83-b865-45255c72b23d',
@@ -549,6 +558,7 @@ const dashboards: DashboardConfig[] = [
     ]
   },
   {
+    id: 'urbanismo-despesas-habitacao',
     title: 'Despesas liquidadas em toda a função Habitação (2024)',
     identity: '11',
     desktopAppId: '18956ab0-d917-475f-8c94-aba437c955fc',

@@ -2,6 +2,7 @@ import type { DashboardConfig } from "@/types/dashboard"
 
 export const generoCurrent: DashboardConfig[] = [
   {
+    id: 'genero-visao-geral',
     title: 'Visão geral de Gênero',
     identity: '0',
     desktopAppId: '82f1fad5-c68b-4590-a2dc-a91da192c2d4',
@@ -73,6 +74,7 @@ export const generoCurrent: DashboardConfig[] = [
       }
     ]  },
   {
+    id: 'genero-despesas-politicas-exclusivas-mulheres',
     title: 'Despesas municipais sensíveis a gênero em projetos/atividades com foco exclusivo em políticas para as mulheres',
     identity: '1',
     desktopAppId: 'ceb7f846-e814-4852-8237-706b0bb21d13',
@@ -182,6 +184,7 @@ export const generoCurrent: DashboardConfig[] = [
     ]
   },
   {
+    id: 'genero-despesas-politicas-nao-exclusivas-mulheres',
     title: 'Despesas municipais sensíveis a gênero em projetos/atividades sem foco exclusivo em políticas para mulheres (2023)',
     identity: '2',
     desktopAppId: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
@@ -274,6 +277,7 @@ export const generoCurrent: DashboardConfig[] = [
     ]
   },
   {
+    id: 'genero-plano-municipal-habitacao',
     title: 'Plano Municipal de Políticas para as Mulheres - Habitação',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '3',
@@ -375,6 +379,7 @@ export const generoCurrent: DashboardConfig[] = [
     ]
   },
   {
+    id: 'genero-plano-municipal-educacao',
     title: 'Plano Municipal de Políticas para as Mulheres - Educação',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '4',
@@ -476,6 +481,7 @@ export const generoCurrent: DashboardConfig[] = [
     ]
   },
   {
+    id: 'genero-plano-municipal-assistencia-social',
     title: 'Plano Municipal de Políticas para as Mulheres - Assistencia Social',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '5',
@@ -577,6 +583,7 @@ export const generoCurrent: DashboardConfig[] = [
     ]
   },
   {
+    id: 'genero-plano-municipal-direitos-humanos',
     title: 'Plano Municipal de Políticas para as Mulheres - Direitos Humanos',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '6',
@@ -678,6 +685,7 @@ export const generoCurrent: DashboardConfig[] = [
     ]
   },
   {
+    id: 'genero-plano-municipal-trabalho',
     title: 'Plano Municipal de Políticas para as Mulheres - Trabalho',
     subtitle: 'Despesas municipais sensíveis a gênero em projeto/atividade sem foco exclusivo em políticas para as mulheres, de acordo com o PMPM (2017-2020)',
     identity: '7',

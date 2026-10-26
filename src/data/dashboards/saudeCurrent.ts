@@ -2,6 +2,7 @@ import type { DashboardConfig } from '@/types/dashboard'
 
 export const saudeCurrent: DashboardConfig[] = [
   {
+    id: 'saude-consultas',
     title: 'Consultas',
     subtitle: 'Inclui as unidades municipais, estaduais e federais',
     downloadLink: '/dados/saude/consultas.zip',
@@ -58,6 +59,7 @@ export const saudeCurrent: DashboardConfig[] = [
     ]
   },
   {
+    id: 'saude-mortalidade',
     title: 'Mortalidade',
     subtitle: 'Inclui óbitos de residentes do município de São Paulo',
     downloadLink: '/dados/saude/mortalidade.zip',
@@ -106,6 +108,7 @@ export const saudeCurrent: DashboardConfig[] = [
     ]
   },
   {
+    id: 'saude-leitos',
     title: 'Leitos',
     subtitle: 'Inclui leitos das unidades municipais, estaduais e federais',
     downloadLink: '/dados/saude/leitos-internacao-complementares.zip',
@@ -153,6 +156,7 @@ export const saudeCurrent: DashboardConfig[] = [
     ]
   },
   {
+    id: 'saude-despesas',
     title: 'Despesas',
     subtitle: 'Inclui apenas despesas municipais',
     downloadLink: '/dados/saude/despesas.zip',
