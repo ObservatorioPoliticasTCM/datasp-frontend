@@ -2,6 +2,7 @@
     <div class="composed-dashboard snap-section"
         :class="{ 'composed-dashboard--filter-open': active && filterOpen }"
         ref="rootEl" :data-anchor-id="anchorId"
+        :data-dashboard-id="dashboardId" :data-dashboard-name="title.trim()" :data-theme-id="themeId"
         :style="{ '--filter-sidebar-top': `${filterSidebarTop}px` }">
         <div v-if="title" class="frame-header">
             <h1 v-if="title">
@@ -69,6 +70,8 @@ import DesktopDashboardFrame from './DesktopDashboardFrame.vue'
 const fullyVisibleEvent = 'fully-visible'
 
 interface DashboardFrameProps {
+    dashboardId: string
+    themeId: string
     identity?: string
     title?: string
     subtitle?: string

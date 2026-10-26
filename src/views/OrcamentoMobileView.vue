@@ -1,5 +1,5 @@
 ﻿<template>
-  <ThemePage :dashboards="dashboards" />
+  <ThemePage :dashboards="dashboards" theme-id="orcamento" />
 </template>
 
 <script setup lang="ts">

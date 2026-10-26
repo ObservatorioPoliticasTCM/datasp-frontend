@@ -37,3 +37,10 @@ export interface DashboardConfig {
   filter: DashboardFilter
   charts: ChartItem[]
 }
+
+export interface DashboardAnalyticsContext {
+  dashboardId: string
+  dashboardName: string
+  dashboardAnchor: string
+  themeId: string
+}

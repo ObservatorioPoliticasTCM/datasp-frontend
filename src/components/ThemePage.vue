@@ -5,7 +5,7 @@
       <ComposedDashboard :title="dashboard.title" :subtitle="dashboard.subtitle" :download-link="dashboard.downloadLink"
         :methodology-link="dashboard.methodologyLink" :identity="dashboard.identity"
         :desktop-app-id="dashboard.desktopAppId" :desktop-sheet-id="dashboard.desktopSheetId"
-        :filter-open="dashboard.filterOpen">
+        :filter-open="dashboard.filterOpen" :dashboard-id="dashboard.id" :theme-id="themeId">
         <template #filter>
           <DashboardItemFrame :appid="dashboard.filter.appid" :sheet="dashboard.filter.sheet"
             :show-selections="dashboard.filter.showSelections" skeleton-type="filter" />
@@ -29,6 +29,7 @@ import type { DashboardConfig } from '@/types/dashboard'
 
 defineProps<{
   dashboards: DashboardConfig[]
+  themeId: string
 }>()
 </script>
 
