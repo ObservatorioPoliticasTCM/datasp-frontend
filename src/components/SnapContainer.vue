@@ -85,6 +85,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } from 'vue'
+import { useDashboardActivation } from '@/composables/useDashboardActivation'
+import type { DashboardAnalyticsContext } from '@/types/dashboard'
 
 interface Props {
   showNavigation?: boolean
@@ -99,6 +101,10 @@ const props = withDefaults(defineProps<Props>(), {
   showArrows: true,
   disableSnap: false
 })
+
+const emit = defineEmits<{
+  (event: 'dashboard-confirmed', context: DashboardAnalyticsContext): void
+}>()
 
 const MOBILE_BREAKPOINT = 900
 const isPortrait = ref(false)
@@ -134,6 +140,21 @@ const activeDashboard = computed(() => activeElement.value ? dashboardEls.value.
 const activeDashboardAnchor = computed(() => activeElement.value?.dataset.anchorId ?? '')
 
 const totalDashboards = computed(() => dashboardEls.value.length)
+
+const dashboardCandidate = computed<DashboardAnalyticsContext | null>(() => {
+  if (topVisible.value || bottomVisible.value) return null
+
+  const { dashboardId, dashboardName, anchorId, themeId } = activeElement.value?.dataset ?? {}
+  if (!dashboardId || !dashboardName || !anchorId || !themeId) return null
+
+  return { dashboardId, dashboardName, dashboardAnchor: anchorId, themeId }
+})
+
+const { confirmedDashboard } = useDashboardActivation(dashboardCandidate)
+
+watch(confirmedDashboard, (dashboard) => {
+  if (dashboard) emit('dashboard-confirmed', dashboard)
+}, { flush: 'sync' })
 
 const checkSectionActive = (el: HTMLElement) => {
   const state = sectionStateMap.get(el)
