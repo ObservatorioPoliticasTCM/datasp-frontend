@@ -141,6 +141,15 @@ const activeDashboardAnchor = computed(() => activeElement.value?.dataset.anchor
 
 const totalDashboards = computed(() => dashboardEls.value.length)
 
+const readAnchor = () => {
+  try { return decodeURIComponent(window.location.hash.slice(1)) }
+  catch { return window.location.hash.slice(1) }
+}
+
+const navigationTarget = ref<string | null>(readAnchor() || null)
+const canConfirmDashboard = computed(() => navigationTarget.value === null ||
+  navigationTarget.value === dashboardCandidate.value?.dashboardAnchor)
+
 const dashboardCandidate = computed<DashboardAnalyticsContext | null>(() => {
   if (topVisible.value || bottomVisible.value) return null
 
@@ -150,10 +159,14 @@ const dashboardCandidate = computed<DashboardAnalyticsContext | null>(() => {
   return { dashboardId, dashboardName, dashboardAnchor: anchorId, themeId }
 })
 
-const { confirmedDashboard } = useDashboardActivation(dashboardCandidate)
+const { confirmedDashboard } = useDashboardActivation(dashboardCandidate, undefined, canConfirmDashboard, (dashboard) => {
+  if (navigationTarget.value === dashboard.dashboardAnchor) navigationTarget.value = null
+})
 
 watch(confirmedDashboard, (dashboard) => {
-  if (dashboard) emit('dashboard-confirmed', dashboard)
+  if (dashboard) {
+    emit('dashboard-confirmed', dashboard)
+  }
 }, { flush: 'sync' })
 
 const checkSectionActive = (el: HTMLElement) => {
@@ -222,10 +235,12 @@ const teardownAllSectionObservers = () => {
 }
 
 const clearHash = () => {
+  if (navigationTarget.value !== null) return
   history.replaceState(history.state, '', window.location.pathname + window.location.search)
 }
 
 const sectionVisible = (id: string) => {
+  if (navigationTarget.value !== null || !id) return
   if (topVisible.value || bottomVisible.value) return
   if (location.hash === `#${id}`) return
   history.replaceState(history.state, '', `#${id}`)
@@ -274,6 +289,7 @@ const setupObservers = () => {
   firstEl.value = children[0]
   lastEl.value = children[children.length - 1]
   updateDashboardRefs(children)
+  restoreNavigationTarget()
   disconnectIOs()
   topObserver = new IntersectionObserver(([e]) => {
     topVisible.value = e.isIntersecting
@@ -301,11 +317,15 @@ const scrollToElement = (element: HTMLElement | null) => {
 }
 
 const scrollToHome = () => {
+  if (topVisible.value) return
+  navigationTarget.value = '@home'
   scrollToElement(firstEl.value)
 }
 
 const scrollToFooter = () => {
+  if (bottomVisible.value) return
   if (!lastEl.value || lastEl.value === firstEl.value) return
+  navigationTarget.value = '@footer'
   scrollToElement(lastEl.value)
 }
 
@@ -313,8 +333,53 @@ const scrollToDashboard = (index: number) => {
   if (!container.value) return
   const target = dashboardEls.value[index]
   if (!target) return
+  if (dashboardCandidate.value?.dashboardAnchor === target.dataset.anchorId &&
+      confirmedDashboard.value?.dashboardId === target.dataset.dashboardId) return
+  navigationTarget.value = target.dataset.anchorId ?? null
   scrollToElement(target)
 }
+
+function restoreNavigationTarget() {
+  const anchor = navigationTarget.value
+  if (!anchor) return
+  const target = dashboardEls.value.find(el => el.dataset.anchorId === anchor)
+  if (target) scrollToElement(target)
+  // An unknown anchor must not prevent ordinary dashboard activation.
+  else if (dashboardEls.value.length && anchor !== '@home' && anchor !== '@footer') navigationTarget.value = null
+}
+
+const onHistoryNavigation = () => {
+  const anchor = readAnchor()
+  navigationTarget.value = anchor || (topVisible.value ? null : '@home')
+  if (anchor) restoreNavigationTarget()
+  else scrollToElement(firstEl.value)
+}
+
+const interruptNavigation = () => { navigationTarget.value = null }
+const onManualKey = (event: KeyboardEvent) => {
+  const target = event.target as HTMLElement | null
+  if (target?.closest('input, textarea, select, [contenteditable="true"]')) return
+  if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) interruptNavigation()
+}
+const onPointerDown = (event: PointerEvent) => {
+  // Scrollbar dragging; ordinary dashboard clicks (including copy link) do not cancel navigation.
+  const el = container.value
+  if (el && event.target === el && event.clientX >= el.getBoundingClientRect().left + el.clientWidth) interruptNavigation()
+}
+
+watch([topVisible, bottomVisible], ([top, bottom]) => {
+  if ((navigationTarget.value === '@home' && top) || (navigationTarget.value === '@footer' && bottom)) {
+    navigationTarget.value = null
+    clearHash()
+  }
+})
+
+watch(navigationTarget, (target) => {
+  if (target === null) {
+    if (topVisible.value || bottomVisible.value) clearHash()
+    else sectionVisible(activeDashboardAnchor.value)
+  }
+})
 
 const goPrev = () => {
   if (bottomVisible.value && totalDashboards.value) {
@@ -343,6 +408,12 @@ const goNext = () => {
 onMounted(async () => {
   evaluateViewport()
   window.addEventListener('resize', onResize)
+  window.addEventListener('popstate', onHistoryNavigation)
+  window.addEventListener('hashchange', onHistoryNavigation)
+  window.addEventListener('keydown', onManualKey)
+  container.value?.addEventListener('wheel', interruptNavigation, { passive: true })
+  container.value?.addEventListener('touchmove', interruptNavigation, { passive: true })
+  container.value?.addEventListener('pointerdown', onPointerDown)
 
   if (container.value) {
     await nextTick()
@@ -356,6 +427,12 @@ onMounted(async () => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', onResize)
+  window.removeEventListener('popstate', onHistoryNavigation)
+  window.removeEventListener('hashchange', onHistoryNavigation)
+  window.removeEventListener('keydown', onManualKey)
+  container.value?.removeEventListener('wheel', interruptNavigation)
+  container.value?.removeEventListener('touchmove', interruptNavigation)
+  container.value?.removeEventListener('pointerdown', onPointerDown)
   disconnectIOs()
   teardownAllSectionObservers()
   mutationObserver?.disconnect()
