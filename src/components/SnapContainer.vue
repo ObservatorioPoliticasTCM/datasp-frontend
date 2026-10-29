@@ -88,6 +88,34 @@ import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } f
 import { useDashboardActivation } from '@/composables/useDashboardActivation'
 import type { DashboardAnalyticsContext } from '@/types/dashboard'
 import { buildDashboardParameters } from '@/utils/dashboardAnalytics';
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+const thematicRoutes = new Set([
+  'educacao',
+  'saude',
+  'genero',
+  'urbanismo',
+  'orcamento',
+])
+
+const registerThemeEntry = () => {
+  const themeId = String(route.name ?? '')
+
+  if(!thematicRoutes.has(themeId) || window.location.hash) {
+    return
+  }
+
+  const parameters = {
+    page_location: window.location.href,
+    page_title: document.title,
+    theme_id: themeId,
+    content_type: 'theme',
+  }
+
+  console.log('Entrada do tema: ', parameters)
+}
 
 interface Props {
   showNavigation?: boolean
@@ -413,6 +441,7 @@ const goNext = () => {
 }
 
 onMounted(async () => {
+  registerThemeEntry()
   evaluateViewport()
   window.addEventListener('resize', onResize)
   window.addEventListener('popstate', onHistoryNavigation)
