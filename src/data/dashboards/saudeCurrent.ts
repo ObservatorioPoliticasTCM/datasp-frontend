@@ -106,10 +106,110 @@ export const saudeCurrent: DashboardConfig[] = [
     ]
   },
   {
+    title: 'Mortalidade Infantil',
+    subtitle: 'Inclui óbitos de residentes do município de São Paulo',
+    downloadLink: '/dados/saude/mortalidade.zip',
+    identity: '3',
+    desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+    desktopSheetId: '7da9eb32-facc-4cef-8254-9905853e0972',
+    filter: {
+      appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+      sheet: 'RBNGc',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'XaLLpN',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'AVNXfS',
+        mobileHeight: 1,
+        mobileOrder: 1,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'DCCDC',
+        mobileOrder: 2,
+        mobileHeight: 6,
+        skeletonType: 'map'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'vcyWtH',
+        mobileOrder: 3,
+        mobileHeight: 1,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'mYMVH',
+        mobileOrder: 4,
+        mobileHeight: 8,
+        skeletonType: 'text'
+      }
+    ]
+  },
+  {
+    title: 'Mortalidade Materna',
+    subtitle: 'Inclui óbitos de residentes do município de São Paulo',
+    downloadLink: '/dados/saude/mortalidade.zip',
+    identity: '4',
+    desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+    desktopSheetId: '3423dd31-c14a-4b45-9fda-30390c573164',
+    filter: {
+      appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+      sheet: 'unfJKnm',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'mXJuy',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'GPbzPSe',
+        mobileHeight: 1,
+        mobileOrder: 1,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'xXsjG',
+        mobileOrder: 2,
+        mobileHeight: 6,
+        skeletonType: 'map'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'prUzYQ',
+        mobileOrder: 3,
+        mobileHeight: 1,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'GjfekNq',
+        mobileOrder: 4,
+        mobileHeight: 8,
+        skeletonType: 'text'
+      }
+    ]
+  },
+  {
     title: 'Leitos',
     subtitle: 'Inclui leitos das unidades municipais, estaduais e federais',
     downloadLink: '/dados/saude/leitos-internacao-complementares.zip',
-    identity: '3',
+    identity: '5',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
     desktopSheetId: 'kPfKtR',
     filter: {
@@ -156,7 +256,7 @@ export const saudeCurrent: DashboardConfig[] = [
     title: 'Despesas',
     subtitle: 'Inclui apenas despesas municipais',
     downloadLink: '/dados/saude/despesas.zip',
-    identity: '4',
+    identity: '6',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
     desktopSheetId: 'XFZvFPN',
     filter: {
