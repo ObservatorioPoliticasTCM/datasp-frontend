@@ -375,6 +375,83 @@ export const urbanismoCurrent: DashboardConfig[] = [
     ]
   },
   {
+    title: 'Unidades habitacionais entregues',
+    identity: '12',
+    desktopAppId: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+    desktopSheetId: 'hJfCYXg',
+    downloadLink: '/dados/urbanismo/unidades-habitacionais-entregues-ou-contratadas.zip',
+    filter: {
+      appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+      sheet: 'de9ebe1d-41b6-4e01-8c66-9abb42256c71',
+      showSelections: true
+    },
+    charts: [
+      {
+        appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+        sheet: 'ec5a07b0-6acd-40d1-a604-9203ed680272',
+        mobileOrder: 3,
+        mobileHeight: 6,
+        skeletonType: 'map'
+      },
+      {
+        appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+        sheet: '9ceda391-7cef-429a-aa9a-587350cdae0a',
+        mobileOrder: 2,
+        mobileHeight: 1,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+        sheet: '5a0b82b0-3ecb-4442-904d-870fae9f8fe8',
+        mobileOrder: 0,
+        mobileHeight: 1,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+        sheet: '15529f3f-4b97-4ded-85aa-07f363fd7330',
+        mobileOrder: 7,
+        mobileHeight: 1,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+        sheet: 'a2e06756-5010-475e-95bf-67e5bcdcd0ab',
+        mobileOrder: 1,
+        mobileHeight: 3,
+        skeletonType: 'bar'
+      },
+      {
+        appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+        sheet: 'cf2b2427-37ae-4633-9c24-8e9dd9d694f0',
+        mobileOrder: 4,
+        mobileHeight: 1,
+        skeletonType: 'text'
+      },
+      {
+        appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+        sheet: 'f2796047-4682-4097-9d08-bee3540af63e',
+        mobileOrder: 5,
+        mobileHeight: 1,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+        sheet: 'a58e3f7a-f161-4787-bb92-6a21d3ce8716',
+        mobileOrder: 8,
+        mobileHeight: 1,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
+        sheet: 'ee624aea-5b51-48b9-a39a-e617beeafc63',
+        mobileOrder: 6,
+        mobileHeight: 3,
+        skeletonType: 'bar'
+      }
+    ]
+  },
+  {
     title: 'Famílias beneficiadas por regularização fundiária e obras em assentamentos precários',
     identity: '7',
     desktopAppId: 'bfbce6a0-ee74-477d-a4f0-32c310b24bc7',
