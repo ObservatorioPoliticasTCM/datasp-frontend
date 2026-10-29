@@ -164,40 +164,43 @@ export const saudeCurrent: DashboardConfig[] = [
     desktopSheetId: '3423dd31-c14a-4b45-9fda-30390c573164',
     filter: {
       appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-      sheet: 'b61ed3a1-544e-4be2-8c23-fe9063c63085',
+      sheet: 'unfJKnm',
       showSelections: true
     },
     charts: [
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '1bde1b53-2caa-425f-a3dc-da5ff27a1195',
+        sheet: 'mXJuy',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'GPbzPSe',
         mobileHeight: 1,
         mobileOrder: 1,
         skeletonType: 'kpi'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '3242a1b7-9c08-4a9b-a01b-a7132565ab85',
+        sheet: 'xXsjG',
         mobileOrder: 2,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '6e8a22bd-a038-4279-9775-900ca13c62eb',
-        mobileOrder: 4,
-        skeletonType: 'bar'
-      },
-      {
-        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '327239ee-6dca-4256-813a-cf18b1cf85cf',
+        sheet: 'prUzYQ',
         mobileOrder: 3,
-        skeletonType: 'pie'
+        mobileHeight: 1,
+        skeletonType: 'kpi'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: 'dcb974b6-95e1-4bc5-991d-d14951cd993c',
-        mobileOrder: 5,
-        mobileHeight: 1,
+        sheet: 'GjfekNq',
+        mobileOrder: 4,
+        mobileHeight: 8,
         skeletonType: 'text'
       }
     ]
