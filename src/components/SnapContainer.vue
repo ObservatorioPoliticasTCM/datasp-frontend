@@ -88,13 +88,14 @@ import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } f
 import { useDashboardActivation } from '@/composables/useDashboardActivation'
 import type { DashboardAnalyticsContext } from '@/types/dashboard'
 import { buildDashboardParameters } from '@/utils/dashboardAnalytics';
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { 
   sendPageView,
   clearDashboardContext, 
 } from '@/utils/analytics';
 
 const route = useRoute()
+const router = useRouter()
 
 const thematicRoutes = new Set([
   'educacao',
@@ -373,13 +374,41 @@ const scrollToFooter = () => {
   scrollToElement(lastEl.value)
 }
 
-const scrollToDashboard = (index: number) => {
+const scrollToDashboard = async (index: number) => {
   if (!container.value) return
+
   const target = dashboardEls.value[index]
-  if (!target) return
-  if (dashboardCandidate.value?.dashboardAnchor === target.dataset.anchorId &&
-      confirmedDashboard.value?.dashboardId === target.dataset.dashboardId) return
-  navigationTarget.value = target.dataset.anchorId ?? null
+  const anchor = target?.dataset.anchorId
+
+  if (!target || !anchor) return
+
+  if (
+    dashboardCandidate.value?.dashboardAnchor === anchor &&
+    confirmedDashboard.value?.dashboardId === target.dataset.dashboardId
+  ) {
+    return
+  }
+
+  navigationTarget.value = anchor
+
+  if (readAnchor() !== anchor) {
+    const failure = await router.push({
+      path: route.path,
+      query: route.query,
+      hash: `#${anchor}`,
+      force: true,
+    })
+
+    if (failure) {
+      if (navigationTarget.value === anchor) {
+        navigationTarget.value = null
+      }
+      return
+    }
+  }
+
+  if (navigationTarget.value !== anchor) return
+
   scrollToElement(target)
 }
 
