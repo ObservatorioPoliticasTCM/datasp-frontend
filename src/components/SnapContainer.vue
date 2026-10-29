@@ -89,6 +89,7 @@ import { useDashboardActivation } from '@/composables/useDashboardActivation'
 import type { DashboardAnalyticsContext } from '@/types/dashboard'
 import { buildDashboardParameters } from '@/utils/dashboardAnalytics';
 import { useRoute } from 'vue-router'
+import { sendPageView } from '@/utils/analytics';
 
 const route = useRoute()
 
@@ -115,6 +116,7 @@ const registerThemeEntry = () => {
   }
 
   console.log('Entrada do tema: ', parameters)
+  sendPageView(parameters)
 }
 
 interface Props {
@@ -198,7 +200,9 @@ watch(confirmedDashboard, (dashboard) => {
       dashboard,
       document.title,
     )
+
     console.table(parameters)
+    sendPageView(parameters)
 
     emit('dashboard-confirmed', dashboard)
   }
