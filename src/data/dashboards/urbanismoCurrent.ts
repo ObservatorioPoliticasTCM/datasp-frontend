@@ -376,7 +376,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
   },
   {
     title: 'Unidades habitacionais entregues',
-    identity: '12',
+    identity: '7',
     desktopAppId: 'abdddc84-fe4c-4202-9803-28c068a9b705',
     desktopSheetId: 'hJfCYXg',
     downloadLink: '/dados/urbanismo/unidades-habitacionais-entregues-ou-contratadas.zip',
@@ -453,7 +453,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
   },
   {
     title: 'Famílias beneficiadas por regularização fundiária e obras em assentamentos precários',
-    identity: '7',
+    identity: '8',
     desktopAppId: 'bfbce6a0-ee74-477d-a4f0-32c310b24bc7',
     desktopSheetId: 'NAtPM',
     downloadLink: '/dados/urbanismo/familias-beneficiadas-por-regularizacao-fundiaria-e-obras-em-assentamentos-precarios.zip',
@@ -516,7 +516,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
   },
   {
     title: 'Famílias beneficiárias do programa de Auxílio Aluguel (dez/2024)',
-    identity: '8',
+    identity: '9',
     desktopAppId: '58f8b63f-5302-4e4b-9260-dc74b69c57f9',
     desktopSheetId: '6fe6d2e2-43de-4c67-8aba-6bd99ad3ba74',
     downloadLink: '/dados/urbanismo/familias-beneficiarias-do-programa-de-auxilio-aluguel.zip',
