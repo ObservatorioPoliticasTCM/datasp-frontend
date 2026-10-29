@@ -87,6 +87,7 @@
 import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } from 'vue'
 import { useDashboardActivation } from '@/composables/useDashboardActivation'
 import type { DashboardAnalyticsContext } from '@/types/dashboard'
+import { buildDashboardParameters } from '@/utils/dashboardAnalytics';
 
 interface Props {
   showNavigation?: boolean
@@ -165,6 +166,12 @@ const { confirmedDashboard } = useDashboardActivation(dashboardCandidate, undefi
 
 watch(confirmedDashboard, (dashboard) => {
   if (dashboard) {
+    const parameters = buildDashboardParameters(
+      dashboard,
+      document.title,
+    )
+    console.table(parameters)
+
     emit('dashboard-confirmed', dashboard)
   }
 }, { flush: 'sync' })
