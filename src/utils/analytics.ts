@@ -26,3 +26,23 @@ export function sendPageView(parameters: AnalyticsParameters) {
         send_to: 'G-BJ06FKC39K',
     })
 }
+
+export function clearDashboardContext() {
+  const analyticsWindow = window as Window & {
+    gtag?: (...args: unknown[]) => void
+  }
+
+  const url = new URL(window.location.href)
+  url.hash = ''
+
+  analyticsWindow.gtag?.('config', 'G-BJ06FKC39K', {
+    page_location: url.href,
+    page_title: document.title,
+    dashboard_id: '',
+    dashboard_name: '',
+    dashboard_anchor: '',
+    content_type: 'theme',
+    update: true,
+    send_page_view: false,
+  })
+}

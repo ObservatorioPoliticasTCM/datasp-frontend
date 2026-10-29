@@ -89,7 +89,10 @@ import { useDashboardActivation } from '@/composables/useDashboardActivation'
 import type { DashboardAnalyticsContext } from '@/types/dashboard'
 import { buildDashboardParameters } from '@/utils/dashboardAnalytics';
 import { useRoute } from 'vue-router'
-import { sendPageView } from '@/utils/analytics';
+import { 
+  sendPageView,
+  clearDashboardContext, 
+} from '@/utils/analytics';
 
 const route = useRoute()
 
@@ -205,6 +208,8 @@ watch(confirmedDashboard, (dashboard) => {
     sendPageView(parameters)
 
     emit('dashboard-confirmed', dashboard)
+  } else {
+    clearDashboardContext()
   }
 }, { flush: 'sync' })
 
