@@ -1,8 +1,10 @@
 ﻿<template>
     <div v-if="isCurrent" class="notice-container">
         <p class="text-notice">{{ text }}</p>
-        <a v-if="url" :href="url" class="url-notice">
+        <a v-if="url" :href="url" class="url-notice" target="_blank" rel="noopener noreferrer">
             {{ linkText }}
+            <img src="@/assets/external-link.svg" alt="" class="ext-icon" aria-hidden="true" />
+            <span class="sr-only"> (abre em uma nova aba)</span>
         </a>
     </div>
 </template>
@@ -54,10 +56,22 @@ const isCurrent = computed(() => {
     font-weight: 600;
 }
 
-.url-notice {
-    max-width: 100%;
-    color: #1559eb;
-    text-decoration: underline;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.ext-icon {
+    height: 0.75em;
+    vertical-align: super;
+    margin-bottom: -0.15em;
 }
 
 @media (max-width: 900px), (orientation: portrait) {
