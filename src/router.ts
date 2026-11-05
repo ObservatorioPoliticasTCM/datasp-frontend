@@ -10,6 +10,7 @@ import NotFound from './views/NotFoundView.vue'
 import ImprintPage from '@/views/ImprintPageView.vue'
 import TechGuideView from '@/views/TechGuideView.vue'
 import PresentationLetterView from './views/PresentationLetterView.vue'
+import ParceirosView from '@/views/ParceirosView.vue'
 import { usePreview } from './composables/preview'
 
 const router = createRouter({
@@ -63,6 +64,12 @@ const router = createRouter({
       name: 'orcamento',
       component: OrcamentoMobileView,
       meta: { title: 'Orçamento – DataSP' }
+    },
+    {
+      path: '/parceiros',
+      name: 'parceiros',
+      component: ParceirosView,
+      meta: { title: 'Parceiros OPP – DataSP' }
     },
     {
       path: '/glossario',
