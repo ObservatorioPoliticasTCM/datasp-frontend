@@ -25,13 +25,17 @@
         <div v-if="subtitle" class="frame-subtitle">
             <small v-if="subtitle">{{ subtitle }}</small>
         </div>
+        <DashboardNotice
+            v-if="notice && !isDesktop"
+            v-bind="notice"
+        />
         <div class="dashboard-wrapper">
             <DesktopDashboardFrame v-if="desktopAppId && desktopSheetId && isDesktop" :appid="desktopAppId"
                 :sheet="desktopSheetId" />
             <template v-else>
                 <div class="filter-section">
-                    <button v-show="active" class="filter-toggle" :class="{ 'filter-toggle--open': filterOpen }" type="button"
-                        :aria-expanded="filterOpen" @click="filterOpen = !filterOpen">
+                    <button v-show="active" class="filter-toggle" :class="{ 'filter-toggle--open': filterOpen }"
+                        type="button" :aria-expanded="filterOpen" @click="filterOpen = !filterOpen">
                         <img src="@/assets/filter-icon-white.svg" alt="Ícone de filtro" aria-hidden="true"
                             class="filter-toggle-icon" v-show="!filterOpen" />
                         <img src="@/assets/filter-icon.svg" alt="Ícone de filtro" aria-hidden="true"
@@ -39,12 +43,10 @@
                     </button>
                     <div v-show="active && filterOpen" class="filter-backdrop" aria-hidden="true"
                         @click="closeFilter" />
-                    <div class="filter-iframe-wrapper"
-                        :class="{ 'filter-iframe-wrapper--open': active && filterOpen }">
+                    <div class="filter-iframe-wrapper" :class="{ 'filter-iframe-wrapper--open': active && filterOpen }">
                         <div class="filter-sidebar-header">
                             <span>Filtros</span>
-                            <button type="button" class="filter-close" aria-label="Fechar filtros"
-                                @click="closeFilter">
+                            <button type="button" class="filter-close" aria-label="Fechar filtros" @click="closeFilter">
                                 <span aria-hidden="true"></span>
                             </button>
                         </div>
@@ -58,6 +60,10 @@
                 </div>
             </template>
         </div>
+        <DashboardNotice
+            v-if="notice && isDesktop"
+            v-bind="notice"
+        />
     </div>
 
 </template>
@@ -66,6 +72,8 @@
 import { computed, onMounted, onBeforeUnmount, ref, watch, toRefs, nextTick, provide } from 'vue'
 import AdditionalInfoMenu from './AdditionalInfoMenu.vue'
 import DesktopDashboardFrame from './DesktopDashboardFrame.vue'
+import DashboardNotice from './DashboardNotice.vue';
+import type { DashboardNoticeConfig } from '@/types/dashboard.ts';
 
 const fullyVisibleEvent = 'fully-visible'
 
@@ -81,6 +89,7 @@ interface DashboardFrameProps {
     desktopAppId?: string
     desktopSheetId?: string
     filterOpen?: boolean
+    notice?: DashboardNoticeConfig
 }
 
 const props = withDefaults(defineProps<DashboardFrameProps>(), {
@@ -439,10 +448,10 @@ onBeforeUnmount(() => {
         height: 1rem;
         flex-shrink: 0;
     }
-    
+
     .filter-iframe-wrapper {
         position: fixed;
-        top: var(--filter-sidebar-top);                  
+        top: var(--filter-sidebar-top);
         right: 0;
 
         width: min(90vw, 22rem);
