@@ -85,6 +85,43 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } from 'vue'
+import { useDashboardActivation } from '@/composables/useDashboardActivation'
+import type { DashboardAnalyticsContext } from '@/types/dashboard'
+import { buildDashboardParameters } from '@/utils/dashboardAnalytics';
+import { useRoute, useRouter } from 'vue-router'
+import { 
+  sendPageView,
+  clearDashboardContext, 
+} from '@/utils/analytics';
+
+const route = useRoute()
+const router = useRouter()
+
+const thematicRoutes = new Set([
+  'educacao',
+  'saude',
+  'genero',
+  'urbanismo',
+  'orcamento',
+])
+
+const registerThemeEntry = () => {
+  const themeId = String(route.name ?? '')
+
+  if(!thematicRoutes.has(themeId) || window.location.hash) {
+    return
+  }
+
+  const parameters = {
+    page_location: window.location.href,
+    page_title: document.title,
+    theme_id: themeId,
+    content_type: 'theme',
+  }
+
+  console.log('Entrada do tema: ', parameters)
+  sendPageView(parameters)
+}
 
 interface Props {
   showNavigation?: boolean
@@ -99,6 +136,10 @@ const props = withDefaults(defineProps<Props>(), {
   showArrows: true,
   disableSnap: false
 })
+
+const emit = defineEmits<{
+  (event: 'dashboard-confirmed', context: DashboardAnalyticsContext): void
+}>()
 
 const MOBILE_BREAKPOINT = 900
 const isPortrait = ref(false)
@@ -134,6 +175,44 @@ const activeDashboard = computed(() => activeElement.value ? dashboardEls.value.
 const activeDashboardAnchor = computed(() => activeElement.value?.dataset.anchorId ?? '')
 
 const totalDashboards = computed(() => dashboardEls.value.length)
+
+const readAnchor = () => {
+  try { return decodeURIComponent(window.location.hash.slice(1)) }
+  catch { return window.location.hash.slice(1) }
+}
+
+const navigationTarget = ref<string | null>(readAnchor() || null)
+const canConfirmDashboard = computed(() => navigationTarget.value === null ||
+  navigationTarget.value === dashboardCandidate.value?.dashboardAnchor)
+
+const dashboardCandidate = computed<DashboardAnalyticsContext | null>(() => {
+  if (topVisible.value || bottomVisible.value) return null
+
+  const { dashboardId, dashboardName, anchorId, themeId } = activeElement.value?.dataset ?? {}
+  if (!dashboardId || !dashboardName || !anchorId || !themeId) return null
+
+  return { dashboardId, dashboardName, dashboardAnchor: anchorId, themeId }
+})
+
+const { confirmedDashboard } = useDashboardActivation(dashboardCandidate, undefined, canConfirmDashboard, (dashboard) => {
+  if (navigationTarget.value === dashboard.dashboardAnchor) navigationTarget.value = null
+})
+
+watch(confirmedDashboard, (dashboard) => {
+  if (dashboard) {
+    const parameters = buildDashboardParameters(
+      dashboard,
+      document.title,
+    )
+
+    console.table(parameters)
+    sendPageView(parameters)
+
+    emit('dashboard-confirmed', dashboard)
+  } else {
+    clearDashboardContext()
+  }
+}, { flush: 'sync' })
 
 const checkSectionActive = (el: HTMLElement) => {
   const state = sectionStateMap.get(el)
@@ -201,10 +280,12 @@ const teardownAllSectionObservers = () => {
 }
 
 const clearHash = () => {
+  if (navigationTarget.value !== null) return
   history.replaceState(history.state, '', window.location.pathname + window.location.search)
 }
 
 const sectionVisible = (id: string) => {
+  if (navigationTarget.value !== null || !id) return
   if (topVisible.value || bottomVisible.value) return
   if (location.hash === `#${id}`) return
   history.replaceState(history.state, '', `#${id}`)
@@ -253,6 +334,7 @@ const setupObservers = () => {
   firstEl.value = children[0]
   lastEl.value = children[children.length - 1]
   updateDashboardRefs(children)
+  restoreNavigationTarget()
   disconnectIOs()
   topObserver = new IntersectionObserver(([e]) => {
     topVisible.value = e.isIntersecting
@@ -280,20 +362,97 @@ const scrollToElement = (element: HTMLElement | null) => {
 }
 
 const scrollToHome = () => {
+  if (topVisible.value) return
+  navigationTarget.value = '@home'
   scrollToElement(firstEl.value)
 }
 
 const scrollToFooter = () => {
+  if (bottomVisible.value) return
   if (!lastEl.value || lastEl.value === firstEl.value) return
+  navigationTarget.value = '@footer'
   scrollToElement(lastEl.value)
 }
 
-const scrollToDashboard = (index: number) => {
+const scrollToDashboard = async (index: number) => {
   if (!container.value) return
+
   const target = dashboardEls.value[index]
-  if (!target) return
+  const anchor = target?.dataset.anchorId
+
+  if (!target || !anchor) return
+
+  if (
+    dashboardCandidate.value?.dashboardAnchor === anchor &&
+    confirmedDashboard.value?.dashboardId === target.dataset.dashboardId
+  ) {
+    return
+  }
+
+  navigationTarget.value = anchor
+
+  if (readAnchor() !== anchor) {
+    const failure = await router.push({
+      path: route.path,
+      query: route.query,
+      hash: `#${anchor}`,
+      force: true,
+    })
+
+    if (failure) {
+      if (navigationTarget.value === anchor) {
+        navigationTarget.value = null
+      }
+      return
+    }
+  }
+
+  if (navigationTarget.value !== anchor) return
+
   scrollToElement(target)
 }
+
+function restoreNavigationTarget() {
+  const anchor = navigationTarget.value
+  if (!anchor) return
+  const target = dashboardEls.value.find(el => el.dataset.anchorId === anchor)
+  if (target) scrollToElement(target)
+  // An unknown anchor must not prevent ordinary dashboard activation.
+  else if (dashboardEls.value.length && anchor !== '@home' && anchor !== '@footer') navigationTarget.value = null
+}
+
+const onHistoryNavigation = () => {
+  const anchor = readAnchor()
+  navigationTarget.value = anchor || (topVisible.value ? null : '@home')
+  if (anchor) restoreNavigationTarget()
+  else scrollToElement(firstEl.value)
+}
+
+const interruptNavigation = () => { navigationTarget.value = null }
+const onManualKey = (event: KeyboardEvent) => {
+  const target = event.target as HTMLElement | null
+  if (target?.closest('input, textarea, select, [contenteditable="true"]')) return
+  if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) interruptNavigation()
+}
+const onPointerDown = (event: PointerEvent) => {
+  // Scrollbar dragging; ordinary dashboard clicks (including copy link) do not cancel navigation.
+  const el = container.value
+  if (el && event.target === el && event.clientX >= el.getBoundingClientRect().left + el.clientWidth) interruptNavigation()
+}
+
+watch([topVisible, bottomVisible], ([top, bottom]) => {
+  if ((navigationTarget.value === '@home' && top) || (navigationTarget.value === '@footer' && bottom)) {
+    navigationTarget.value = null
+    clearHash()
+  }
+})
+
+watch(navigationTarget, (target) => {
+  if (target === null) {
+    if (topVisible.value || bottomVisible.value) clearHash()
+    else sectionVisible(activeDashboardAnchor.value)
+  }
+})
 
 const goPrev = () => {
   if (bottomVisible.value && totalDashboards.value) {
@@ -320,8 +479,15 @@ const goNext = () => {
 }
 
 onMounted(async () => {
+  registerThemeEntry()
   evaluateViewport()
   window.addEventListener('resize', onResize)
+  window.addEventListener('popstate', onHistoryNavigation)
+  window.addEventListener('hashchange', onHistoryNavigation)
+  window.addEventListener('keydown', onManualKey)
+  container.value?.addEventListener('wheel', interruptNavigation, { passive: true })
+  container.value?.addEventListener('touchmove', interruptNavigation, { passive: true })
+  container.value?.addEventListener('pointerdown', onPointerDown)
 
   if (container.value) {
     await nextTick()
@@ -335,6 +501,12 @@ onMounted(async () => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', onResize)
+  window.removeEventListener('popstate', onHistoryNavigation)
+  window.removeEventListener('hashchange', onHistoryNavigation)
+  window.removeEventListener('keydown', onManualKey)
+  container.value?.removeEventListener('wheel', interruptNavigation)
+  container.value?.removeEventListener('touchmove', interruptNavigation)
+  container.value?.removeEventListener('pointerdown', onPointerDown)
   disconnectIOs()
   teardownAllSectionObservers()
   mutationObserver?.disconnect()

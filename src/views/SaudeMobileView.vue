@@ -1,5 +1,5 @@
 ﻿<template>
-  <ThemePage :dashboards="dashboards">
+  <ThemePage :dashboards="dashboards" theme-id="saude">
     <IntroPanel title="Visão geral dos dashboards de Saúde" subtitle="" :full-height="false" :use-placeholder="false"
       :snap="true">
       <p>
