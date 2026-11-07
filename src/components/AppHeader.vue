@@ -121,6 +121,7 @@ const menuItems = [
   { label: 'Saúde', route: '/saude' },
   { label: 'Urbanismo', route: '/urbanismo' },
   { label: 'Orçamento', route: '/orcamento' },
+  { label: 'Parceiros OPP', route: '/parceiros' },
   { label: 'Guia técnico', route: '/guia-tecnico' },
   { label: 'Glossário', route: '/glossario' },
   { label: 'Contato', href: 'https://observatorio.tcm.sp.gov.br/ObservatorioItem/156570' }
@@ -302,7 +303,7 @@ onBeforeUnmount(() => {
   flex-wrap: nowrap;
   overflow-x: auto;
   text-transform: uppercase;
-  font-size: 1.4vw;
+  font-size: 1.2vw;
 }
 
 .nav-item {
