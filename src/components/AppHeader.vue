@@ -105,26 +105,29 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { usePreview } from '@/composables/preview'
 
 const MOBILE_BREAKPOINT = 900
 
 const route = useRoute()
+const { showUpdateContent } = usePreview()
 
 const isCompactView = ref(false)
 
-const menuItems = [
+const menuItems = computed(() => [
   { label: 'Apresentação', route: '/apresentacao' },
   { label: 'Educação', route: '/educacao' },
   { label: 'Gênero', route: '/genero' },
   { label: 'Saúde', route: '/saude' },
   { label: 'Urbanismo', route: '/urbanismo' },
   { label: 'Orçamento', route: '/orcamento' },
+  ...(showUpdateContent.value ? [{ label: 'Parceiros OPP', route: '/parceiros' }] : []),
   { label: 'Guia técnico', route: '/guia-tecnico' },
   { label: 'Glossário', route: '/glossario' },
   { label: 'Contato', href: 'https://observatorio.tcm.sp.gov.br/ObservatorioItem/156570' }
-]
+])
 
 const menuOpen = ref(false)
 let scrollRoot: HTMLElement | null = null
@@ -302,7 +305,7 @@ onBeforeUnmount(() => {
   flex-wrap: nowrap;
   overflow-x: auto;
   text-transform: uppercase;
-  font-size: 1.4vw;
+  font-size: 1.2vw;
 }
 
 .nav-item {

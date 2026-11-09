@@ -16,6 +16,7 @@
             <li><router-link to="/saude">Saúde</router-link></li>
             <li><router-link to="/urbanismo">Urbanismo</router-link></li>
             <li><router-link to="/orcamento">Orçamento</router-link></li>
+            <li v-if="showUpdateContent"><router-link to="/parceiros">Parceiros OPP</router-link></li>
         </ul>
         </div>
         <div class="sitemap-column">
@@ -42,6 +43,9 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { usePreview } from '@/composables/preview'
+
+const { showUpdateContent } = usePreview()
 </script>
 
 <style scoped>
