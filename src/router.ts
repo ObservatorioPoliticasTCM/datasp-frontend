@@ -106,7 +106,11 @@ router.afterEach((to) => {
 export default router
 
 router.beforeEach((to) => {
-  const { applyPreviewParameter } = usePreview()
+  const { applyPreviewParameter, showUpdateContent } = usePreview()
 
   applyPreviewParameter(to.query.preview ?? null)
+
+  if (to.name === 'parceiros' && !showUpdateContent.value) {
+    return { name: 'NotFound' }
+  }
 })
