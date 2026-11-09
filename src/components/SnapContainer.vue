@@ -84,8 +84,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } from 'vue'
-import { useDashboardActivation } from '@/composables/useDashboardActivation'
+import { ref, shallowRef, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } from 'vue'
+import { observeVisibility } from '@/utils/observeVisibility'
 import type { DashboardAnalyticsContext } from '@/types/dashboard'
 import { buildDashboardParameters } from '@/utils/dashboardAnalytics';
 import { useRoute, useRouter } from 'vue-router'
@@ -194,9 +194,36 @@ const dashboardCandidate = computed<DashboardAnalyticsContext | null>(() => {
   return { dashboardId, dashboardName, dashboardAnchor: anchorId, themeId }
 })
 
-const { confirmedDashboard } = useDashboardActivation(dashboardCandidate, undefined, canConfirmDashboard, (dashboard) => {
-  if (navigationTarget.value === dashboard.dashboardAnchor) navigationTarget.value = null
-})
+const DASHBOARD_STABILITY_MS = 1000
+const confirmedDashboard = shallowRef<DashboardAnalyticsContext | null>(null)
+let dashboardConfirmationTimer: ReturnType<typeof setTimeout> | undefined
+
+const cancelDashboardConfirmation = () => {
+  clearTimeout(dashboardConfirmationTimer)
+  dashboardConfirmationTimer = undefined
+}
+
+const scheduleDashboardConfirmation = () => {
+  cancelDashboardConfirmation()
+  if (document.hidden || !canConfirmDashboard.value) return
+
+  const dashboard = dashboardCandidate.value
+  dashboardConfirmationTimer = setTimeout(() => {
+    dashboardConfirmationTimer = undefined
+    if (document.hidden || !canConfirmDashboard.value || dashboardCandidate.value !== dashboard) return
+
+    if (!dashboard) {
+      confirmedDashboard.value = null
+      return
+    }
+
+    if (navigationTarget.value === dashboard.dashboardAnchor) navigationTarget.value = null
+    if (confirmedDashboard.value?.dashboardId === dashboard.dashboardId) return
+    confirmedDashboard.value = dashboard
+  }, DASHBOARD_STABILITY_MS)
+}
+
+watch([dashboardCandidate, canConfirmDashboard], scheduleDashboardConfirmation, { immediate: true, flush: 'sync' })
 
 watch(confirmedDashboard, (dashboard) => {
   if (dashboard) {
@@ -232,30 +259,25 @@ const setupSectionObservers = (el: HTMLElement) => {
   const state: SectionState = { onTop: false, onUpperCenter: false, onLowerCenter: false, onBottom: false }
   sectionStateMap.set(el, state)
 
-  const topObs = new IntersectionObserver(([entry]) => {
-    state.onTop = entry.isIntersecting
+  const topObs = observeVisibility(el, (isVisible) => {
+    state.onTop = isVisible
     checkSectionActive(el)
   }, { rootMargin: '0px 0px -99% 0px' })
 
-  const upperCenterObs = new IntersectionObserver(([entry]) => {
-    state.onUpperCenter = entry.isIntersecting
+  const upperCenterObs = observeVisibility(el, (isVisible) => {
+    state.onUpperCenter = isVisible
     checkSectionActive(el)
   }, { rootMargin: '-25% 0px -50% 0px' })
 
-  const lowerCenterObs = new IntersectionObserver(([entry]) => {
-    state.onLowerCenter = entry.isIntersecting
+  const lowerCenterObs = observeVisibility(el, (isVisible) => {
+    state.onLowerCenter = isVisible
     checkSectionActive(el)
   }, { rootMargin: '-50% 0px -25% 0px' })
 
-  const bottomObs = new IntersectionObserver(([entry]) => {
-    state.onBottom = entry.isIntersecting
+  const bottomObs = observeVisibility(el, (isVisible) => {
+    state.onBottom = isVisible
     checkSectionActive(el)
   }, { rootMargin: '-99% 0px 0px 0px' })
-
-  topObs.observe(el)
-  upperCenterObs.observe(el)
-  lowerCenterObs.observe(el)
-  bottomObs.observe(el)
 
   sectionObserversMap.set(el, [topObs, upperCenterObs, lowerCenterObs, bottomObs])
 }
@@ -479,6 +501,7 @@ const goNext = () => {
 }
 
 onMounted(async () => {
+  document.addEventListener('visibilitychange', scheduleDashboardConfirmation)
   registerThemeEntry()
   evaluateViewport()
   window.addEventListener('resize', onResize)
@@ -500,6 +523,8 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
+  cancelDashboardConfirmation()
+  document.removeEventListener('visibilitychange', scheduleDashboardConfirmation)
   window.removeEventListener('resize', onResize)
   window.removeEventListener('popstate', onHistoryNavigation)
   window.removeEventListener('hashchange', onHistoryNavigation)
