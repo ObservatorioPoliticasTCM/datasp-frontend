@@ -21,6 +21,7 @@ import { computed, inject, toRefs, unref, onBeforeUnmount, onMounted, ref } from
 import type { Ref } from 'vue'
 import DashboardItemSkeleton, { type SkeletonType } from './DashboardItemSkeleton.vue'
 import { buildQlikUrl } from '@/utils/qlik'
+import { observeVisibility } from '@/utils/observeVisibility'
 
 export type LegendIconType = 'line' | 'dot' | 'square' | 'triangle'
 
@@ -75,8 +76,8 @@ onMounted(() => {
 
   const scrollContainer = iframe.value.closest('.snap-container')
 
-  obs = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
+  obs = observeVisibility(iframe.value, (isVisible) => {
+    if (isVisible) {
       loadIframe.value = true
     } else {
       destroyIframe()
@@ -85,8 +86,6 @@ onMounted(() => {
     root: props.skeletonType === 'filter' ? null : scrollContainer,
     rootMargin: '100% 0px  100% 0px'
   })
-
-  obs.observe(iframe.value)
 })
 
 function destroyIframe() {

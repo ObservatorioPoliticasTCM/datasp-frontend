@@ -15,6 +15,7 @@ import { computed, inject, onBeforeUnmount, onMounted, ref, unref } from 'vue'
 import type { Ref } from 'vue'
 import DashboardItemSkeleton, { type SkeletonType } from './DashboardItemSkeleton.vue'
 import { buildQlikUrl } from '@/utils/qlik'
+import { observeVisibility } from '@/utils/observeVisibility'
 
 interface DesktopDashboardFrameProps {
   appid: string
@@ -40,19 +41,20 @@ const iframeSrc = computed(() => {
   })
 })
 
-const obs = new IntersectionObserver(([entry]) => {
-  if (entry.isIntersecting) {
-    loaded.value = true
-    obs.disconnect()
-  }
-}, { rootMargin: '0px 0px 20% 0px' })
+let obs: IntersectionObserver | null = null
 
 onMounted(() => {
-  if (wrapperEl.value) obs.observe(wrapperEl.value)
+  if (!wrapperEl.value) return
+  obs = observeVisibility(wrapperEl.value, (isVisible) => {
+    if (isVisible) {
+      loaded.value = true
+      obs?.disconnect()
+    }
+  }, { rootMargin: '0px 0px 20% 0px' })
 })
 
 onBeforeUnmount(() => {
-  obs.disconnect()
+  obs?.disconnect()
 })
 </script>
 

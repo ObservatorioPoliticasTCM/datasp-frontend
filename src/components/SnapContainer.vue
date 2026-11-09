@@ -84,7 +84,44 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } from 'vue'
+import { ref, shallowRef, onMounted, onBeforeUnmount, provide, nextTick, computed, watch } from 'vue'
+import { observeVisibility } from '@/utils/observeVisibility'
+import type { DashboardAnalyticsContext } from '@/types/dashboard'
+import { buildDashboardParameters } from '@/utils/dashboardAnalytics';
+import { useRoute, useRouter } from 'vue-router'
+import { 
+  sendPageView,
+  clearDashboardContext, 
+} from '@/utils/analytics';
+
+const route = useRoute()
+const router = useRouter()
+
+const thematicRoutes = new Set([
+  'educacao',
+  'saude',
+  'genero',
+  'urbanismo',
+  'orcamento',
+])
+
+const registerThemeEntry = () => {
+  const themeId = String(route.name ?? '')
+
+  if(!thematicRoutes.has(themeId) || window.location.hash) {
+    return
+  }
+
+  const parameters = {
+    page_location: window.location.href,
+    page_title: document.title,
+    theme_id: themeId,
+    content_type: 'theme',
+  }
+
+  console.log('Entrada do tema: ', parameters)
+  sendPageView(parameters)
+}
 
 interface Props {
   showNavigation?: boolean
@@ -99,6 +136,10 @@ const props = withDefaults(defineProps<Props>(), {
   showArrows: true,
   disableSnap: false
 })
+
+const emit = defineEmits<{
+  (event: 'dashboard-confirmed', context: DashboardAnalyticsContext): void
+}>()
 
 const MOBILE_BREAKPOINT = 900
 const isPortrait = ref(false)
@@ -135,6 +176,71 @@ const activeDashboardAnchor = computed(() => activeElement.value?.dataset.anchor
 
 const totalDashboards = computed(() => dashboardEls.value.length)
 
+const readAnchor = () => {
+  try { return decodeURIComponent(window.location.hash.slice(1)) }
+  catch { return window.location.hash.slice(1) }
+}
+
+const navigationTarget = ref<string | null>(readAnchor() || null)
+const canConfirmDashboard = computed(() => navigationTarget.value === null ||
+  navigationTarget.value === dashboardCandidate.value?.dashboardAnchor)
+
+const dashboardCandidate = computed<DashboardAnalyticsContext | null>(() => {
+  if (topVisible.value || bottomVisible.value) return null
+
+  const { dashboardId, dashboardName, anchorId, themeId } = activeElement.value?.dataset ?? {}
+  if (!dashboardId || !dashboardName || !anchorId || !themeId) return null
+
+  return { dashboardId, dashboardName, dashboardAnchor: anchorId, themeId }
+})
+
+const DASHBOARD_STABILITY_MS = 1000
+const confirmedDashboard = shallowRef<DashboardAnalyticsContext | null>(null)
+let dashboardConfirmationTimer: ReturnType<typeof setTimeout> | undefined
+
+const cancelDashboardConfirmation = () => {
+  clearTimeout(dashboardConfirmationTimer)
+  dashboardConfirmationTimer = undefined
+}
+
+const scheduleDashboardConfirmation = () => {
+  cancelDashboardConfirmation()
+  if (document.hidden || !canConfirmDashboard.value) return
+
+  const dashboard = dashboardCandidate.value
+  dashboardConfirmationTimer = setTimeout(() => {
+    dashboardConfirmationTimer = undefined
+    if (document.hidden || !canConfirmDashboard.value || dashboardCandidate.value !== dashboard) return
+
+    if (!dashboard) {
+      confirmedDashboard.value = null
+      return
+    }
+
+    if (navigationTarget.value === dashboard.dashboardAnchor) navigationTarget.value = null
+    if (confirmedDashboard.value?.dashboardId === dashboard.dashboardId) return
+    confirmedDashboard.value = dashboard
+  }, DASHBOARD_STABILITY_MS)
+}
+
+watch([dashboardCandidate, canConfirmDashboard], scheduleDashboardConfirmation, { immediate: true, flush: 'sync' })
+
+watch(confirmedDashboard, (dashboard) => {
+  if (dashboard) {
+    const parameters = buildDashboardParameters(
+      dashboard,
+      document.title,
+    )
+
+    console.table(parameters)
+    sendPageView(parameters)
+
+    emit('dashboard-confirmed', dashboard)
+  } else {
+    clearDashboardContext()
+  }
+}, { flush: 'sync' })
+
 const checkSectionActive = (el: HTMLElement) => {
   const state = sectionStateMap.get(el)
   if (!state) return
@@ -153,30 +259,25 @@ const setupSectionObservers = (el: HTMLElement) => {
   const state: SectionState = { onTop: false, onUpperCenter: false, onLowerCenter: false, onBottom: false }
   sectionStateMap.set(el, state)
 
-  const topObs = new IntersectionObserver(([entry]) => {
-    state.onTop = entry.isIntersecting
+  const topObs = observeVisibility(el, (isVisible) => {
+    state.onTop = isVisible
     checkSectionActive(el)
   }, { rootMargin: '0px 0px -99% 0px' })
 
-  const upperCenterObs = new IntersectionObserver(([entry]) => {
-    state.onUpperCenter = entry.isIntersecting
+  const upperCenterObs = observeVisibility(el, (isVisible) => {
+    state.onUpperCenter = isVisible
     checkSectionActive(el)
   }, { rootMargin: '-25% 0px -50% 0px' })
 
-  const lowerCenterObs = new IntersectionObserver(([entry]) => {
-    state.onLowerCenter = entry.isIntersecting
+  const lowerCenterObs = observeVisibility(el, (isVisible) => {
+    state.onLowerCenter = isVisible
     checkSectionActive(el)
   }, { rootMargin: '-50% 0px -25% 0px' })
 
-  const bottomObs = new IntersectionObserver(([entry]) => {
-    state.onBottom = entry.isIntersecting
+  const bottomObs = observeVisibility(el, (isVisible) => {
+    state.onBottom = isVisible
     checkSectionActive(el)
   }, { rootMargin: '-99% 0px 0px 0px' })
-
-  topObs.observe(el)
-  upperCenterObs.observe(el)
-  lowerCenterObs.observe(el)
-  bottomObs.observe(el)
 
   sectionObserversMap.set(el, [topObs, upperCenterObs, lowerCenterObs, bottomObs])
 }
@@ -201,10 +302,12 @@ const teardownAllSectionObservers = () => {
 }
 
 const clearHash = () => {
+  if (navigationTarget.value !== null) return
   history.replaceState(history.state, '', window.location.pathname + window.location.search)
 }
 
 const sectionVisible = (id: string) => {
+  if (navigationTarget.value !== null || !id) return
   if (topVisible.value || bottomVisible.value) return
   if (location.hash === `#${id}`) return
   history.replaceState(history.state, '', `#${id}`)
@@ -253,6 +356,7 @@ const setupObservers = () => {
   firstEl.value = children[0]
   lastEl.value = children[children.length - 1]
   updateDashboardRefs(children)
+  restoreNavigationTarget()
   disconnectIOs()
   topObserver = new IntersectionObserver(([e]) => {
     topVisible.value = e.isIntersecting
@@ -280,20 +384,97 @@ const scrollToElement = (element: HTMLElement | null) => {
 }
 
 const scrollToHome = () => {
+  if (topVisible.value) return
+  navigationTarget.value = '@home'
   scrollToElement(firstEl.value)
 }
 
 const scrollToFooter = () => {
+  if (bottomVisible.value) return
   if (!lastEl.value || lastEl.value === firstEl.value) return
+  navigationTarget.value = '@footer'
   scrollToElement(lastEl.value)
 }
 
-const scrollToDashboard = (index: number) => {
+const scrollToDashboard = async (index: number) => {
   if (!container.value) return
+
   const target = dashboardEls.value[index]
-  if (!target) return
+  const anchor = target?.dataset.anchorId
+
+  if (!target || !anchor) return
+
+  if (
+    dashboardCandidate.value?.dashboardAnchor === anchor &&
+    confirmedDashboard.value?.dashboardId === target.dataset.dashboardId
+  ) {
+    return
+  }
+
+  navigationTarget.value = anchor
+
+  if (readAnchor() !== anchor) {
+    const failure = await router.push({
+      path: route.path,
+      query: route.query,
+      hash: `#${anchor}`,
+      force: true,
+    })
+
+    if (failure) {
+      if (navigationTarget.value === anchor) {
+        navigationTarget.value = null
+      }
+      return
+    }
+  }
+
+  if (navigationTarget.value !== anchor) return
+
   scrollToElement(target)
 }
+
+function restoreNavigationTarget() {
+  const anchor = navigationTarget.value
+  if (!anchor) return
+  const target = dashboardEls.value.find(el => el.dataset.anchorId === anchor)
+  if (target) scrollToElement(target)
+  // An unknown anchor must not prevent ordinary dashboard activation.
+  else if (dashboardEls.value.length && anchor !== '@home' && anchor !== '@footer') navigationTarget.value = null
+}
+
+const onHistoryNavigation = () => {
+  const anchor = readAnchor()
+  navigationTarget.value = anchor || (topVisible.value ? null : '@home')
+  if (anchor) restoreNavigationTarget()
+  else scrollToElement(firstEl.value)
+}
+
+const interruptNavigation = () => { navigationTarget.value = null }
+const onManualKey = (event: KeyboardEvent) => {
+  const target = event.target as HTMLElement | null
+  if (target?.closest('input, textarea, select, [contenteditable="true"]')) return
+  if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) interruptNavigation()
+}
+const onPointerDown = (event: PointerEvent) => {
+  // Scrollbar dragging; ordinary dashboard clicks (including copy link) do not cancel navigation.
+  const el = container.value
+  if (el && event.target === el && event.clientX >= el.getBoundingClientRect().left + el.clientWidth) interruptNavigation()
+}
+
+watch([topVisible, bottomVisible], ([top, bottom]) => {
+  if ((navigationTarget.value === '@home' && top) || (navigationTarget.value === '@footer' && bottom)) {
+    navigationTarget.value = null
+    clearHash()
+  }
+})
+
+watch(navigationTarget, (target) => {
+  if (target === null) {
+    if (topVisible.value || bottomVisible.value) clearHash()
+    else sectionVisible(activeDashboardAnchor.value)
+  }
+})
 
 const goPrev = () => {
   if (bottomVisible.value && totalDashboards.value) {
@@ -320,8 +501,16 @@ const goNext = () => {
 }
 
 onMounted(async () => {
+  document.addEventListener('visibilitychange', scheduleDashboardConfirmation)
+  registerThemeEntry()
   evaluateViewport()
   window.addEventListener('resize', onResize)
+  window.addEventListener('popstate', onHistoryNavigation)
+  window.addEventListener('hashchange', onHistoryNavigation)
+  window.addEventListener('keydown', onManualKey)
+  container.value?.addEventListener('wheel', interruptNavigation, { passive: true })
+  container.value?.addEventListener('touchmove', interruptNavigation, { passive: true })
+  container.value?.addEventListener('pointerdown', onPointerDown)
 
   if (container.value) {
     await nextTick()
@@ -334,7 +523,15 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
+  cancelDashboardConfirmation()
+  document.removeEventListener('visibilitychange', scheduleDashboardConfirmation)
   window.removeEventListener('resize', onResize)
+  window.removeEventListener('popstate', onHistoryNavigation)
+  window.removeEventListener('hashchange', onHistoryNavigation)
+  window.removeEventListener('keydown', onManualKey)
+  container.value?.removeEventListener('wheel', interruptNavigation)
+  container.value?.removeEventListener('touchmove', interruptNavigation)
+  container.value?.removeEventListener('pointerdown', onPointerDown)
   disconnectIOs()
   teardownAllSectionObservers()
   mutationObserver?.disconnect()

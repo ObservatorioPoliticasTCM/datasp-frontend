@@ -1,6 +1,9 @@
 <template>
-    <div class="composed-dashboard snap-section" :class="{ 'composed-dashboard--filter-open': active && filterOpen }"
-        ref="rootEl" :data-anchor-id="anchorId" :style="{ '--filter-sidebar-top': `${filterSidebarTop}px` }">
+    <div class="composed-dashboard snap-section"
+        :class="{ 'composed-dashboard--filter-open': active && filterOpen }"
+        ref="rootEl" :data-anchor-id="anchorId"
+        :data-dashboard-id="dashboardId" :data-dashboard-name="title.trim()" :data-theme-id="themeId"
+        :style="{ '--filter-sidebar-top': `${filterSidebarTop}px` }">
         <div v-if="title" class="frame-header">
             <h1 v-if="title">
                 <span class="title-anchor-wrapper">
@@ -22,9 +25,9 @@
         <div v-if="subtitle" class="frame-subtitle">
             <small v-if="subtitle">{{ subtitle }}</small>
         </div>
-        <DashboardNotice 
-            v-if="notice && !isDesktop" 
-            v-bind="notice" 
+        <DashboardNotice
+            v-if="notice && !isDesktop"
+            v-bind="notice"
         />
         <div class="dashboard-wrapper">
             <DesktopDashboardFrame v-if="desktopAppId && desktopSheetId && isDesktop" :appid="desktopAppId"
@@ -75,6 +78,8 @@ import type { DashboardNoticeConfig } from '@/types/dashboard.ts';
 const fullyVisibleEvent = 'fully-visible'
 
 interface DashboardFrameProps {
+    dashboardId: string
+    themeId: string
     identity?: string
     title?: string
     subtitle?: string
