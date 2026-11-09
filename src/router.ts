@@ -11,6 +11,7 @@ import ImprintPage from '@/views/ImprintPageView.vue'
 import TechGuideView from '@/views/TechGuideView.vue'
 import PresentationLetterView from './views/PresentationLetterView.vue'
 import { usePreview } from './composables/preview'
+import { sendPageView } from './utils/analytics'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,19 +21,19 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: { title: 'DataSP – Mapa de Dados da Cidade' }
+      meta: { title: 'DataSP – Mapa de Dados da Cidade', trackPageView: true }
     },
     {
       path: '/apresentacao',
       name: 'apresentacao',
       component: PresentationLetterView,
-      meta: { title: 'Carta de Apresentação – DataSP' }
+      meta: { title: 'Carta de Apresentação – DataSP', trackPageView: true }
     },
     {
       path: '/guia-tecnico',
       name: 'guia-tecnico',
       component: TechGuideView,
-      meta: { title: 'Guia técnico – DataSP' }
+      meta: { title: 'Guia técnico – DataSP', trackPageView: true }
     },
     {
       path: '/educacao',
@@ -68,31 +69,43 @@ const router = createRouter({
       path: '/glossario',
       name: 'glossario',
       component: GlossaryView,
-      meta: { title: 'Glossário – DataSP' }
+      meta: { title: 'Glossário – DataSP', trackPageView: true }
     },
     {
       path: '/fichatecnica',
       name: 'ficha-tecnica',
       component: ImprintPage,
-      meta: { title: 'Ficha Técnica – DataSP' }
+      meta: { title: 'Ficha Técnica – DataSP', trackPageView: true }
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: NotFound,
-      meta: { title: 'Página Não Encontrada – DataSP' }
+      meta: { title: 'Página Não Encontrada – DataSP', trackPageView: true }
     }
   ]
 })
 
 // Adiciona um guarda de navegação para atualizar o título da página
-router.afterEach((to) => {
+router.afterEach((to, from, failure) => {
+  if (failure) return
+
   // Garante que a rota tem um título antes de tentar defini-lo
   if (to.meta && to.meta.title) {
     document.title = to.meta.title as string;
   } else {
     // Define um título padrão caso a rota não tenha um
     document.title = 'DataSP – Mapa de Dados da Cidade';
+  }
+
+  // Temas e dashboards registram suas visualizações no SnapContainer.
+  if (to.meta.trackPageView && (to.path !== from.path || !from.matched.length)) {
+    sendPageView({
+      page_location: new URL(router.resolve(to).href, window.location.href).href,
+      page_title: document.title,
+      theme_id: '',
+      content_type: 'page',
+    })
   }
 });
 
