@@ -8,16 +8,33 @@ export const segurancaAlimentarDashboards: DashboardConfig[] = [
     desktopSheetId: 'bCSqze',
     filter: {
       appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
-      sheet: 'bCSqze',
+      sheet: 'BXGrh',
       showSelections: true
     },
     charts: [
       {
         appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
-        sheet: 'bCSqze',
-        label: 'Déficit de altura e excesso de peso em crianças abaixo de 5 anos',
+        sheet: 'QJPVFm',
         mobileOrder: 0,
         mobileHeight: 8
+      },
+      {
+        appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
+        sheet: 'UjMkbp',
+        mobileOrder: 0,
+        mobileHeight: 6
+      },
+      {
+        appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
+        sheet: 'aa9cc8e4-816e-4f02-8789-b1c3164fa792',
+        mobileOrder: 0,
+        mobileHeight: 8
+      },
+      {
+        appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
+        sheet: 'NVjzKS',
+        mobileOrder: 0,
+        mobileHeight: 6
       }
     ]
   },
@@ -28,16 +45,33 @@ export const segurancaAlimentarDashboards: DashboardConfig[] = [
     desktopSheetId: 'a4ac8f85-556d-44c8-8c8b-bb0c4d016ad8',
     filter: {
       appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
-      sheet: 'a4ac8f85-556d-44c8-8c8b-bb0c4d016ad8',
+      sheet: 'BXGrh',
       showSelections: true
     },
     charts: [
       {
         appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
-        sheet: 'a4ac8f85-556d-44c8-8c8b-bb0c4d016ad8',
-        label: 'Nascidos Vivos (NV) em condição de baixo peso',
+        sheet: '2cdd254d-8f30-4fcc-b5bb-6a061df81049',
         mobileOrder: 0,
         mobileHeight: 8
+      },
+      {
+        appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
+        sheet: 'qMQP',
+        mobileOrder: 0,
+        mobileHeight: 6
+      },
+      {
+        appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
+        sheet: 'f34fee31-840d-4d1c-8d72-2fa0e4cd7ca9',
+        mobileOrder: 0,
+        mobileHeight: 8
+      },
+      {
+        appid: 'd92a6d27-0010-49b1-a5af-6dbb1a875175',
+        sheet: 'ektvhm',
+        mobileOrder: 0,
+        mobileHeight: 3
       }
     ]
   }
