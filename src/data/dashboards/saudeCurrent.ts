@@ -17,8 +17,16 @@ export const saudeCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'efbd30d7-7eb4-450b-81d8-f9776f595efb',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: '57b6bce0-3c86-49d7-87c0-2e2690420f8a',
         mobileOrder: 0,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -51,7 +59,7 @@ export const saudeCurrent: DashboardConfig[] = [
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: '06e488a7-e8f7-43e4-9d4c-90bddc114dd3',
-        mobileHeight: 1,
+        mobileHeight: 2,
         mobileOrder: 5,
         skeletonType: 'text'
       }
@@ -73,33 +81,34 @@ export const saudeCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '1bde1b53-2caa-425f-a3dc-da5ff27a1195',
+        sheet: 'efbd30d7-7eb4-450b-81d8-f9776f595efb',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: '9f22cdfc-2dfe-46fe-8aec-b94a7973211a',
         mobileHeight: 1,
         mobileOrder: 1,
         skeletonType: 'kpi'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '3242a1b7-9c08-4a9b-a01b-a7132565ab85',
+        sheet: '1b9f6b3c-27a7-4d23-bd8e-edb7c0f617b2',
         mobileOrder: 2,
         skeletonType: 'map'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '6e8a22bd-a038-4279-9775-900ca13c62eb',
-        mobileOrder: 4,
-        skeletonType: 'bar'
-      },
-      {
-        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '327239ee-6dca-4256-813a-cf18b1cf85cf',
+        sheet: '00cc9341-af08-4997-a3a8-ca48f5038396',
         mobileOrder: 3,
-        skeletonType: 'pie'
+        skeletonType: 'text'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: 'dcb974b6-95e1-4bc5-991d-d14951cd993c',
-        mobileOrder: 5,
+        sheet: '1fbb3d8e-ee73-49e6-92e6-f36b5a3308c4',
+        mobileOrder: 4,
         mobileHeight: 1,
         skeletonType: 'text'
       }
@@ -138,13 +147,6 @@ export const saudeCurrent: DashboardConfig[] = [
         mobileOrder: 2,
         mobileHeight: 6,
         skeletonType: 'map'
-      },
-      {
-        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: 'vcyWtH',
-        mobileOrder: 3,
-        mobileHeight: 1,
-        skeletonType: 'kpi'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
@@ -191,13 +193,6 @@ export const saudeCurrent: DashboardConfig[] = [
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: 'prUzYQ',
-        mobileOrder: 3,
-        mobileHeight: 1,
-        skeletonType: 'kpi'
-      },
-      {
-        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: 'GjfekNq',
         mobileOrder: 4,
         mobileHeight: 8,
@@ -220,32 +215,40 @@ export const saudeCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '9f22cdfc-2dfe-46fe-8aec-b94a7973211a',
+        sheet: 'pPMckCC',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: '1bde1b53-2caa-425f-a3dc-da5ff27a1195',
         mobileHeight: 1,
         mobileOrder: 1,
         skeletonType: 'kpi'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '1b9f6b3c-27a7-4d23-bd8e-edb7c0f617b2',
+        sheet: '3242a1b7-9c08-4a9b-a01b-a7132565ab85',
         mobileOrder: 2,
         skeletonType: 'map'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '00cc9341-af08-4997-a3a8-ca48f5038396',
+        sheet: '6e8a22bd-a038-4279-9775-900ca13c62eb',
         mobileOrder: 4,
-        skeletonType: 'bar'
+        skeletonType: 'text'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: 'd90e1549-26d2-4907-a1e9-e899bc99cc9d',
+        sheet: '327239ee-6dca-4256-813a-cf18b1cf85cf',
         mobileOrder: 3,
+        mobileHeight: 4,
         skeletonType: 'pie'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
-        sheet: '1fbb3d8e-ee73-49e6-92e6-f36b5a3308c4',
+        sheet: 'dcb974b6-95e1-4bc5-991d-d14951cd993c',
         mobileOrder: 5,
         mobileHeight: 1,
         skeletonType: 'text'
@@ -265,6 +268,13 @@ export const saudeCurrent: DashboardConfig[] = [
       showSelections: true
     },
     charts: [
+      {
+        appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
+        sheet: 'mVLTe',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: 'fe47beea-a668-46bd-8fde-37e341f5379b',
@@ -296,13 +306,14 @@ export const saudeCurrent: DashboardConfig[] = [
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: 'b17519e1-5931-4d69-a7be-0c6a9b4e3767',
         mobileOrder: 3,
-        skeletonType: 'treemap'
+        mobileHeight: 6,
+        skeletonType: 'map'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: 'ca956e69-7077-4cad-b097-7dd94bbf085e',
         mobileOrder: 6,
-        skeletonType: 'map'
+        skeletonType: 'treemap'
       },
       {
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
