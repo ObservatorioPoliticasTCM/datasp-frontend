@@ -15,6 +15,13 @@ export const orcamentoCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: '8de1759f-cbc1-4229-b714-8c54fcf1f88c',
+        sheet: 'YNUmj',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: '8de1759f-cbc1-4229-b714-8c54fcf1f88c',
         sheet: '64a913f9-018c-40bd-b9b2-1ac5a2ce3ee0',
         mobileHeight: 1,
         mobileOrder: 0,
@@ -74,6 +81,13 @@ export const orcamentoCurrent: DashboardConfig[] = [
       showSelections: true
     },
     charts: [
+      {
+        appid: 'a44893fd-2171-4ad4-9d55-846287cd6534',
+        sheet: 'fmCgeg',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
       {
         appid: 'a44893fd-2171-4ad4-9d55-846287cd6534',
         sheet: 'dd764d5d-b820-443a-a4af-22faae1692d2',
@@ -137,6 +151,13 @@ export const orcamentoCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: 'f5fa8780-b946-4f6f-bf54-ffd1578841ee',
+        sheet: 'pcRQmt',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: 'f5fa8780-b946-4f6f-bf54-ffd1578841ee',
         sheet: '0110c6b0-be05-4d44-9304-52eb9644d244',
         mobileHeight: 1,
         mobileOrder: 1,
@@ -196,6 +217,13 @@ export const orcamentoCurrent: DashboardConfig[] = [
       showSelections: true
     },
     charts: [
+      {
+        appid: 'e6529850-a5d3-4fbb-9e5f-3ab31875d287',
+        sheet: 'jnqRn',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
       {
         appid: 'e6529850-a5d3-4fbb-9e5f-3ab31875d287',
         sheet: 'aca59608-41d2-4de4-bb3b-546a0781fd1c',
