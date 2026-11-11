@@ -74,7 +74,6 @@ export const orcamentoCurrent: DashboardConfig[] = [
     identity: '2',
     desktopAppId: 'a44893fd-2171-4ad4-9d55-846287cd6534',
     desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
-    filterOpen: true,
     filter: {
       appid: 'a44893fd-2171-4ad4-9d55-846287cd6534',
       sheet: '2195998b-a1dd-48fd-af56-7d3c20a80e4d',
@@ -142,7 +141,6 @@ export const orcamentoCurrent: DashboardConfig[] = [
     identity: '3',
     desktopAppId: 'f5fa8780-b946-4f6f-bf54-ffd1578841ee',
     desktopSheetId: '826cc7f9-9f5d-498f-aba1-af1bd4aca5ba',
-    filterOpen: true,
     filter: {
       appid: 'f5fa8780-b946-4f6f-bf54-ffd1578841ee',
       sheet: '38a81cf9-832a-4a7f-a231-8c8b2941ce1f',
@@ -210,7 +208,6 @@ export const orcamentoCurrent: DashboardConfig[] = [
     identity: '4',
     desktopAppId: 'e6529850-a5d3-4fbb-9e5f-3ab31875d287',
     desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
-    filterOpen: true,
     filter: {
       appid: 'e6529850-a5d3-4fbb-9e5f-3ab31875d287',
       sheet: '8f9aff06-0450-4f98-8921-03fd5287dc3e',
