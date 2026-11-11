@@ -313,6 +313,199 @@ const imprint2025: AnnualImprint = {
 const imprint2026: AnnualImprint = {
   ...structuredClone(imprint2025),
   year: 2026,
+
+  coordination: [
+    {
+      name: 'Egle Monteiro',
+      title: 'Coordenadora',
+    },
+    {
+      name: 'Bruno Azuma',
+      title: 'Coordenador Adjunto',
+    }
+  ],
+
+  support: [
+    {
+      name: 'Núcleo de Tecnologia da Informação',
+      participants: [
+        {
+          name: 'Ricardo Ferreira Santos',
+          title: 'Chefe do NTI',
+        },
+        {
+          name: 'Adriano Barbosa dos Santos',
+          title: 'Chefe da Unidade Técnica de Desenvolvimento de Sistemas',
+        }
+      ],
+    },
+    {
+      name: 'Estagiários do OPP',
+      participants: [
+        {
+          name: 'Bruna Santos',
+          title: 'Geografia',
+        },
+        {
+          name: 'Gabrielle Felix',
+          title: 'Análise e Desenvolvimento de Sistemas',
+        },
+        {
+          name: 'Jorge Yo Takyia Paiva',
+          title: 'Ciências Contábeis',
+        },
+        {
+          name: 'Pedro Lima',
+          title: 'Geografia',
+        },
+      ],
+    },
+    {
+      name: 'Estagiárias da Comunicação',
+      participants: [
+        {
+          name: 'Anny Solon Moretti Fernandes',
+          title: 'Publicidade e Propaganda',
+        },
+        {
+          name: 'Eduarda Fonseca da Silva',
+          title: 'Publicidade e Propaganda',
+        },
+        {
+          name: 'Erica Montanha',
+          title: 'Design Gráfico',
+        },
+        {
+          name: 'Natália Valente Trigo',
+          title: 'Publicidade e Propaganda',
+        },
+        {
+          name: 'Manuela Schenk',
+          title: 'Jornalismo',
+        },
+      ],
+    },
+  ],
+
+  technicalTeam: [
+    {
+      name: 'Unidade de Informações Estratégicas',
+      participants: [
+        {
+          name: 'Luciana da Cunha de Castro Guerra',
+          title: 'Supervisora da Unidade',
+        },
+        {
+          name: 'Lilian Tiemi Takada',
+          title: 'Auxiliar Técnica de Controle Externo',
+        },
+        {
+          name: 'Ana Luísa Augusto do Val',
+          title: 'Estagiária de Análise e Desenvolvimento de Sistemas',
+        },
+      ],
+    },
+  ],
+
+  contributors: [
+    {
+      name: 'Fulvio Giannella Junior',
+      title: 'Assessor de Imprensa',
+    },
+    {
+      name: 'Dilson Ferreira da Cruz Junior',
+      title: 'Auditor de Controle Externo',
+    },
+    {
+      name: 'Rafael Valverde Arantes',
+      title: 'Secretário de Controle Externo',
+    },
+    {
+      name: 'Maria Clara Watanabe Tanabe',
+      title: 'Auditora de Controle Externo',
+    },
+    {
+      name: 'Fredy Henrique Miller',
+      title: 'Coordenador de Controle Externo II',
+    },
+    {
+      name: 'Luiz Gustavo de Oliveira Vieira',
+      title: 'Coordenador de Controle Externo IV',
+    },
+    {
+      name: 'Rafael Rocha Lins',
+      title: 'Coordenador de Controle Externo VI',
+    },
+    {
+      name: 'Dimitri Fabricio Carvalho Rodermel',
+      title: 'Coordenador de Controle Externo VII',
+    },
+  ],
+
+  workingGroups: [
+    {
+      name: 'GT Educação',
+      url: 'https://observatorio.tcm.sp.gov.br/Educacao/559290',
+      participants: [
+        {
+          name: 'Rômulo Felipe Manzatto',
+          title: 'Coordenador',
+        },
+      ],
+    },
+    {
+      name: 'GT Gênero',
+      url: 'https://observatorio.tcm.sp.gov.br/Genero/556919',
+      participants: [
+        {
+          name: 'Maria Angélica Fernandes',
+          title: 'Coordenadora',
+        },
+        {
+          name: 'Suelem Lima Benicio',
+          title: 'Coordenadora Adjunta',
+        },
+      ],
+    },
+    {
+      name: 'GT Saúde',
+      url: 'https://observatorio.tcm.sp.gov.br/Saude/556928',
+      participants: [
+        {
+          name: 'Luciana Berardi',
+          title: 'Coordenadora',
+        },
+        {
+          name: 'Mariana Mendes Cruz Ferreira',
+          title: 'Coordenadora Adjunta',
+        },
+      ],
+    },
+    {
+      name: 'GT Urbanismo',
+      url: 'https://observatorio.tcm.sp.gov.br/Urbanismo/559291',
+      participants: [
+        {
+          name: 'Egle Monteiro',
+          title: 'Coordenadora',
+        },
+        {
+          name: 'Harmi Takiya',
+          title: 'Coordenadora Adjunta',
+        },
+      ],
+    },
+    {
+      name: 'GT Regionalização do Orçamento',
+      url: 'https://observatorio.tcm.sp.gov.br/Regionalizacao/559292',
+      participants: [
+        {
+          name: 'Danilo Fuster',
+          title: 'Coordenador',
+        },
+      ],
+    },
+  ],
 }
 
 export const annualImprints: AnnualImprint[] = [
