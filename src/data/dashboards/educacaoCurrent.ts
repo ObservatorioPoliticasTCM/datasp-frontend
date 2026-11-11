@@ -16,6 +16,13 @@ export const educacaoCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
+        sheet: "mPTGsUm",
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: "kpi",
+      },
+      {
+        appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
         sheet: "ac91b18e-be3e-4d6d-ae18-6b55ce6a917c",
         mobileHeight: 1,
         mobileOrder: 0,
@@ -101,6 +108,13 @@ export const educacaoCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
+        sheet: "bTUkhye",
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: "kpi",
+      },
+      {
+        appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
         sheet: "fb8c916d-ff10-4f21-8386-d56dabd1de3c",
         mobileHeight: 1,
         mobileOrder: 1,
@@ -150,6 +164,13 @@ export const educacaoCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
+        sheet: "pfwjTp",
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: "kpi",
+      },
+      {
+        appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
         sheet: "967f4267-7fd9-4ce7-98bc-d9fb2fbbcb00",
         mobileHeight: 1,
         mobileOrder: 0,
@@ -189,6 +210,13 @@ export const educacaoCurrent: DashboardConfig[] = [
       showSelections: true,
     },
     charts: [
+      {
+        appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
+        sheet: "BYGrMc",
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: "kpi",
+      },
       {
         appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
         sheet: "c6088c5f-bfcd-45c0-8b23-eb3abbb897ae",
@@ -265,6 +293,13 @@ export const educacaoCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
+        sheet: "xQfJH",
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: "kpi",
+      },
+      {
+        appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
         sheet: "92f201f1-321d-4329-be76-3406481975e2",
         mobileOrder: 2,
         skeletonType: "pie",
@@ -316,6 +351,13 @@ export const educacaoCurrent: DashboardConfig[] = [
       showSelections: true,
     },
     charts: [
+      {
+        appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
+        sheet: "CSPgnAp",
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: "kpi",
+      },
       {
         appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
         sheet: "1216993d-41bc-463f-b4e6-08dbb476b7f5",
@@ -371,6 +413,13 @@ export const educacaoCurrent: DashboardConfig[] = [
       showSelections: true,
     },
     charts: [
+      {
+        appid: "c8c65c00-720c-4da7-a836-6864d6d303a8",
+        sheet: "BuduWwT",
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: "kpi",
+      },
       {
         appid: "	c8c65c00-720c-4da7-a836-6864d6d303a8",
         sheet: "340230df-e45e-4700-b3c6-7883dfd2bcd8",
