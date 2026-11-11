@@ -15,6 +15,13 @@ export const orcamentoCurrent: DashboardConfig[] = [
     charts: [
       {
         appid: '8de1759f-cbc1-4229-b714-8c54fcf1f88c',
+        sheet: 'YNUmj',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
+      {
+        appid: '8de1759f-cbc1-4229-b714-8c54fcf1f88c',
         sheet: '64a913f9-018c-40bd-b9b2-1ac5a2ce3ee0',
         mobileHeight: 1,
         mobileOrder: 0,
@@ -67,13 +74,19 @@ export const orcamentoCurrent: DashboardConfig[] = [
     identity: '2',
     desktopAppId: 'a44893fd-2171-4ad4-9d55-846287cd6534',
     desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
-    filterOpen: true,
     filter: {
       appid: 'a44893fd-2171-4ad4-9d55-846287cd6534',
       sheet: '2195998b-a1dd-48fd-af56-7d3c20a80e4d',
       showSelections: true
     },
     charts: [
+      {
+        appid: 'a44893fd-2171-4ad4-9d55-846287cd6534',
+        sheet: 'fmCgeg',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
       {
         appid: 'a44893fd-2171-4ad4-9d55-846287cd6534',
         sheet: 'dd764d5d-b820-443a-a4af-22faae1692d2',
@@ -128,13 +141,19 @@ export const orcamentoCurrent: DashboardConfig[] = [
     identity: '3',
     desktopAppId: 'f5fa8780-b946-4f6f-bf54-ffd1578841ee',
     desktopSheetId: '826cc7f9-9f5d-498f-aba1-af1bd4aca5ba',
-    filterOpen: true,
     filter: {
       appid: 'f5fa8780-b946-4f6f-bf54-ffd1578841ee',
       sheet: '38a81cf9-832a-4a7f-a231-8c8b2941ce1f',
       showSelections: true
     },
     charts: [
+      {
+        appid: 'f5fa8780-b946-4f6f-bf54-ffd1578841ee',
+        sheet: 'pcRQmt',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
       {
         appid: 'f5fa8780-b946-4f6f-bf54-ffd1578841ee',
         sheet: '0110c6b0-be05-4d44-9304-52eb9644d244',
@@ -189,13 +208,19 @@ export const orcamentoCurrent: DashboardConfig[] = [
     identity: '4',
     desktopAppId: 'e6529850-a5d3-4fbb-9e5f-3ab31875d287',
     desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
-    filterOpen: true,
     filter: {
       appid: 'e6529850-a5d3-4fbb-9e5f-3ab31875d287',
       sheet: '8f9aff06-0450-4f98-8921-03fd5287dc3e',
       showSelections: true
     },
     charts: [
+      {
+        appid: 'e6529850-a5d3-4fbb-9e5f-3ab31875d287',
+        sheet: 'jnqRn',
+        mobileHeight: 2,
+        mobileOrder: 0,
+        skeletonType: 'kpi'
+      },
       {
         appid: 'e6529850-a5d3-4fbb-9e5f-3ab31875d287',
         sheet: 'aca59608-41d2-4de4-bb3b-546a0781fd1c',
