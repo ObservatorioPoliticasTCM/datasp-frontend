@@ -231,6 +231,7 @@ export const saudeCurrent: DashboardConfig[] = [
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: '3242a1b7-9c08-4a9b-a01b-a7132565ab85',
         mobileOrder: 2,
+        mobileHeight: 6,
         skeletonType: 'map'
       },
       {
@@ -250,7 +251,7 @@ export const saudeCurrent: DashboardConfig[] = [
         appid: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
         sheet: 'dcb974b6-95e1-4bc5-991d-d14951cd993c',
         mobileOrder: 5,
-        mobileHeight: 1,
+        mobileHeight: 2,
         skeletonType: 'text'
       }
     ]
