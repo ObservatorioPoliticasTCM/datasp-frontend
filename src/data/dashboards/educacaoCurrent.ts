@@ -96,7 +96,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     title: "Despesas liquidadas na Função Educação ",
     methodologyLink:
       "/infos/notas/educacao/2_notas_metodologicas_despesas_ok.pdf",
-    downloadLink: "/dados/educacao/orcamento.csv",
+    downloadLink: "/dados/educacao/2026/orcamento.csv",
     identity: "3",
     desktopAppId: "c8c65c00-720c-4da7-a836-6864d6d303a8",
     desktopSheetId: "mSNDU",
@@ -152,7 +152,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     title: "Número de escolas da rede municipal ",
     methodologyLink:
       "/infos/notas/educacao/3_notas_metodologicas_escolas_ok.pdf",
-    downloadLink: "/dados/educacao/escolas-municipais.csv",
+    downloadLink: "/dados/educacao/2026/escolas-municipais.csv",
     identity: "3",
     desktopAppId: "c8c65c00-720c-4da7-a836-6864d6d303a8",
     desktopSheetId: "8a9478a1-23b6-4165-a526-12f9d736aaa0",
@@ -200,7 +200,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     title: "Perfil dos professores da rede pública municipal ",
     methodologyLink:
       "/infos/notas/educacao/4_notas_metodologicas_educ_professores_ok.pdf",
-    downloadLink: "/dados/educacao/servidores-perfil.csv",
+    downloadLink: "/dados/educacao/2026/servidores-perfil.csv",
     identity: "4",
     desktopAppId: "c8c65c00-720c-4da7-a836-6864d6d303a8",
     desktopSheetId: "nvgxg",
@@ -281,7 +281,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     title: "Perfil dos alunos da rede municipal ",
     methodologyLink:
       "/infos/notas/educacao/5_notas_metodologicas_alunos_ok.pdf",
-    downloadLink: "/dados/educacao/perfil-dos-educandos.csv",
+    downloadLink: "/dados/educacao/2026/perfil-dos-educandos.csv",
     identity: "5",
     desktopAppId: "c8c65c00-720c-4da7-a836-6864d6d303a8",
     desktopSheetId: "nNpyj",
@@ -341,7 +341,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     title: "Alunos da rede municipal beneficiários do Bolsa Família ",
     methodologyLink:
       "/infos/notas/educacao/6_notas_metodologicas_bolsa_familia_ok.pdf",
-    downloadLink: "/dados/educacao/beneficiarios-pbf.csv",
+    downloadLink: "/dados/educacao/2026/beneficiarios-pbf.csv",
     identity: "6",
     desktopAppId: "c8c65c00-720c-4da7-a836-6864d6d303a8",
     desktopSheetId: "jRpJk",
@@ -403,7 +403,7 @@ export const educacaoCurrent: DashboardConfig[] = [
     title: "Alunos migrantes na rede municipal ",
     methodologyLink:
       "/infos/notas/educacao/7_notas_metodologicas_alunos_estrangeiros_ok.pdf",
-    downloadLink: "/dados/educacao/educandos-estrangeiros.csv",
+    downloadLink: "/dados/educacao/2026/educandos-estrangeiros.csv",
     identity: "7",
     desktopAppId: "	c8c65c00-720c-4da7-a836-6864d6d303a8",
     desktopSheetId: "PqxZb",
