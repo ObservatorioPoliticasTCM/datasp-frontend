@@ -4,7 +4,7 @@ export const saudeCurrent: DashboardConfig[] = [
   {
     title: 'Consultas',
     subtitle: 'Inclui as unidades municipais, estaduais e federais',
-    downloadLink: '/dados/saude/consultas.zip',
+    downloadLink: '/dados/saude/2026/consultas.zip',
     methodologyLink: '',
     identity: '1',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
@@ -68,7 +68,7 @@ export const saudeCurrent: DashboardConfig[] = [
   {
     title: 'Mortalidade',
     subtitle: 'Inclui óbitos de residentes do município de São Paulo',
-    downloadLink: '/dados/saude/mortalidade.zip',
+    downloadLink: '/dados/saude/2026/mortalidade.zip',
     methodologyLink: '/infos/notas/saude/taxa-de-mortalidade-2024.pdf',
     identity: '2',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
@@ -117,7 +117,7 @@ export const saudeCurrent: DashboardConfig[] = [
   {
     title: 'Mortalidade Infantil',
     subtitle: 'Inclui óbitos de residentes do município de São Paulo',
-    downloadLink: '/dados/saude/mortalidade.zip',
+    downloadLink: '/dados/saude/2026/mortalidade-infantil.csv',
     identity: '3',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
     desktopSheetId: '7da9eb32-facc-4cef-8254-9905853e0972',
@@ -160,7 +160,7 @@ export const saudeCurrent: DashboardConfig[] = [
   {
     title: 'Mortalidade Materna',
     subtitle: 'Inclui óbitos de residentes do município de São Paulo',
-    downloadLink: '/dados/saude/mortalidade.zip',
+    downloadLink: '/dados/saude/2026/mortalidade-materna.csv',
     identity: '4',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
     desktopSheetId: '3423dd31-c14a-4b45-9fda-30390c573164',
@@ -203,7 +203,7 @@ export const saudeCurrent: DashboardConfig[] = [
   {
     title: 'Leitos',
     subtitle: 'Inclui leitos das unidades municipais, estaduais e federais',
-    downloadLink: '/dados/saude/leitos-internacao-complementares.zip',
+    downloadLink: '/dados/saude/2026/leitos-internacao-complementares.zip',
     identity: '5',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
     desktopSheetId: 'kPfKtR',
@@ -259,7 +259,7 @@ export const saudeCurrent: DashboardConfig[] = [
   {
     title: 'Despesas',
     subtitle: 'Inclui apenas despesas municipais',
-    downloadLink: '/dados/saude/despesas.zip',
+    downloadLink: '/dados/saude/2026/despesas.zip',
     identity: '6',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
     desktopSheetId: 'XFZvFPN',
