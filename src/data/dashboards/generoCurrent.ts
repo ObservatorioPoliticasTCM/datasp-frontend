@@ -78,7 +78,6 @@ export const generoCurrent: DashboardConfig[] = [
     desktopAppId: 'ceb7f846-e814-4852-8237-706b0bb21d13',
     desktopSheetId: 'c609507f-709a-434f-8430-5f1f74121740',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS EM AÇÕES VOLTADAS EXCLUSIVAMENTE A POLÍTICAS DE PROMOÇÃO AOS DIREITOS DAS MULHERES 1.pdf',
-    downloadLink: '/dados/genero/orçamento-exclusivo.csv',
     filter: {
       appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
       sheet: '6256951f-b119-4912-b829-1013928a370d',
@@ -187,7 +186,7 @@ export const generoCurrent: DashboardConfig[] = [
     desktopAppId: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
     desktopSheetId: 'b5eaabe4-7475-4e0f-ab78-92f912214961',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS EM AÇÕES PARCIALMENTE FOCALIZADAS POR INICIATIVA DISCRICIONÁRIA DA GESTÃO MUNICIPAL (2023).pdf',
-    downloadLink: '/dados/genero/orçamento-não-exclusivo-2023.csv',
+    downloadLink: '/dados/genero/2026/orçamento-não-exclusivo-2026.zip',
     filter: {
       appid: '300dc8b3-edd7-4ce3-bb3f-d82ede2325e8',
       sheet: '0e062a58-256e-4071-ad33-09c6e8715431',
@@ -280,7 +279,6 @@ export const generoCurrent: DashboardConfig[] = [
     desktopAppId: 'ceb7f846-e814-4852-8237-706b0bb21d13',
     desktopSheetId: '3d5ba550-f947-4ba8-a12e-31ee20c05521',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
-    downloadLink: '/dados/genero/orçamento-pmpm-habitação.csv',
     filter: {
       appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
       sheet: '81d5cd8a-2d94-4918-a4aa-5bfa25b588e2',
@@ -381,7 +379,6 @@ export const generoCurrent: DashboardConfig[] = [
     desktopAppId: 'ceb7f846-e814-4852-8237-706b0bb21d13',
     desktopSheetId: '62d5961d-3b5a-4872-adb5-0c79b489f70c',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
-    downloadLink: '/dados/genero/orçamento-pmpm-educação.csv',
     filter: {
       appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
       sheet: '087c2178-5f3a-4187-a922-26d87c96568d',
@@ -482,7 +479,6 @@ export const generoCurrent: DashboardConfig[] = [
     desktopAppId: 'ceb7f846-e814-4852-8237-706b0bb21d13',
     desktopSheetId: 'fde5eb98-c713-45ad-b134-fc6d58a188e5',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
-    downloadLink: '/dados/genero/orçamento-pmpm-assistência-social.csv',
     filter: {
       appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
       sheet: 'e1d6796b-9dc5-4bbf-9e82-d41867258d13',
@@ -583,7 +579,6 @@ export const generoCurrent: DashboardConfig[] = [
     desktopAppId: 'ceb7f846-e814-4852-8237-706b0bb21d13',
     desktopSheetId: '7931a494-f4b5-4f34-a3e2-c57f08b8d53a',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
-    downloadLink: '/dados/genero/orçamento-pmpm-direitos-humanos.csv',
     filter: {
       appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
       sheet: '388cfce4-6095-49a5-a0ef-282d4eaad783',
@@ -684,7 +679,6 @@ export const generoCurrent: DashboardConfig[] = [
     desktopAppId: 'ceb7f846-e814-4852-8237-706b0bb21d13',
     desktopSheetId: '49e484ce-2ad7-41a1-b727-0680f3a9036b',
     methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS SEM FOCO EXCLUSIVO NAS MULHERES 1.pdf',
-    downloadLink: '/dados/genero/orçamento-pmpm-trabalho.csv',
     filter: {
       appid: 'ceb7f846-e814-4852-8237-706b0bb21d13',
       sheet: '101fc4d0-7413-4cc8-aa99-52d349c635c0',
