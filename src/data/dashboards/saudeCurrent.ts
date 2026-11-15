@@ -69,7 +69,6 @@ export const saudeCurrent: DashboardConfig[] = [
     title: 'Mortalidade',
     subtitle: 'Inclui óbitos de residentes do município de São Paulo',
     downloadLink: '/dados/saude/2026/mortalidade.zip',
-    methodologyLink: '/infos/notas/saude/taxa-de-mortalidade-2024.pdf',
     identity: '2',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
     desktopSheetId: 'hSjCf',
@@ -118,6 +117,7 @@ export const saudeCurrent: DashboardConfig[] = [
     title: 'Mortalidade Infantil',
     subtitle: 'Inclui óbitos de residentes do município de São Paulo',
     downloadLink: '/dados/saude/2026/mortalidade-infantil.csv',
+    methodologyLink: '/infos/notas/saude/Nota metodológica - mortalidade materna e mortalidade infantil',
     identity: '3',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
     desktopSheetId: '7da9eb32-facc-4cef-8254-9905853e0972',
@@ -160,6 +160,7 @@ export const saudeCurrent: DashboardConfig[] = [
   {
     title: 'Mortalidade Materna',
     subtitle: 'Inclui óbitos de residentes do município de São Paulo',
+    methodologyLink: '/infos/notas/saude/Nota metodológica - mortalidade materna e mortalidade infantil.pdf',
     downloadLink: '/dados/saude/2026/mortalidade-materna.csv',
     identity: '4',
     desktopAppId: 'f210ae15-9411-4e4d-bcbd-6d17dace26d2',
