@@ -264,59 +264,59 @@ export const urbanismoCurrent: DashboardConfig[] = [
   {
     title: 'Déficit habitacional, domicílios não ocupados e domicílios em favelas',
     identity: '5',
-    desktopAppId: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
-    desktopSheetId: 'da5e8886-a388-4a4d-9835-8990c3744f2a',
+    desktopAppId: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
+    desktopSheetId: 'JJKYJ',
     downloadLink: '/dados/urbanismo/2026/deficit-habitacional-domicilios-nao-ocupados-e-domicilios-em-favelas.zip',
     filter: {
-      appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
+      appid: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
       sheet: '24de766d-67e4-4531-90c2-6b978a9b60a2',
       showSelections: true
     },
     charts: [
       {
-        appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
+        appid: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
         sheet: 'b0a3ba13-3983-4c3a-aa81-219d4274e238',
         mobileOrder: 3,
         mobileHeight: 6,
         skeletonType: 'map'
       },
       {
-        appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
+        appid: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
         sheet: 'f4855b9c-5311-4af2-b12e-6c3d2678f6aa',
         mobileOrder: 0,
         mobileHeight: 2,
         skeletonType: 'bar'
       },
       {
-        appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
+        appid: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
         sheet: 'c1889b0a-1add-4f8e-b9b4-4975db8cbdce',
         mobileOrder: 2,
         mobileHeight: 1,
         skeletonType: 'text'
       },
       {
-        appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
+        appid: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
         sheet: 'e414560e-d86b-4464-aa8a-5a392127bd87',
         mobileOrder: 4,
         mobileHeight: 1,
         skeletonType: 'text'
       },
       {
-        appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
+        appid: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
         sheet: 'ce032caf-ade0-4c6c-b925-cd229f298a18',
         mobileOrder: 1,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
       {
-        appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
+        appid: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
         sheet: 'c41cff39-da64-4863-98f8-fe95facaa885',
         mobileOrder: 5,
         mobileHeight: 1,
         skeletonType: 'kpi'
       },
       {
-        appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
+        appid: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
         sheet: '0d9d32d0-36ef-4b14-9455-ac7be50829c0',
         mobileOrder: 6,
         mobileHeight: 4,
