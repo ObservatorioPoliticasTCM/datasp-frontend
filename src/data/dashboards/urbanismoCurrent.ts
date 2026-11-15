@@ -2,12 +2,12 @@
 
 export const urbanismoCurrent: DashboardConfig[] = [
   {
-    title: 'População em risco geológico e hidrológico (ago/2025)',
+    title: 'População em risco geológico e hidrológico (agosto)',
     identity: '1',
     desktopAppId: 'b9351c3c-9d66-4625-a530-1461a3c86e66',
     desktopSheetId: 'e9731105-32d5-45a6-a2ac-972df82b3d6b',
     methodologyLink: '/infos/notas/urbanismo/população-em-risco-geológico-e-hidrológico-ago2025.pdf',
-    downloadLink: '/dados/urbanismo/populacao-em-risco-geologico-e-hidrologico.zip',
+    downloadLink: '/dados/urbanismo/2026/populacao-em-risco-geologico-e-hidrologico.zip',
     filter: {
       appid: 'b9351c3c-9d66-4625-a530-1461a3c86e66',
       sheet: '3855132f-c221-41c0-ae97-6e2fca20f942',
@@ -91,7 +91,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
     identity: '2',
     desktopAppId: 'cf9a464d-210f-4926-a168-3b1b15e9ac51',
     desktopSheetId: '5de719a0-3b7d-4000-a4ec-64c9e35d9ad4',
-    downloadLink: '/dados/urbanismo/despesas-em-gestao-dos-riscos-e-promocao-da-resiliencia-a-desastres-e-eventos-criticos.zip',
+    downloadLink: '/dados/urbanismo/2026/orcamento-riscos.csv',
     filter: {
       appid: 'cf9a464d-210f-4926-a168-3b1b15e9ac51',
       sheet: '5bfcbcc2-e2fb-4021-8096-07cf82b7750b',
@@ -168,7 +168,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
     identity: '3',
     desktopAppId: '7ae3813c-28b6-441d-a266-f1e9274cd548',
     desktopSheetId: 'QMPruE',
-    downloadLink: '/dados/urbanismo/area-de-parques-municipais-e-estaduais.zip',
+    downloadLink: '/dados/urbanismo/2026/area-parques.csv',
     filter: {
       appid: '7ae3813c-28b6-441d-a266-f1e9274cd548',
       sheet: '9cde9237-bc1a-4eec-aabb-94a65716a38f',
@@ -211,7 +211,6 @@ export const urbanismoCurrent: DashboardConfig[] = [
     desktopAppId: '73a48687-54e2-4d04-b00c-b780005ed8b8',
     desktopSheetId: '1f71d49e-422e-4314-aa8b-259b8f948658',
     methodologyLink: '/infos/notas/urbanismo/parques-novos-e-requalificados,-áreas-permeáveis-e-despesas-liquidadas-com-parques-2024.pdf',
-    downloadLink: '/dados/urbanismo/parques-novos-e-requalificados-areas-permeaveis-e-despesas-liquidadas-com-parques.zip',
     filter: {
       appid: '73a48687-54e2-4d04-b00c-b780005ed8b8',
       sheet: '3ed03c68-c5fa-4e0a-ac5e-86424d0e5c90',
@@ -267,7 +266,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
     identity: '5',
     desktopAppId: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
     desktopSheetId: 'da5e8886-a388-4a4d-9835-8990c3744f2a',
-    downloadLink: '/dados/urbanismo/deficit-habitacional-domicilios-nao-ocupados-e-domicilios-em-favelas.zip',
+    downloadLink: '/dados/urbanismo/2026/deficit-habitacional-domicilios-nao-ocupados-e-domicilios-em-favelas.zip',
     filter: {
       appid: '5894c40c-193a-4bfc-8b05-0cec25c9a09c',
       sheet: '24de766d-67e4-4531-90c2-6b978a9b60a2',
@@ -407,7 +406,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
     identity: '7',
     desktopAppId: 'abdddc84-fe4c-4202-9803-28c068a9b705',
     desktopSheetId: 'hJfCYXg',
-    downloadLink: '/dados/urbanismo/unidades-habitacionais-entregues-ou-contratadas.zip',
+    downloadLink: '/dados/urbanismo/2026/unidades-habitacionais-entregues.zip',
     filter: {
       appid: 'abdddc84-fe4c-4202-9803-28c068a9b705',
       sheet: 'de9ebe1d-41b6-4e01-8c66-9abb42256c71',
@@ -491,7 +490,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
     identity: '8',
     desktopAppId: 'bfbce6a0-ee74-477d-a4f0-32c310b24bc7',
     desktopSheetId: 'NAtPM',
-    downloadLink: '/dados/urbanismo/familias-beneficiadas-por-regularizacao-fundiaria-e-obras-em-assentamentos-precarios.zip',
+    downloadLink: '/dados/urbanismo/2026/reg_fund_obras.csv',
     filter: {
       appid: 'bfbce6a0-ee74-477d-a4f0-32c310b24bc7',
       sheet: '9954c2ea-72ef-4000-ac9f-3d009eaae3a6',
@@ -557,11 +556,11 @@ export const urbanismoCurrent: DashboardConfig[] = [
     ]
   },
   {
-    title: 'Famílias beneficiárias do programa de Auxílio Aluguel (dez/2024)',
+    title: 'Famílias beneficiárias do programa de Auxílio Aluguel (dezembro)',
     identity: '9',
     desktopAppId: '941bad9f-01a1-4272-83ba-09c6f55cc3d2',
     desktopSheetId: '6fe6d2e2-43de-4c67-8aba-6bd99ad3ba74',
-    downloadLink: '/dados/urbanismo/familias-beneficiarias-do-programa-de-auxilio-aluguel.zip',
+    downloadLink: '/dados/urbanismo/2026/auxilio-aluguel.csv',
     filter: {
       appid: '941bad9f-01a1-4272-83ba-09c6f55cc3d2',
       sheet: '5b53226b-17c1-4ad7-bec0-c4a1b9ca3eed',
@@ -638,7 +637,6 @@ export const urbanismoCurrent: DashboardConfig[] = [
     identity: '10',
     desktopAppId: '5a541cb9-2376-486a-a6a0-ab0fcd72b764',
     desktopSheetId: '5548d5e2-5953-4beb-aaea-1345aae8f5d1',
-    downloadLink: '/dados/urbanismo/Quadro 7 - Relatório de Função Habitação.xlsx',
     filter: {
       appid: '5a541cb9-2376-486a-a6a0-ab0fcd72b764',
       sheet: 'f8b237a3-22bd-4b04-9d55-32c708bea204',
@@ -673,7 +671,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
     identity: '11',
     desktopAppId: '744fc7ea-8e6b-414a-8bd5-a51cd6b4f971',
     desktopSheetId: 'SHsCbm',
-    downloadLink: '/dados/urbanismo/orcamento-habitacao.csv',
+    downloadLink: '/dados/urbanismo/2026/orcamento-habitacao.csv',
     filter: {
       appid: '744fc7ea-8e6b-414a-8bd5-a51cd6b4f971',
       sheet: '15447374-7e2c-48ba-98fd-27afec521d18',

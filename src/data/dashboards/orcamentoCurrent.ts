@@ -3,7 +3,7 @@ import type { DashboardConfig } from '@/types/dashboard'
 export const orcamentoCurrent: DashboardConfig[] = [
   {
     title: 'Variação do Orçamento por Função de Governo',
-    downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
+    downloadLink: '/dados/orcamento/2026/orcamento_2024_2025.csv',
     identity: '1',
     desktopAppId: '8de1759f-cbc1-4229-b714-8c54fcf1f88c',
     desktopSheetId: 'UMJqywF',
@@ -70,7 +70,7 @@ export const orcamentoCurrent: DashboardConfig[] = [
   },
   {
     title: 'Variação detalhada do Orçamento por Função de Governo',
-    downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
+    downloadLink: '/dados/orcamento/2026/orcamento_2024_2025.csv',
     identity: '2',
     desktopAppId: 'a44893fd-2171-4ad4-9d55-846287cd6534',
     desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
@@ -137,7 +137,7 @@ export const orcamentoCurrent: DashboardConfig[] = [
   },
   {
     title: 'Variação detalhada do Orçamento por Órgão',
-    downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
+    downloadLink: '/dados/orcamento/2026/orcamento_2024_2025.csv',
     identity: '3',
     desktopAppId: 'f5fa8780-b946-4f6f-bf54-ffd1578841ee',
     desktopSheetId: '826cc7f9-9f5d-498f-aba1-af1bd4aca5ba',
@@ -204,7 +204,7 @@ export const orcamentoCurrent: DashboardConfig[] = [
   },
   {
     title: 'Comparação do Orçamento por Projeto/Atividade',
-    downloadLink: '/dados/orcamento/basedadosexecucao_1224.csv',
+    downloadLink: '/dados/orcamento/2026/orcamento_2024_2025.csv',
     identity: '4',
     desktopAppId: 'e6529850-a5d3-4fbb-9e5f-3ab31875d287',
     desktopSheetId: 'bd2c8bf9-d161-43ed-a967-b96342558630',
