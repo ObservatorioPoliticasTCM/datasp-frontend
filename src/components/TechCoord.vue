@@ -1,21 +1,13 @@
 <template>
-  <NameGroup v-if="participants.length" name="Coordenação Técnica">
-    <NameAndTitle
-      v-for="person in participants"
-      :key="person.name"
-      :name="person.name"
-      :title="person.title"
-      showBottomBorder
-    />
+  <NameGroup name="Coordenação Técnica">
+    <NameAndTitle name="Egle Monteiro" title="Coordenadora" showBottomBorder />
+    <NameAndTitle name="Harmi Takiya" title="Coordenadora Adjunta" showBottomBorder />
+    <NameAndTitle name="Bruno Azuma" title="Assessor Técnico de Dados" showBottomBorder />
+    <NameAndTitle name="Elizandra Hengles de Paula" title="Assessora de Comunicação" showBottomBorder />
   </NameGroup>
 </template>
 
 <script setup lang="ts">
-import type { Participant } from '@/data/technicalSpecifications'
 import NameGroup from '@/components/NameGroup.vue'
 import NameAndTitle from '@/components/NameAndTitle.vue'
-
-defineProps<{
-  participants: Participant[]
-}>()
 </script>
