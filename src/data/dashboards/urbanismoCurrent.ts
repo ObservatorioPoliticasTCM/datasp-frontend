@@ -265,7 +265,7 @@ export const urbanismoCurrent: DashboardConfig[] = [
     title: 'Déficit habitacional, domicílios não ocupados e domicílios em favelas',
     identity: '5',
     desktopAppId: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
-    desktopSheetId: 'da5e8886-a388-4a4d-9835-8990c3744f2a',
+    desktopSheetId: 'JJKYJ',
     downloadLink: '/dados/urbanismo/2026/deficit-habitacional-domicilios-nao-ocupados-e-domicilios-em-favelas.zip',
     filter: {
       appid: '56491dde-5fd0-42b9-94b4-e5f5d7480fee',
