@@ -181,7 +181,7 @@ export const generoCurrent: DashboardConfig[] = [
     ]
   },
   {
-    title: 'Despesas municipais sensíveis a gênero em projetos/atividades sem foco exclusivo em políticas para mulheres (2023)',
+    title: 'Despesas municipais sensíveis a gênero em projetos/atividades sem foco exclusivo em políticas para mulheres',
     identity: '2',
     desktopAppId: 'bd1b1f11-b47e-4873-ac6b-92d720e64270',
     desktopSheetId: 'c609507f-709a-434f-8430-5f1f74121740',
