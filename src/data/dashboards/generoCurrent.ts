@@ -185,7 +185,7 @@ export const generoCurrent: DashboardConfig[] = [
     identity: '2',
     desktopAppId: 'bd1b1f11-b47e-4873-ac6b-92d720e64270',
     desktopSheetId: 'c609507f-709a-434f-8430-5f1f74121740',
-    methodologyLink: '/infos/notas/genero/DESPESAS MUNICIPAIS EM AÇÕES PARCIALMENTE FOCALIZADAS POR INICIATIVA DISCRICIONÁRIA DA GESTÃO MUNICIPAL (2023).pdf',
+    methodologyLink: '/infos/notas/genero/Nota_Metodologica_Atualizacao_DataSP_Revisada.pdf',
     downloadLink: '/dados/genero/2026/orçamento-não-exclusivo-2026.zip',
     filter: {
       appid: 'bd1b1f11-b47e-4873-ac6b-92d720e64270',
